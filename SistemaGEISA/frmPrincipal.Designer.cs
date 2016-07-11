@@ -547,7 +547,7 @@
             this.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Name = "frmPrincipal";
-            this.Text = "Sistema de Control Inmobiliario v1.0.1";
+            this.Text = "Sistema Control Inmobiliario v1.0.1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
