@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E27FCC69-97EA-4233-B193-7ADB09E79A52}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeisaBD</RootNamespace>
+    <AssemblyName>GeisaBD</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityObjectExtension.cs" />
+    <Compile Include="GeisaModel.cs" />
+    <Compile Include="GeisaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeisaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ArticuloExterno.cs" />
+    <Compile Include="Modelo\Articulos.cs" />
+    <Compile Include="Modelo\Bancos.cs" />
+    <Compile Include="Modelo\CajaChica.cs" />
+    <Compile Include="Modelo\CajaChicaComprobante.cs" />
+    <Compile Include="Modelo\CajaChicaDetalle.cs" />
+    <Compile Include="Modelo\CajaChicaPrestamo.cs" />
+    <Compile Include="Modelo\CierresMes.cs" />
+    <Compile Include="Modelo\Ciudad.cs" />
+    <Compile Include="Modelo\Cliente.cs" />
+    <Compile Include="Modelo\Conceptos.cs" />
+    <Compile Include="Modelo\Contrarecibo.cs" />
+    <Compile Include="Modelo\DetalleArticulos.cs" />
+    <Compile Include="Modelo\Domicilios.cs" />
+    <Compile Include="Modelo\Empleado.cs" />
+    <Compile Include="Modelo\EmpleadoHistorial.cs" />
+    <Compile Include="Modelo\EmpleadoNomina.cs" />
+    <Compile Include="Modelo\Empresa.cs" />
+    <Compile Include="Modelo\EmpresaBancos.cs" />
+    <Compile Include="Modelo\Factura.cs" />
+    <Compile Include="Modelo\GastoCompartido.cs" />
+    <Compile Include="Modelo\GastosAdministrativos.cs" />
+    <Compile Include="Modelo\ModuloEnum.cs" />
+    <Compile Include="Modelo\NominaItem.cs" />
+    <Compile Include="Modelo\Nominas.cs" />
+    <Compile Include="Modelo\NominasDetalle.cs" />
+    <Compile Include="Modelo\Obra.cs" />
+    <Compile Include="Modelo\Ordenes.cs" />
+    <Compile Include="Modelo\Pagos.cs" />
+    <Compile Include="Modelo\PagosFacturas.cs" />
+    <Compile Include="Modelo\Perfil.cs" />
+    <Compile Include="Modelo\PermisosEnum.cs" />
+    <Compile Include="Modelo\PrestamosDetalle.cs" />
+    <Compile Include="Modelo\PresupuestoDetalle.cs" />
+    <Compile Include="Modelo\Proveedor.cs" />
+    <Compile Include="Modelo\ProveedorBancos.cs" />
+    <Compile Include="Modelo\ReposicionGastos.cs" />
+    <Compile Include="Modelo\Subcategoria.cs" />
+    <Compile Include="Modelo\TarjetasCredito.cs" />
+    <Compile Include="Modelo\TipoCatalogo.cs" />
+    <Compile Include="Modelo\TipoComprobante.cs" />
+    <Compile Include="Modelo\TipoEmpresa.cs" />
+    <Compile Include="Modelo\TipoFactura.cs" />
+    <Compile Include="Modelo\TipoMovimiento.cs" />
+    <Compile Include="Modelo\TipoMovimientoEnum.cs" />
+    <Compile Include="Modelo\TipoPago.cs" />
+    <Compile Include="Modelo\TipoPagoEnum.cs" />
+    <Compile Include="Modelo\TipoTransmision.cs" />
+    <Compile Include="Modelo\TipoVehiculo.cs" />
+    <Compile Include="Modelo\UnidadMedida.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Modelo\Vehiculo.cs" />
+    <Compile Include="Modelo\VehiculoCajaChica.cs" />
+    <Compile Include="Modelo\VehiculoCajaChicaDetalle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="GeisaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GeisaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GeisaModel.edmx.diagram">
+      <DependentUpon>GeisaModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

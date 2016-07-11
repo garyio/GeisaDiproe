@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA303872-F560-4AE5-AED5-C4529FC79CA3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeisaBD2</RootNamespace>
+    <AssemblyName>GeisaBD2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bancos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CajaChica.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CajaChicaDetalle.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ciudad.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Conceptos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contrarecibo.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domicilios.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empleado.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresaBancos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Estado.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Factura.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioPermisos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GastosAdministrativos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeisaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeisaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeisaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeisaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeisaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="getEstadoCuentaProveedores_Result.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Obra.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pagos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PagosFactura.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Perfil.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilPermisos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Permisos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedor.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProveedorBancos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReposicionGastos.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPago.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vehiculo.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehiculoCajaChica.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehiculoCajaChicaDetalle.cs">
+      <DependentUpon>GeisaModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="GeisaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GeisaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="GeisaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GeisaModel.edmx</DependentUpon>
+      <LastGenOutput>GeisaModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="GeisaModel.edmx.diagram">
+      <DependentUpon>GeisaModel.edmx</DependentUpon>
+    </None>
+    <None Include="GeisaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GeisaModel.edmx</DependentUpon>
+      <LastGenOutput>GeisaModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
