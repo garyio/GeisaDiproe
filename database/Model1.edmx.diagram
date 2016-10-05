@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eca1dbe6ee7f4753bc92f1a3148426aa" Name="Diagram1">
+        <EntityTypeShape EntityType="GEISAModel.Bancos" Width="1.5" PointX="3.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.CajaChica" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.CajaChicaDetalle" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Ciudad" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Cliente" Width="1.5" PointX="3.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Conceptos" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Contrarecibo" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Domicilios" Width="1.5" PointX="6" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Empleado" Width="1.5" PointX="3.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Empresa" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.EmpresaBancos" Width="1.5" PointX="6" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Estado" Width="1.5" PointX="1.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Factura" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Formulario" Width="1.5" PointX="11" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.FormularioPermisos" Width="1.5" PointX="13.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.GastosAdministrativos" Width="1.5" PointX="8.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Modulo" Width="1.5" PointX="8.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Obra" Width="1.5" PointX="6" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Pagos" Width="1.5" PointX="11.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.PagosFactura" Width="1.5" PointX="16.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Perfil" Width="1.5" PointX="1.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.PerfilPermisos" Width="1.5" PointX="15.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Permisos" Width="1.5" PointX="11" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Proveedor" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.ProveedorBancos" Width="1.5" PointX="9.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.ReposicionGastos" Width="1.5" PointX="13.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.TipoPago" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Usuario" Width="1.5" PointX="3.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.Vehiculo" Width="1.5" PointX="6.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.VehiculoCajaChica" Width="1.5" PointX="9" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEISAModel.VehiculoCajaChicaDetalle" Width="1.5" PointX="11.25" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="GEISAModel.FK_EmpresaBancos_Bancos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_ProveedorBancos_Bancos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_CajaChica_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_CajaChicaDetalle_CajaChica" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_CajaChicaDetalle_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_CajaChicaDetalle_EmpresaBancos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_CajaChicaDetalle_Obra" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_CajaChicaDetalle_TipoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Ciudad_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Domicilios_Ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Obra_Ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Obra_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_GastosAdministrativos_Conceptos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Contrarecibo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Factura_Contrarecibo" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Obra_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_EmpresaBancos_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_GastosAdministrativos_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Obra_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Pagos_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_ReposicionGastos_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_GastosAdministrativos_EmpresaBancos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Pagos_Bancos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_ReposicionGastos_EmpresaBancos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Factura_Obra" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Factura_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_PagosFactura_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_ReposicionGastos_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Formulario_Modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_FormularioPermisos_Formulario" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_FormularioPermisos_Permisos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_PerfilPermisos_FormularioPermisos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_GastosAdministrativos_TipoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_VehiculoCajaChicaDetalle_Obra" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Pagos_TipoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Pagos_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_PagosFactura_Pagos" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_PerfilPermisos_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_Usuario_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_ProveedorBancos_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_ReposicionGastos_TipoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_VehiculoCajaChica_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="GEISAModel.FK_VehiculoCajaChicaDetalle_VehiculoCajaChica" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

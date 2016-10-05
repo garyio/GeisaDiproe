@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BFCFAC60-4B2E-424E-BF0E-1D34E65EAA60}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Reportes</RootNamespace>
+    <AssemblyName>Reportes</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BarcodeLib">
+      <HintPath>..\..\..\Users\rcarrillo\Documents\Rmn\Rmn\Desarrollos\FabricasWMS\FabricasWMS\bin\Debug\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v13.2.Core, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\ReportViewer\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="conexion.cs" />
+    <Compile Include="Formas\frmEstadoCuentaProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\frmEstadoCuentaProveedores.Designer.cs">
+      <DependentUpon>frmEstadoCuentaProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\frmCuentasPorPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\frmCuentasPorPagar.Designer.cs">
+      <DependentUpon>frmCuentasPorPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\frmGastosGeneradosViaticos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\frmGastosGeneradosViaticos.Designer.cs">
+      <DependentUpon>frmGastosGeneradosViaticos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\frmIngresosMensualesPorEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\frmIngresosMensualesPorEmpresa.Designer.cs">
+      <DependentUpon>frmIngresosMensualesPorEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\frmNominaSemanal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\frmNominaSemanal.Designer.cs">
+      <DependentUpon>frmNominaSemanal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\frmVehiculosGasolina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\frmVehiculosGasolina.Designer.cs">
+      <DependentUpon>frmVehiculosGasolina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Funciones.cs" />
+    <Compile Include="Objetos\Contrarecibos.cs" />
+    <Compile Include="Objetos\CuentasPorPagar.cs" />
+    <Compile Include="Objetos\EstadoCuentaCajaChica.cs" />
+    <Compile Include="Objetos\GastosCompartidos.cs" />
+    <Compile Include="Objetos\EstadoCuentaProveedores.cs" />
+    <Compile Include="Objetos\GastosGeneradosViaticos.cs" />
+    <Compile Include="Objetos\IngresosMensualesPorEmpresa.cs" />
+    <Compile Include="Objetos\NominasSemanal.cs" />
+    <Compile Include="Objetos\OrdenesReporte.cs" />
+    <Compile Include="Objetos\VehiculoDetalleGasolina.cs" />
+    <Compile Include="Print.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Diseño\Cheque.rdlc" />
+    <EmbeddedResource Include="Diseño\Contrarecibos.rdlc" />
+    <EmbeddedResource Include="Diseño\CuentasPorPagarDetalle.rdlc" />
+    <EmbeddedResource Include="Diseño\CuentasPorPagar.rdlc" />
+    <EmbeddedResource Include="Diseño\EstadoCuentaCajaChica.rdlc" />
+    <EmbeddedResource Include="Diseño\EstadoCuentaProveedores.rdlc" />
+    <EmbeddedResource Include="Diseño\GastosCompartidos.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diseño\GastosGeneradosViaticos.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diseño\IngresosMensualesPorEmpresa.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diseño\NominaSemanal.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diseño\Ordenes.rdlc" />
+    <EmbeddedResource Include="Diseño\VehiculosGasolinaDetalle.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\frmEstadoCuentaProveedores.resx">
+      <DependentUpon>frmEstadoCuentaProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\frmCuentasPorPagar.resx">
+      <DependentUpon>frmCuentasPorPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\frmGastosGeneradosViaticos.resx">
+      <DependentUpon>frmGastosGeneradosViaticos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\frmIngresosMensualesPorEmpresa.resx">
+      <DependentUpon>frmIngresosMensualesPorEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\frmNominaSemanal.resx">
+      <DependentUpon>frmNominaSemanal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\frmVehiculosGasolina.resx">
+      <DependentUpon>frmVehiculosGasolina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\AcarreoExteriorItem.datasource" />
+    <None Include="Properties\DataSources\AcarreoInteriorItem.datasource" />
+    <None Include="Properties\DataSources\ChequeItem.datasource" />
+    <None Include="Properties\DataSources\ContrarecibosItem.datasource" />
+    <None Include="Properties\DataSources\CuentasPorPagar.datasource" />
+    <None Include="Properties\DataSources\CuentasPorPagarItem.datasource" />
+    <None Include="Properties\DataSources\CuentasPorPagarItem1.datasource" />
+    <None Include="Properties\DataSources\EstadoCuentaCajaChicaItem.datasource" />
+    <None Include="Properties\DataSources\EstadoCuentaProveedoresItem.datasource" />
+    <None Include="Properties\DataSources\EtiquetasControl.datasource" />
+    <None Include="Properties\DataSources\EtiquetasMB.datasource" />
+    <None Include="Properties\DataSources\EtiquetasMC.datasource" />
+    <None Include="Properties\DataSources\EtiquetasME.datasource" />
+    <None Include="Properties\DataSources\EtiquetasMM.datasource" />
+    <None Include="Properties\DataSources\EtiquetasMR.datasource" />
+    <None Include="Properties\DataSources\gastoGeneradoItem.datasource" />
+    <None Include="Properties\DataSources\GastosCompartidosItem.datasource" />
+    <None Include="Properties\DataSources\GastosGeneradosViaticos.datasource" />
+    <None Include="Properties\DataSources\IngresosMensualesItem.datasource" />
+    <None Include="Properties\DataSources\InteriorRegistroEncendidoItem.datasource" />
+    <None Include="Properties\DataSources\InteriorToneladasViajesItem.datasource" />
+    <None Include="Properties\DataSources\ListaAsistenciaItem.datasource" />
+    <None Include="Properties\DataSources\MineralRecibidoItem.datasource" />
+    <None Include="Properties\DataSources\MuestrasBarrenos.datasource" />
+    <None Include="Properties\DataSources\MuestrasContinuas.datasource" />
+    <None Include="Properties\DataSources\MuestrasEspeciales.datasource" />
+    <None Include="Properties\DataSources\MuestrasLotes.datasource" />
+    <None Include="Properties\DataSources\MuestrasMinas.datasource" />
+    <None Include="Properties\DataSources\MuestrasRemisiones.datasource" />
+    <None Include="Properties\DataSources\NominasSemanalItem.datasource" />
+    <None Include="Properties\DataSources\OrdenesItem.datasource" />
+    <None Include="Properties\DataSources\PromMuestreoContinuoAnualItem.datasource" />
+    <None Include="Properties\DataSources\PromMuestreoContinuoDiarioItem.datasource" />
+    <None Include="Properties\DataSources\PromMuestreoContinuoMensualItem.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\ReporteBlancoItem.datasource" />
+    <None Include="Properties\DataSources\ReporteDuplicadoReplicaItem.datasource" />
+    <None Include="Properties\DataSources\ReporteEntradaAccesosItem.datasource" />
+    <None Include="Properties\DataSources\ReporteMaterialReferenciaItem.datasource" />
+    <None Include="Properties\DataSources\ResultadoBalanceMetalurgicoItem.datasource" />
+    <None Include="Properties\DataSources\ResultadosMuestrasMinasItem.datasource" />
+    <None Include="Properties\DataSources\TablaObservacionesItem.datasource" />
+    <None Include="Properties\DataSources\TiemposPromediosAcarreoDiarioIntItem.datasource" />
+    <None Include="Properties\DataSources\TiemposPromediosAcarreoDiarioItem.datasource" />
+    <None Include="Properties\DataSources\TiemposPromediosAcarreoMensualIntItem.datasource" />
+    <None Include="Properties\DataSources\TiemposPromediosAcarreoMensualItem.datasource" />
+    <None Include="Properties\DataSources\VehiculoDetalleGasolinaItems.datasource" />
+    <None Include="Resources\Ver_Reporte.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reporte.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeisaBD\GeisaBD.csproj">
+      <Project>{e27fcc69-97ea-4233-b193-7adb09e79a52}</Project>
+      <Name>GeisaBD</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Si.png" />
+    <None Include="Resources\Imprimir.png" />
+    <Content Include="Resources\Limpiar.png" />
+    <None Include="Resources\Ver_Reporte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
