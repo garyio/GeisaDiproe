@@ -105,6 +105,7 @@
     <Compile Include="Modelo\TipoPagoEnum.cs" />
     <Compile Include="Modelo\TipoTransmision.cs" />
     <Compile Include="Modelo\TipoVehiculo.cs" />
+    <Compile Include="Modelo\TraspasoSaldos.cs" />
     <Compile Include="Modelo\UnidadMedida.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\Vehiculo.cs" />

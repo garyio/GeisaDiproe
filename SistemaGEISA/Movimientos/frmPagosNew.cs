@@ -18,9 +18,11 @@ namespace SistemaGEISA
         public Pagos pagos { get; set; }
 
         public Obra obra;// Se la paso en ingresos
+        public bool esTraspaso=false; // Se manda en ingresos para traspasar saldos
         public int idCliente=0;
         public string source = string.Empty;
         public int tipoMovimientoId;
+        public double saldoFavor = 0; // Viene de ingresos cuando se hace un traspaso
 
         public bool tienePermisoAgregar, tienePermisoModificar, tienePermisoCancelar;
         DataTable dt2;
@@ -112,13 +114,17 @@ namespace SistemaGEISA
             else
             {
                 int? folio;
-                if (obra != null)
+                if (obra != null) // Posibles folios para cuando viene de Ingresos
                 {
-                    if(source!=string.Empty)
+                    if (this.tipoMovimientoId == TipoMovimientoEnum.NotaCreditoFactura.Id)
                         folio = controler.Model.Pagos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.NotaCreditoFactura.Id).Select(P => P.Folio).DefaultIfEmpty(0).Max();
+                    else if(this.tipoMovimientoId == TipoMovimientoEnum.Traspaso_Abono.Id)
+                        folio = controler.Model.Pagos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.Traspaso_Abono.Id).Select(P => P.Folio).DefaultIfEmpty(0).Max();
+                    else if (this.tipoMovimientoId == TipoMovimientoEnum.Abonos.Id)
+                        folio = controler.Model.Pagos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.Abonos.Id).Select(P => P.Folio).DefaultIfEmpty(0).Max();
                     else
                         folio = controler.Model.Pagos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.Ingresos.Id).Select(P => P.Folio).DefaultIfEmpty(0).Max();
-                }
+                } // viene de Pagos
                 else
                 {
                     folio = controler.Model.Pagos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.Pagos.Id).Select(P => P.Folio).DefaultIfEmpty(0).Max();
@@ -140,12 +146,16 @@ namespace SistemaGEISA
                 if (pagos == null)
                 {
                     luProveedor.EditValue = idCliente;
-                    luProveedor.Enabled = false;
+                    luProveedor.Enabled = esTraspaso; // si viene de un traspaso puede modificar
                     luEmpresa.EditValue = obra.EmpresaId;
-                    luEmpresa.Enabled = false;
+                    luEmpresa.Enabled = esTraspaso; // si viene de un traspaso puede modificar
+                    luObra.Visible = lblObra.Visible = lblSaldoFavor.Visible = esTraspaso;// solo se muestra en Traspasos
+                    luObra.EditValue = obra.Id;
+                    luObra.Enabled = esTraspaso; // si viene de un traspaso puede modificar
+                    lblSaldoFavor.Text = esTraspaso ? ("Saldo Favor: " + this.saldoFavor.ToString("c2")): string.Empty;
                 }
                 else
-                {
+                { // Entra cuando editas un abono o NC en los movimientos de ingresos
                     luProveedor.Enabled = false;
                     luEmpresa.Enabled = false;
                 }
@@ -153,7 +163,7 @@ namespace SistemaGEISA
             }
             // Si es un Pago muestro Devolucion , si es Abono Muestro Prestamo
             colDevolucion.Visible = tipoMovimientoId == TipoMovimientoEnum.Pagos.Id ? true : false;
-            colPrestamo.Visible = tipoMovimientoId == TipoMovimientoEnum.Abonos.Id || tipoMovimientoId == TipoMovimientoEnum.Ingresos.Id || (pagos != null ? (pagos.TipoMovimientoId == TipoMovimientoEnum.Abonos.Id || pagos.TipoMovimientoId == TipoMovimientoEnum.Ingresos.Id) : false ) ? true : false;
+            colPrestamo.Visible = tipoMovimientoId == TipoMovimientoEnum.Traspaso_Abono.Id || tipoMovimientoId == TipoMovimientoEnum.Abonos.Id || tipoMovimientoId == TipoMovimientoEnum.Ingresos.Id || (pagos != null ? (pagos.TipoMovimientoId == TipoMovimientoEnum.Abonos.Id || pagos.TipoMovimientoId == TipoMovimientoEnum.Ingresos.Id) : false) ? true : false;
 
         }
 
@@ -165,7 +175,7 @@ namespace SistemaGEISA
             luEmpresa.Properties.ValueMember = "Id";
 
             if (obra != null)
-            {
+            {// si entra viene del Modulo de Ingresos
                 if (source != string.Empty)
                 {
                     luTipoPago.Properties.DataSource = controler.Model.TipoPago.ToList();
@@ -175,7 +185,7 @@ namespace SistemaGEISA
                 }
                 else
                 {
-                    if(this.tipoMovimientoId == TipoMovimientoEnum.Abonos.Id)
+                    if (this.tipoMovimientoId == TipoMovimientoEnum.Abonos.Id || this.tipoMovimientoId == TipoMovimientoEnum.Traspaso_Abono.Id)
                         luTipoPago.Properties.DataSource = controler.Model.TipoPago.Where(I => I.Nombre != "NOTA CREDITO").ToList();
                     else
                         luTipoPago.Properties.DataSource = controler.Model.TipoPago.ToList();
@@ -186,7 +196,11 @@ namespace SistemaGEISA
                 luProveedor.Properties.DataSource = controler.Model.Cliente.Where(D => D.Activo == true).ToList();
                 luProveedor.Properties.DisplayMember = "NombreFiscal";
                 luProveedor.Properties.ValueMember = "Id";
-                lblProveedor.Text = "Cliente";                
+                lblProveedor.Text = "Cliente";
+
+                luObra.Properties.DataSource = controler.Model.Obra.OrderBy(O => O.Nombre).ToList();
+                luObra.Properties.DisplayMember = "Nombre";
+                luObra.Properties.ValueMember = "Id";
             }// aqui entra siempre en pagos
             else
             {
@@ -520,7 +534,7 @@ namespace SistemaGEISA
 
                 frmFacturasPendientes form = new frmFacturasPendientes();
                 form.proveedor = prov;
-                form.obra = this.obra;
+                form.obra = esTraspaso ? (luObra.GetSelectedDataRow() as Obra) : this.obra; // Si es traspaso traigo lo que hay en el lookup en otro caso la obra por default
                 form.idCliente = this.idCliente;
                 form.cliente = cliente;
                 form.source = this.source;                
@@ -547,8 +561,8 @@ namespace SistemaGEISA
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Fecha"], form.rowSelected[j]["Fecha"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["SaldoActual"], form.rowSelected[j]["Saldo"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Importe"], form.rowSelected[j]["Importe"]);
-                        gv2.SetRowCellValue(rowHandle, gv2.Columns["MontoPagar"], form.rowSelected[j]["Saldo"]);
-                        gv2.SetRowCellValue(rowHandle, gv2.Columns["SaldoFinal"], 0);
+                        gv2.SetRowCellValue(rowHandle, gv2.Columns["MontoPagar"], esTraspaso ? this.saldoFavor : form.rowSelected[j]["Saldo"]); // Si es Traspaso pone por default el monto traspasado
+                        gv2.SetRowCellValue(rowHandle, gv2.Columns["SaldoFinal"], esTraspaso ? ((Convert.ToDouble(form.rowSelected[j]["Saldo"])) - this.saldoFavor) : 0);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Observaciones"], form.rowSelected[j]["Observaciones"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["ObraNombre"], form.rowSelected[j]["Obra"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Compartido"], fact.Compartido == null || Convert.ToInt32(fact.Compartido) == 0 ? false : true);
@@ -709,6 +723,7 @@ namespace SistemaGEISA
                     if (!pagos.NoEsNuevo) controler.Model.AddToPagos(pagos);
 
                     PagosFactura detalle = null;
+                    TraspasoSaldos detalleTraspaso = null;
                     
 
                     for (int i = 0; i < gv2.RowCount; i++)
@@ -723,16 +738,40 @@ namespace SistemaGEISA
                             factura.Saldo = factura.Importe - controler.Model.getAbonosTotales(factura.Id,pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;                            
                             factura.Saldo = Math.Round(factura.Saldo, 2);
                             if (!isNew)
+                            {
                                 detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id && P.PagosId == pagos.Id);
-                            else detalle = null;
+                                detalleTraspaso = detalle.TraspasoSaldos;
+                            }
+                            else
+                            {
+                                detalle = null;
+                                detalleTraspaso = null;
+                            }
 
-                            if (detalle == null) detalle = new PagosFactura();
+                            if (detalle == null)
+                            {
+                                detalle = new PagosFactura();
+                                detalleTraspaso = new TraspasoSaldos();
+                            }
                             //else factura.Saldo = factura.Saldo - detalle.MontoPagar; 
 
                             detalle.FacturaId = Convert.ToInt32(row["Id"]);
                             detalle.Pagos = pagos;
                             detalle.SaldoActual = Convert.ToDouble(row["SaldoActual"]);
                             detalle.MontoPagar = Convert.ToDouble(row["MontoPagar"]);
+                            if (esTraspaso)
+                            {
+                                detalleTraspaso.ObraIdOrigen = this.obra.Id;
+                                detalleTraspaso.ClienteIdOrigen = this.idCliente;
+                                detalleTraspaso.EmpresaIdOrigen = this.obra.EmpresaId;
+                                detalleTraspaso.ObraIdDestino = controler.GetObjectFromContext(luObra.GetSelectedDataRow() as Obra).Id;
+                                detalleTraspaso.ClienteIdDestino = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Cliente).Id;
+                                detalleTraspaso.EmpresaIdDestino = controler.GetObjectFromContext(luEmpresa.GetSelectedDataRow() as Empresa).Id;
+                                detalleTraspaso.Monto = Convert.ToDouble(row["MontoPagar"]);
+                                detalleTraspaso.Fecha = detalleTraspaso.Fecha.HasValue ? detalleTraspaso.Fecha : DateTime.Now;
+                                detalle.TraspasoSaldos = detalleTraspaso;
+                                if (!detalleTraspaso.NoEsNuevo) controler.Model.AddToTraspasoSaldos(detalleTraspaso);
+                            }
 
                             if (!detalle.NoEsNuevo) controler.Model.AddToPagosFactura(detalle);
 

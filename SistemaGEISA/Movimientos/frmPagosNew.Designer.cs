@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagosNew));
+            this.ckCompartido = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.ckGastoAdm = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.ckDevolucion = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.ckPrestamo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.dateEditFecha = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.menu = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
@@ -36,7 +40,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnActualizar = new System.Windows.Forms.ToolStripButton();
             this.btnCancelar = new System.Windows.Forms.ToolStripButton();
+            this.lblSaldoFavor = new System.Windows.Forms.ToolStripLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.luObra = new DevExpress.XtraEditors.LookUpEdit();
             this.grid2 = new DevExpress.XtraGrid.GridControl();
             this.gv2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,15 +54,10 @@
             this.colSaldoFinal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObservaciones2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompartido = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ckCompartido = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.colGastoAdm = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ckGastoAdm = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.colObra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDevolucion = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ckDevolucion = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.colPrestamo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ckPrestamo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.luBanco = new DevExpress.XtraEditors.LookUpEdit();
             this.lblBancoTarjeta = new System.Windows.Forms.Label();
             this.luEmpresa = new DevExpress.XtraEditors.LookUpEdit();
@@ -76,17 +77,18 @@
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.btnQuitar = new System.Windows.Forms.ToolStripButton();
             this.rgOpcion = new DevExpress.XtraEditors.RadioGroup();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.CalendarTimeProperties)).BeginInit();
-            this.menu.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv2)).BeginInit();
+            this.lblObra = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ckCompartido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckGastoAdm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckDevolucion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckPrestamo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.CalendarTimeProperties)).BeginInit();
+            this.menu.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.luObra.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luBanco.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luProveedor.Properties)).BeginInit();
@@ -96,6 +98,30 @@
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgOpcion.Properties)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ckCompartido
+            // 
+            this.ckCompartido.Caption = "Check";
+            this.ckCompartido.Name = "ckCompartido";
+            this.ckCompartido.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            // 
+            // ckGastoAdm
+            // 
+            this.ckGastoAdm.Caption = "GA";
+            this.ckGastoAdm.Name = "ckGastoAdm";
+            this.ckGastoAdm.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            // 
+            // ckDevolucion
+            // 
+            this.ckDevolucion.Caption = "Check";
+            this.ckDevolucion.Name = "ckDevolucion";
+            this.ckDevolucion.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            // 
+            // ckPrestamo
+            // 
+            this.ckPrestamo.Caption = "Check";
+            this.ckPrestamo.Name = "ckPrestamo";
+            this.ckPrestamo.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // dateEditFecha
             // 
@@ -116,7 +142,8 @@
             this.btnAgregarContrarecibos,
             this.toolStripSeparator1,
             this.btnActualizar,
-            this.btnCancelar});
+            this.btnCancelar,
+            this.lblSaldoFavor});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
@@ -166,6 +193,14 @@
             this.btnCancelar.Text = "Cancelar pago";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // lblSaldoFavor
+            // 
+            this.lblSaldoFavor.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lblSaldoFavor.Name = "lblSaldoFavor";
+            this.lblSaldoFavor.Size = new System.Drawing.Size(71, 26);
+            this.lblSaldoFavor.Text = "Saldo Favor:";
+            this.lblSaldoFavor.Visible = false;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 7;
@@ -176,7 +211,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.grid2, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.luObra, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.grid2, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.luBanco, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblBancoTarjeta, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.luEmpresa, 1, 3);
@@ -192,12 +228,14 @@
             this.tableLayoutPanel1.Controls.Add(this.txtReferencia, 5, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbCancelado, 6, 3);
             this.tableLayoutPanel1.Controls.Add(this.dtFechaPago, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.rgOpcion, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblObra, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -209,22 +247,33 @@
             this.tableLayoutPanel1.TabIndex = 8;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
+            // luObra
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.luObra, 2);
+            this.luObra.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.luObra.Location = new System.Drawing.Point(66, 112);
+            this.luObra.Name = "luObra";
+            this.luObra.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.luObra.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luObra.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
+            this.luObra.Properties.NullText = "";
+            this.luObra.Size = new System.Drawing.Size(223, 20);
+            this.luObra.TabIndex = 51;
+            this.luObra.Visible = false;
+            // 
             // grid2
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.grid2, 7);
             this.grid2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid2.Location = new System.Drawing.Point(3, 143);
+            this.grid2.Location = new System.Drawing.Point(3, 169);
             this.grid2.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             this.grid2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grid2.MainView = this.gv2;
             this.grid2.Name = "grid2";
-            this.grid2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1,
-            this.ckCompartido,
-            this.ckGastoAdm,
-            this.ckDevolucion,
-            this.ckPrestamo});
-            this.grid2.Size = new System.Drawing.Size(830, 280);
+            this.grid2.Size = new System.Drawing.Size(830, 254);
             this.grid2.TabIndex = 10;
             this.grid2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv2});
@@ -375,12 +424,6 @@
             this.colCompartido.VisibleIndex = 6;
             this.colCompartido.Width = 25;
             // 
-            // ckCompartido
-            // 
-            this.ckCompartido.Caption = "Check";
-            this.ckCompartido.Name = "ckCompartido";
-            this.ckCompartido.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
-            // 
             // colGastoAdm
             // 
             this.colGastoAdm.Caption = "GA";
@@ -391,12 +434,6 @@
             this.colGastoAdm.Visible = true;
             this.colGastoAdm.VisibleIndex = 7;
             this.colGastoAdm.Width = 25;
-            // 
-            // ckGastoAdm
-            // 
-            this.ckGastoAdm.Caption = "GA";
-            this.ckGastoAdm.Name = "ckGastoAdm";
-            this.ckGastoAdm.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // colObra
             // 
@@ -420,12 +457,6 @@
             this.colDevolucion.VisibleIndex = 8;
             this.colDevolucion.Width = 40;
             // 
-            // ckDevolucion
-            // 
-            this.ckDevolucion.Caption = "Check";
-            this.ckDevolucion.Name = "ckDevolucion";
-            this.ckDevolucion.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
-            // 
             // colPrestamo
             // 
             this.colPrestamo.Caption = "Ptmo.";
@@ -436,18 +467,6 @@
             this.colPrestamo.Visible = true;
             this.colPrestamo.VisibleIndex = 9;
             this.colPrestamo.Width = 40;
-            // 
-            // ckPrestamo
-            // 
-            this.ckPrestamo.Caption = "Check";
-            this.ckPrestamo.Name = "ckPrestamo";
-            this.ckPrestamo.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
-            // 
-            // repositoryItemCheckEdit1
-            // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Caption = "Check";
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
             // luBanco
             // 
@@ -665,7 +684,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregar,
             this.btnQuitar});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 112);
+            this.toolStrip1.Location = new System.Drawing.Point(3, 138);
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -704,6 +723,18 @@
             this.rgOpcion.TabIndex = 50;
             this.rgOpcion.EditValueChanged += new System.EventHandler(this.rgOpcion_EditValueChanged);
             // 
+            // lblObra
+            // 
+            this.lblObra.AutoSize = true;
+            this.lblObra.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblObra.Location = new System.Drawing.Point(3, 109);
+            this.lblObra.Name = "lblObra";
+            this.lblObra.Size = new System.Drawing.Size(57, 26);
+            this.lblObra.TabIndex = 52;
+            this.lblObra.Text = "Obra";
+            this.lblObra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblObra.Visible = false;
+            // 
             // frmPagosNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -717,19 +748,19 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagos : Nuevo";
             this.Load += new System.EventHandler(this.frmPagosNew_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ckCompartido)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckGastoAdm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckDevolucion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckPrestamo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.luObra.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckCompartido)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckGastoAdm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckDevolucion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckPrestamo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luBanco.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luProveedor.Properties)).EndInit();
@@ -764,7 +795,6 @@
         private DevExpress.XtraGrid.GridControl grid2;
         private DevExpress.XtraGrid.Views.Grid.GridView gv2;
         private DevExpress.XtraGrid.Columns.GridColumn colId2;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn colFactura2;
         private DevExpress.XtraGrid.Columns.GridColumn colFecha2;
         private DevExpress.XtraGrid.Columns.GridColumn colImporte2;
@@ -780,18 +810,21 @@
         private DevExpress.XtraEditors.DateEdit dtFechaPago;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private DevExpress.XtraGrid.Columns.GridColumn colCompartido;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckCompartido;
         private DevExpress.XtraGrid.Columns.GridColumn colGastoAdm;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckGastoAdm;
         private DevExpress.XtraGrid.Columns.GridColumn colObra;
         private System.Windows.Forms.ToolStripButton btnAgregarContrarecibos;
         private System.Windows.Forms.ToolStripButton btnActualizar;
         private System.Windows.Forms.ToolStripButton btnAgregar;
         private System.Windows.Forms.ToolStripButton btnQuitar;
         private DevExpress.XtraGrid.Columns.GridColumn colDevolucion;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckDevolucion;
         private DevExpress.XtraGrid.Columns.GridColumn colPrestamo;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckPrestamo;
         private DevExpress.XtraEditors.RadioGroup rgOpcion;
+        private DevExpress.XtraEditors.LookUpEdit luObra;
+        private System.Windows.Forms.Label lblObra;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckCompartido;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckGastoAdm;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckDevolucion;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckPrestamo;
+        private System.Windows.Forms.ToolStripLabel lblSaldoFavor;
     }
 }

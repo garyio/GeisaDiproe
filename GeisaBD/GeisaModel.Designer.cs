@@ -12,7 +12,6 @@ using System.ComponentModel;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Core.Objects.DataClasses;
-
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
@@ -116,6 +115,13 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Obra_PresupuestoDetalle", "PresupuestoDetalle", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.PresupuestoDetalle), "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Obra), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Ordenes_Obra", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Obra), "Ordenes", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Ordenes), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_VehiculoCajaChicaDetalle_Obra", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Obra), "VehiculoCajaChicaDetalle", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.VehiculoCajaChicaDetalle), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Cliente", "Cliente", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Cliente), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Cliente1", "Cliente", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Cliente), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Empresa", "Empresa", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empresa), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Empresa1", "Empresa", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empresa), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Obra", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Obra), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Obra1", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Obra), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_PagosFactura_TraspasoSaldos", "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.TraspasoSaldos), "PagosFactura", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.PagosFactura), true)]
 
 #endregion
 
@@ -998,6 +1004,22 @@ namespace GeisaBD
             }
         }
         private ObjectSet<Obra> _Obra;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TraspasoSaldos> TraspasoSaldos
+        {
+            get
+            {
+                if ((_TraspasoSaldos == null))
+                {
+                    _TraspasoSaldos = base.CreateObjectSet<TraspasoSaldos>("TraspasoSaldos");
+                }
+                return _TraspasoSaldos;
+            }
+        }
+        private ObjectSet<TraspasoSaldos> _TraspasoSaldos;
 
         #endregion
 
@@ -1417,6 +1439,14 @@ namespace GeisaBD
         public void AddToObra(Obra obra)
         {
             base.AddObject("Obra", obra);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TraspasoSaldos. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTraspasoSaldos(TraspasoSaldos traspasoSaldos)
+        {
+            base.AddObject("TraspasoSaldos", traspasoSaldos);
         }
 
         #endregion
@@ -1987,6 +2017,47 @@ namespace GeisaBD
             }
     
             return base.CreateQuery<fn_Split_Result>("[GEISAEntities].[fn_Split](@text, @delimiter)", textParameter, delimiterParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="obraId">No hay documentación de metadatos disponible.</param>
+        /// <param name="clienteId">No hay documentación de metadatos disponible.</param>
+        /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<Nullable<global::System.Double>> getDetalleTraspasos(Nullable<global::System.Int32> obraId, Nullable<global::System.Int32> clienteId, Nullable<global::System.Int32> empresaId)
+        {
+            ObjectParameter obraIdParameter;
+            if (obraId.HasValue)
+            {
+                obraIdParameter = new ObjectParameter("ObraId", obraId);
+            }
+            else
+            {
+                obraIdParameter = new ObjectParameter("ObraId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter clienteIdParameter;
+            if (clienteId.HasValue)
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", clienteId);
+            }
+            else
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter empresaIdParameter;
+            if (empresaId.HasValue)
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", empresaId);
+            }
+            else
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<Nullable<global::System.Double>>("getDetalleTraspasos", obraIdParameter, clienteIdParameter, empresaIdParameter);
         }
 
         #endregion
@@ -5185,6 +5256,50 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Obra>("GEISAModel.FK_Obra_Cliente", "Obra", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Cliente", "TraspasoSaldos")]
+        public EntityCollection<TraspasoSaldos> TraspasoSaldos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Cliente", "TraspasoSaldos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Cliente", "TraspasoSaldos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Cliente1", "TraspasoSaldos")]
+        public EntityCollection<TraspasoSaldos> TraspasoSaldos1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Cliente1", "TraspasoSaldos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Cliente1", "TraspasoSaldos", value);
                 }
             }
         }
@@ -8765,6 +8880,50 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Obra>("GEISAModel.FK_Obra_Empresa", "Obra", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Empresa", "TraspasoSaldos")]
+        public EntityCollection<TraspasoSaldos> TraspasoSaldos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Empresa", "TraspasoSaldos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Empresa", "TraspasoSaldos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Empresa1", "TraspasoSaldos")]
+        public EntityCollection<TraspasoSaldos> TraspasoSaldos1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Empresa1", "TraspasoSaldos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Empresa1", "TraspasoSaldos", value);
                 }
             }
         }
@@ -13074,6 +13233,50 @@ namespace GeisaBD
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Obra", "TraspasoSaldos")]
+        public EntityCollection<TraspasoSaldos> TraspasoSaldos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Obra", "TraspasoSaldos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Obra", "TraspasoSaldos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Obra1", "TraspasoSaldos")]
+        public EntityCollection<TraspasoSaldos> TraspasoSaldos1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Obra1", "TraspasoSaldos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Obra1", "TraspasoSaldos", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -15056,6 +15259,30 @@ namespace GeisaBD
         private global::System.Double _MontoPagar;
         partial void OnMontoPagarChanging(global::System.Double value);
         partial void OnMontoPagarChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> TraspasoSaldoId
+        {
+            get
+            {
+                return _TraspasoSaldoId;
+            }
+            set
+            {
+                OnTraspasoSaldoIdChanging(value);
+                ReportPropertyChanging("TraspasoSaldoId");
+                _TraspasoSaldoId = StructuralObject.SetValidValue(value, "TraspasoSaldoId");
+                ReportPropertyChanged("TraspasoSaldoId");
+                OnTraspasoSaldoIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _TraspasoSaldoId;
+        partial void OnTraspasoSaldoIdChanging(Nullable<global::System.Int32> value);
+        partial void OnTraspasoSaldoIdChanged();
 
         #endregion
 
@@ -15133,6 +15360,44 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Pagos>("GEISAModel.FK_PagosFactura_Pagos", "Pagos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_PagosFactura_TraspasoSaldos", "TraspasoSaldos")]
+        public TraspasoSaldos TraspasoSaldos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TraspasoSaldos>("GEISAModel.FK_PagosFactura_TraspasoSaldos", "TraspasoSaldos").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TraspasoSaldos>("GEISAModel.FK_PagosFactura_TraspasoSaldos", "TraspasoSaldos").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TraspasoSaldos> TraspasoSaldosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TraspasoSaldos>("GEISAModel.FK_PagosFactura_TraspasoSaldos", "TraspasoSaldos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TraspasoSaldos>("GEISAModel.FK_PagosFactura_TraspasoSaldos", "TraspasoSaldos", value);
                 }
             }
         }
@@ -18327,6 +18592,546 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Pagos>("GEISAModel.FK_Pagos_TipoPago", "Pagos", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="GEISAModel", Name="TraspasoSaldos")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TraspasoSaldos : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TraspasoSaldos.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad Id.</param>
+        /// <param name="obraIdOrigen">Valor inicial de la propiedad ObraIdOrigen.</param>
+        /// <param name="clienteIdOrigen">Valor inicial de la propiedad ClienteIdOrigen.</param>
+        /// <param name="empresaIdOrigen">Valor inicial de la propiedad EmpresaIdOrigen.</param>
+        /// <param name="obraIdDestino">Valor inicial de la propiedad ObraIdDestino.</param>
+        /// <param name="clienteIdDestino">Valor inicial de la propiedad ClienteIdDestino.</param>
+        /// <param name="empresaIdDestino">Valor inicial de la propiedad EmpresaIdDestino.</param>
+        /// <param name="monto">Valor inicial de la propiedad Monto.</param>
+        public static TraspasoSaldos CreateTraspasoSaldos(global::System.Int32 id, global::System.Int32 obraIdOrigen, global::System.Int32 clienteIdOrigen, global::System.Int32 empresaIdOrigen, global::System.Int32 obraIdDestino, global::System.Int32 clienteIdDestino, global::System.Int32 empresaIdDestino, global::System.Double monto)
+        {
+            TraspasoSaldos traspasoSaldos = new TraspasoSaldos();
+            traspasoSaldos.Id = id;
+            traspasoSaldos.ObraIdOrigen = obraIdOrigen;
+            traspasoSaldos.ClienteIdOrigen = clienteIdOrigen;
+            traspasoSaldos.EmpresaIdOrigen = empresaIdOrigen;
+            traspasoSaldos.ObraIdDestino = obraIdDestino;
+            traspasoSaldos.ClienteIdDestino = clienteIdDestino;
+            traspasoSaldos.EmpresaIdDestino = empresaIdDestino;
+            traspasoSaldos.Monto = monto;
+            return traspasoSaldos;
+        }
+
+        #endregion
+
+        #region Propiedades simples
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ObraIdOrigen
+        {
+            get
+            {
+                return _ObraIdOrigen;
+            }
+            set
+            {
+                OnObraIdOrigenChanging(value);
+                ReportPropertyChanging("ObraIdOrigen");
+                _ObraIdOrigen = StructuralObject.SetValidValue(value, "ObraIdOrigen");
+                ReportPropertyChanged("ObraIdOrigen");
+                OnObraIdOrigenChanged();
+            }
+        }
+        private global::System.Int32 _ObraIdOrigen;
+        partial void OnObraIdOrigenChanging(global::System.Int32 value);
+        partial void OnObraIdOrigenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ClienteIdOrigen
+        {
+            get
+            {
+                return _ClienteIdOrigen;
+            }
+            set
+            {
+                OnClienteIdOrigenChanging(value);
+                ReportPropertyChanging("ClienteIdOrigen");
+                _ClienteIdOrigen = StructuralObject.SetValidValue(value, "ClienteIdOrigen");
+                ReportPropertyChanged("ClienteIdOrigen");
+                OnClienteIdOrigenChanged();
+            }
+        }
+        private global::System.Int32 _ClienteIdOrigen;
+        partial void OnClienteIdOrigenChanging(global::System.Int32 value);
+        partial void OnClienteIdOrigenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 EmpresaIdOrigen
+        {
+            get
+            {
+                return _EmpresaIdOrigen;
+            }
+            set
+            {
+                OnEmpresaIdOrigenChanging(value);
+                ReportPropertyChanging("EmpresaIdOrigen");
+                _EmpresaIdOrigen = StructuralObject.SetValidValue(value, "EmpresaIdOrigen");
+                ReportPropertyChanged("EmpresaIdOrigen");
+                OnEmpresaIdOrigenChanged();
+            }
+        }
+        private global::System.Int32 _EmpresaIdOrigen;
+        partial void OnEmpresaIdOrigenChanging(global::System.Int32 value);
+        partial void OnEmpresaIdOrigenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ObraIdDestino
+        {
+            get
+            {
+                return _ObraIdDestino;
+            }
+            set
+            {
+                OnObraIdDestinoChanging(value);
+                ReportPropertyChanging("ObraIdDestino");
+                _ObraIdDestino = StructuralObject.SetValidValue(value, "ObraIdDestino");
+                ReportPropertyChanged("ObraIdDestino");
+                OnObraIdDestinoChanged();
+            }
+        }
+        private global::System.Int32 _ObraIdDestino;
+        partial void OnObraIdDestinoChanging(global::System.Int32 value);
+        partial void OnObraIdDestinoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ClienteIdDestino
+        {
+            get
+            {
+                return _ClienteIdDestino;
+            }
+            set
+            {
+                OnClienteIdDestinoChanging(value);
+                ReportPropertyChanging("ClienteIdDestino");
+                _ClienteIdDestino = StructuralObject.SetValidValue(value, "ClienteIdDestino");
+                ReportPropertyChanged("ClienteIdDestino");
+                OnClienteIdDestinoChanged();
+            }
+        }
+        private global::System.Int32 _ClienteIdDestino;
+        partial void OnClienteIdDestinoChanging(global::System.Int32 value);
+        partial void OnClienteIdDestinoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 EmpresaIdDestino
+        {
+            get
+            {
+                return _EmpresaIdDestino;
+            }
+            set
+            {
+                OnEmpresaIdDestinoChanging(value);
+                ReportPropertyChanging("EmpresaIdDestino");
+                _EmpresaIdDestino = StructuralObject.SetValidValue(value, "EmpresaIdDestino");
+                ReportPropertyChanged("EmpresaIdDestino");
+                OnEmpresaIdDestinoChanged();
+            }
+        }
+        private global::System.Int32 _EmpresaIdDestino;
+        partial void OnEmpresaIdDestinoChanging(global::System.Int32 value);
+        partial void OnEmpresaIdDestinoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double Monto
+        {
+            get
+            {
+                return _Monto;
+            }
+            set
+            {
+                OnMontoChanging(value);
+                ReportPropertyChanging("Monto");
+                _Monto = StructuralObject.SetValidValue(value, "Monto");
+                ReportPropertyChanged("Monto");
+                OnMontoChanged();
+            }
+        }
+        private global::System.Double _Monto;
+        partial void OnMontoChanging(global::System.Double value);
+        partial void OnMontoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+            set
+            {
+                OnFechaChanging(value);
+                ReportPropertyChanging("Fecha");
+                _Fecha = StructuralObject.SetValidValue(value, "Fecha");
+                ReportPropertyChanged("Fecha");
+                OnFechaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Fecha;
+        partial void OnFechaChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaCancelacion
+        {
+            get
+            {
+                return _FechaCancelacion;
+            }
+            set
+            {
+                OnFechaCancelacionChanging(value);
+                ReportPropertyChanging("FechaCancelacion");
+                _FechaCancelacion = StructuralObject.SetValidValue(value, "FechaCancelacion");
+                ReportPropertyChanged("FechaCancelacion");
+                OnFechaCancelacionChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaCancelacion;
+        partial void OnFechaCancelacionChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaCancelacionChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Cliente", "Cliente")]
+        public Cliente Cliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_TraspasoSaldos_Cliente", "Cliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_TraspasoSaldos_Cliente", "Cliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cliente> ClienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_TraspasoSaldos_Cliente", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("GEISAModel.FK_TraspasoSaldos_Cliente", "Cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Cliente1", "Cliente")]
+        public Cliente Cliente1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_TraspasoSaldos_Cliente1", "Cliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_TraspasoSaldos_Cliente1", "Cliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cliente> Cliente1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_TraspasoSaldos_Cliente1", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("GEISAModel.FK_TraspasoSaldos_Cliente1", "Cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Empresa", "Empresa")]
+        public Empresa Empresa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_TraspasoSaldos_Empresa", "Empresa").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_TraspasoSaldos_Empresa", "Empresa").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Empresa> EmpresaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_TraspasoSaldos_Empresa", "Empresa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empresa>("GEISAModel.FK_TraspasoSaldos_Empresa", "Empresa", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Empresa1", "Empresa")]
+        public Empresa Empresa1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_TraspasoSaldos_Empresa1", "Empresa").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_TraspasoSaldos_Empresa1", "Empresa").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Empresa> Empresa1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_TraspasoSaldos_Empresa1", "Empresa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empresa>("GEISAModel.FK_TraspasoSaldos_Empresa1", "Empresa", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Obra", "Obra")]
+        public Obra Obra
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Obra>("GEISAModel.FK_TraspasoSaldos_Obra", "Obra").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Obra>("GEISAModel.FK_TraspasoSaldos_Obra", "Obra").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Obra> ObraReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Obra>("GEISAModel.FK_TraspasoSaldos_Obra", "Obra");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Obra>("GEISAModel.FK_TraspasoSaldos_Obra", "Obra", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_TraspasoSaldos_Obra1", "Obra")]
+        public Obra Obra1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Obra>("GEISAModel.FK_TraspasoSaldos_Obra1", "Obra").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Obra>("GEISAModel.FK_TraspasoSaldos_Obra1", "Obra").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Obra> Obra1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Obra>("GEISAModel.FK_TraspasoSaldos_Obra1", "Obra");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Obra>("GEISAModel.FK_TraspasoSaldos_Obra1", "Obra", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_PagosFactura_TraspasoSaldos", "PagosFactura")]
+        public EntityCollection<PagosFactura> PagosFactura
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PagosFactura>("GEISAModel.FK_PagosFactura_TraspasoSaldos", "PagosFactura");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PagosFactura>("GEISAModel.FK_PagosFactura_TraspasoSaldos", "PagosFactura", value);
                 }
             }
         }

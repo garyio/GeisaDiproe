@@ -485,6 +485,7 @@
           <Property Name="FacturaId" Type="int" Nullable="false" />
           <Property Name="SaldoActual" Type="float" Nullable="false" />
           <Property Name="MontoPagar" Type="float" Nullable="false" />
+          <Property Name="TraspasoSaldoId" Type="int" />
         </EntityType>
         <EntityType Name="Perfil">
           <Key>
@@ -618,6 +619,21 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TraspasoSaldos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObraIdOrigen" Type="int" Nullable="false" />
+          <Property Name="ClienteIdOrigen" Type="int" Nullable="false" />
+          <Property Name="EmpresaIdOrigen" Type="int" Nullable="false" />
+          <Property Name="ObraIdDestino" Type="int" Nullable="false" />
+          <Property Name="ClienteIdDestino" Type="int" Nullable="false" />
+          <Property Name="EmpresaIdDestino" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="float" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="FechaCancelacion" Type="datetime" />
         </EntityType>
         <EntityType Name="UnidadMedida">
           <Key>
@@ -1522,6 +1538,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PagosFactura_TraspasoSaldos">
+          <End Role="TraspasoSaldos" Type="Self.TraspasoSaldos" Multiplicity="0..1" />
+          <End Role="PagosFactura" Type="Self.PagosFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TraspasoSaldos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PagosFactura">
+              <PropertyRef Name="TraspasoSaldoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PerfilPermisos_FormularioPermisos">
           <End Role="FormularioPermisos" Type="Self.FormularioPermisos" Multiplicity="1" />
           <End Role="PerfilPermisos" Type="Self.PerfilPermisos" Multiplicity="*" />
@@ -1750,6 +1778,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TraspasoSaldos_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="TraspasoSaldos" Type="Self.TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="ClienteIdOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Cliente1">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="TraspasoSaldos" Type="Self.TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="ClienteIdDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="TraspasoSaldos" Type="Self.TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="EmpresaIdOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Empresa1">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="TraspasoSaldos" Type="Self.TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="EmpresaIdDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Obra">
+          <End Role="Obra" Type="Self.Obra" Multiplicity="1" />
+          <End Role="TraspasoSaldos" Type="Self.TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="ObraIdOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Obra1">
+          <End Role="Obra" Type="Self.Obra" Multiplicity="1" />
+          <End Role="TraspasoSaldos" Type="Self.TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="ObraIdDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Usuario_Empleado">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
@@ -1864,6 +1964,11 @@
           <Parameter Name="TipoObjetoId" Type="int" Mode="In" />
           <Parameter Name="BeneficiarioId" Type="int" Mode="In" />
         </Function>
+        <Function Name="getDetalleTraspasos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ObraId" Type="int" Mode="In" />
+          <Parameter Name="ClienteId" Type="int" Mode="In" />
+          <Parameter Name="EmpresaId" Type="int" Mode="In" />
+        </Function>
         <Function Name="getEstadoCuentaProveedores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaIni" Type="datetime" Mode="In" />
           <Parameter Name="FechaFin" Type="datetime" Mode="In" />
@@ -1959,6 +2064,7 @@
           <EntitySet Name="TipoComprobante" EntityType="Self.TipoComprobante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoPago" EntityType="Self.TipoPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TraspasoSaldos" EntityType="Self.TraspasoSaldos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnidadMedida" EntityType="Self.UnidadMedida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
@@ -2244,6 +2350,10 @@
             <End Role="Pagos" EntitySet="Pagos" />
             <End Role="PagosFactura" EntitySet="PagosFactura" />
           </AssociationSet>
+          <AssociationSet Name="FK_PagosFactura_TraspasoSaldos" Association="Self.FK_PagosFactura_TraspasoSaldos">
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+            <End Role="PagosFactura" EntitySet="PagosFactura" />
+          </AssociationSet>
           <AssociationSet Name="FK_PerfilPermisos_FormularioPermisos" Association="Self.FK_PerfilPermisos_FormularioPermisos">
             <End Role="FormularioPermisos" EntitySet="FormularioPermisos" />
             <End Role="PerfilPermisos" EntitySet="PerfilPermisos" />
@@ -2319,6 +2429,30 @@
           <AssociationSet Name="FK_TarjetasCredito_Empleado" Association="Self.FK_TarjetasCredito_Empleado">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="TarjetasCredito" EntitySet="TarjetasCredito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Cliente" Association="Self.FK_TraspasoSaldos_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Cliente1" Association="Self.FK_TraspasoSaldos_Cliente1">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Empresa" Association="Self.FK_TraspasoSaldos_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Empresa1" Association="Self.FK_TraspasoSaldos_Empresa1">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Obra" Association="Self.FK_TraspasoSaldos_Obra">
+            <End Role="Obra" EntitySet="Obra" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Obra1" Association="Self.FK_TraspasoSaldos_Obra1">
+            <End Role="Obra" EntitySet="Obra" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_Empleado" Association="Self.FK_Usuario_Empleado">
             <End Role="Empleado" EntitySet="Empleado" />
@@ -2969,6 +3103,40 @@
             <End Role="Obra" EntitySet="Obra" />
             <End Role="VehiculoCajaChicaDetalle" EntitySet="VehiculoCajaChicaDetalle" />
           </AssociationSet>
+          <EntitySet Name="TraspasoSaldos" EntityType="GEISAModel.TraspasoSaldos" />
+          <AssociationSet Name="FK_TraspasoSaldos_Cliente" Association="GEISAModel.FK_TraspasoSaldos_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Cliente1" Association="GEISAModel.FK_TraspasoSaldos_Cliente1">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Empresa" Association="GEISAModel.FK_TraspasoSaldos_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Empresa1" Association="GEISAModel.FK_TraspasoSaldos_Empresa1">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Obra" Association="GEISAModel.FK_TraspasoSaldos_Obra">
+            <End Role="Obra" EntitySet="Obra" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TraspasoSaldos_Obra1" Association="GEISAModel.FK_TraspasoSaldos_Obra1">
+            <End Role="Obra" EntitySet="Obra" />
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagosFactura_TraspasoSaldos" Association="GEISAModel.FK_PagosFactura_TraspasoSaldos">
+            <End Role="TraspasoSaldos" EntitySet="TraspasoSaldos" />
+            <End Role="PagosFactura" EntitySet="PagosFactura" />
+          </AssociationSet>
+          <FunctionImport Name="getDetalleTraspasos" ReturnType="Collection(Double)">
+            <Parameter Name="ObraId" Mode="In" Type="Int32" />
+            <Parameter Name="ClienteId" Mode="In" Type="Int32" />
+            <Parameter Name="EmpresaId" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="Domicilios">
           <Key>
@@ -3025,6 +3193,8 @@
           <NavigationProperty Name="Pagos" Relationship="GEISAModel.FK_Pagos_Empresa" FromRole="Empresa" ToRole="Pagos" />
           <NavigationProperty Name="PrestamosDetalle" Relationship="GEISAModel.FK_PrestamosDetalle_Empresa" FromRole="Empresa" ToRole="PrestamosDetalle" />
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Obra_Empresa" FromRole="Empresa" ToRole="Obra" />
+          <NavigationProperty Name="TraspasoSaldos" Relationship="GEISAModel.FK_TraspasoSaldos_Empresa" FromRole="Empresa" ToRole="TraspasoSaldos" />
+          <NavigationProperty Name="TraspasoSaldos1" Relationship="GEISAModel.FK_TraspasoSaldos_Empresa1" FromRole="Empresa" ToRole="TraspasoSaldos" />
         </EntityType>
         <EntityType Name="ProveedorBancos">
           <Key>
@@ -3106,6 +3276,8 @@
           <Property Name="MontoPagar" Type="Double" Nullable="false" />
           <NavigationProperty Name="Factura" Relationship="GEISAModel.FK_PagosFactura_Factura" FromRole="PagosFactura" ToRole="Factura" />
           <NavigationProperty Name="Pagos" Relationship="GEISAModel.FK_PagosFactura_Pagos" FromRole="PagosFactura" ToRole="Pagos" />
+          <Property Name="TraspasoSaldoId" Type="Int32" />
+          <NavigationProperty Name="TraspasoSaldos" Relationship="GEISAModel.FK_PagosFactura_TraspasoSaldos" FromRole="PagosFactura" ToRole="TraspasoSaldos" />
         </EntityType>
         <EntityType Name="CajaChica">
           <Key>
@@ -3889,6 +4061,8 @@
           <NavigationProperty Name="Pagos" Relationship="GEISAModel.FK_Pagos_Cliente" FromRole="Cliente" ToRole="Pagos" />
           <NavigationProperty Name="ClienteBancos" Relationship="GEISAModel.FK_ClienteBancos_Cliente" FromRole="Cliente" ToRole="ClienteBancos" />
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Obra_Cliente" FromRole="Cliente" ToRole="Obra" />
+          <NavigationProperty Name="TraspasoSaldos" Relationship="GEISAModel.FK_TraspasoSaldos_Cliente" FromRole="Cliente" ToRole="TraspasoSaldos" />
+          <NavigationProperty Name="TraspasoSaldos1" Relationship="GEISAModel.FK_TraspasoSaldos_Cliente1" FromRole="Cliente" ToRole="TraspasoSaldos" />
         </EntityType>
         <EntityType Name="Categorias">
           <Key>
@@ -5002,6 +5176,8 @@
           <NavigationProperty Name="PresupuestoDetalle" Relationship="GEISAModel.FK_Obra_PresupuestoDetalle" FromRole="Obra" ToRole="PresupuestoDetalle" />
           <NavigationProperty Name="Ordenes" Relationship="GEISAModel.FK_Ordenes_Obra" FromRole="Obra" ToRole="Ordenes" />
           <NavigationProperty Name="VehiculoCajaChicaDetalle" Relationship="GEISAModel.FK_VehiculoCajaChicaDetalle_Obra" FromRole="Obra" ToRole="VehiculoCajaChicaDetalle" />
+          <NavigationProperty Name="TraspasoSaldos" Relationship="GEISAModel.FK_TraspasoSaldos_Obra" FromRole="Obra" ToRole="TraspasoSaldos" />
+          <NavigationProperty Name="TraspasoSaldos1" Relationship="GEISAModel.FK_TraspasoSaldos_Obra1" FromRole="Obra" ToRole="TraspasoSaldos" />
         </EntityType>
         <Association Name="FK_CajaChicaComprobante_Obra">
           <End Type="GEISAModel.Obra" Role="Obra" Multiplicity="0..1" />
@@ -5135,6 +5311,112 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TraspasoSaldos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObraIdOrigen" Type="Int32" Nullable="false" />
+          <Property Name="ClienteIdOrigen" Type="Int32" Nullable="false" />
+          <Property Name="EmpresaIdOrigen" Type="Int32" Nullable="false" />
+          <Property Name="ObraIdDestino" Type="Int32" Nullable="false" />
+          <Property Name="ClienteIdDestino" Type="Int32" Nullable="false" />
+          <Property Name="EmpresaIdDestino" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Double" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="FechaCancelacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cliente" Relationship="GEISAModel.FK_TraspasoSaldos_Cliente" FromRole="TraspasoSaldos" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente1" Relationship="GEISAModel.FK_TraspasoSaldos_Cliente1" FromRole="TraspasoSaldos" ToRole="Cliente" />
+          <NavigationProperty Name="Empresa" Relationship="GEISAModel.FK_TraspasoSaldos_Empresa" FromRole="TraspasoSaldos" ToRole="Empresa" />
+          <NavigationProperty Name="Empresa1" Relationship="GEISAModel.FK_TraspasoSaldos_Empresa1" FromRole="TraspasoSaldos" ToRole="Empresa" />
+          <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_TraspasoSaldos_Obra" FromRole="TraspasoSaldos" ToRole="Obra" />
+          <NavigationProperty Name="Obra1" Relationship="GEISAModel.FK_TraspasoSaldos_Obra1" FromRole="TraspasoSaldos" ToRole="Obra" />
+          <NavigationProperty Name="PagosFactura" Relationship="GEISAModel.FK_PagosFactura_TraspasoSaldos" FromRole="TraspasoSaldos" ToRole="PagosFactura" />
+        </EntityType>
+        <Association Name="FK_TraspasoSaldos_Cliente">
+          <End Type="GEISAModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="GEISAModel.TraspasoSaldos" Role="TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="ClienteIdOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Cliente1">
+          <End Type="GEISAModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="GEISAModel.TraspasoSaldos" Role="TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="ClienteIdDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Empresa">
+          <End Type="GEISAModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="GEISAModel.TraspasoSaldos" Role="TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="EmpresaIdOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Empresa1">
+          <End Type="GEISAModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="GEISAModel.TraspasoSaldos" Role="TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="EmpresaIdDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Obra">
+          <End Type="GEISAModel.Obra" Role="Obra" Multiplicity="1" />
+          <End Type="GEISAModel.TraspasoSaldos" Role="TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="ObraIdOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TraspasoSaldos_Obra1">
+          <End Type="GEISAModel.Obra" Role="Obra" Multiplicity="1" />
+          <End Type="GEISAModel.TraspasoSaldos" Role="TraspasoSaldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TraspasoSaldos">
+              <PropertyRef Name="ObraIdDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagosFactura_TraspasoSaldos">
+          <End Type="GEISAModel.TraspasoSaldos" Role="TraspasoSaldos" Multiplicity="0..1" />
+          <End Type="GEISAModel.PagosFactura" Role="PagosFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TraspasoSaldos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PagosFactura">
+              <PropertyRef Name="TraspasoSaldoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5260,6 +5542,7 @@
           <EntitySetMapping Name="PagosFactura">
             <EntityTypeMapping TypeName="GEISAModel.PagosFactura">
               <MappingFragment StoreEntitySet="PagosFactura">
+                <ScalarProperty Name="TraspasoSaldoId" ColumnName="TraspasoSaldoId" />
                 <ScalarProperty Name="MontoPagar" ColumnName="MontoPagar" />
                 <ScalarProperty Name="SaldoActual" ColumnName="SaldoActual" />
                 <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
@@ -6153,6 +6436,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TraspasoSaldos">
+            <EntityTypeMapping TypeName="GEISAModel.TraspasoSaldos">
+              <MappingFragment StoreEntitySet="TraspasoSaldos">
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="EmpresaIdDestino" ColumnName="EmpresaIdDestino" />
+                <ScalarProperty Name="ClienteIdDestino" ColumnName="ClienteIdDestino" />
+                <ScalarProperty Name="ObraIdDestino" ColumnName="ObraIdDestino" />
+                <ScalarProperty Name="EmpresaIdOrigen" ColumnName="EmpresaIdOrigen" />
+                <ScalarProperty Name="ClienteIdOrigen" ColumnName="ClienteIdOrigen" />
+                <ScalarProperty Name="ObraIdOrigen" ColumnName="ObraIdOrigen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getDetalleTraspasos" FunctionName="GEISAModel.Store.getDetalleTraspasos" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

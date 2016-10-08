@@ -153,6 +153,14 @@
         <AssociationConnector Association="GEISAModel.FK_Obra_PresupuestoDetalle" />
         <AssociationConnector Association="GEISAModel.FK_Ordenes_Obra" />
         <AssociationConnector Association="GEISAModel.FK_VehiculoCajaChicaDetalle_Obra" />
+        <EntityTypeShape EntityType="GEISAModel.TraspasoSaldos" Width="1.5" PointX="24.875" PointY="16.625" />
+        <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Cliente" />
+        <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Cliente1" />
+        <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Empresa" />
+        <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Empresa1" />
+        <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Obra" />
+        <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Obra1" />
+        <AssociationConnector Association="GEISAModel.FK_PagosFactura_TraspasoSaldos" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -35,6 +35,7 @@ namespace SistemaGEISA
         private Controler _controler = new Controler();
 
         private getDetalleIngresos_Result item;
+        private double saldoFavor = 0;
 
         private Controler Controler
         {
@@ -193,12 +194,26 @@ namespace SistemaGEISA
                 //txtSaldoFavor.Text = Convert.ToDouble(colSaldo.SummaryItem.SummaryValue) < 0 ? Math.Abs(Convert.ToDouble(colSaldo.SummaryItem.SummaryValue)).ToString("c2") : "$0.00";
                 if (obra.PresupuestoDetalle != null)
                 {
-                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial));
+                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id,cliente.Id,obra.Empresa.Id));
                     txtSaldoFavor.Text = saldoFavor >= 0 ? saldoFavor.ToString("c2") : "0.00";
                 }
                 else
                     txtSaldoFavor.Text = "0.00";
                 //txtSaldoFavor.Text = "TOTAL PAGOS - PREPUPUESTO FINAL"
+            }
+        }
+
+        private double getTraspasos(int obraId, int clienteId, int empresaId)
+        {
+            try
+            {
+                //controler.Model.get(factura.Id, pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value; 
+                Console.WriteLine(Controler.Model.getDetalleTraspasos(obraId, clienteId, empresaId).Sum().Value);
+                return Controler.Model.getDetalleTraspasos(obraId, clienteId, empresaId).Sum().Value;       
+            }
+            catch (Exception ex)
+            {
+                return 0;
             }
         }
 
@@ -437,7 +452,7 @@ namespace SistemaGEISA
         {
             if (obra != null & gv.DataRowCount > 0)
             {
-                abrirForm(true);
+                abrirForm(true,false);
             }
             else
             {
@@ -445,14 +460,16 @@ namespace SistemaGEISA
             }            
         }
 
-        private void abrirForm(bool nuevo)
+        private void abrirForm(bool nuevo,bool esTraspaso)
             {
             var form = new frmPagosNew(Controler);
-            form.Text = "Abono : " + (nuevo ? "Nuevo" : "Editar");
+            form.Text = esTraspaso ? ("Traspaso : Nuevo") : ("Abono : " + (nuevo ? "Nuevo" : "Editar"));
             if (!nuevo) form.pagos = pagos;
-            form.tipoMovimientoId = TipoMovimientoEnum.Abonos.Id;
+            form.tipoMovimientoId = esTraspaso ? TipoMovimientoEnum.Traspaso_Abono.Id : TipoMovimientoEnum.Abonos.Id;
             form.obra = this.obra;
-            form.idCliente = this.cliente.Id;   
+            form.idCliente = this.cliente.Id;
+            form.esTraspaso = esTraspaso;
+            form.saldoFavor = this.saldoFavor;
             form.tienePermisoAgregar = tienePermisoAgregar;
             form.tienePermisoModificar = tienePermisoModificar;
             form.tienePermisoCancelar = tienePermisoCancelar;
@@ -839,35 +856,12 @@ namespace SistemaGEISA
 
         private void btnSaldoFavor_Click(object sender, EventArgs e)
         {
-            double saldoFavor = convertirDouble(txtSaldoFavor.Text);
+            saldoFavor = convertirDouble(txtSaldoFavor.Text);
             if (saldoFavor > 0)
             {
                 if (obra != null & gv.DataRowCount > 0)
                 {
-                    var form = new frmPagosNew(Controler);
-                    form.Text = "Abono : " + (true ? "Nuevo" : "Editar");
-                    if (!true) form.pagos = pagos;
-                    form.tipoMovimientoId = TipoMovimientoEnum.Abonos.Id;
-                    form.obra = this.obra;
-                    form.idCliente = this.cliente.Id;
-                    form.tienePermisoAgregar = tienePermisoAgregar;
-                    form.tienePermisoModificar = tienePermisoModificar;
-                    form.tienePermisoCancelar = tienePermisoCancelar;
-
-                    //cancelo botones ya que no se podra hacer otro movimiento
-                    form.ShowDialog();
-
-                    //if (nuevo)
-                    //{
-                    //    frmIngresos_Load(null, null);
-                    //    luObra_EditValueChanged(null, null);
-                    //}
-                    //else
-                    //{
-                    //    grid.RefreshDataSource();
-                    //}
-
-                    //gv_FocusedRowChanged(null, null);
+                    abrirForm(true,true);
                 }
                 else
                 {
@@ -876,7 +870,7 @@ namespace SistemaGEISA
             }
             else
             {
-
+                new frmMessageBox(true) { Message = "El saldo debe ser mayor a 0 para poder Trasferir.", Title = "Aviso" }.ShowDialog();
             }
         }
     }

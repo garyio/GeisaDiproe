@@ -20,6 +20,7 @@ namespace GeisaBD
         public static TipoMovimiento OrdenCompra { get; internal set; }
         public static TipoMovimiento SalidaAlmacen { get; internal set; }
         public static TipoMovimiento NotaCreditoFactura { get; internal set; }
+        public static TipoMovimiento Traspaso_Abono { get; internal set; }
 
 
         #endregion Properties
@@ -41,6 +42,7 @@ namespace GeisaBD
             OrdenCompra = tipo[9];
             SalidaAlmacen = tipo[10];
             NotaCreditoFactura = tipo[11];
+            Traspaso_Abono = tipo[12];
 
         }
         #endregion Constructors
