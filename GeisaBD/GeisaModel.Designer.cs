@@ -2059,6 +2059,47 @@ namespace GeisaBD
     
             return base.ExecuteFunction<Nullable<global::System.Double>>("getDetalleTraspasos", obraIdParameter, clienteIdParameter, empresaIdParameter);
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="obraId">No hay documentación de metadatos disponible.</param>
+        /// <param name="clienteId">No hay documentación de metadatos disponible.</param>
+        /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<getTraspasos_Result> getTraspasos(Nullable<global::System.Int32> obraId, Nullable<global::System.Int32> clienteId, Nullable<global::System.Int32> empresaId)
+        {
+            ObjectParameter obraIdParameter;
+            if (obraId.HasValue)
+            {
+                obraIdParameter = new ObjectParameter("ObraId", obraId);
+            }
+            else
+            {
+                obraIdParameter = new ObjectParameter("ObraId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter clienteIdParameter;
+            if (clienteId.HasValue)
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", clienteId);
+            }
+            else
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter empresaIdParameter;
+            if (empresaId.HasValue)
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", empresaId);
+            }
+            else
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<getTraspasos_Result>("getTraspasos", obraIdParameter, clienteIdParameter, empresaIdParameter);
+        }
 
         #endregion
 
@@ -26155,6 +26196,327 @@ namespace GeisaBD
         private global::System.String _Referencia;
         partial void OnReferenciaChanging(global::System.String value);
         partial void OnReferenciaChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="GEISAModel", Name="getTraspasos_Result")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class getTraspasos_Result : ComplexObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto getTraspasos_Result.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad Id.</param>
+        /// <param name="idPago">Valor inicial de la propiedad IdPago.</param>
+        /// <param name="monto">Valor inicial de la propiedad Monto.</param>
+        public static getTraspasos_Result CreategetTraspasos_Result(global::System.Int32 id, global::System.Int32 idPago, global::System.Double monto)
+        {
+            getTraspasos_Result getTraspasos_Result = new getTraspasos_Result();
+            getTraspasos_Result.Id = id;
+            getTraspasos_Result.IdPago = idPago;
+            getTraspasos_Result.Monto = monto;
+            return getTraspasos_Result;
+        }
+
+        #endregion
+
+        #region Propiedades simples
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                OnIdChanging(value);
+                ReportPropertyChanging("Id");
+                _Id = StructuralObject.SetValidValue(value, "Id");
+                ReportPropertyChanged("Id");
+                OnIdChanged();
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdPago
+        {
+            get
+            {
+                return _IdPago;
+            }
+            set
+            {
+                OnIdPagoChanging(value);
+                ReportPropertyChanging("IdPago");
+                _IdPago = StructuralObject.SetValidValue(value, "IdPago");
+                ReportPropertyChanged("IdPago");
+                OnIdPagoChanged();
+            }
+        }
+        private global::System.Int32 _IdPago;
+        partial void OnIdPagoChanging(global::System.Int32 value);
+        partial void OnIdPagoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ObraOrigen
+        {
+            get
+            {
+                return _ObraOrigen;
+            }
+            set
+            {
+                OnObraOrigenChanging(value);
+                ReportPropertyChanging("ObraOrigen");
+                _ObraOrigen = StructuralObject.SetValidValue(value, true, "ObraOrigen");
+                ReportPropertyChanged("ObraOrigen");
+                OnObraOrigenChanged();
+            }
+        }
+        private global::System.String _ObraOrigen;
+        partial void OnObraOrigenChanging(global::System.String value);
+        partial void OnObraOrigenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ClienteOrigen
+        {
+            get
+            {
+                return _ClienteOrigen;
+            }
+            set
+            {
+                OnClienteOrigenChanging(value);
+                ReportPropertyChanging("ClienteOrigen");
+                _ClienteOrigen = StructuralObject.SetValidValue(value, true, "ClienteOrigen");
+                ReportPropertyChanged("ClienteOrigen");
+                OnClienteOrigenChanged();
+            }
+        }
+        private global::System.String _ClienteOrigen;
+        partial void OnClienteOrigenChanging(global::System.String value);
+        partial void OnClienteOrigenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EmpresaOrigen
+        {
+            get
+            {
+                return _EmpresaOrigen;
+            }
+            set
+            {
+                OnEmpresaOrigenChanging(value);
+                ReportPropertyChanging("EmpresaOrigen");
+                _EmpresaOrigen = StructuralObject.SetValidValue(value, true, "EmpresaOrigen");
+                ReportPropertyChanged("EmpresaOrigen");
+                OnEmpresaOrigenChanged();
+            }
+        }
+        private global::System.String _EmpresaOrigen;
+        partial void OnEmpresaOrigenChanging(global::System.String value);
+        partial void OnEmpresaOrigenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ObraDestino
+        {
+            get
+            {
+                return _ObraDestino;
+            }
+            set
+            {
+                OnObraDestinoChanging(value);
+                ReportPropertyChanging("ObraDestino");
+                _ObraDestino = StructuralObject.SetValidValue(value, true, "ObraDestino");
+                ReportPropertyChanged("ObraDestino");
+                OnObraDestinoChanged();
+            }
+        }
+        private global::System.String _ObraDestino;
+        partial void OnObraDestinoChanging(global::System.String value);
+        partial void OnObraDestinoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ClienteDestino
+        {
+            get
+            {
+                return _ClienteDestino;
+            }
+            set
+            {
+                OnClienteDestinoChanging(value);
+                ReportPropertyChanging("ClienteDestino");
+                _ClienteDestino = StructuralObject.SetValidValue(value, true, "ClienteDestino");
+                ReportPropertyChanged("ClienteDestino");
+                OnClienteDestinoChanged();
+            }
+        }
+        private global::System.String _ClienteDestino;
+        partial void OnClienteDestinoChanging(global::System.String value);
+        partial void OnClienteDestinoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EmpresaDestino
+        {
+            get
+            {
+                return _EmpresaDestino;
+            }
+            set
+            {
+                OnEmpresaDestinoChanging(value);
+                ReportPropertyChanging("EmpresaDestino");
+                _EmpresaDestino = StructuralObject.SetValidValue(value, true, "EmpresaDestino");
+                ReportPropertyChanged("EmpresaDestino");
+                OnEmpresaDestinoChanged();
+            }
+        }
+        private global::System.String _EmpresaDestino;
+        partial void OnEmpresaDestinoChanging(global::System.String value);
+        partial void OnEmpresaDestinoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+            set
+            {
+                OnFechaChanging(value);
+                ReportPropertyChanging("Fecha");
+                _Fecha = StructuralObject.SetValidValue(value, "Fecha");
+                ReportPropertyChanged("Fecha");
+                OnFechaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Fecha;
+        partial void OnFechaChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FolioNum
+        {
+            get
+            {
+                return _FolioNum;
+            }
+            set
+            {
+                OnFolioNumChanging(value);
+                ReportPropertyChanging("FolioNum");
+                _FolioNum = StructuralObject.SetValidValue(value, "FolioNum");
+                ReportPropertyChanged("FolioNum");
+                OnFolioNumChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FolioNum;
+        partial void OnFolioNumChanging(Nullable<global::System.Int32> value);
+        partial void OnFolioNumChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TipoPago_Nombre
+        {
+            get
+            {
+                return _TipoPago_Nombre;
+            }
+            set
+            {
+                OnTipoPago_NombreChanging(value);
+                ReportPropertyChanging("TipoPago_Nombre");
+                _TipoPago_Nombre = StructuralObject.SetValidValue(value, true, "TipoPago_Nombre");
+                ReportPropertyChanged("TipoPago_Nombre");
+                OnTipoPago_NombreChanged();
+            }
+        }
+        private global::System.String _TipoPago_Nombre;
+        partial void OnTipoPago_NombreChanging(global::System.String value);
+        partial void OnTipoPago_NombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double Monto
+        {
+            get
+            {
+                return _Monto;
+            }
+            set
+            {
+                OnMontoChanging(value);
+                ReportPropertyChanging("Monto");
+                _Monto = StructuralObject.SetValidValue(value, "Monto");
+                ReportPropertyChanged("Monto");
+                OnMontoChanged();
+            }
+        }
+        private global::System.Double _Monto;
+        partial void OnMontoChanging(global::System.Double value);
+        partial void OnMontoChanged();
 
         #endregion
 

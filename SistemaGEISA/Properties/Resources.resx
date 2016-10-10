@@ -142,14 +142,14 @@
   <data name="Cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="money1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\money1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ReposicionGastos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ReposicionGastos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Reporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Reporte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vehiculos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Vehiculos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Guardar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Guardar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,6 +220,9 @@
   <data name="Imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Gastos_Administrativos1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gastos_Administrativos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="In" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\In.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -246,9 +249,6 @@
   </data>
   <data name="user4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -286,6 +286,9 @@
   <data name="Gastos_Adm1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gastos_Adm1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="1454559425_money-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1454559425_money-add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ProbarBD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ProbarBD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -294,9 +297,6 @@
   </data>
   <data name="lorrygreen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lorrygreen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Vehiculo_CChica" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Vehiculo_CChica.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Client-Account-Template-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Client-Account-Template-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -349,8 +349,8 @@
   <data name="Reportes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Reportes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Vehiculos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Vehiculos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -409,11 +409,14 @@
   <data name="Actualizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Actualizar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gastos_Administrativos1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gastos_Administrativos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="money1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agregar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\agregar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="document_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="settings1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\settings1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -421,13 +424,13 @@
   <data name="TarjetaCredito" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TarjetaCredito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="document_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Vehiculo_CChica" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Vehiculo_CChica.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Borrar (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Borrar (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1454559425_money-add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1454559425_money-add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1476135154_history" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1476135154_history.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -9,48 +9,29 @@ using System.Data.Common;
 
 namespace SistemaGEISA
 {
-    public partial class frmIngresosDetalle : DevExpress.XtraEditors.XtraForm
+    public partial class frmIngresosHistorialTraspasos : DevExpress.XtraEditors.XtraForm
     {
-
-        public Controler controler { get; set; }
-
+        private Controler controler { get; set; }
         public Obra obra;
-        public Factura factura;
+        public Cliente cliente;
         public Pagos pagos;
 
-        private  getTransaccionesIngresos_Result item;
-        public frmIngresosDetalle(Controler _controler)
+        private getTraspasos_Result item;
+
+        public frmIngresosHistorialTraspasos(Controler _controler)
         {
             InitializeComponent();
             controler = _controler ?? new Controler();
         }
 
-        private void frmIngresosDetalle_Load(object sender, EventArgs e)
+        private void frmIngresosHistorialTraspasos_Load(object sender, EventArgs e)
         {
             llenaInfo();
-
         }
 
         private void llenaInfo()
         {
-            lblFactura.Text = "Folio: " + factura.FolioNum.ToString();
-            lblObra.Text = "Obra: " + obra.Nombre;
-
-            grid.DataSource = controler.Model.getTransaccionesIngresos(this.obra.Id, this.factura.Id);
-        }
-
-        private void gv_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            if (gv.GetFocusedRow() != null)
-            {
-                item = gv.GetFocusedRow() as getTransaccionesIngresos_Result;
-                pagos = controler.Model.Pagos.FirstOrDefault(p => p.Id == item.IdPago);               
-            }
-        }
-
-        private void gv_DoubleClick(object sender, EventArgs e)
-        {
-            btnEditar_Click(null, null);
+            grid.DataSource = controler.Model.getTraspasos(obra.Id,cliente.Id,obra.EmpresaId);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -63,15 +44,15 @@ namespace SistemaGEISA
             {
                 new frmMessageBox(true) { Message = "Favor de seleccionar el elemento a editar.", Title = "Confirmación" }.ShowDialog();
             }
-            
         }
 
         private void abrirForm(bool nuevo)
         {
             var form = new frmPagosNew(controler);
-            form.Text = "Pagos : " + (nuevo ? "Nuevo" : "Editar");
-            if (!nuevo) { 
-                form.pagos = pagos; 
+            form.Text = "Abono : " + (nuevo ? "Nuevo" : "Editar");
+            if (!nuevo)
+            {
+                form.pagos = pagos;
             }
             form.obra = this.obra;
             form.source = this.pagos != null ? (this.pagos.TipoMovimiento.Id == TipoMovimientoEnum.NotaCreditoFactura.Id ? "NC" : string.Empty) : string.Empty;
@@ -85,6 +66,20 @@ namespace SistemaGEISA
             gv_FocusedRowChanged(null, null);
         }
 
+        private void gv_DoubleClick(object sender, EventArgs e)
+        {
+            btnEditar_Click(null, null);
+        }
+
+        private void gv_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (gv.GetFocusedRow() != null)
+            {
+                item = gv.GetFocusedRow() as getTraspasos_Result;
+                pagos = controler.Model.Pagos.FirstOrDefault(p => p.Id == item.IdPago);               
+            }
+        }
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             frmMessageBox msg = new frmMessageBox(false) { Message = "¿Estas seguro de eliminar este Registro?", Title = "Eliminar Registro" };
@@ -92,7 +87,7 @@ namespace SistemaGEISA
 
             if (msg.DialogResult == System.Windows.Forms.DialogResult.Yes && gv.SelectedRowsCount >= 1)
             {
-                item = gv.GetFocusedRow() as getTransaccionesIngresos_Result;
+                item = gv.GetFocusedRow() as getTraspasos_Result;
                 Pagos item_Pago = controler.Model.Pagos.FirstOrDefault(p => p.Id == item.IdPago);
 
                 if (item_Pago != null)
@@ -108,12 +103,13 @@ namespace SistemaGEISA
                             {
                                 if (f.Factura != null)
                                     f.Factura = null;
-                                    //Controler.Model.DeleteObject(f.Factura);
+                                //Controler.Model.DeleteObject(f.Factura);
                                 if (f.Pagos != null)
                                     controler.Model.DeleteObject(f.Pagos);
+                                if (f.TraspasoSaldos != null)
+                                    controler.Model.DeleteObject(f.TraspasoSaldos);
                                 controler.Model.DeleteObject(f);
                             }
-                            
                         }
                         else
                         {
@@ -143,7 +139,7 @@ namespace SistemaGEISA
             else
             {
                 new frmMessageBox(true) { Message = "Seleccione un Pago a Eliminar.", Title = "Aviso" }.ShowDialog();
-            }           
+            }   
         }
     }
 }

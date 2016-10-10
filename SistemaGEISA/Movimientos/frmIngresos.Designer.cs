@@ -136,6 +136,7 @@
             this.luClientes = new DevExpress.XtraEditors.LookUpEdit();
             this.txtSaldoFavor = new System.Windows.Forms.TextBox();
             this.btnSaldoFavor = new System.Windows.Forms.Button();
+            this.btnHistorial = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnDetalle)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
@@ -1339,6 +1340,7 @@
             this.tableLayoutPanel4.Controls.Add(this.luClientes, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.txtSaldoFavor, 3, 3);
             this.tableLayoutPanel4.Controls.Add(this.btnSaldoFavor, 3, 4);
+            this.tableLayoutPanel4.Controls.Add(this.btnHistorial, 2, 4);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -1478,10 +1480,11 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(8, 138);
             this.label7.Name = "label7";
+            this.label7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label7.Size = new System.Drawing.Size(92, 31);
             this.label7.TabIndex = 61;
             this.label7.Text = "% IVA";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label3
             // 
@@ -1522,15 +1525,24 @@
             // 
             // btnSaldoFavor
             // 
-            this.btnSaldoFavor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSaldoFavor.Location = new System.Drawing.Point(278, 114);
             this.btnSaldoFavor.Name = "btnSaldoFavor";
-            this.tableLayoutPanel4.SetRowSpan(this.btnSaldoFavor, 2);
-            this.btnSaldoFavor.Size = new System.Drawing.Size(99, 52);
+            this.btnSaldoFavor.Size = new System.Drawing.Size(99, 21);
             this.btnSaldoFavor.TabIndex = 69;
             this.btnSaldoFavor.Text = "Traspasar Saldo";
             this.btnSaldoFavor.UseVisualStyleBackColor = true;
             this.btnSaldoFavor.Click += new System.EventHandler(this.btnSaldoFavor_Click);
+            // 
+            // btnHistorial
+            // 
+            this.btnHistorial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHistorial.Location = new System.Drawing.Point(192, 114);
+            this.btnHistorial.Name = "btnHistorial";
+            this.btnHistorial.Size = new System.Drawing.Size(80, 21);
+            this.btnHistorial.TabIndex = 70;
+            this.btnHistorial.Text = "Historial";
+            this.btnHistorial.UseVisualStyleBackColor = true;
+            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
             // 
             // frmIngresos
             // 
@@ -1679,5 +1691,6 @@
         private System.Windows.Forms.Label label31;
         private DevExpress.XtraGrid.Columns.GridColumn colMantenimiento;
         private DevExpress.XtraGrid.Columns.GridColumn colNA;
+        private System.Windows.Forms.Button btnHistorial;
     }
 }

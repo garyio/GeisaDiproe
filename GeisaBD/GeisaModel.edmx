@@ -2012,6 +2012,11 @@
           <Parameter Name="ObraId" Type="int" Mode="In" />
           <Parameter Name="FacturaId" Type="int" Mode="In" />
         </Function>
+        <Function Name="getTraspasos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ObraId" Type="int" Mode="In" />
+          <Parameter Name="ClienteId" Type="int" Mode="In" />
+          <Parameter Name="EmpresaId" Type="int" Mode="In" />
+        </Function>
         <Function Name="getVehiculoDetalleGasolina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StartDate" Type="date" Mode="In" />
           <Parameter Name="EndDate" Type="date" Mode="In" />
@@ -3133,6 +3138,11 @@
             <End Role="PagosFactura" EntitySet="PagosFactura" />
           </AssociationSet>
           <FunctionImport Name="getDetalleTraspasos" ReturnType="Collection(Double)">
+            <Parameter Name="ObraId" Mode="In" Type="Int32" />
+            <Parameter Name="ClienteId" Mode="In" Type="Int32" />
+            <Parameter Name="EmpresaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getTraspasos" ReturnType="Collection(GEISAModel.getTraspasos_Result)">
             <Parameter Name="ObraId" Mode="In" Type="Int32" />
             <Parameter Name="ClienteId" Mode="In" Type="Int32" />
             <Parameter Name="EmpresaId" Mode="In" Type="Int32" />
@@ -5417,6 +5427,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="getTraspasos_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdPago" Nullable="false" />
+          <Property Type="String" Name="ObraOrigen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ClienteOrigen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmpresaOrigen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ObraDestino" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ClienteDestino" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmpresaDestino" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="FolioNum" Nullable="true" />
+          <Property Type="String" Name="TipoPago_Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Monto" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6453,6 +6477,24 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="getDetalleTraspasos" FunctionName="GEISAModel.Store.getDetalleTraspasos" />
+          <FunctionImportMapping FunctionImportName="getTraspasos" FunctionName="GEISAModel.Store.getTraspasos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEISAModel.getTraspasos_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+                <ScalarProperty Name="ObraOrigen" ColumnName="ObraOrigen" />
+                <ScalarProperty Name="ClienteOrigen" ColumnName="ClienteOrigen" />
+                <ScalarProperty Name="EmpresaOrigen" ColumnName="EmpresaOrigen" />
+                <ScalarProperty Name="ObraDestino" ColumnName="ObraDestino" />
+                <ScalarProperty Name="ClienteDestino" ColumnName="ClienteDestino" />
+                <ScalarProperty Name="EmpresaDestino" ColumnName="EmpresaDestino" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FolioNum" ColumnName="FolioNum" />
+                <ScalarProperty Name="TipoPago_Nombre" ColumnName="TipoPago_Nombre" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
