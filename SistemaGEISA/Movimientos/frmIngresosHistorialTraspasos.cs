@@ -118,12 +118,12 @@ namespace SistemaGEISA
 
                         controler.Model.SaveChanges();
                         transaccion.Commit();
-                        new frmMessageBox(true) { Message = "El Pago ha sido Eliminado.", Title = "Aviso" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "El Traspaso ha sido Eliminado.", Title = "Aviso" }.ShowDialog();
                         llenaInfo();
                     }
                     catch (Exception ex)
                     {
-                        new frmMessageBox(true) { Message = "Error al quitar el Pago: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "Error al quitar el Traspaso: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
                     finally
@@ -133,13 +133,42 @@ namespace SistemaGEISA
                 }
                 else
                 {
-                    new frmMessageBox(true) { Message = "No es posible eliminar este Pago.", Title = "Error" }.ShowDialog();
+                    new frmMessageBox(true) { Message = "No es posible eliminar este Traspaso.", Title = "Error" }.ShowDialog();
                 }
             }
             else
             {
-                new frmMessageBox(true) { Message = "Seleccione un Pago a Eliminar.", Title = "Aviso" }.ShowDialog();
+                new frmMessageBox(true) { Message = "Seleccione un Traspaso a Eliminar.", Title = "Aviso" }.ShowDialog();
             }   
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            frmMessageBox msg = new frmMessageBox(false) { Message = "¿Desea Cancelar este Traspaso?", Title = "Eliminar Registro" };
+            msg.ShowDialog();
+
+            if (msg.DialogResult == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (item != null)
+                {
+                    if (item.Id != 0)
+                    {
+                            TraspasoSaldos traspaso = controler.Model.TraspasoSaldos.FirstOrDefault(f => f.Id == item.Id);
+                            if (traspaso.FechaCancelacion.HasValue) return;
+                                traspaso.FechaCancelacion = DateTime.Today;
+                            try
+                            {
+                                controler.Model.SaveChanges();
+                                new frmMessageBox(true) { Message = "Traspaso Cancelado Exitosamente. ", Title = "Aviso" }.ShowDialog();
+                            }
+                            catch (Exception ex)
+                            {
+                                new frmMessageBox(true) { Message = "Error al Cancelar el Traspaso: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                            }
+                        
+                    }
+                }
+            }
         }
     }
 }

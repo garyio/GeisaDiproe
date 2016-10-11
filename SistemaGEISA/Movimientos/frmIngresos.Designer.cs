@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngresos));
             this.btnDetalle = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -431,9 +431,9 @@
             this.grid.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.grid.EmbeddedNavigator.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.grid.Font = new System.Drawing.Font("Calibri", 8.25F);
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.grid.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.grid.Location = new System.Drawing.Point(8, 311);
             this.grid.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             this.grid.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -1525,23 +1525,25 @@
             // 
             // btnSaldoFavor
             // 
+            this.btnSaldoFavor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnSaldoFavor.Location = new System.Drawing.Point(278, 114);
             this.btnSaldoFavor.Name = "btnSaldoFavor";
             this.btnSaldoFavor.Size = new System.Drawing.Size(99, 21);
             this.btnSaldoFavor.TabIndex = 69;
             this.btnSaldoFavor.Text = "Traspasar Saldo";
-            this.btnSaldoFavor.UseVisualStyleBackColor = true;
+            this.btnSaldoFavor.UseVisualStyleBackColor = false;
             this.btnSaldoFavor.Click += new System.EventHandler(this.btnSaldoFavor_Click);
             // 
             // btnHistorial
             // 
+            this.btnHistorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnHistorial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHistorial.Location = new System.Drawing.Point(192, 114);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(80, 21);
             this.btnHistorial.TabIndex = 70;
             this.btnHistorial.Text = "Historial";
-            this.btnHistorial.UseVisualStyleBackColor = true;
+            this.btnHistorial.UseVisualStyleBackColor = false;
             this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
             // 
             // frmIngresos

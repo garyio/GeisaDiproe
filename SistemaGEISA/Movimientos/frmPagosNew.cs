@@ -514,10 +514,28 @@ namespace SistemaGEISA
         }
         #endregion
 
+        private bool validoTraspaso()
+        {
+            if (this.esTraspaso)
+            {
+                Cliente provedor = luProveedor.GetSelectedDataRow() as Cliente;
+                Empresa emp = luEmpresa.GetSelectedDataRow() as Empresa;
+                Obra ob = luObra.GetSelectedDataRow() as Obra;
+
+                if (provedor.Id == this.idCliente && emp.Id == this.obra.Empresa.Id && ob.Id == this.obra.Id){
+                    new frmMessageBox(true) { Message = "No se puede traspasar al Mismo Cliente/Obra/Empresa. ", Title = "Aviso" }.ShowDialog();
+                    return false;
+                }                    
+                else
+                    return true;
+            }else
+                return true;
+        }
+
         #region Botones
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (luProveedor.EditValue != null)
+            if (luProveedor.EditValue != null && validoTraspaso())
             {
                 Cliente cliente=null;
                 Proveedor prov=null;
@@ -535,7 +553,7 @@ namespace SistemaGEISA
                 frmFacturasPendientes form = new frmFacturasPendientes();
                 form.proveedor = prov;
                 form.obra = esTraspaso ? (luObra.GetSelectedDataRow() as Obra) : this.obra; // Si es traspaso traigo lo que hay en el lookup en otro caso la obra por default
-                form.idCliente = this.idCliente;
+                form.idCliente = esTraspaso ? (luProveedor.GetSelectedDataRow() as Cliente).Id : this.idCliente;
                 form.cliente = cliente;
                 form.source = this.source;                
                 for (int i = 0; i < gv2.RowCount; i++)

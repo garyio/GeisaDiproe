@@ -32,6 +32,15 @@
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIdTraspaso = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdPago = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colObraOrigen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colClienteOrigen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEmpresaOrigen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colObraDestino = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colClienteDestino = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEmpresaDestino = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFecha = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFacturaFolio = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTipoPago = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMonto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkActivo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -44,15 +53,7 @@
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.colObraOrigen = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colClienteOrigen = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEmpresaOrigen = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colObraDestino = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colClienteDestino = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEmpresaDestino = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFecha = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFacturaFolio = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIdPago = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnCancelar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo)).BeginInit();
@@ -128,6 +129,105 @@
             this.colIdTraspaso.Name = "colIdTraspaso";
             this.colIdTraspaso.OptionsColumn.AllowEdit = false;
             this.colIdTraspaso.OptionsColumn.ReadOnly = true;
+            // 
+            // colIdPago
+            // 
+            this.colIdPago.Caption = "Id Pago";
+            this.colIdPago.FieldName = "IdPago";
+            this.colIdPago.Name = "colIdPago";
+            this.colIdPago.OptionsColumn.AllowEdit = false;
+            this.colIdPago.OptionsColumn.FixedWidth = true;
+            this.colIdPago.OptionsColumn.ReadOnly = true;
+            // 
+            // colObraOrigen
+            // 
+            this.colObraOrigen.Caption = "Obra Orien";
+            this.colObraOrigen.FieldName = "ObraOrigen";
+            this.colObraOrigen.Name = "colObraOrigen";
+            this.colObraOrigen.OptionsColumn.AllowEdit = false;
+            this.colObraOrigen.OptionsColumn.FixedWidth = true;
+            this.colObraOrigen.OptionsColumn.ReadOnly = true;
+            this.colObraOrigen.Visible = true;
+            this.colObraOrigen.VisibleIndex = 1;
+            // 
+            // colClienteOrigen
+            // 
+            this.colClienteOrigen.Caption = "Cli. Origen";
+            this.colClienteOrigen.FieldName = "ClienteOrigen";
+            this.colClienteOrigen.Name = "colClienteOrigen";
+            this.colClienteOrigen.OptionsColumn.AllowEdit = false;
+            this.colClienteOrigen.OptionsColumn.FixedWidth = true;
+            this.colClienteOrigen.OptionsColumn.ReadOnly = true;
+            this.colClienteOrigen.Visible = true;
+            this.colClienteOrigen.VisibleIndex = 2;
+            // 
+            // colEmpresaOrigen
+            // 
+            this.colEmpresaOrigen.Caption = "Emp. Origen";
+            this.colEmpresaOrigen.FieldName = "EmpresaOrigen";
+            this.colEmpresaOrigen.Name = "colEmpresaOrigen";
+            this.colEmpresaOrigen.OptionsColumn.AllowEdit = false;
+            this.colEmpresaOrigen.OptionsColumn.FixedWidth = true;
+            this.colEmpresaOrigen.OptionsColumn.ReadOnly = true;
+            this.colEmpresaOrigen.Visible = true;
+            this.colEmpresaOrigen.VisibleIndex = 3;
+            // 
+            // colObraDestino
+            // 
+            this.colObraDestino.Caption = "Obra Dest.";
+            this.colObraDestino.FieldName = "ObraDestino";
+            this.colObraDestino.Name = "colObraDestino";
+            this.colObraDestino.OptionsColumn.AllowEdit = false;
+            this.colObraDestino.OptionsColumn.FixedWidth = true;
+            this.colObraDestino.OptionsColumn.ReadOnly = true;
+            this.colObraDestino.Visible = true;
+            this.colObraDestino.VisibleIndex = 4;
+            // 
+            // colClienteDestino
+            // 
+            this.colClienteDestino.Caption = "Cli. Dest.";
+            this.colClienteDestino.FieldName = "ClienteDestino";
+            this.colClienteDestino.Name = "colClienteDestino";
+            this.colClienteDestino.OptionsColumn.AllowEdit = false;
+            this.colClienteDestino.OptionsColumn.FixedWidth = true;
+            this.colClienteDestino.OptionsColumn.ReadOnly = true;
+            this.colClienteDestino.Visible = true;
+            this.colClienteDestino.VisibleIndex = 5;
+            // 
+            // colEmpresaDestino
+            // 
+            this.colEmpresaDestino.Caption = "Emp. Dest.";
+            this.colEmpresaDestino.FieldName = "EmpresaDestino";
+            this.colEmpresaDestino.Name = "colEmpresaDestino";
+            this.colEmpresaDestino.OptionsColumn.AllowEdit = false;
+            this.colEmpresaDestino.OptionsColumn.FixedWidth = true;
+            this.colEmpresaDestino.OptionsColumn.ReadOnly = true;
+            this.colEmpresaDestino.Visible = true;
+            this.colEmpresaDestino.VisibleIndex = 6;
+            // 
+            // colFecha
+            // 
+            this.colFecha.Caption = "Fecha";
+            this.colFecha.DisplayFormat.FormatString = "d";
+            this.colFecha.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colFecha.FieldName = "Fecha";
+            this.colFecha.Name = "colFecha";
+            this.colFecha.OptionsColumn.AllowEdit = false;
+            this.colFecha.OptionsColumn.FixedWidth = true;
+            this.colFecha.OptionsColumn.ReadOnly = true;
+            this.colFecha.Visible = true;
+            this.colFecha.VisibleIndex = 0;
+            // 
+            // colFacturaFolio
+            // 
+            this.colFacturaFolio.Caption = "Fact. Folio";
+            this.colFacturaFolio.FieldName = "FolioNum";
+            this.colFacturaFolio.Name = "colFacturaFolio";
+            this.colFacturaFolio.OptionsColumn.AllowEdit = false;
+            this.colFacturaFolio.OptionsColumn.FixedWidth = true;
+            this.colFacturaFolio.OptionsColumn.ReadOnly = true;
+            this.colFacturaFolio.Visible = true;
+            this.colFacturaFolio.VisibleIndex = 8;
             // 
             // colTipoPago
             // 
@@ -242,6 +342,7 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnEditar,
+            this.btnCancelar,
             this.btnEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(3);
@@ -250,104 +351,14 @@
             this.toolStrip1.Size = new System.Drawing.Size(832, 49);
             this.toolStrip1.TabIndex = 53;
             // 
-            // colObraOrigen
+            // btnCancelar
             // 
-            this.colObraOrigen.Caption = "Obra Orien";
-            this.colObraOrigen.FieldName = "ObraOrigen";
-            this.colObraOrigen.Name = "colObraOrigen";
-            this.colObraOrigen.OptionsColumn.AllowEdit = false;
-            this.colObraOrigen.OptionsColumn.FixedWidth = true;
-            this.colObraOrigen.OptionsColumn.ReadOnly = true;
-            this.colObraOrigen.Visible = true;
-            this.colObraOrigen.VisibleIndex = 1;
-            // 
-            // colClienteOrigen
-            // 
-            this.colClienteOrigen.Caption = "Cli. Origen";
-            this.colClienteOrigen.FieldName = "ClienteOrigen";
-            this.colClienteOrigen.Name = "colClienteOrigen";
-            this.colClienteOrigen.OptionsColumn.AllowEdit = false;
-            this.colClienteOrigen.OptionsColumn.FixedWidth = true;
-            this.colClienteOrigen.OptionsColumn.ReadOnly = true;
-            this.colClienteOrigen.Visible = true;
-            this.colClienteOrigen.VisibleIndex = 2;
-            // 
-            // colEmpresaOrigen
-            // 
-            this.colEmpresaOrigen.Caption = "Emp. Origen";
-            this.colEmpresaOrigen.FieldName = "EmpresaOrigen";
-            this.colEmpresaOrigen.Name = "colEmpresaOrigen";
-            this.colEmpresaOrigen.OptionsColumn.AllowEdit = false;
-            this.colEmpresaOrigen.OptionsColumn.FixedWidth = true;
-            this.colEmpresaOrigen.OptionsColumn.ReadOnly = true;
-            this.colEmpresaOrigen.Visible = true;
-            this.colEmpresaOrigen.VisibleIndex = 3;
-            // 
-            // colObraDestino
-            // 
-            this.colObraDestino.Caption = "Obra Dest.";
-            this.colObraDestino.FieldName = "ObraDestino";
-            this.colObraDestino.Name = "colObraDestino";
-            this.colObraDestino.OptionsColumn.AllowEdit = false;
-            this.colObraDestino.OptionsColumn.FixedWidth = true;
-            this.colObraDestino.OptionsColumn.ReadOnly = true;
-            this.colObraDestino.Visible = true;
-            this.colObraDestino.VisibleIndex = 4;
-            // 
-            // colClienteDestino
-            // 
-            this.colClienteDestino.Caption = "Cli. Dest.";
-            this.colClienteDestino.FieldName = "ClienteDestino";
-            this.colClienteDestino.Name = "colClienteDestino";
-            this.colClienteDestino.OptionsColumn.AllowEdit = false;
-            this.colClienteDestino.OptionsColumn.FixedWidth = true;
-            this.colClienteDestino.OptionsColumn.ReadOnly = true;
-            this.colClienteDestino.Visible = true;
-            this.colClienteDestino.VisibleIndex = 5;
-            // 
-            // colEmpresaDestino
-            // 
-            this.colEmpresaDestino.Caption = "Emp. Dest.";
-            this.colEmpresaDestino.FieldName = "EmpresaDestino";
-            this.colEmpresaDestino.Name = "colEmpresaDestino";
-            this.colEmpresaDestino.OptionsColumn.AllowEdit = false;
-            this.colEmpresaDestino.OptionsColumn.FixedWidth = true;
-            this.colEmpresaDestino.OptionsColumn.ReadOnly = true;
-            this.colEmpresaDestino.Visible = true;
-            this.colEmpresaDestino.VisibleIndex = 6;
-            // 
-            // colFecha
-            // 
-            this.colFecha.Caption = "Fecha";
-            this.colFecha.DisplayFormat.FormatString = "d";
-            this.colFecha.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colFecha.FieldName = "Fecha";
-            this.colFecha.Name = "colFecha";
-            this.colFecha.OptionsColumn.AllowEdit = false;
-            this.colFecha.OptionsColumn.FixedWidth = true;
-            this.colFecha.OptionsColumn.ReadOnly = true;
-            this.colFecha.Visible = true;
-            this.colFecha.VisibleIndex = 0;
-            // 
-            // colFacturaFolio
-            // 
-            this.colFacturaFolio.Caption = "Fact. Folio";
-            this.colFacturaFolio.FieldName = "FolioNum";
-            this.colFacturaFolio.Name = "colFacturaFolio";
-            this.colFacturaFolio.OptionsColumn.AllowEdit = false;
-            this.colFacturaFolio.OptionsColumn.FixedWidth = true;
-            this.colFacturaFolio.OptionsColumn.ReadOnly = true;
-            this.colFacturaFolio.Visible = true;
-            this.colFacturaFolio.VisibleIndex = 8;
-            // 
-            // colIdPago
-            // 
-            this.colIdPago.Caption = "Id Pago";
-            this.colIdPago.FieldName = "IdPago";
-            this.colIdPago.Name = "colIdPago";
-            this.colIdPago.OptionsColumn.AllowEdit = false;
-            this.colIdPago.OptionsColumn.FixedWidth = true;
-            this.colIdPago.OptionsColumn.ReadOnly = true;
+            this.btnCancelar.Image = global::SistemaGEISA.Properties.Resources.cancel1;
+            this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(138, 46);
+            this.btnCancelar.Text = "Cancelar Traspaso";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmIngresosHistorialTraspasos
             // 
@@ -404,6 +415,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colFecha;
         private DevExpress.XtraGrid.Columns.GridColumn colFacturaFolio;
         private DevExpress.XtraGrid.Columns.GridColumn colIdPago;
+        private System.Windows.Forms.ToolStripButton btnCancelar;
 
     }
 }
