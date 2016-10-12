@@ -161,6 +161,7 @@
         <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Obra" />
         <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Obra1" />
         <AssociationConnector Association="GEISAModel.FK_PagosFactura_TraspasoSaldos" />
+        <AssociationConnector Association="GEISAModel.FK_Contrarecibo_Cliente" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

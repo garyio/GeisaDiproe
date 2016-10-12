@@ -34,10 +34,11 @@ namespace SistemaGEISA
             if (contrarecibo != null)
             {
                 txtFolio.Text = contrarecibo.Folio.ToString();
-                luProveedor.EditValue = contrarecibo.ProveedorId;
+                luProveedor.EditValue = contrarecibo.ProveedorId.HasValue ? contrarecibo.ProveedorId : contrarecibo.ClienteId;
                 luEmpresa.EditValue = contrarecibo.EmpresaId;
                 dtFecha.EditValue = contrarecibo.FechaRegistro;
-                dtFechaPago.EditValue = contrarecibo.FechaPago.AddDays(contrarecibo.Proveedor.PlazoCredito.HasValue ? (int)contrarecibo.Proveedor.PlazoCredito : 0);
+
+                dtFechaPago.EditValue = contrarecibo.FechaPago.AddDays(contrarecibo.Proveedor != null ? ( contrarecibo.Proveedor.PlazoCredito.HasValue ? (int)contrarecibo.Proveedor.PlazoCredito : 0) : 0) ;
                 obtenerFacturas();
             }
             else
@@ -52,9 +53,29 @@ namespace SistemaGEISA
         #region Funciones
         private void llenaCombos()
         {
-            luProveedor.Properties.DataSource = controler.Model.Proveedor.ToList();
-            luProveedor.Properties.DisplayMember = "NombreComercial";
-            luProveedor.Properties.ValueMember = "Id";
+            if (this.contrarecibo == null)
+            {
+                luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).ToList();
+                luProveedor.Properties.DisplayMember = "NombreComercial";
+                luProveedor.Properties.ValueMember = "Id";
+                lblProveedor.Text = "Proveedor";
+            }
+            else
+            {
+                if (this.contrarecibo.ProveedorId.HasValue)
+                {
+                    luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).ToList();
+                    lblProveedor.Text = "Proveedor";
+                }
+                else
+                {
+                    luProveedor.Properties.DataSource = controler.Model.Cliente.Where(E => E.Activo == true).ToList();
+                    lblProveedor.Text = "Cliente";
+                }
+                luProveedor.Properties.DisplayMember = "NombreComercial";
+                luProveedor.Properties.ValueMember = "Id";
+            }
+
 
             luEmpresa.Properties.DataSource = controler.Model.Empresa.Where(D => D.Activo == true).ToList();
             luEmpresa.Properties.DisplayMember = "NombreComercial";
@@ -257,7 +278,16 @@ namespace SistemaGEISA
                     contrarecibo.FechaRegistro = (DateTime)dtFecha.EditValue;
                     contrarecibo.FechaPago = (DateTime)dtFechaPago.EditValue;
                     contrarecibo.UsuarioId = frmPrincipal.UsuarioDelSistema.Id;
-                    contrarecibo.Proveedor = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor);
+                    if ((Int32)rgOpcion.EditValue == 1)
+                    {
+                        contrarecibo.Cliente = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Cliente);
+                        contrarecibo.Proveedor = null; // no puede tener valor en proveedor y cliente a la ves, debe ser uno u otro
+                    }
+                    else
+                    {
+                        contrarecibo.Proveedor = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor);
+                        contrarecibo.Cliente = null; // no puede tener valor en proveedor y cliente a la ves, debe ser uno u otro
+                    }
                     contrarecibo.Empresa = controler.GetObjectFromContext(luEmpresa.GetSelectedDataRow() as Empresa);
 
                     bool camposPendientes = false;
@@ -304,7 +334,19 @@ namespace SistemaGEISA
                             factura.Saldo = getSaldoFactura(factura, Convert.ToDouble(row["Importe"]));
                             factura.Observaciones = row["Observaciones"].ToString().ToUpper();
                             factura.Contrarecibo = contrarecibo;
-                            factura.Proveedor = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor);
+
+                            if ((Int32)rgOpcion.EditValue == 1)
+                            {
+                                factura.Cliente = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Cliente);
+                                factura.Proveedor = null; // no puede tener valor en proveedor y cliente a la ves, debe ser uno u otro
+                            }
+                            else
+                            {
+                                factura.Proveedor = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor);
+                                factura.Cliente = null; // no puede tener valor en proveedor y cliente a la ves, debe ser uno u otro
+                            }
+                            
+                            //factura.Proveedor = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor);
                             factura.ObraId = string.IsNullOrEmpty(row["ObraId"].ToString()) ? (int?)null : Convert.ToInt32(row["ObraId"]);
                             factura.tipoComprobante = Convert.ToInt32(string.IsNullOrEmpty(row["tipoComprobante"].ToString()) ? 1 : Convert.ToInt32(row["tipoComprobante"]));
                             if (!factura.NoEsNuevo) controler.Model.AddToFactura(factura);
@@ -411,5 +453,25 @@ namespace SistemaGEISA
             imprimir();
         }
         #endregion
+
+        private void rgOpcion_EditValueChanged(object sender, EventArgs e)
+        {
+                if ((int)rgOpcion.EditValue == 1)
+                {
+                    luProveedor.Properties.DataSource = controler.Model.Cliente.Where(D => D.Activo == true).ToList();
+                    luProveedor.Properties.DisplayMember = "NombreFiscal";
+                    luProveedor.Properties.ValueMember = "Id";
+                    lblProveedor.Text = "Cliente";
+                    luProveedor.EditValue = this.contrarecibo != null ? contrarecibo.ClienteId : null;
+                }
+                else
+                {
+                    luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).ToList();
+                    luProveedor.Properties.DisplayMember = "NombreComercial";
+                    luProveedor.Properties.ValueMember = "Id";
+                    lblProveedor.Text = "Proveedor";
+                    luProveedor.EditValue = this.contrarecibo != null ? contrarecibo.ProveedorId : null;
+                }
+        }
     }
 }

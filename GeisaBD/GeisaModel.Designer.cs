@@ -12,7 +12,6 @@ using System.ComponentModel;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Core.Objects.DataClasses;
-
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
@@ -123,6 +122,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Obra", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Obra), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Obra1", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Obra), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_PagosFactura_TraspasoSaldos", "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.TraspasoSaldos), "PagosFactura", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.PagosFactura), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Contrarecibo_Cliente", "Cliente", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Cliente), "Contrarecibo", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Contrarecibo), true)]
 
 #endregion
 
@@ -5345,6 +5345,28 @@ namespace GeisaBD
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Contrarecibo_Cliente", "Contrarecibo")]
+        public EntityCollection<Contrarecibo> Contrarecibo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Contrarecibo>("GEISAModel.FK_Contrarecibo_Cliente", "Contrarecibo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Contrarecibo>("GEISAModel.FK_Contrarecibo_Cliente", "Contrarecibo", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5941,6 +5963,30 @@ namespace GeisaBD
         private Nullable<global::System.Boolean> _pendienteCampos;
         partial void OnpendienteCamposChanging(Nullable<global::System.Boolean> value);
         partial void OnpendienteCamposChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ClienteId
+        {
+            get
+            {
+                return _ClienteId;
+            }
+            set
+            {
+                OnClienteIdChanging(value);
+                ReportPropertyChanging("ClienteId");
+                _ClienteId = StructuralObject.SetValidValue(value, "ClienteId");
+                ReportPropertyChanged("ClienteId");
+                OnClienteIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ClienteId;
+        partial void OnClienteIdChanging(Nullable<global::System.Int32> value);
+        partial void OnClienteIdChanged();
 
         #endregion
 
@@ -6078,6 +6124,44 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Factura>("GEISAModel.FK_Factura_Contrarecibo", "Factura", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Contrarecibo_Cliente", "Cliente")]
+        public Cliente Cliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_Contrarecibo_Cliente", "Cliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_Contrarecibo_Cliente", "Cliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cliente> ClienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("GEISAModel.FK_Contrarecibo_Cliente", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("GEISAModel.FK_Contrarecibo_Cliente", "Cliente", value);
                 }
             }
         }

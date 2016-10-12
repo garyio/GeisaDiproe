@@ -158,6 +158,7 @@
           <Property Name="EmpresaId" Type="int" />
           <Property Name="ProveedorId" Type="int" />
           <Property Name="pendienteCampos" Type="bit" />
+          <Property Name="ClienteId" Type="int" />
         </EntityType>
         <EntityType Name="DetalleArticulos">
           <Key>
@@ -874,6 +875,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ClienteBancos">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contrarecibo_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Contrarecibo" Type="Self.Contrarecibo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contrarecibo">
               <PropertyRef Name="ClienteId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2135,6 +2148,10 @@
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="ClienteBancos" EntitySet="ClienteBancos" />
           </AssociationSet>
+          <AssociationSet Name="FK_Contrarecibo_Cliente" Association="Self.FK_Contrarecibo_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Contrarecibo" EntitySet="Contrarecibo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Contrarecibo_Empresa" Association="Self.FK_Contrarecibo_Empresa">
             <End Role="Empresa" EntitySet="Empresa" />
             <End Role="Contrarecibo" EntitySet="Contrarecibo" />
@@ -3147,6 +3164,10 @@
             <Parameter Name="ClienteId" Mode="In" Type="Int32" />
             <Parameter Name="EmpresaId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK_Contrarecibo_Cliente" Association="GEISAModel.FK_Contrarecibo_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Contrarecibo" EntitySet="Contrarecibo" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Domicilios">
           <Key>
@@ -3372,6 +3393,8 @@
           <NavigationProperty Name="Usuario" Relationship="GEISAModel.FK_Contrarecibo_Usuario" FromRole="Contrarecibo" ToRole="Usuario" />
           <NavigationProperty Name="Factura" Relationship="GEISAModel.FK_Factura_Contrarecibo" FromRole="Contrarecibo" ToRole="Factura" />
           <Property Name="pendienteCampos" Type="Boolean" />
+          <Property Name="ClienteId" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="GEISAModel.FK_Contrarecibo_Cliente" FromRole="Contrarecibo" ToRole="Cliente" />
         </EntityType>
         <Association Name="FK_Contrarecibo_Empresa">
           <End Type="GEISAModel.Empresa" Role="Empresa" Multiplicity="0..1" />
@@ -4062,6 +4085,7 @@
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Obra_Cliente" FromRole="Cliente" ToRole="Obra" />
           <NavigationProperty Name="TraspasoSaldos" Relationship="GEISAModel.FK_TraspasoSaldos_Cliente" FromRole="Cliente" ToRole="TraspasoSaldos" />
           <NavigationProperty Name="TraspasoSaldos1" Relationship="GEISAModel.FK_TraspasoSaldos_Cliente1" FromRole="Cliente" ToRole="TraspasoSaldos" />
+          <NavigationProperty Name="Contrarecibo" Relationship="GEISAModel.FK_Contrarecibo_Cliente" FromRole="Cliente" ToRole="Contrarecibo" />
         </EntityType>
         <EntityType Name="Categorias">
           <Key>
@@ -5443,6 +5467,18 @@
           <Property Type="String" Name="TipoPago_Nombre" Nullable="true" MaxLength="100" />
           <Property Type="Double" Name="Monto" Nullable="false" />
         </ComplexType>
+        <Association Name="FK_Contrarecibo_Cliente">
+          <End Type="GEISAModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="GEISAModel.Contrarecibo" Role="Contrarecibo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contrarecibo">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5630,6 +5666,7 @@
           <EntitySetMapping Name="Contrarecibo">
             <EntityTypeMapping TypeName="GEISAModel.Contrarecibo">
               <MappingFragment StoreEntitySet="Contrarecibo">
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
                 <ScalarProperty Name="pendienteCampos" ColumnName="pendienteCampos" />
                 <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
                 <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
