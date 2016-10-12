@@ -965,10 +965,14 @@ namespace SistemaGEISA
                     {
                         Factura fac = facpagos.Factura;
                         fac.Saldo = fac.Saldo + facpagos.MontoPagar;
+
+                        if (this.esTraspaso)
+                            facpagos.TraspasoSaldos.FechaCancelacion = DateTime.Now;
                     }
 
                     pagos.FechaCancelacion = DateTime.Now;
                     pagos.UsuarioId = frmPrincipal.UsuarioDelSistema.Id;
+
 
                     controler.Model.SaveChanges();
                     transaccion.Commit();

@@ -49,13 +49,15 @@ namespace SistemaGEISA
         private void abrirForm(bool nuevo)
         {
             var form = new frmPagosNew(controler);
-            form.Text = "Abono : " + (nuevo ? "Nuevo" : "Editar");
+            form.Text = "Traspaso : Editar";
             if (!nuevo)
             {
                 form.pagos = pagos;
             }
+            form.tipoMovimientoId = TipoMovimientoEnum.Traspaso_Abono.Id;
             form.obra = this.obra;
             form.source = this.pagos != null ? (this.pagos.TipoMovimiento.Id == TipoMovimientoEnum.NotaCreditoFactura.Id ? "NC" : string.Empty) : string.Empty;
+            form.esTraspaso = true;
             form.tienePermisoAgregar = true;
             form.tienePermisoModificar = true;
             form.tienePermisoCancelar = true;

@@ -41,8 +41,8 @@ namespace Reportes
                     reg = new FacturaRegistros();
                     reg.Numero = num;
                     reg.FechaFactura = fact.Fecha;
-                    reg.FolioFactura = fact.NoFactura;
-                    reg.Importe = fact.Importe;
+                    reg.FolioFactura = fact.tipoComprobante.HasValue ? (fact.tipoComprobante.Value == 1 ? fact.NoFactura : "NC " + fact.NoFactura) : fact.NoFactura;
+                    reg.Importe = fact.tipoComprobante.HasValue ? (fact.tipoComprobante.Value == 1 ? fact.Importe : (fact.Importe*-1)) : fact.Importe;
 
                     Items.Add(new ContrarecibosItem(reg));
                     num++;
