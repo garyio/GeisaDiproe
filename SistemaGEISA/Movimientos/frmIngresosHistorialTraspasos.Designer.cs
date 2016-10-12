@@ -54,6 +54,7 @@
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnCancelar = new System.Windows.Forms.ToolStripButton();
+            this.colFechaCancelacion = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo)).BeginInit();
@@ -88,7 +89,7 @@
             this.luProveedor,
             this.dtfecha,
             this.ckExtra});
-            this.grid.Size = new System.Drawing.Size(832, 212);
+            this.grid.Size = new System.Drawing.Size(837, 212);
             this.grid.TabIndex = 54;
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -109,7 +110,8 @@
             this.colFecha,
             this.colFacturaFolio,
             this.colTipoPago,
-            this.colMonto});
+            this.colMonto,
+            this.colFechaCancelacion});
             this.gv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gv.GridControl = this.grid;
             this.gv.Name = "gv";
@@ -120,6 +122,7 @@
             this.gv.OptionsView.ShowFooter = true;
             this.gv.OptionsView.ShowGroupPanel = false;
             this.gv.PaintStyleName = "Skin";
+            this.gv.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_RowStyle);
             this.gv.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gv_FocusedRowChanged);
             this.gv.DoubleClick += new System.EventHandler(this.gv_DoubleClick);
             // 
@@ -148,7 +151,7 @@
             this.colObraOrigen.OptionsColumn.FixedWidth = true;
             this.colObraOrigen.OptionsColumn.ReadOnly = true;
             this.colObraOrigen.Visible = true;
-            this.colObraOrigen.VisibleIndex = 1;
+            this.colObraOrigen.VisibleIndex = 2;
             // 
             // colClienteOrigen
             // 
@@ -159,7 +162,7 @@
             this.colClienteOrigen.OptionsColumn.FixedWidth = true;
             this.colClienteOrigen.OptionsColumn.ReadOnly = true;
             this.colClienteOrigen.Visible = true;
-            this.colClienteOrigen.VisibleIndex = 2;
+            this.colClienteOrigen.VisibleIndex = 3;
             // 
             // colEmpresaOrigen
             // 
@@ -170,7 +173,7 @@
             this.colEmpresaOrigen.OptionsColumn.FixedWidth = true;
             this.colEmpresaOrigen.OptionsColumn.ReadOnly = true;
             this.colEmpresaOrigen.Visible = true;
-            this.colEmpresaOrigen.VisibleIndex = 3;
+            this.colEmpresaOrigen.VisibleIndex = 4;
             // 
             // colObraDestino
             // 
@@ -181,7 +184,7 @@
             this.colObraDestino.OptionsColumn.FixedWidth = true;
             this.colObraDestino.OptionsColumn.ReadOnly = true;
             this.colObraDestino.Visible = true;
-            this.colObraDestino.VisibleIndex = 4;
+            this.colObraDestino.VisibleIndex = 5;
             // 
             // colClienteDestino
             // 
@@ -192,7 +195,7 @@
             this.colClienteDestino.OptionsColumn.FixedWidth = true;
             this.colClienteDestino.OptionsColumn.ReadOnly = true;
             this.colClienteDestino.Visible = true;
-            this.colClienteDestino.VisibleIndex = 5;
+            this.colClienteDestino.VisibleIndex = 6;
             // 
             // colEmpresaDestino
             // 
@@ -203,7 +206,7 @@
             this.colEmpresaDestino.OptionsColumn.FixedWidth = true;
             this.colEmpresaDestino.OptionsColumn.ReadOnly = true;
             this.colEmpresaDestino.Visible = true;
-            this.colEmpresaDestino.VisibleIndex = 6;
+            this.colEmpresaDestino.VisibleIndex = 7;
             // 
             // colFecha
             // 
@@ -216,7 +219,7 @@
             this.colFecha.OptionsColumn.FixedWidth = true;
             this.colFecha.OptionsColumn.ReadOnly = true;
             this.colFecha.Visible = true;
-            this.colFecha.VisibleIndex = 0;
+            this.colFecha.VisibleIndex = 1;
             // 
             // colFacturaFolio
             // 
@@ -227,7 +230,7 @@
             this.colFacturaFolio.OptionsColumn.FixedWidth = true;
             this.colFacturaFolio.OptionsColumn.ReadOnly = true;
             this.colFacturaFolio.Visible = true;
-            this.colFacturaFolio.VisibleIndex = 8;
+            this.colFacturaFolio.VisibleIndex = 9;
             // 
             // colTipoPago
             // 
@@ -238,7 +241,7 @@
             this.colTipoPago.OptionsColumn.FixedWidth = true;
             this.colTipoPago.OptionsColumn.ReadOnly = true;
             this.colTipoPago.Visible = true;
-            this.colTipoPago.VisibleIndex = 7;
+            this.colTipoPago.VisibleIndex = 8;
             this.colTipoPago.Width = 106;
             // 
             // colMonto
@@ -254,7 +257,7 @@
             this.colMonto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Monto", "{0:C2}")});
             this.colMonto.Visible = true;
-            this.colMonto.VisibleIndex = 9;
+            this.colMonto.VisibleIndex = 10;
             this.colMonto.Width = 96;
             // 
             // chkActivo
@@ -348,7 +351,7 @@
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(832, 49);
+            this.toolStrip1.Size = new System.Drawing.Size(837, 49);
             this.toolStrip1.TabIndex = 53;
             // 
             // btnCancelar
@@ -360,11 +363,24 @@
             this.btnCancelar.Text = "Cancelar Traspaso";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // colFechaCancelacion
+            // 
+            this.colFechaCancelacion.Caption = "Fecha Canc.";
+            this.colFechaCancelacion.DisplayFormat.FormatString = "d";
+            this.colFechaCancelacion.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colFechaCancelacion.FieldName = "FechaCancelacion";
+            this.colFechaCancelacion.Name = "colFechaCancelacion";
+            this.colFechaCancelacion.OptionsColumn.AllowEdit = false;
+            this.colFechaCancelacion.OptionsColumn.FixedWidth = true;
+            this.colFechaCancelacion.OptionsColumn.ReadOnly = true;
+            this.colFechaCancelacion.Visible = true;
+            this.colFechaCancelacion.VisibleIndex = 0;
+            // 
             // frmIngresosHistorialTraspasos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 261);
+            this.ClientSize = new System.Drawing.Size(837, 261);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -416,6 +432,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colFacturaFolio;
         private DevExpress.XtraGrid.Columns.GridColumn colIdPago;
         private System.Windows.Forms.ToolStripButton btnCancelar;
+        private DevExpress.XtraGrid.Columns.GridColumn colFechaCancelacion;
 
     }
 }

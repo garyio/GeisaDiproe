@@ -81,8 +81,8 @@ namespace SistemaGEISA
                 if (pagos.FechaCancelacion.HasValue)
                 {
                     btnCancelar.Visible = false;
-                    lbCancelado.Visible = true;
-                    btnGuardar.Enabled = btnAgregar.Enabled = btnQuitar.Enabled = false;
+                    lbCancelado.Visible = true;                    
+                    btnGuardar.Enabled = btnAgregar.Enabled = btnQuitar.Enabled = btnCancelar.Enabled = btnAgregarContrarecibos.Enabled = false;
                 }
 
                 bool esDevolucion = false;

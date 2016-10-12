@@ -154,8 +154,11 @@ namespace SistemaGEISA
                     if (item.Id != 0)
                     {
                             TraspasoSaldos traspaso = controler.Model.TraspasoSaldos.FirstOrDefault(f => f.Id == item.Id);
-                            if (traspaso.FechaCancelacion.HasValue) return;
+                            if (!traspaso.FechaCancelacion.HasValue) 
                                 traspaso.FechaCancelacion = DateTime.Today;
+                            if (!pagos.FechaCancelacion.HasValue)
+                                pagos.FechaCancelacion = DateTime.Today;
+
                             try
                             {
                                 controler.Model.SaveChanges();
@@ -167,6 +170,24 @@ namespace SistemaGEISA
                             }
                         
                     }
+                }
+            }
+        }
+
+        private void gv_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+            var row = gv.GetRow(e.RowHandle);
+            if (e.RowHandle >= 0 && row != null)
+            {
+                getTraspasos_Result item = (gv.GetRow(e.RowHandle) as getTraspasos_Result);
+
+                //string category = View.GetRowCellValue(e.RowHandle, "FechaCancelacion").ToString();
+
+                if (!string.IsNullOrEmpty(item.FechaCancelacion.HasValue ? item.FechaCancelacion.Value.ToShortDateString() : string.Empty))
+                {
+                    e.Appearance.ForeColor = Color.Red;
+
                 }
             }
         }

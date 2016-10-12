@@ -145,5 +145,23 @@ namespace SistemaGEISA
                 new frmMessageBox(true) { Message = "Seleccione un Pago a Eliminar.", Title = "Aviso" }.ShowDialog();
             }           
         }
+
+        private void gv_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+            var row = gv.GetRow(e.RowHandle);
+            if (e.RowHandle >= 0 && row !=null)
+            {
+                getTransaccionesIngresos_Result item = (gv.GetRow(e.RowHandle) as getTransaccionesIngresos_Result);
+                
+                //string category = View.GetRowCellValue(e.RowHandle, "FechaCancelacion").ToString();
+
+                if (!string.IsNullOrEmpty(item.FechaCancelacion.HasValue ? item.FechaCancelacion.Value.ToShortDateString() : string.Empty))
+                {
+                    e.Appearance.ForeColor = Color.Red;
+
+                }
+            }
+        }
     }
 }
