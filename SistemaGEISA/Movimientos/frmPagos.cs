@@ -50,6 +50,7 @@ namespace SistemaGEISA
             form.tienePermisoAgregar = tienePermisoAgregar;
             form.tienePermisoModificar = tienePermisoModificar;
             form.tienePermisoCancelar = tienePermisoCancelar;
+            form.mostrarNC_Ingreso = true;
 
             form.ShowDialog();
 

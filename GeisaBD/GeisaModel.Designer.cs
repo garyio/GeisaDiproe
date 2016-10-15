@@ -1673,36 +1673,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        /// <param name="obraId">No hay documentación de metadatos disponible.</param>
-        /// <param name="clienteId">No hay documentación de metadatos disponible.</param>
-        public ObjectResult<getDetalleIngresos_Result> getDetalleIngresos(Nullable<global::System.Int32> obraId, Nullable<global::System.Int32> clienteId)
-        {
-            ObjectParameter obraIdParameter;
-            if (obraId.HasValue)
-            {
-                obraIdParameter = new ObjectParameter("ObraId", obraId);
-            }
-            else
-            {
-                obraIdParameter = new ObjectParameter("ObraId", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter clienteIdParameter;
-            if (clienteId.HasValue)
-            {
-                clienteIdParameter = new ObjectParameter("ClienteId", clienteId);
-            }
-            else
-            {
-                clienteIdParameter = new ObjectParameter("ClienteId", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<getDetalleIngresos_Result>("getDetalleIngresos", obraIdParameter, clienteIdParameter);
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         /// <param name="startDate">No hay documentación de metadatos disponible.</param>
         /// <param name="endDate">No hay documentación de metadatos disponible.</param>
         /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
@@ -2100,6 +2070,47 @@ namespace GeisaBD
             }
     
             return base.ExecuteFunction<getTraspasos_Result>("getTraspasos", obraIdParameter, clienteIdParameter, empresaIdParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="obraId">No hay documentación de metadatos disponible.</param>
+        /// <param name="clienteId">No hay documentación de metadatos disponible.</param>
+        /// <param name="getNC">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<getDetalleIngresos_Result> getDetalleIngresos(Nullable<global::System.Int32> obraId, Nullable<global::System.Int32> clienteId, Nullable<global::System.Boolean> getNC)
+        {
+            ObjectParameter obraIdParameter;
+            if (obraId.HasValue)
+            {
+                obraIdParameter = new ObjectParameter("ObraId", obraId);
+            }
+            else
+            {
+                obraIdParameter = new ObjectParameter("ObraId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter clienteIdParameter;
+            if (clienteId.HasValue)
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", clienteId);
+            }
+            else
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter getNCParameter;
+            if (getNC.HasValue)
+            {
+                getNCParameter = new ObjectParameter("getNC", getNC);
+            }
+            else
+            {
+                getNCParameter = new ObjectParameter("getNC", typeof(global::System.Boolean));
+            }
+    
+            return base.ExecuteFunction<getDetalleIngresos_Result>("getDetalleIngresos", obraIdParameter, clienteIdParameter, getNCParameter);
         }
 
         #endregion
@@ -21399,6 +21410,30 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> NoFactura
+        {
+            get
+            {
+                return _NoFactura;
+            }
+            set
+            {
+                OnNoFacturaChanging(value);
+                ReportPropertyChanging("NoFactura");
+                _NoFactura = StructuralObject.SetValidValue(value, "NoFactura");
+                ReportPropertyChanged("NoFactura");
+                OnNoFacturaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _NoFactura;
+        partial void OnNoFacturaChanging(Nullable<global::System.Int32> value);
+        partial void OnNoFacturaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.DateTime Fecha
@@ -21521,150 +21556,6 @@ namespace GeisaBD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> Extras
-        {
-            get
-            {
-                return _Extras;
-            }
-            set
-            {
-                OnExtrasChanging(value);
-                ReportPropertyChanging("Extras");
-                _Extras = StructuralObject.SetValidValue(value, "Extras");
-                ReportPropertyChanged("Extras");
-                OnExtrasChanged();
-            }
-        }
-        private Nullable<global::System.Double> _Extras;
-        partial void OnExtrasChanging(Nullable<global::System.Double> value);
-        partial void OnExtrasChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Double> Pagos
-        {
-            get
-            {
-                return _Pagos;
-            }
-            set
-            {
-                OnPagosChanging(value);
-                ReportPropertyChanging("Pagos");
-                _Pagos = StructuralObject.SetValidValue(value, "Pagos");
-                ReportPropertyChanged("Pagos");
-                OnPagosChanged();
-            }
-        }
-        private Nullable<global::System.Double> _Pagos;
-        partial void OnPagosChanging(Nullable<global::System.Double> value);
-        partial void OnPagosChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Observaciones
-        {
-            get
-            {
-                return _Observaciones;
-            }
-            set
-            {
-                OnObservacionesChanging(value);
-                ReportPropertyChanging("Observaciones");
-                _Observaciones = StructuralObject.SetValidValue(value, true, "Observaciones");
-                ReportPropertyChanged("Observaciones");
-                OnObservacionesChanged();
-            }
-        }
-        private global::System.String _Observaciones;
-        partial void OnObservacionesChanging(global::System.String value);
-        partial void OnObservacionesChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Double> Saldo
-        {
-            get
-            {
-                return _Saldo;
-            }
-            set
-            {
-                OnSaldoChanging(value);
-                ReportPropertyChanging("Saldo");
-                _Saldo = StructuralObject.SetValidValue(value, "Saldo");
-                ReportPropertyChanged("Saldo");
-                OnSaldoChanged();
-            }
-        }
-        private Nullable<global::System.Double> _Saldo;
-        partial void OnSaldoChanging(Nullable<global::System.Double> value);
-        partial void OnSaldoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaCancelacion
-        {
-            get
-            {
-                return _FechaCancelacion;
-            }
-            set
-            {
-                OnFechaCancelacionChanging(value);
-                ReportPropertyChanging("FechaCancelacion");
-                _FechaCancelacion = StructuralObject.SetValidValue(value, "FechaCancelacion");
-                ReportPropertyChanged("FechaCancelacion");
-                OnFechaCancelacionChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _FechaCancelacion;
-        partial void OnFechaCancelacionChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaCancelacionChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> NoFactura
-        {
-            get
-            {
-                return _NoFactura;
-            }
-            set
-            {
-                OnNoFacturaChanging(value);
-                ReportPropertyChanging("NoFactura");
-                _NoFactura = StructuralObject.SetValidValue(value, "NoFactura");
-                ReportPropertyChanged("NoFactura");
-                OnNoFacturaChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _NoFactura;
-        partial void OnNoFacturaChanging(Nullable<global::System.Int32> value);
-        partial void OnNoFacturaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.Double> ObraCivil
         {
             get
@@ -21737,6 +21628,30 @@ namespace GeisaBD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public Nullable<global::System.Double> Extras
+        {
+            get
+            {
+                return _Extras;
+            }
+            set
+            {
+                OnExtrasChanging(value);
+                ReportPropertyChanging("Extras");
+                _Extras = StructuralObject.SetValidValue(value, "Extras");
+                ReportPropertyChanged("Extras");
+                OnExtrasChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Extras;
+        partial void OnExtrasChanging(Nullable<global::System.Double> value);
+        partial void OnExtrasChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public Nullable<global::System.Double> Mantenimiento
         {
             get
@@ -21785,24 +21700,96 @@ namespace GeisaBD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> TipoComprobante
+        public Nullable<global::System.Double> Pagos
         {
             get
             {
-                return _TipoComprobante;
+                return _Pagos;
             }
             set
             {
-                OnTipoComprobanteChanging(value);
-                ReportPropertyChanging("TipoComprobante");
-                _TipoComprobante = StructuralObject.SetValidValue(value, "TipoComprobante");
-                ReportPropertyChanged("TipoComprobante");
-                OnTipoComprobanteChanged();
+                OnPagosChanging(value);
+                ReportPropertyChanging("Pagos");
+                _Pagos = StructuralObject.SetValidValue(value, "Pagos");
+                ReportPropertyChanged("Pagos");
+                OnPagosChanged();
             }
         }
-        private Nullable<global::System.Int32> _TipoComprobante;
-        partial void OnTipoComprobanteChanging(Nullable<global::System.Int32> value);
-        partial void OnTipoComprobanteChanged();
+        private Nullable<global::System.Double> _Pagos;
+        partial void OnPagosChanging(Nullable<global::System.Double> value);
+        partial void OnPagosChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Observaciones
+        {
+            get
+            {
+                return _Observaciones;
+            }
+            set
+            {
+                OnObservacionesChanging(value);
+                ReportPropertyChanging("Observaciones");
+                _Observaciones = StructuralObject.SetValidValue(value, true, "Observaciones");
+                ReportPropertyChanged("Observaciones");
+                OnObservacionesChanged();
+            }
+        }
+        private global::System.String _Observaciones;
+        partial void OnObservacionesChanging(global::System.String value);
+        partial void OnObservacionesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaCancelacion
+        {
+            get
+            {
+                return _FechaCancelacion;
+            }
+            set
+            {
+                OnFechaCancelacionChanging(value);
+                ReportPropertyChanging("FechaCancelacion");
+                _FechaCancelacion = StructuralObject.SetValidValue(value, "FechaCancelacion");
+                ReportPropertyChanged("FechaCancelacion");
+                OnFechaCancelacionChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaCancelacion;
+        partial void OnFechaCancelacionChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaCancelacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> Saldo
+        {
+            get
+            {
+                return _Saldo;
+            }
+            set
+            {
+                OnSaldoChanging(value);
+                ReportPropertyChanging("Saldo");
+                _Saldo = StructuralObject.SetValidValue(value, "Saldo");
+                ReportPropertyChanged("Saldo");
+                OnSaldoChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Saldo;
+        partial void OnSaldoChanging(Nullable<global::System.Double> value);
+        partial void OnSaldoChanged();
 
         #endregion
 

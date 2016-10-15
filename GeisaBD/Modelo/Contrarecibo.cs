@@ -19,6 +19,10 @@ namespace GeisaBD
             get { return ProveedorLoaded != null ? ProveedorLoaded.NombreComercial : ""; }
         }
 
+        public string ClienteNombre
+        {
+            get { return ClienteLoaded != null ? ClienteLoaded.NombreComercial : ""; }
+        }
         public string EmpresaNombre
         {
             get { return EmpresaLoaded != null ? EmpresaLoaded.NombreComercial : ""; }
@@ -31,6 +35,7 @@ namespace GeisaBD
 
         #region Properties for EntityReference Load
         public Proveedor ProveedorLoaded { get { return this.Load(ProveedorReference); } }
+        public Cliente ClienteLoaded { get { return this.Load(ClienteReference); } }
         public Empresa EmpresaLoaded { get { return this.Load(EmpresaReference); } }
         public Usuario UsuarioLoaded { get { return this.Load(UsuarioReference); } }
         #endregion Properties for EntityReference Load

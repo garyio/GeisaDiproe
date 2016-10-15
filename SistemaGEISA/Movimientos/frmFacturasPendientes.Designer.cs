@@ -44,18 +44,18 @@
             this.colObservaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colConceptoId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.luConceptos = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colTipoContrarecibo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rgOpciones = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.colTipoContrarecibo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.rgOpciones = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luConceptos)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgOpciones)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -160,6 +160,7 @@
             this.colNoFactura.Name = "colNoFactura";
             this.colNoFactura.OptionsColumn.AllowEdit = false;
             this.colNoFactura.OptionsColumn.FixedWidth = true;
+            this.colNoFactura.OptionsColumn.ReadOnly = true;
             this.colNoFactura.Visible = true;
             this.colNoFactura.VisibleIndex = 1;
             this.colNoFactura.Width = 49;
@@ -173,6 +174,7 @@
             this.colFecha.Name = "colFecha";
             this.colFecha.OptionsColumn.AllowEdit = false;
             this.colFecha.OptionsColumn.FixedWidth = true;
+            this.colFecha.OptionsColumn.ReadOnly = true;
             this.colFecha.Visible = true;
             this.colFecha.VisibleIndex = 2;
             this.colFecha.Width = 73;
@@ -186,6 +188,7 @@
             this.colImporte.Name = "colImporte";
             this.colImporte.OptionsColumn.AllowEdit = false;
             this.colImporte.OptionsColumn.FixedWidth = true;
+            this.colImporte.OptionsColumn.ReadOnly = true;
             this.colImporte.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Importe", "{0:C2}")});
             this.colImporte.Visible = true;
@@ -201,6 +204,7 @@
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.OptionsColumn.AllowEdit = false;
             this.colSaldo.OptionsColumn.FixedWidth = true;
+            this.colSaldo.OptionsColumn.ReadOnly = true;
             this.colSaldo.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Saldo", "{0:C2}")});
             this.colSaldo.Visible = true;
@@ -212,6 +216,8 @@
             this.colProveedor.Caption = "Proveedor";
             this.colProveedor.FieldName = "Proveedor";
             this.colProveedor.Name = "colProveedor";
+            this.colProveedor.OptionsColumn.AllowEdit = false;
+            this.colProveedor.OptionsColumn.ReadOnly = true;
             this.colProveedor.Visible = true;
             this.colProveedor.VisibleIndex = 5;
             this.colProveedor.Width = 135;
@@ -221,6 +227,8 @@
             this.colObra.Caption = "Obra";
             this.colObra.FieldName = "Obra";
             this.colObra.Name = "colObra";
+            this.colObra.OptionsColumn.AllowEdit = false;
+            this.colObra.OptionsColumn.ReadOnly = true;
             this.colObra.Visible = true;
             this.colObra.VisibleIndex = 6;
             this.colObra.Width = 96;
@@ -231,6 +239,7 @@
             this.colObservaciones.FieldName = "Observaciones";
             this.colObservaciones.Name = "colObservaciones";
             this.colObservaciones.OptionsColumn.AllowEdit = false;
+            this.colObservaciones.OptionsColumn.ReadOnly = true;
             this.colObservaciones.Visible = true;
             this.colObservaciones.VisibleIndex = 9;
             this.colObservaciones.Width = 115;
@@ -241,6 +250,9 @@
             this.colConceptoId.ColumnEdit = this.luConceptos;
             this.colConceptoId.FieldName = "ConceptosId";
             this.colConceptoId.Name = "colConceptoId";
+            this.colConceptoId.OptionsColumn.AllowEdit = false;
+            this.colConceptoId.OptionsColumn.FixedWidth = true;
+            this.colConceptoId.OptionsColumn.ReadOnly = true;
             this.colConceptoId.Visible = true;
             this.colConceptoId.VisibleIndex = 7;
             this.colConceptoId.Width = 92;
@@ -255,6 +267,26 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
             this.luConceptos.Name = "luConceptos";
             this.luConceptos.NullText = "";
+            // 
+            // colTipoContrarecibo
+            // 
+            this.colTipoContrarecibo.Caption = "Tipo";
+            this.colTipoContrarecibo.ColumnEdit = this.rgOpciones;
+            this.colTipoContrarecibo.FieldName = "TipoComprobante";
+            this.colTipoContrarecibo.Name = "colTipoContrarecibo";
+            this.colTipoContrarecibo.OptionsColumn.AllowEdit = false;
+            this.colTipoContrarecibo.OptionsColumn.FixedWidth = true;
+            this.colTipoContrarecibo.OptionsColumn.ReadOnly = true;
+            this.colTipoContrarecibo.Visible = true;
+            this.colTipoContrarecibo.VisibleIndex = 8;
+            this.colTipoContrarecibo.Width = 102;
+            // 
+            // rgOpciones
+            // 
+            this.rgOpciones.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Fact."),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "NC.")});
+            this.rgOpciones.Name = "rgOpciones";
             // 
             // tableLayoutPanel2
             // 
@@ -298,26 +330,6 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // colTipoContrarecibo
-            // 
-            this.colTipoContrarecibo.Caption = "Tipo";
-            this.colTipoContrarecibo.ColumnEdit = this.rgOpciones;
-            this.colTipoContrarecibo.FieldName = "TipoComprobante";
-            this.colTipoContrarecibo.Name = "colTipoContrarecibo";
-            this.colTipoContrarecibo.OptionsColumn.AllowEdit = false;
-            this.colTipoContrarecibo.OptionsColumn.FixedWidth = true;
-            this.colTipoContrarecibo.OptionsColumn.ReadOnly = true;
-            this.colTipoContrarecibo.Visible = true;
-            this.colTipoContrarecibo.VisibleIndex = 8;
-            this.colTipoContrarecibo.Width = 102;
-            // 
-            // rgOpciones
-            // 
-            this.rgOpciones.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Fact."),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "NC.")});
-            this.rgOpciones.Name = "rgOpciones";
-            // 
             // frmFacturasPendientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,8 +346,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luConceptos)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rgOpciones)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

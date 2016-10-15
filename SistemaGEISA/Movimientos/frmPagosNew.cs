@@ -9,6 +9,7 @@ using Microsoft.Reporting.Common;
 using Microsoft.Reporting.WinForms;
 using System.Collections;
 using DevExpress.XtraEditors.Controls;
+using System.Windows.Forms;
 
 namespace SistemaGEISA
 {
@@ -23,6 +24,7 @@ namespace SistemaGEISA
         public string source = string.Empty;
         public int tipoMovimientoId;
         public double saldoFavor = 0; // Viene de ingresos cuando se hace un traspaso
+        public bool mostrarNC_Ingreso = false; // Ocupo o muestra el boton agregar NC Ingresos (Solo se muestra en pagos)
 
         public bool tienePermisoAgregar, tienePermisoModificar, tienePermisoCancelar;
         DataTable dt2;
@@ -164,7 +166,7 @@ namespace SistemaGEISA
             // Si es un Pago muestro Devolucion , si es Abono Muestro Prestamo
             colDevolucion.Visible = tipoMovimientoId == TipoMovimientoEnum.Pagos.Id ? true : false;
             colPrestamo.Visible = tipoMovimientoId == TipoMovimientoEnum.Traspaso_Abono.Id || tipoMovimientoId == TipoMovimientoEnum.Abonos.Id || tipoMovimientoId == TipoMovimientoEnum.Ingresos.Id || (pagos != null ? (pagos.TipoMovimientoId == TipoMovimientoEnum.Abonos.Id || pagos.TipoMovimientoId == TipoMovimientoEnum.Ingresos.Id) : false) ? true : false;
-
+            btnAgregarNC.Visible = this.mostrarNC_Ingreso;
         }
 
         #region Funciones
@@ -535,6 +537,8 @@ namespace SistemaGEISA
         #region Botones
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            ToolStripButton boton = sender as ToolStripButton;
+
             if (luProveedor.EditValue != null && validoTraspaso())
             {
                 Cliente cliente=null;
@@ -552,10 +556,12 @@ namespace SistemaGEISA
 
                 frmFacturasPendientes form = new frmFacturasPendientes();
                 form.proveedor = prov;
+                form.agregarNCPagos = boton.Name.Equals("btnAgregarNC"); // Si presiono el boton agregar NC Ingreso pongo true
                 form.obra = esTraspaso ? (luObra.GetSelectedDataRow() as Obra) : this.obra; // Si es traspaso traigo lo que hay en el lookup en otro caso la obra por default
-                form.idCliente = esTraspaso ? (luProveedor.GetSelectedDataRow() as Cliente).Id : this.idCliente;
+                form.idCliente = esTraspaso || form.agregarNCPagos ? (luProveedor.GetSelectedDataRow() as Cliente).Id : this.idCliente;
                 form.cliente = cliente;
-                form.source = this.source;                
+                form.source = this.source;
+                
                 for (int i = 0; i < gv2.RowCount; i++)
                 {
                     int id = Convert.ToInt32(gv2.GetRowCellValue(i, "Id"));
@@ -800,6 +806,8 @@ namespace SistemaGEISA
                             factura.GastoAdm = Convert.ToBoolean(row["GastoAdm"]);
                             factura.esDevolucion = Convert.ToBoolean(row["esDevolucion"]);
                             factura.esPrestamo = Convert.ToBoolean(row["esPrestamo"]);
+                            //if(this.tipoMovimientoId == TipoMovimientoEnum.NotaCreditoFactura.Id)
+                            //    factura.tipoComprobante = 2; // Comprobante tipo NC
                         }
                     }
 
@@ -966,6 +974,9 @@ namespace SistemaGEISA
                         Factura fac = facpagos.Factura;
                         fac.Saldo = fac.Saldo + facpagos.MontoPagar;
 
+                        //fac.Saldo = fac.Importe - controler.Model.getAbonosTotales(fac.Id, pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                        //fac.Saldo = Math.Round(fac.Saldo, 2);
+
                         if (this.esTraspaso)
                             facpagos.TraspasoSaldos.FechaCancelacion = DateTime.Now;
                     }
@@ -1053,6 +1064,13 @@ namespace SistemaGEISA
                 }
             }
         }
+
+        private void btnAgregarNC_Click(object sender, EventArgs e)
+        {
+            btnAgregar_Click(sender, e);
+        }
+
+
     }
 }
 

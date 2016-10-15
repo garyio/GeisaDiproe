@@ -35,6 +35,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnExportar = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -49,8 +51,7 @@
             this.chkObra = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.chkActivo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.btnExportar = new System.Windows.Forms.ToolStripButton();
-            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
+            this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -73,7 +74,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(684, 39);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(771, 39);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // menu
@@ -93,7 +94,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(481, 35);
+            this.menu.Size = new System.Drawing.Size(450, 35);
             this.menu.TabIndex = 5;
             // 
             // btnNuevo
@@ -124,6 +125,24 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 29);
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Image = global::SistemaGEISA.Properties.Resources.Reportes;
+            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(144, 26);
+            this.btnExportar.Text = "Exportar Informacion";
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.Image = global::SistemaGEISA.Properties.Resources.Eliminar;
@@ -151,7 +170,7 @@
             this.chkActivo,
             this.repositoryItemDateEdit1,
             this.chkObra});
-            this.grid.Size = new System.Drawing.Size(684, 322);
+            this.grid.Size = new System.Drawing.Size(771, 322);
             this.grid.TabIndex = 9;
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -166,6 +185,7 @@
             this.colUsuario,
             this.colFechaPago,
             this.colProveedor,
+            this.colCliente,
             this.colEmpresa,
             this.colObraPendiente});
             this.gv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
@@ -192,25 +212,33 @@
             this.colFolio.Caption = "Folio";
             this.colFolio.FieldName = "Folio";
             this.colFolio.Name = "colFolio";
+            this.colFolio.OptionsColumn.AllowEdit = false;
             this.colFolio.OptionsColumn.FixedWidth = true;
+            this.colFolio.OptionsColumn.ReadOnly = true;
             this.colFolio.Visible = true;
             this.colFolio.VisibleIndex = 0;
-            this.colFolio.Width = 100;
+            this.colFolio.Width = 82;
             // 
             // colFechaRegistro
             // 
             this.colFechaRegistro.Caption = "Fecha";
             this.colFechaRegistro.FieldName = "FechaRegistro";
             this.colFechaRegistro.Name = "colFechaRegistro";
+            this.colFechaRegistro.OptionsColumn.AllowEdit = false;
+            this.colFechaRegistro.OptionsColumn.FixedWidth = true;
+            this.colFechaRegistro.OptionsColumn.ReadOnly = true;
             this.colFechaRegistro.Visible = true;
             this.colFechaRegistro.VisibleIndex = 1;
-            this.colFechaRegistro.Width = 100;
+            this.colFechaRegistro.Width = 73;
             // 
             // colUsuario
             // 
             this.colUsuario.Caption = "Usuario";
             this.colUsuario.FieldName = "UsuarioId";
             this.colUsuario.Name = "colUsuario";
+            this.colUsuario.OptionsColumn.AllowEdit = false;
+            this.colUsuario.OptionsColumn.FixedWidth = true;
+            this.colUsuario.OptionsColumn.ReadOnly = true;
             this.colUsuario.Width = 60;
             // 
             // colFechaPago
@@ -218,15 +246,20 @@
             this.colFechaPago.Caption = "Fecha Pago";
             this.colFechaPago.FieldName = "FechaPago";
             this.colFechaPago.Name = "colFechaPago";
+            this.colFechaPago.OptionsColumn.AllowEdit = false;
+            this.colFechaPago.OptionsColumn.FixedWidth = true;
+            this.colFechaPago.OptionsColumn.ReadOnly = true;
             this.colFechaPago.Visible = true;
             this.colFechaPago.VisibleIndex = 2;
-            this.colFechaPago.Width = 100;
+            this.colFechaPago.Width = 76;
             // 
             // colProveedor
             // 
             this.colProveedor.Caption = "Proveedor";
             this.colProveedor.FieldName = "ProveedorNombre";
             this.colProveedor.Name = "colProveedor";
+            this.colProveedor.OptionsColumn.AllowEdit = false;
+            this.colProveedor.OptionsColumn.ReadOnly = true;
             this.colProveedor.Visible = true;
             this.colProveedor.VisibleIndex = 3;
             this.colProveedor.Width = 174;
@@ -236,9 +269,11 @@
             this.colEmpresa.Caption = "Empresa";
             this.colEmpresa.FieldName = "EmpresaNombre";
             this.colEmpresa.Name = "colEmpresa";
+            this.colEmpresa.OptionsColumn.AllowEdit = false;
+            this.colEmpresa.OptionsColumn.ReadOnly = true;
             this.colEmpresa.Visible = true;
-            this.colEmpresa.VisibleIndex = 4;
-            this.colEmpresa.Width = 189;
+            this.colEmpresa.VisibleIndex = 5;
+            this.colEmpresa.Width = 132;
             // 
             // colObraPendiente
             // 
@@ -246,8 +281,11 @@
             this.colObraPendiente.ColumnEdit = this.chkObra;
             this.colObraPendiente.FieldName = "pendienteCampos";
             this.colObraPendiente.Name = "colObraPendiente";
+            this.colObraPendiente.OptionsColumn.AllowEdit = false;
+            this.colObraPendiente.OptionsColumn.ReadOnly = true;
             this.colObraPendiente.Visible = true;
-            this.colObraPendiente.VisibleIndex = 5;
+            this.colObraPendiente.VisibleIndex = 6;
+            this.colObraPendiente.Width = 64;
             // 
             // chkObra
             // 
@@ -272,29 +310,22 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
-            // btnExportar
+            // colCliente
             // 
-            this.btnExportar.Image = global::SistemaGEISA.Properties.Resources.Reportes;
-            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(144, 26);
-            this.btnExportar.Text = "Exportar Informacion";
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
-            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            this.colCliente.Caption = "Cliente";
+            this.colCliente.FieldName = "ClienteNombre";
+            this.colCliente.Name = "colCliente";
+            this.colCliente.OptionsColumn.AllowEdit = false;
+            this.colCliente.OptionsColumn.ReadOnly = true;
+            this.colCliente.Visible = true;
+            this.colCliente.VisibleIndex = 4;
+            this.colCliente.Width = 149;
             // 
             // frmContrarecibo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 361);
+            this.ClientSize = new System.Drawing.Size(771, 361);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -339,5 +370,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkObra;
         private System.Windows.Forms.ToolStripButton btnExportar;
         private System.Windows.Forms.ToolStripButton btnImprimir;
+        private DevExpress.XtraGrid.Columns.GridColumn colCliente;
     }
 }

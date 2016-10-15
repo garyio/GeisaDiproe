@@ -75,6 +75,7 @@
             this.dtFechaPago = new DevExpress.XtraEditors.DateEdit();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
+            this.btnAgregarNC = new System.Windows.Forms.ToolStripButton();
             this.btnQuitar = new System.Windows.Forms.ToolStripButton();
             this.rgOpcion = new DevExpress.XtraEditors.RadioGroup();
             this.lblObra = new System.Windows.Forms.Label();
@@ -153,7 +154,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Image = global::SistemaGEISA.Properties.Resources.document_save;
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 26);
@@ -162,7 +163,7 @@
             // 
             // btnAgregarContrarecibos
             // 
-            this.btnAgregarContrarecibos.Image = global::SistemaGEISA.Properties.Resources.Add__2_;
+            this.btnAgregarContrarecibos.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarContrarecibos.Image")));
             this.btnAgregarContrarecibos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgregarContrarecibos.Name = "btnAgregarContrarecibos";
             this.btnAgregarContrarecibos.Size = new System.Drawing.Size(152, 26);
@@ -176,7 +177,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Image = global::SistemaGEISA.Properties.Resources.Actualizar;
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
             this.btnActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(153, 26);
@@ -186,7 +187,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Image = global::SistemaGEISA.Properties.Resources.cancel1;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(109, 26);
@@ -683,6 +684,7 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregar,
+            this.btnAgregarNC,
             this.btnQuitar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 138);
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(3);
@@ -693,16 +695,26 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Image = global::SistemaGEISA.Properties.Resources.Nuevo;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(113, 22);
-            this.btnAgregar.Text = "Agregar Factura";
+            this.btnAgregar.Size = new System.Drawing.Size(135, 22);
+            this.btnAgregar.Text = "Agregar Factura/NC";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnAgregarNC
+            // 
+            this.btnAgregarNC.Image = global::SistemaGEISA.Properties.Resources.NotasDeCredito;
+            this.btnAgregarNC.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAgregarNC.Name = "btnAgregarNC";
+            this.btnAgregarNC.Size = new System.Drawing.Size(138, 22);
+            this.btnAgregarNC.Text = "Agregar NC Ingresos";
+            this.btnAgregarNC.Visible = false;
+            this.btnAgregarNC.Click += new System.EventHandler(this.btnAgregarNC_Click);
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Image = global::SistemaGEISA.Properties.Resources.delete;
+            this.btnQuitar.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitar.Image")));
             this.btnQuitar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(114, 22);
@@ -826,5 +838,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckDevolucion;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckPrestamo;
         private System.Windows.Forms.ToolStripLabel lblSaldoFavor;
+        private System.Windows.Forms.ToolStripButton btnAgregarNC;
     }
 }

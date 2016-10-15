@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarGastosAd));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.luEmpresaId = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.luConceptos = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -192,7 +193,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Image = global::SistemaGEISA.Properties.Resources.document_save;
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 25);
@@ -206,7 +207,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Image = global::SistemaGEISA.Properties.Resources.cancel1;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 25);
@@ -219,7 +220,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.80965F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.19035F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 439F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 440F));
             this.tableLayoutPanel1.Controls.Add(this.lbCancelado, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.dtFecha, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.luProveedor, 1, 1);
@@ -261,7 +262,7 @@
             this.lbCancelado.Location = new System.Drawing.Point(3, 82);
             this.lbCancelado.Margin = new System.Windows.Forms.Padding(3);
             this.lbCancelado.Name = "lbCancelado";
-            this.lbCancelado.Size = new System.Drawing.Size(358, 21);
+            this.lbCancelado.Size = new System.Drawing.Size(357, 21);
             this.lbCancelado.TabIndex = 32;
             this.lbCancelado.Text = "C A N C E L A D O";
             this.lbCancelado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -271,7 +272,7 @@
             // 
             this.dtFecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtFecha.EditValue = new System.DateTime(2015, 1, 8, 11, 16, 49, 426);
-            this.dtFecha.Location = new System.Drawing.Point(447, 3);
+            this.dtFecha.Location = new System.Drawing.Point(446, 3);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.dtFecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -283,7 +284,7 @@
             this.dtFecha.Properties.EditFormat.FormatString = "D";
             this.dtFecha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtFecha.Properties.Mask.EditMask = "D";
-            this.dtFecha.Size = new System.Drawing.Size(434, 20);
+            this.dtFecha.Size = new System.Drawing.Size(435, 20);
             this.dtFecha.TabIndex = 31;
             this.dtFecha.EditValueChanged += new System.EventHandler(this.dtFecha_EditValueChanged);
             // 
@@ -300,7 +301,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreFiscal", "Nombre")});
             this.luProveedor.Properties.NullText = "";
             this.luProveedor.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.luProveedor.Size = new System.Drawing.Size(261, 20);
+            this.luProveedor.Size = new System.Drawing.Size(260, 20);
             this.luProveedor.TabIndex = 28;
             this.luProveedor.EditValueChanged += new System.EventHandler(this.luProveedor_EditValueChanged);
             // 
@@ -502,7 +503,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(367, 27);
+            this.label1.Location = new System.Drawing.Point(366, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 26);
             this.label1.TabIndex = 0;
@@ -531,7 +532,7 @@
             this.luEmpresa.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreComercial", "Nombre")});
             this.luEmpresa.Properties.NullText = "";
-            this.luEmpresa.Size = new System.Drawing.Size(261, 20);
+            this.luEmpresa.Size = new System.Drawing.Size(260, 20);
             this.luEmpresa.TabIndex = 22;
             this.luEmpresa.EditValueChanged += new System.EventHandler(this.luEmpresa_EditValueChanged);
             // 
@@ -557,7 +558,7 @@
             // 
             this.lblBanco.AutoSize = true;
             this.lblBanco.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBanco.Location = new System.Drawing.Point(367, 53);
+            this.lblBanco.Location = new System.Drawing.Point(366, 53);
             this.lblBanco.Name = "lblBanco";
             this.lblBanco.Size = new System.Drawing.Size(74, 26);
             this.lblBanco.TabIndex = 14;
@@ -569,7 +570,7 @@
             // 
             this.lblReferencia.AutoSize = true;
             this.lblReferencia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblReferencia.Location = new System.Drawing.Point(367, 79);
+            this.lblReferencia.Location = new System.Drawing.Point(366, 79);
             this.lblReferencia.Name = "lblReferencia";
             this.lblReferencia.Size = new System.Drawing.Size(74, 27);
             this.lblReferencia.TabIndex = 1;
@@ -580,7 +581,7 @@
             // luBancos
             // 
             this.luBancos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.luBancos.Location = new System.Drawing.Point(447, 56);
+            this.luBancos.Location = new System.Drawing.Point(446, 56);
             this.luBancos.Name = "luBancos";
             this.luBancos.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.luBancos.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -590,7 +591,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreBanco", "Nombre"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NoCuenta", "Cuenta")});
             this.luBancos.Properties.NullText = "";
-            this.luBancos.Size = new System.Drawing.Size(434, 20);
+            this.luBancos.Size = new System.Drawing.Size(435, 20);
             this.luBancos.TabIndex = 24;
             this.luBancos.Visible = false;
             this.luBancos.EditValueChanged += new System.EventHandler(this.luBancos_EditValueChanged);
@@ -598,15 +599,15 @@
             // txtReferencia
             // 
             this.txtReferencia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtReferencia.Location = new System.Drawing.Point(447, 82);
+            this.txtReferencia.Location = new System.Drawing.Point(446, 82);
             this.txtReferencia.Name = "txtReferencia";
-            this.txtReferencia.Size = new System.Drawing.Size(434, 21);
+            this.txtReferencia.Size = new System.Drawing.Size(435, 21);
             this.txtReferencia.TabIndex = 25;
             this.txtReferencia.Visible = false;
             // 
             // luTipoPago
             // 
-            this.luTipoPago.Location = new System.Drawing.Point(447, 30);
+            this.luTipoPago.Location = new System.Drawing.Point(446, 30);
             this.luTipoPago.Name = "luTipoPago";
             this.luTipoPago.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.luTipoPago.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -622,7 +623,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(367, 0);
+            this.label8.Location = new System.Drawing.Point(366, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 27);
             this.label8.TabIndex = 29;
@@ -642,13 +643,13 @@
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(364, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(363, 25);
             this.toolStrip1.TabIndex = 30;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Image = global::SistemaGEISA.Properties.Resources.Nuevo;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(111, 22);
@@ -657,7 +658,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Image = global::SistemaGEISA.Properties.Resources.delete;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(102, 22);

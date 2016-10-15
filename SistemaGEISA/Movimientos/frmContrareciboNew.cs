@@ -35,6 +35,7 @@ namespace SistemaGEISA
             {
                 txtFolio.Text = contrarecibo.Folio.ToString();
                 luProveedor.EditValue = contrarecibo.ProveedorId.HasValue ? contrarecibo.ProveedorId : contrarecibo.ClienteId;
+                rgOpcion.EditValue = contrarecibo.Proveedor != null ? 2 : 1; 
                 luEmpresa.EditValue = contrarecibo.EmpresaId;
                 dtFecha.EditValue = contrarecibo.FechaRegistro;
 

@@ -31,6 +31,7 @@ namespace SistemaGEISA
 
         public List<DataRow> rowSelected;
         public List<Factura> pagadas = new List<Factura>();
+        public bool agregarNCPagos = false;
         public frmFacturasPendientes()
         {
             InitializeComponent();
@@ -81,37 +82,37 @@ namespace SistemaGEISA
 
             List<Factura> facturas= new List<Factura>();// = controler.Model.Factura.Where(f => f.Saldo > 0).ToList();
 
-            if (obra != null && idCliente>0)
+            if ((obra != null && idCliente>0) || this.agregarNCPagos) // Aqui entran las NC de ingresos , NC desde Pagos, Abonos Ingresos
             {
-                foreach (getDetalleIngresos_Result item in controler.Model.getDetalleIngresos(this.obra.Id,this.idCliente).ToList())
+                foreach (getDetalleIngresos_Result item in controler.Model.getDetalleIngresos((this.agregarNCPagos ? (int?)null : this.obra.Id), this.idCliente, (this.agregarNCPagos ? true : false)).ToList())
                 {
                     Factura invoice;
-                    if(source!=string.Empty)
-                        //invoice = controler.Model.Factura.FirstOrDefault(f => f.Id == item.Id && item.Saldo >= 0 && item.FechaCancelacion == null);
-                        invoice = controler.Model.Factura.FirstOrDefault(f => f.Id == item.Id && item.FechaCancelacion == null);
-                    else
-                        invoice = controler.Model.Factura.FirstOrDefault(f => f.Id == item.Id && item.Saldo>0 && item.FechaCancelacion==null);
+                    if (source != string.Empty)                    
+                        invoice = controler.Model.Factura.FirstOrDefault(f => f.Id == item.Id && item.FechaCancelacion == null);                    
+                    else // aqui entra con el boton agregar NC Ingresos del modulo de Pagos                   
+                        invoice = controler.Model.Factura.FirstOrDefault(f => f.Id == item.Id && (this.agregarNCPagos ? 1 : item.Saldo) > 0 && item.FechaCancelacion == null);                    
                     
                     if(invoice!=null)
                         facturas.Add(invoice);
                 }
                 
-            }else if(proveedor != null){
+            }else if(proveedor != null){ // Modulo Pagos
+                //ContrareciboId is null and Factura.ProveedorId is null and ProveedorOtro is null and ReposicionGastosId is null and CajaComprobanteId is null and ConceptosId is null
                 if (isGastoAdm)
-                    facturas = controler.Model.Factura.Where(D => D.ProveedorId == proveedor.Id && D.ContrareciboId != null && D.Saldo > 0).ToList();
-                else                
-                    facturas = controler.Model.Factura.Where(D => D.ProveedorId == proveedor.Id && D.Saldo > 0).ToList();
+                    facturas = controler.Model.Factura.Where(D => D.ProveedorId == proveedor.Id && D.ContrareciboId != null && D.Saldo > 0 && D.FechaCancelacion == null && (D.Contrarecibo != null || D.Proveedor != null || D.ProveedorOtro != null || D.ReposicionGastos != null || D.CajaComprobanteId != null || D.ConceptosId != null)).ToList();
+                else
+                    facturas = controler.Model.Factura.Where(D => D.ProveedorId == proveedor.Id && D.Saldo > 0 && D.FechaCancelacion == null && (D.Contrarecibo != null || D.Proveedor != null || D.ProveedorOtro != null || D.ReposicionGastos != null || D.CajaComprobanteId != null || D.ConceptosId != null)).ToList();
             }
-            else if (cliente != null)
+            else if (cliente != null) // Modulo Pagos, 
             {
                 if (isGastoAdm)
-                    facturas = controler.Model.Factura.Where(D => D.ClienteId == cliente.Id && D.ContrareciboId != null && D.Saldo > 0).ToList();
+                    facturas = controler.Model.Factura.Where(D => D.ClienteId == cliente.Id && D.ContrareciboId != null && D.Saldo > 0 && D.FechaCancelacion == null && (D.Contrarecibo != null || D.Proveedor != null || D.ProveedorOtro != null || D.ReposicionGastos != null || D.CajaComprobanteId != null || D.ConceptosId != null)).ToList();
                 else
-                    facturas = controler.Model.Factura.Where(D => D.ClienteId == cliente.Id && D.Saldo > 0).ToList();
+                    facturas = controler.Model.Factura.Where(D => D.ClienteId == cliente.Id && D.Saldo > 0 && D.FechaCancelacion == null && (D.Contrarecibo != null || D.Proveedor !=null || D.ProveedorOtro != null || D.ReposicionGastos != null || D.CajaComprobanteId != null || D.ConceptosId != null)).ToList();
             }
             else
             {
-                facturas = controler.Model.Factura.Where(D => D.Saldo > 0 && D.CajaComprobanteId != null).ToList();
+                facturas = controler.Model.Factura.Where(D => D.Saldo > 0 && D.CajaComprobanteId != null && D.FechaCancelacion==null).ToList();
             }
 
                 foreach (Factura serv in facturas)

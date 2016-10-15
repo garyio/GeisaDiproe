@@ -120,6 +120,14 @@ namespace SistemaGEISA
                             controler.Model.DeleteObject(item_Pago);
                         }
 
+                        //Recalculo el saldo de la factura cuando se eliminan los PagosFactura
+                        Factura factura_Recalculo = controler.Model.Factura.FirstOrDefault(p => p.Id == item.IdFactura);
+                        if (factura_Recalculo != null && !item.FechaCancelacion.HasValue) 
+                        {
+                            factura.Saldo = factura.Importe - controler.Model.getAbonosTotales(factura.Id, pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                            factura.Saldo = Math.Round(factura.Saldo, 2);
+                        }
+
                         controler.Model.SaveChanges();
                         transaccion.Commit();
                         new frmMessageBox(true) { Message = "El Pago ha sido Eliminado.", Title = "Aviso" }.ShowDialog();

@@ -101,7 +101,7 @@ namespace SistemaGEISA
                 txtCobrar.Text = txtFacturar.Text = txtTotal1.Text = txtTotal2.Text = "";
                 //obra = luObra.GetSelectedDataRow() as Obra;
                 cliente = luClientes.GetSelectedDataRow() as Cliente;
-                grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id).ToList();
+                grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
                 txtEmpresa.Text = obra.Empresa.NombreFiscal;
                 if (obra.PresupuestoDetalle != null)
                 {
@@ -239,12 +239,12 @@ namespace SistemaGEISA
             if (ckSaldo.Checked)
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id).ToList().Where(d => d.Saldo > 0);
+                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList().Where(d => d.Saldo > 0);
             }
             else
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id).ToList();
+                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
             }
 
             if (obra != null && cliente != null)
@@ -347,7 +347,7 @@ namespace SistemaGEISA
                 //txtSaldoFavor.Text = Convert.ToDouble(colSaldo.SummaryItem.SummaryValue) < 0 ? Math.Abs(Convert.ToDouble(colSaldo.SummaryItem.SummaryValue)).ToString("c2") : "$0.00";
                 if (obra.PresupuestoDetalle != null)
                 {
-                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial));
+                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
                     txtSaldoFavor.Text = saldoFavor >= 0 ? saldoFavor.ToString("c2") : "0.00";
                 }
                 else
@@ -426,7 +426,7 @@ namespace SistemaGEISA
                         }
                     }
                     if (obra != null && cliente != null)
-                        grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id).ToList();
+                        grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
                 }
             }
         }
@@ -566,12 +566,12 @@ namespace SistemaGEISA
             if (ckCnceladas.Checked)
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id).ToList();
+                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
             }
             else
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id).ToList().Where(c => c.FechaCancelacion == null);
+                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList().Where(c => c.FechaCancelacion == null);
             }
 
             if (obra != null)
@@ -673,7 +673,7 @@ namespace SistemaGEISA
                 //txtSaldoFavor.Text = Convert.ToDouble(colSaldo.SummaryItem.SummaryValue) < 0 ? Math.Abs(Convert.ToDouble(colSaldo.SummaryItem.SummaryValue)).ToString("c2") : "$0.00";
                 if (obra.PresupuestoDetalle != null)
                 {
-                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial));
+                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
                     txtSaldoFavor.Text = saldoFavor >= 0 ? saldoFavor.ToString("c2") : "0.00";
                 }
                 else
