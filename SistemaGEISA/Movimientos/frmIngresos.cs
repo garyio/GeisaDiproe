@@ -34,6 +34,8 @@ namespace SistemaGEISA
 
         private Controler _controler = new Controler();
 
+        private List<getDetalleIngresos_Result> ingresos;
+
         private getDetalleIngresos_Result item;
         private double saldoFavor = 0;
 
@@ -86,6 +88,63 @@ namespace SistemaGEISA
         //{
 
         //}
+        private void getTotalesPorCobrar(List<getDetalleIngresos_Result> ingresosPorCObrar)
+        {
+            double Obracivil=0, subcontratistas=0, suministros=0, Extras=0, Mantenimiento=0, NoAplica=0;
+            Obracivil = ingresosPorCObrar.Where(I => I.ObraCivil.Value> 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
+            subcontratistas = ingresosPorCObrar.Where(I => I.Subcontratistas.Value> 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
+            suministros = ingresosPorCObrar.Where(I => I.Suministros.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
+            Extras = ingresosPorCObrar.Where(I => I.Extras.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
+            Mantenimiento = ingresosPorCObrar.Where(I => I.Mantenimiento.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
+            NoAplica = ingresosPorCObrar.Where(I => I.No_Aplica.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
+
+            txtObraCivil4.Text = obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue
+                        ? (obra.PresupuestoDetalle.PPFin_ObraCivil.Value - (Obracivil)).ToString("c2") :
+                        ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
+                            (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Obracivil)).ToString("c2") : String.Format("{0:c2}", Obracivil));
+            // Subcontratistas
+            txtSubcontratistas4.Text = obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue
+                ? (obra.PresupuestoDetalle.PPFin_Subcontratistas.Value - (Convert.ToDouble(subcontratistas))).ToString("c2")
+                : (obra.PresupuestoDetalle.PPIni_Subcontratistas.HasValue ? obra.PresupuestoDetalle.PPIni_Subcontratistas.Value : 0) > 0 ?
+                   (obra.PresupuestoDetalle.PPIni_Subcontratistas.Value - (Convert.ToDouble(subcontratistas))).ToString("c2") : String.Format("{0:c2}", subcontratistas);
+            // suministros
+            txtSuministros4.Text = obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(suministros))).ToString("c2")
+                : ((obra.PresupuestoDetalle.PPIni_Suministros.HasValue ? obra.PresupuestoDetalle.PPIni_Suministros.Value : 0) > 0 ?
+                   (obra.PresupuestoDetalle.PPIni_Suministros.Value - (Convert.ToDouble(suministros))).ToString("c2") : String.Format("{0:c2}", suministros));
+            // Extras
+            txtExtras4.Text = obra.PresupuestoDetalle.PPFin_Extras.HasValue
+                ? (obra.PresupuestoDetalle.PPFin_Extras.Value - (Convert.ToDouble(Extras))).ToString("c2")
+                : ((obra.PresupuestoDetalle.PPIni_Extras.HasValue ? obra.PresupuestoDetalle.PPIni_Extras.Value : 0) > 0
+                    ? (obra.PresupuestoDetalle.PPIni_Extras.Value - (Convert.ToDouble(Extras))).ToString("c2")
+                    : String.Format("{0:c2}", Extras));
+            //Mantenimiento
+            txtMantenimiento4.Text = obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue
+                ? (obra.PresupuestoDetalle.PPFin_Mantenimiento.Value - (Convert.ToDouble(Mantenimiento))).ToString("c2")
+                : (obra.PresupuestoDetalle.PPIni_Mantenimiento.HasValue ? obra.PresupuestoDetalle.PPIni_Mantenimiento.Value : 0) > 0
+                    ? (obra.PresupuestoDetalle.PPIni_Mantenimiento.Value - (Convert.ToDouble(Mantenimiento))).ToString("c2")
+                    : String.Format("{0:c2}", Mantenimiento);
+            //No Aplica
+            txtNA4.Text = obra.PresupuestoDetalle.PPFin_NA.HasValue
+                ? (obra.PresupuestoDetalle.PPFin_NA.Value - (Convert.ToDouble(NoAplica))).ToString("c2")
+                : ((obra.PresupuestoDetalle.PPIni_NA.HasValue ? obra.PresupuestoDetalle.PPIni_NA.Value : 0) > 0
+                    ? (obra.PresupuestoDetalle.PPIni_NA.Value - (Convert.ToDouble(NoAplica))).ToString("c2")
+                    : String.Format("{0:c2}", NoAplica));
+            //Descuento
+            txtDescuentos4.Text = obra.PresupuestoDetalle.PPFin_Descuento.HasValue
+                ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
+                : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
+
+                            // SI son Negativos, la seccion por Cobrar debe de salir cero.
+            txtObraCivil4.Text = convertirDouble(txtObraCivil4.Text).ToString("c2");
+            txtSubcontratistas4.Text = convertirDouble(txtSubcontratistas4.Text).ToString("c2");
+            txtSuministros4.Text = convertirDouble(txtSuministros4.Text).ToString("c2");
+            txtExtras4.Text = convertirDouble(txtExtras4.Text).ToString("c2");
+            txtMantenimiento4.Text = convertirDouble(txtMantenimiento4.Text).ToString("c2");
+            txtNA4.Text = convertirDouble(txtNA4.Text).ToString("c2");
+            txtDescuentos4.Text = convertirDouble(txtDescuentos4.Text).ToString("c2");
+            txtTotal4.Text = ((string.IsNullOrEmpty(txtObraCivil4.Text) ? 0 : getValue(txtObraCivil4.Text)) + (string.IsNullOrEmpty(txtSubcontratistas4.Text) ? 0 : getValue(txtSubcontratistas4.Text)) + (string.IsNullOrEmpty(txtSuministros4.Text) ? 0 : getValue(txtSuministros4.Text)) + (string.IsNullOrEmpty(txtExtras4.Text) ? 0 : getValue(txtExtras4.Text)) + (string.IsNullOrEmpty(txtMantenimiento4.Text) ? 0 : getValue(txtMantenimiento4.Text)) + (string.IsNullOrEmpty(txtNA4.Text) ? 0 : getValue(txtNA4.Text)) - (string.IsNullOrEmpty(txtDescuentos4.Text) ? 0 : getValue(txtDescuentos4.Text))).ToString("c2");              
+
+        }
 
         private void luObra_EditValueChanged(object sender, EventArgs e)
         {
@@ -101,7 +160,7 @@ namespace SistemaGEISA
                 txtCobrar.Text = txtFacturar.Text = txtTotal1.Text = txtTotal2.Text = "";
                 //obra = luObra.GetSelectedDataRow() as Obra;
                 cliente = luClientes.GetSelectedDataRow() as Cliente;
-                grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
+                grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false).ToList();                
                 txtEmpresa.Text = obra.Empresa.NombreFiscal;
                 if (obra.PresupuestoDetalle != null)
                 {
@@ -165,7 +224,7 @@ namespace SistemaGEISA
                         ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
 
-                    // SI son Negativos, la seccion por cobrar debe de salir cero.
+                    // SI son Negativos, la seccion por Facturar debe de salir cero.
                     txtObraCivil3.Text = convertirDouble(txtObraCivil3.Text).ToString("c2");
                     txtSubcontratistas3.Text = convertirDouble(txtSubcontratistas3.Text).ToString("c2");
                     txtSuministros3.Text = convertirDouble(txtSuministros3.Text).ToString("c2");
@@ -174,11 +233,12 @@ namespace SistemaGEISA
                     txtNA3.Text = convertirDouble(txtNA3.Text).ToString("c2");
                     txtDescuentos3.Text = convertirDouble(txtDescuentos3.Text).ToString("c2");
                     txtTotal3.Text = ((string.IsNullOrEmpty(txtObraCivil3.Text) ? 0 : getValue(txtObraCivil3.Text)) + (string.IsNullOrEmpty(txtSubcontratistas3.Text) ? 0 : getValue(txtSubcontratistas3.Text)) + (string.IsNullOrEmpty(txtSuministros3.Text) ? 0 : getValue(txtSuministros3.Text)) + (string.IsNullOrEmpty(txtExtras3.Text) ? 0 : getValue(txtExtras3.Text)) + (string.IsNullOrEmpty(txtMantenimiento3.Text) ? 0 : getValue(txtMantenimiento3.Text)) + (string.IsNullOrEmpty(txtNA3.Text) ? 0 : getValue(txtNA3.Text)) - (string.IsNullOrEmpty(txtDescuentos3.Text) ? 0 : getValue(txtDescuentos3.Text))).ToString("c2");
+                    getTotalesPorCobrar(ingresos); // lleno seccion Por Cobrar
                     //}
                 }
                 else
                 {
-                    txtObraCivil3.Text = txtSuministros3.Text = txtSubcontratistas3.Text = txtExtras3.Text = txtMantenimiento3.Text = txtNA3.Text = txtDescuentos3.Text = txtTotal3.Text = txtObraCivil1.Text = txtObraCivil2.Text = txtSuministros1.Text = txtSuministros2.Text = txtSubcontratistas1.Text = txtSubcontratistas2.Text = txtExtras1.Text = txtExtras2.Text = txtMantenimiento1.Text = txtMantenimiento2.Text = txtNA1.Text = txtNA2.Text = txtDescuentos1.Text = txtDescuentos2.Text = txtTotal1.Text = txtTotal2.Text = "0";
+                    txtObraCivil4.Text = txtSuministros4.Text = txtSubcontratistas4.Text = txtExtras4.Text = txtMantenimiento4.Text = txtNA4.Text = txtDescuentos4.Text = txtTotal4.Text = txtObraCivil3.Text = txtSuministros3.Text = txtSubcontratistas3.Text = txtExtras3.Text = txtMantenimiento3.Text = txtNA3.Text = txtDescuentos3.Text = txtTotal3.Text = txtObraCivil1.Text = txtObraCivil2.Text = txtSuministros1.Text = txtSuministros2.Text = txtSubcontratistas1.Text = txtSubcontratistas2.Text = txtExtras1.Text = txtExtras2.Text = txtMantenimiento1.Text = txtMantenimiento2.Text = txtNA1.Text = txtNA2.Text = txtDescuentos1.Text = txtDescuentos2.Text = txtTotal1.Text = txtTotal2.Text = "0";
                 }
                 // ****************************
 
@@ -200,6 +260,7 @@ namespace SistemaGEISA
                 else
                     txtSaldoFavor.Text = "0.00";
                 //txtSaldoFavor.Text = "TOTAL PAGOS - PREPUPUESTO FINAL"
+                
             }
         }
 
@@ -236,15 +297,19 @@ namespace SistemaGEISA
 
         private void ckSaldo_CheckedChanged(object sender, EventArgs e)
         {
+            List<getDetalleIngresos_Result> ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false).ToList();
+            grid.DataSource = ingresos;
             if (ckSaldo.Checked)
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList().Where(d => d.Saldo > 0);
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false).Where(d => d.Saldo > 0).ToList();  
+                    //grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList().Where(d => d.Saldo > 0);
             }
             else
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false).ToList();  
+                    //grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
             }
 
             if (obra != null && cliente != null)
@@ -326,12 +391,13 @@ namespace SistemaGEISA
                     txtNA3.Text = convertirDouble(txtNA3.Text).ToString("c2");
                     txtDescuentos3.Text = convertirDouble(txtDescuentos3.Text).ToString("c2");
                     txtTotal3.Text = ((string.IsNullOrEmpty(txtObraCivil3.Text) ? 0 : getValue(txtObraCivil3.Text)) + (string.IsNullOrEmpty(txtSubcontratistas3.Text) ? 0 : getValue(txtSubcontratistas3.Text)) + (string.IsNullOrEmpty(txtSuministros3.Text) ? 0 : getValue(txtSuministros3.Text)) + (string.IsNullOrEmpty(txtExtras3.Text) ? 0 : getValue(txtExtras3.Text)) + (string.IsNullOrEmpty(txtMantenimiento3.Text) ? 0 : getValue(txtMantenimiento3.Text)) + (string.IsNullOrEmpty(txtNA3.Text) ? 0 : getValue(txtNA3.Text)) - (string.IsNullOrEmpty(txtDescuentos3.Text) ? 0 : getValue(txtDescuentos3.Text))).ToString("c2");
+                    getTotalesPorCobrar(ingresos); // lleno seccion Por Cobrar
 
                     //}
                 }
                 else
                 {
-                    txtObraCivil3.Text = txtSuministros3.Text = txtSubcontratistas3.Text = txtExtras3.Text = txtMantenimiento3.Text = txtNA3.Text = txtDescuentos3.Text = txtTotal3.Text = txtObraCivil1.Text = txtObraCivil2.Text = txtSuministros1.Text = txtSuministros2.Text = txtSubcontratistas1.Text = txtSubcontratistas2.Text = txtExtras1.Text = txtExtras2.Text = txtMantenimiento1.Text = txtMantenimiento2.Text = txtNA1.Text = txtNA2.Text = txtDescuentos1.Text = txtDescuentos2.Text = txtTotal1.Text = txtTotal2.Text = "0";
+                    txtObraCivil4.Text = txtSuministros4.Text = txtSubcontratistas4.Text = txtExtras4.Text = txtMantenimiento4.Text = txtNA4.Text = txtDescuentos4.Text = txtTotal4.Text = txtObraCivil3.Text = txtSuministros3.Text = txtSubcontratistas3.Text = txtExtras3.Text = txtMantenimiento3.Text = txtNA3.Text = txtDescuentos3.Text = txtTotal3.Text = txtObraCivil1.Text = txtObraCivil2.Text = txtSuministros1.Text = txtSuministros2.Text = txtSubcontratistas1.Text = txtSubcontratistas2.Text = txtExtras1.Text = txtExtras2.Text = txtMantenimiento1.Text = txtMantenimiento2.Text = txtNA1.Text = txtNA2.Text = txtDescuentos1.Text = txtDescuentos2.Text = txtTotal1.Text = txtTotal2.Text = "0";
                 }
                 // ****************************
 
@@ -352,6 +418,7 @@ namespace SistemaGEISA
                 }
                 else
                     txtSaldoFavor.Text = "0.00";
+                
             }
         }
 
@@ -566,12 +633,12 @@ namespace SistemaGEISA
             if (ckCnceladas.Checked)
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
             }
             else
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList().Where(c => c.FechaCancelacion == null);
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).Where(c => c.FechaCancelacion == null).ToList();
             }
 
             if (obra != null)
@@ -652,12 +719,12 @@ namespace SistemaGEISA
                     txtNA3.Text = convertirDouble(txtNA3.Text).ToString("c2");
                     txtDescuentos3.Text = convertirDouble(txtDescuentos3.Text).ToString("c2");
                     txtTotal3.Text = ((string.IsNullOrEmpty(txtObraCivil3.Text) ? 0 : getValue(txtObraCivil3.Text)) + (string.IsNullOrEmpty(txtSubcontratistas3.Text) ? 0 : getValue(txtSubcontratistas3.Text)) + (string.IsNullOrEmpty(txtSuministros3.Text) ? 0 : getValue(txtSuministros3.Text)) + (string.IsNullOrEmpty(txtExtras3.Text) ? 0 : getValue(txtExtras3.Text)) + (string.IsNullOrEmpty(txtMantenimiento3.Text) ? 0 : getValue(txtMantenimiento3.Text)) + (string.IsNullOrEmpty(txtNA3.Text) ? 0 : getValue(txtNA3.Text)) - (string.IsNullOrEmpty(txtDescuentos3.Text) ? 0 : getValue(txtDescuentos3.Text))).ToString("c2");
-
+                    getTotalesPorCobrar(ingresos); // lleno seccion Por Cobrar
                     //}
                 }
                 else
                 {
-                    txtObraCivil3.Text = txtSuministros3.Text = txtSubcontratistas3.Text = txtExtras3.Text = txtMantenimiento3.Text = txtNA3.Text = txtDescuentos3.Text = txtTotal3.Text = txtObraCivil1.Text = txtObraCivil2.Text = txtSuministros1.Text = txtSuministros2.Text = txtSubcontratistas1.Text = txtSubcontratistas2.Text = txtExtras1.Text = txtExtras2.Text = txtMantenimiento1.Text = txtMantenimiento2.Text = txtNA1.Text = txtNA2.Text = txtDescuentos1.Text = txtDescuentos2.Text = txtTotal1.Text = txtTotal2.Text = "0";
+                    txtObraCivil4.Text = txtSuministros4.Text = txtSubcontratistas4.Text = txtExtras4.Text = txtMantenimiento4.Text = txtNA4.Text = txtDescuentos4.Text = txtTotal4.Text = txtObraCivil3.Text = txtSuministros3.Text = txtSubcontratistas3.Text = txtExtras3.Text = txtMantenimiento3.Text = txtNA3.Text = txtDescuentos3.Text = txtTotal3.Text = txtObraCivil1.Text = txtObraCivil2.Text = txtSuministros1.Text = txtSuministros2.Text = txtSubcontratistas1.Text = txtSubcontratistas2.Text = txtExtras1.Text = txtExtras2.Text = txtMantenimiento1.Text = txtMantenimiento2.Text = txtNA1.Text = txtNA2.Text = txtDescuentos1.Text = txtDescuentos2.Text = txtTotal1.Text = txtTotal2.Text = "0";
                 }
                 // ****************************
 
@@ -678,6 +745,7 @@ namespace SistemaGEISA
                 }
                 else
                     txtSaldoFavor.Text = "0.00";
+                
             }
 
         }

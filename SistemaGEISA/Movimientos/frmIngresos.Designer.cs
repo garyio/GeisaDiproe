@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngresos));
             this.btnDetalle = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -39,14 +39,14 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtObraCivil4 = new System.Windows.Forms.TextBox();
+            this.txtSubcontratistas4 = new System.Windows.Forms.TextBox();
+            this.txtSuministros4 = new System.Windows.Forms.TextBox();
+            this.txtExtras4 = new System.Windows.Forms.TextBox();
+            this.txtTotal4 = new System.Windows.Forms.TextBox();
+            this.txtMantenimiento4 = new System.Windows.Forms.TextBox();
+            this.txtNA4 = new System.Windows.Forms.TextBox();
+            this.txtDescuentos4 = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
@@ -190,7 +190,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 9;
+            this.tableLayoutPanel1.ColumnCount = 8;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -199,7 +199,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.groupControl5, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 0, 7);
@@ -246,14 +246,14 @@
             this.tableLayoutPanel6.Controls.Add(this.label34, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.label35, 0, 3);
             this.tableLayoutPanel6.Controls.Add(this.label36, 0, 7);
-            this.tableLayoutPanel6.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.textBox2, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.textBox3, 1, 2);
-            this.tableLayoutPanel6.Controls.Add(this.textBox4, 1, 3);
-            this.tableLayoutPanel6.Controls.Add(this.textBox5, 1, 7);
-            this.tableLayoutPanel6.Controls.Add(this.textBox6, 1, 4);
-            this.tableLayoutPanel6.Controls.Add(this.textBox7, 1, 5);
-            this.tableLayoutPanel6.Controls.Add(this.textBox8, 1, 6);
+            this.tableLayoutPanel6.Controls.Add(this.txtObraCivil4, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.txtSubcontratistas4, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.txtSuministros4, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.txtExtras4, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.txtTotal4, 1, 7);
+            this.tableLayoutPanel6.Controls.Add(this.txtMantenimiento4, 1, 4);
+            this.tableLayoutPanel6.Controls.Add(this.txtNA4, 1, 5);
+            this.tableLayoutPanel6.Controls.Add(this.txtDescuentos4, 1, 6);
             this.tableLayoutPanel6.Controls.Add(this.label37, 0, 5);
             this.tableLayoutPanel6.Controls.Add(this.label38, 0, 6);
             this.tableLayoutPanel6.Controls.Add(this.label39, 0, 4);
@@ -333,69 +333,69 @@
             this.label36.Text = "TOTAL";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // txtObraCivil4
             // 
-            this.textBox1.Location = new System.Drawing.Point(59, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(90, 21);
-            this.textBox1.TabIndex = 72;
+            this.txtObraCivil4.Location = new System.Drawing.Point(59, 3);
+            this.txtObraCivil4.Name = "txtObraCivil4";
+            this.txtObraCivil4.ReadOnly = true;
+            this.txtObraCivil4.Size = new System.Drawing.Size(90, 21);
+            this.txtObraCivil4.TabIndex = 72;
             // 
-            // textBox2
+            // txtSubcontratistas4
             // 
-            this.textBox2.Location = new System.Drawing.Point(59, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(90, 21);
-            this.textBox2.TabIndex = 73;
+            this.txtSubcontratistas4.Location = new System.Drawing.Point(59, 30);
+            this.txtSubcontratistas4.Name = "txtSubcontratistas4";
+            this.txtSubcontratistas4.ReadOnly = true;
+            this.txtSubcontratistas4.Size = new System.Drawing.Size(90, 21);
+            this.txtSubcontratistas4.TabIndex = 73;
             // 
-            // textBox3
+            // txtSuministros4
             // 
-            this.textBox3.Location = new System.Drawing.Point(59, 57);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(90, 21);
-            this.textBox3.TabIndex = 74;
+            this.txtSuministros4.Location = new System.Drawing.Point(59, 57);
+            this.txtSuministros4.Name = "txtSuministros4";
+            this.txtSuministros4.ReadOnly = true;
+            this.txtSuministros4.Size = new System.Drawing.Size(90, 21);
+            this.txtSuministros4.TabIndex = 74;
             // 
-            // textBox4
+            // txtExtras4
             // 
-            this.textBox4.Location = new System.Drawing.Point(59, 84);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(90, 21);
-            this.textBox4.TabIndex = 75;
+            this.txtExtras4.Location = new System.Drawing.Point(59, 84);
+            this.txtExtras4.Name = "txtExtras4";
+            this.txtExtras4.ReadOnly = true;
+            this.txtExtras4.Size = new System.Drawing.Size(90, 21);
+            this.txtExtras4.TabIndex = 75;
             // 
-            // textBox5
+            // txtTotal4
             // 
-            this.textBox5.Location = new System.Drawing.Point(59, 192);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(90, 21);
-            this.textBox5.TabIndex = 76;
+            this.txtTotal4.Location = new System.Drawing.Point(59, 192);
+            this.txtTotal4.Name = "txtTotal4";
+            this.txtTotal4.ReadOnly = true;
+            this.txtTotal4.Size = new System.Drawing.Size(90, 21);
+            this.txtTotal4.TabIndex = 76;
             // 
-            // textBox6
+            // txtMantenimiento4
             // 
-            this.textBox6.Location = new System.Drawing.Point(59, 111);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(90, 21);
-            this.textBox6.TabIndex = 77;
+            this.txtMantenimiento4.Location = new System.Drawing.Point(59, 111);
+            this.txtMantenimiento4.Name = "txtMantenimiento4";
+            this.txtMantenimiento4.ReadOnly = true;
+            this.txtMantenimiento4.Size = new System.Drawing.Size(90, 21);
+            this.txtMantenimiento4.TabIndex = 77;
             // 
-            // textBox7
+            // txtNA4
             // 
-            this.textBox7.Location = new System.Drawing.Point(59, 138);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(90, 21);
-            this.textBox7.TabIndex = 78;
+            this.txtNA4.Location = new System.Drawing.Point(59, 138);
+            this.txtNA4.Name = "txtNA4";
+            this.txtNA4.ReadOnly = true;
+            this.txtNA4.Size = new System.Drawing.Size(90, 21);
+            this.txtNA4.TabIndex = 78;
             // 
-            // textBox8
+            // txtDescuentos4
             // 
-            this.textBox8.Location = new System.Drawing.Point(59, 165);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(90, 21);
-            this.textBox8.TabIndex = 79;
+            this.txtDescuentos4.Location = new System.Drawing.Point(59, 165);
+            this.txtDescuentos4.Name = "txtDescuentos4";
+            this.txtDescuentos4.ReadOnly = true;
+            this.txtDescuentos4.Size = new System.Drawing.Size(90, 21);
+            this.txtDescuentos4.TabIndex = 79;
             // 
             // label37
             // 
@@ -435,7 +435,7 @@
             // 
             // grid
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.grid, 7);
+            this.tableLayoutPanel1.SetColumnSpan(this.grid, 8);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.grid.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
@@ -444,15 +444,15 @@
             this.grid.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.grid.EmbeddedNavigator.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.grid.Font = new System.Drawing.Font("Calibri", 8.25F);
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.grid.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.grid.Location = new System.Drawing.Point(8, 311);
             this.grid.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             this.grid.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grid.MainView = this.gv;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1193, 245);
+            this.grid.Size = new System.Drawing.Size(1204, 245);
             this.grid.TabIndex = 52;
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1521,7 +1521,7 @@
             this.tableLayoutPanel1.SetRowSpan(this.groupControl4, 7);
             this.groupControl4.Size = new System.Drawing.Size(167, 252);
             this.groupControl4.TabIndex = 74;
-            this.groupControl4.Text = "Por Cobrar";
+            this.groupControl4.Text = "Por Facturar";
             // 
             // tableLayoutPanel5
             // 
@@ -1925,14 +1925,14 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtObraCivil4;
+        private System.Windows.Forms.TextBox txtSubcontratistas4;
+        private System.Windows.Forms.TextBox txtSuministros4;
+        private System.Windows.Forms.TextBox txtExtras4;
+        private System.Windows.Forms.TextBox txtTotal4;
+        private System.Windows.Forms.TextBox txtMantenimiento4;
+        private System.Windows.Forms.TextBox txtNA4;
+        private System.Windows.Forms.TextBox txtDescuentos4;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
