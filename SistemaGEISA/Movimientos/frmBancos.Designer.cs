@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBancos));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.menu = new System.Windows.Forms.ToolStrip();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnCerrarMes = new System.Windows.Forms.ToolStripButton();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.lblSaldoInicial = new System.Windows.Forms.ToolStripLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -99,7 +100,6 @@
             this.txtTransitoPeriodoAnt = new System.Windows.Forms.TextBox();
             this.txtChCobradosMesAnt = new System.Windows.Forms.TextBox();
             this.txtDif3 = new System.Windows.Forms.TextBox();
-            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luBanco.Properties)).BeginInit();
@@ -169,12 +169,21 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Image = global::SistemaGEISA.Properties.Resources.Nuevo;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(120, 24);
             this.btnAgregar.Text = "Agregar Ingresos";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(77, 24);
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnExportar
             // 
@@ -325,9 +334,9 @@
             this.grid.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.grid.EmbeddedNavigator.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.grid.Font = new System.Drawing.Font("Calibri", 8.25F);
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.grid.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.grid.Location = new System.Drawing.Point(8, 62);
             this.grid.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             this.grid.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -965,15 +974,6 @@
             this.txtDif3.Size = new System.Drawing.Size(120, 21);
             this.txtDif3.TabIndex = 90;
             this.txtDif3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
-            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(77, 24);
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // frmBancos
             // 

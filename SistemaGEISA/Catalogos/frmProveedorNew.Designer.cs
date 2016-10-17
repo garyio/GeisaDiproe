@@ -113,7 +113,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Image = global::SistemaGEISA.Properties.Resources.document_save;
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 26);
@@ -141,8 +141,8 @@
             this.tableLayoutPanel1.Controls.Add(this.txtCelular, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.txtTelefono, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.txtRFC, 1, 11);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.txtRFC, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnCiudad, 3, 7);
             this.tableLayoutPanel1.Controls.Add(this.lookupCiudad, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnEstado, 3, 6);
@@ -168,8 +168,8 @@
             this.tableLayoutPanel1.Controls.Add(this.txtMail, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 12);
             this.tableLayoutPanel1.Controls.Add(this.rgRazonSocial, 1, 12);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 2, 11);
-            this.tableLayoutPanel1.Controls.Add(this.spinPlazoCredito, 3, 11);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.spinPlazoCredito, 1, 11);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -195,17 +195,17 @@
             // 
             this.txtCodigoPostal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigoPostal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCodigoPostal.Location = new System.Drawing.Point(102, 198);
+            this.txtCodigoPostal.Location = new System.Drawing.Point(102, 225);
             this.txtCodigoPostal.Mask = "00000";
             this.txtCodigoPostal.Name = "txtCodigoPostal";
-            this.txtCodigoPostal.Size = new System.Drawing.Size(107, 21);
+            this.txtCodigoPostal.Size = new System.Drawing.Size(119, 21);
             this.txtCodigoPostal.TabIndex = 20;
             this.txtCodigoPostal.TabIndexChanged += new System.EventHandler(this.txtCodigoPostal_TabIndexChanged);
             // 
             // txtCelular
             // 
             this.txtCelular.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCelular.Location = new System.Drawing.Point(291, 225);
+            this.txtCelular.Location = new System.Drawing.Point(296, 252);
             this.txtCelular.Mask = "000-000-0000";
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(119, 21);
@@ -216,10 +216,10 @@
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefono.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTelefono.Location = new System.Drawing.Point(102, 225);
+            this.txtTelefono.Location = new System.Drawing.Point(102, 252);
             this.txtTelefono.Mask = "(999)000-0000";
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(107, 21);
+            this.txtTelefono.Size = new System.Drawing.Size(119, 21);
             this.txtTelefono.TabIndex = 21;
             this.txtTelefono.TabIndexChanged += new System.EventHandler(this.txtTelefono_TabIndexChanged);
             // 
@@ -227,12 +227,12 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.grid, 5);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(3, 345);
+            this.grid.Location = new System.Drawing.Point(3, 371);
             this.grid.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             this.grid.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grid.MainView = this.gv;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(440, 98);
+            this.grid.Size = new System.Drawing.Size(440, 72);
             this.grid.TabIndex = 26;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv});
@@ -314,17 +314,18 @@
             // 
             this.txtRFC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRFC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRFC.Location = new System.Drawing.Point(102, 279);
+            this.txtRFC.Location = new System.Drawing.Point(102, 3);
             this.txtRFC.MaxLength = 13;
             this.txtRFC.Name = "txtRFC";
-            this.txtRFC.Size = new System.Drawing.Size(107, 21);
+            this.txtRFC.Size = new System.Drawing.Size(119, 21);
             this.txtRFC.TabIndex = 24;
+            this.txtRFC.Leave += new System.EventHandler(this.txtRFC_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 279);
+            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 21);
@@ -343,7 +344,7 @@
             this.btnCiudad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCiudad.ForeColor = System.Drawing.Color.Transparent;
             this.btnCiudad.Image = global::SistemaGEISA.Properties.Resources.agregar;
-            this.btnCiudad.Location = new System.Drawing.Point(289, 166);
+            this.btnCiudad.Location = new System.Drawing.Point(294, 193);
             this.btnCiudad.Margin = new System.Windows.Forms.Padding(1);
             this.btnCiudad.Name = "btnCiudad";
             this.btnCiudad.Size = new System.Drawing.Size(30, 28);
@@ -355,7 +356,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.lookupCiudad, 2);
             this.lookupCiudad.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lookupCiudad.Location = new System.Drawing.Point(102, 172);
+            this.lookupCiudad.Location = new System.Drawing.Point(102, 199);
             this.lookupCiudad.Name = "lookupCiudad";
             this.lookupCiudad.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.lookupCiudad.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -365,7 +366,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
             this.lookupCiudad.Properties.NullText = "";
             this.lookupCiudad.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookupCiudad.Size = new System.Drawing.Size(183, 20);
+            this.lookupCiudad.Size = new System.Drawing.Size(188, 20);
             this.lookupCiudad.TabIndex = 18;
             // 
             // btnEstado
@@ -379,7 +380,7 @@
             this.btnEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstado.ForeColor = System.Drawing.Color.Transparent;
             this.btnEstado.Image = global::SistemaGEISA.Properties.Resources.agregar;
-            this.btnEstado.Location = new System.Drawing.Point(289, 136);
+            this.btnEstado.Location = new System.Drawing.Point(294, 163);
             this.btnEstado.Margin = new System.Windows.Forms.Padding(1);
             this.btnEstado.Name = "btnEstado";
             this.btnEstado.Size = new System.Drawing.Size(30, 28);
@@ -391,7 +392,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.lookupEstado, 2);
             this.lookupEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lookupEstado.Location = new System.Drawing.Point(102, 142);
+            this.lookupEstado.Location = new System.Drawing.Point(102, 169);
             this.lookupEstado.Name = "lookupEstado";
             this.lookupEstado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.lookupEstado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -401,7 +402,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
             this.lookupEstado.Properties.NullText = "";
             this.lookupEstado.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookupEstado.Size = new System.Drawing.Size(183, 20);
+            this.lookupEstado.Size = new System.Drawing.Size(188, 20);
             this.lookupEstado.TabIndex = 15;
             this.lookupEstado.EditValueChanged += new System.EventHandler(this.lookupEstado_EditValueChanged);
             // 
@@ -409,7 +410,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Location = new System.Drawing.Point(3, 30);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 21);
@@ -424,17 +425,17 @@
             this.txtNomComercial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tableLayoutPanel1.SetColumnSpan(this.txtNomComercial, 3);
             this.txtNomComercial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNomComercial.Location = new System.Drawing.Point(102, 3);
+            this.txtNomComercial.Location = new System.Drawing.Point(102, 30);
             this.txtNomComercial.MaxLength = 50;
             this.txtNomComercial.Name = "txtNomComercial";
-            this.txtNomComercial.Size = new System.Drawing.Size(308, 21);
+            this.txtNomComercial.Size = new System.Drawing.Size(313, 21);
             this.txtNomComercial.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 30);
+            this.label3.Location = new System.Drawing.Point(3, 57);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 21);
@@ -448,17 +449,17 @@
             this.txtNomFiscal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tableLayoutPanel1.SetColumnSpan(this.txtNomFiscal, 3);
             this.txtNomFiscal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNomFiscal.Location = new System.Drawing.Point(102, 30);
+            this.txtNomFiscal.Location = new System.Drawing.Point(102, 57);
             this.txtNomFiscal.MaxLength = 50;
             this.txtNomFiscal.Name = "txtNomFiscal";
-            this.txtNomFiscal.Size = new System.Drawing.Size(308, 21);
+            this.txtNomFiscal.Size = new System.Drawing.Size(313, 21);
             this.txtNomFiscal.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 57);
+            this.label4.Location = new System.Drawing.Point(3, 84);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 21);
@@ -472,17 +473,17 @@
             this.txtCalle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tableLayoutPanel1.SetColumnSpan(this.txtCalle, 3);
             this.txtCalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCalle.Location = new System.Drawing.Point(102, 57);
+            this.txtCalle.Location = new System.Drawing.Point(102, 84);
             this.txtCalle.MaxLength = 200;
             this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(308, 21);
+            this.txtCalle.Size = new System.Drawing.Size(313, 21);
             this.txtCalle.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(3, 84);
+            this.label5.Location = new System.Drawing.Point(3, 111);
             this.label5.Margin = new System.Windows.Forms.Padding(3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 21);
@@ -495,20 +496,20 @@
             this.txtExterior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtExterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtExterior.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtExterior.Location = new System.Drawing.Point(102, 84);
+            this.txtExterior.Location = new System.Drawing.Point(102, 111);
             this.txtExterior.MaxLength = 50;
             this.txtExterior.Name = "txtExterior";
-            this.txtExterior.Size = new System.Drawing.Size(107, 21);
+            this.txtExterior.Size = new System.Drawing.Size(119, 21);
             this.txtExterior.TabIndex = 9;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(215, 84);
+            this.label6.Location = new System.Drawing.Point(227, 111);
             this.label6.Margin = new System.Windows.Forms.Padding(3);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 21);
+            this.label6.Size = new System.Drawing.Size(63, 21);
             this.label6.TabIndex = 10;
             this.label6.Text = "No. Interior";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -518,7 +519,7 @@
             this.txtInterior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtInterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtInterior.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtInterior.Location = new System.Drawing.Point(291, 84);
+            this.txtInterior.Location = new System.Drawing.Point(296, 111);
             this.txtInterior.MaxLength = 50;
             this.txtInterior.Name = "txtInterior";
             this.txtInterior.Size = new System.Drawing.Size(119, 21);
@@ -528,7 +529,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 111);
+            this.label7.Location = new System.Drawing.Point(3, 138);
             this.label7.Margin = new System.Windows.Forms.Padding(3);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 21);
@@ -542,17 +543,17 @@
             this.txtColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tableLayoutPanel1.SetColumnSpan(this.txtColonia, 3);
             this.txtColonia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtColonia.Location = new System.Drawing.Point(102, 111);
+            this.txtColonia.Location = new System.Drawing.Point(102, 138);
             this.txtColonia.MaxLength = 200;
             this.txtColonia.Name = "txtColonia";
-            this.txtColonia.Size = new System.Drawing.Size(308, 21);
+            this.txtColonia.Size = new System.Drawing.Size(313, 21);
             this.txtColonia.TabIndex = 13;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 138);
+            this.label8.Location = new System.Drawing.Point(3, 165);
             this.label8.Margin = new System.Windows.Forms.Padding(3);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 24);
@@ -564,7 +565,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(3, 168);
+            this.label9.Location = new System.Drawing.Point(3, 195);
             this.label9.Margin = new System.Windows.Forms.Padding(3);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 24);
@@ -576,7 +577,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(3, 198);
+            this.label10.Location = new System.Drawing.Point(3, 225);
             this.label10.Margin = new System.Windows.Forms.Padding(3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(93, 21);
@@ -588,7 +589,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(3, 225);
+            this.label11.Location = new System.Drawing.Point(3, 252);
             this.label11.Margin = new System.Windows.Forms.Padding(3);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(93, 21);
@@ -600,10 +601,10 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(215, 225);
+            this.label12.Location = new System.Drawing.Point(227, 252);
             this.label12.Margin = new System.Windows.Forms.Padding(3);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 21);
+            this.label12.Size = new System.Drawing.Size(63, 21);
             this.label12.TabIndex = 24;
             this.label12.Text = "Celular";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -612,7 +613,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(3, 252);
+            this.label13.Location = new System.Drawing.Point(3, 279);
             this.label13.Margin = new System.Windows.Forms.Padding(3);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(93, 21);
@@ -625,17 +626,17 @@
             this.txtMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel1.SetColumnSpan(this.txtMail, 3);
             this.txtMail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMail.Location = new System.Drawing.Point(102, 252);
+            this.txtMail.Location = new System.Drawing.Point(102, 279);
             this.txtMail.MaxLength = 150;
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(308, 21);
+            this.txtMail.Size = new System.Drawing.Size(313, 21);
             this.txtMail.TabIndex = 23;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Location = new System.Drawing.Point(3, 303);
+            this.label14.Location = new System.Drawing.Point(3, 329);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(93, 39);
             this.label14.TabIndex = 38;
@@ -646,22 +647,22 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.rgRazonSocial, 3);
             this.rgRazonSocial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rgRazonSocial.Location = new System.Drawing.Point(102, 306);
+            this.rgRazonSocial.Location = new System.Drawing.Point(102, 332);
             this.rgRazonSocial.Name = "rgRazonSocial";
             this.rgRazonSocial.Properties.Columns = 2;
             this.rgRazonSocial.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Persona Fisica"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Persona Moral")});
-            this.rgRazonSocial.Size = new System.Drawing.Size(308, 33);
+            this.rgRazonSocial.Size = new System.Drawing.Size(313, 33);
             this.rgRazonSocial.TabIndex = 25;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(215, 276);
+            this.label15.Location = new System.Drawing.Point(3, 303);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(70, 27);
+            this.label15.Size = new System.Drawing.Size(93, 26);
             this.label15.TabIndex = 39;
             this.label15.Text = "Plazo Credito";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -674,7 +675,7 @@
             0,
             0,
             0});
-            this.spinPlazoCredito.Location = new System.Drawing.Point(291, 279);
+            this.spinPlazoCredito.Location = new System.Drawing.Point(102, 306);
             this.spinPlazoCredito.Name = "spinPlazoCredito";
             this.spinPlazoCredito.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});

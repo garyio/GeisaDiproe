@@ -297,5 +297,13 @@ namespace SistemaGEISA
 
             grid.DataSource = dt;
         }
+
+        private void txtRFC_Leave(object sender, EventArgs e)
+        {
+            if (ValidaRFC() == false)
+            {
+                new frmMessageBox(true) { Message = "RFC En uso, Favor de Verificar.", Title = "Aviso" }.ShowDialog();
+            }
+        }
     }
 }

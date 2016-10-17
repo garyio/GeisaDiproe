@@ -60,7 +60,15 @@ namespace SistemaGEISA
 
         private bool ValidaRFC()
         {
-            if (txtRFC.Text.Trim() != "XAXX010101000" && this.Text.Trim() != "Proveedor : Editar")
+            if (this.proveedor != null)
+            {
+                int rfcs = controler.Model.Proveedor.Where(p => p.RFC == txtRFC.Text.Trim() && p.Id != proveedor.Id).Count();
+                if (rfcs == 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
             {
                 int rfcs = controler.Model.Proveedor.Where(p => p.RFC == txtRFC.Text.Trim()).Count();
                 if (rfcs == 0)
@@ -68,7 +76,6 @@ namespace SistemaGEISA
                 else
                     return false;
             }
-            else return true;
         }
 
         private void btnEstado_Click(object sender, EventArgs e)
@@ -305,6 +312,14 @@ namespace SistemaGEISA
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtRFC_Leave(object sender, EventArgs e)
+        {
+            if (ValidaRFC() == false)
+            {
+                new frmMessageBox(true) { Message = "RFC En uso, Favor de Verificar.", Title = "Aviso" }.ShowDialog();
+            }
         }
     }
 }

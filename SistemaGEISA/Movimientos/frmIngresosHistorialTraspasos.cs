@@ -98,24 +98,31 @@ namespace SistemaGEISA
                     try
                     {
                         transaccion = controler.Model.BeginTransaction();
-                        List<PagosFactura> fact = item_Pago.PagosFactura.ToList();
-                        if (fact.Count > 0)
+                        List<PagosFactura> pagosFact = item_Pago.PagosFactura.ToList();
+                        if (pagosFact.Count > 0)
                         {
-                            foreach (PagosFactura f in fact)
+                            foreach (PagosFactura f in pagosFact)
                             {
-                                if (f.Factura != null)
+                                if (f.Factura != null) // quito referencia de la factura y recalculo el saldo
+                                {
+                                    //Recalculo el saldo de la factura cuando se eliminan los PagosFactura
+                                    if (f.Factura != null && !f.Factura.FechaCancelacion.HasValue)
+                                    {
+                                        f.Factura.Saldo = f.Factura.Importe - controler.Model.getAbonosTotales(f.Factura.Id, f.Pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                                        f.Factura.Saldo = Math.Round(f.Factura.Saldo, 2);
+                                    }
                                     f.Factura = null;
-                                //Controler.Model.DeleteObject(f.Factura);
-                                if (f.Pagos != null)
-                                    controler.Model.DeleteObject(f.Pagos);
+                                }
                                 if (f.TraspasoSaldos != null)
                                     controler.Model.DeleteObject(f.TraspasoSaldos);
-                                controler.Model.DeleteObject(f);
+                                if (f.Pagos != null) //elimino el pago                                                                                      
+                                    controler.Model.DeleteObject(f); //elimino el PagoFactura
                             }
+                            controler.Model.DeleteObject(this.pagos);
                         }
                         else
                         {
-                            controler.Model.DeleteObject(item_Pago);
+                            controler.Model.DeleteObject(this.pagos);
                         }
 
                         controler.Model.SaveChanges();
@@ -153,13 +160,25 @@ namespace SistemaGEISA
             {
                 if (item != null)
                 {
-                    if (item.Id != 0)
+                    if (item.Id != 0 && item.FechaCancelacion==null)
                     {
-                            TraspasoSaldos traspaso = controler.Model.TraspasoSaldos.FirstOrDefault(f => f.Id == item.Id);
-                            if (!traspaso.FechaCancelacion.HasValue) 
-                                traspaso.FechaCancelacion = DateTime.Today;
-                            if (!pagos.FechaCancelacion.HasValue)
-                                pagos.FechaCancelacion = DateTime.Today;
+                            //TraspasoSaldos traspaso = controler.Model.TraspasoSaldos.FirstOrDefault(f => f.Id == item.Id);
+                            //if (!traspaso.FechaCancelacion.HasValue) 
+                            //    traspaso.FechaCancelacion = DateTime.Today;
+
+                            //CANCELO PAGO ASOCIADO A EL TRASPASO PARA RECUPERAR EL SALDO DE LA FACTURA
+                            List<PagosFactura> pagosfac = controler.Model.PagosFactura.Where(D => D.PagosId == pagos.Id).ToList();
+                            foreach (PagosFactura facpagos in pagosfac)
+                            {
+                                Factura fac = facpagos.Factura;
+                                fac.Saldo = fac.Saldo + facpagos.MontoPagar;
+
+                                if (facpagos.TraspasoSaldos !=null)
+                                    facpagos.TraspasoSaldos.FechaCancelacion = DateTime.Now;
+                            }
+
+                            pagos.FechaCancelacion = DateTime.Now;
+                            pagos.UsuarioId = frmPrincipal.UsuarioDelSistema.Id;
 
                             try
                             {

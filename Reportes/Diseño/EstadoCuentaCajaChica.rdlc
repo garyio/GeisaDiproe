@@ -1143,7 +1143,6 @@
                         <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1267,7 +1266,7 @@
   <Width>10.30299in</Width>
   <Page>
     <PageHeader>
-      <Height>1.35549cm</Height>
+      <Height>1.06445cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1281,14 +1280,14 @@
                   <Value>ESTADO DE CUENTA </Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
-                    <FontSize>18pt</FontSize>
+                    <FontSize>12pt</FontSize>
                   </Style>
                 </TextRun>
                 <TextRun>
                   <Value>=Fields!ItemNombreEmpleado.Value</Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
-                    <FontSize>18pt</FontSize>
+                    <FontSize>12pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -1298,7 +1297,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox42</rd:DefaultName>
-          <Top>0.1791cm</Top>
           <Left>3.57188cm</Left>
           <Height>0.86958cm</Height>
           <Width>13.62584cm</Width>
@@ -1333,7 +1331,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0.1791cm</Top>
           <Left>17.32622cm</Left>
           <Height>0.5cm</Height>
           <Width>1.25646cm</Width>
@@ -1369,7 +1366,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
-          <Top>0.1791cm</Top>
           <Left>18.75907cm</Left>
           <Height>0.5cm</Height>
           <Width>2.14593cm</Width>
@@ -1404,7 +1400,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0.85549cm</Top>
+          <Top>0.53799cm</Top>
           <Left>17.32622cm</Left>
           <Height>0.5cm</Height>
           <Width>1.25646cm</Width>
@@ -1439,7 +1435,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
-          <Top>0.85549cm</Top>
+          <Top>0.53799cm</Top>
           <Left>18.72379cm</Left>
           <Height>0.5cm</Height>
           <Width>2.18121cm</Width>

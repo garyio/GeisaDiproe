@@ -161,21 +161,26 @@ namespace SistemaGEISA
                 {
                     DbTransaction transaccion = null;
 
-                    try
-                    {
-                        transaccion = Controler.Model.BeginTransaction();
-                                 List<PagosFactura> fact= pago.PagosFactura.ToList();
-                                 if (fact.Count > 0)
+                      try
+                        {
+                                 transaccion = Controler.Model.BeginTransaction();
+                                 List<PagosFactura> pagosFact= pago.PagosFactura.ToList();
+                                 if (pagosFact.Count > 0)
                                  {
-                                     foreach (PagosFactura f in fact)
+                                     foreach (PagosFactura f in pagosFact)
                                      {
-                                         if (f.Factura != null)
-                                         {
-                                             Controler.Model.DeleteObject(f);
-                                             //Controler.Model.DeleteObject(f.Factura);
+                                         if (f.Factura != null) // quito referencia de la factura y recalculo el saldo
+                                         {                                             
+                                             //Recalculo el saldo de la factura cuando se eliminan los PagosFactura
+                                             if (f.Factura != null && !f.Factura.FechaCancelacion.HasValue)
+                                             {
+                                                 f.Factura.Saldo = f.Factura.Importe - Controler.Model.getAbonosTotales(f.Factura.Id, f.Pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                                                 f.Factura.Saldo = Math.Round(f.Factura.Saldo, 2);
+                                             }
+                                             f.Factura = null;
                                          }
-                                         //Controler.Model.DeleteObject(f);
-
+                                         if (f.Pagos !=null) //elimino el pago                                                                                      
+                                         Controler.Model.DeleteObject(f); //elimino el PagoFactura
                                      }
                                      Controler.Model.DeleteObject(pago);
                                  }

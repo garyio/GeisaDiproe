@@ -32,24 +32,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngresos));
             this.btnDetalle = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtObraCivil3 = new System.Windows.Forms.TextBox();
-            this.txtSubcontratistas3 = new System.Windows.Forms.TextBox();
-            this.txtSuministros3 = new System.Windows.Forms.TextBox();
-            this.txtExtras3 = new System.Windows.Forms.TextBox();
-            this.txtTotal3 = new System.Windows.Forms.TextBox();
-            this.txtMantenimiento3 = new System.Windows.Forms.TextBox();
-            this.txtNA3 = new System.Windows.Forms.TextBox();
-            this.txtDescuentos3 = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -80,8 +80,6 @@
             this.btnCancelar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.btnGuardarPresupuestos = new System.Windows.Forms.ToolStripButton();
-            this.ckSaldo = new System.Windows.Forms.CheckBox();
-            this.ckCnceladas = new System.Windows.Forms.CheckBox();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -100,24 +98,6 @@
             this.txtMantenimiento1 = new System.Windows.Forms.TextBox();
             this.txtNA1 = new System.Windows.Forms.TextBox();
             this.txtDescuentos1 = new System.Windows.Forms.TextBox();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtObraCivil2 = new System.Windows.Forms.TextBox();
-            this.txtSubcontratistas2 = new System.Windows.Forms.TextBox();
-            this.txtSuministros2 = new System.Windows.Forms.TextBox();
-            this.txtExtras2 = new System.Windows.Forms.TextBox();
-            this.txtTotal2 = new System.Windows.Forms.TextBox();
-            this.txtMantenimiento2 = new System.Windows.Forms.TextBox();
-            this.txtNA2 = new System.Windows.Forms.TextBox();
-            this.txtDescuentos2 = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -137,25 +117,68 @@
             this.txtSaldoFavor = new System.Windows.Forms.TextBox();
             this.btnSaldoFavor = new System.Windows.Forms.Button();
             this.btnHistorial = new System.Windows.Forms.Button();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtObraCivil2 = new System.Windows.Forms.TextBox();
+            this.txtSubcontratistas2 = new System.Windows.Forms.TextBox();
+            this.txtSuministros2 = new System.Windows.Forms.TextBox();
+            this.txtExtras2 = new System.Windows.Forms.TextBox();
+            this.txtTotal2 = new System.Windows.Forms.TextBox();
+            this.txtMantenimiento2 = new System.Windows.Forms.TextBox();
+            this.txtNA2 = new System.Windows.Forms.TextBox();
+            this.txtDescuentos2 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtObraCivil3 = new System.Windows.Forms.TextBox();
+            this.txtSubcontratistas3 = new System.Windows.Forms.TextBox();
+            this.txtSuministros3 = new System.Windows.Forms.TextBox();
+            this.txtExtras3 = new System.Windows.Forms.TextBox();
+            this.txtTotal3 = new System.Windows.Forms.TextBox();
+            this.txtMantenimiento3 = new System.Windows.Forms.TextBox();
+            this.txtNA3 = new System.Windows.Forms.TextBox();
+            this.txtDescuentos3 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.ckSaldo = new System.Windows.Forms.CheckBox();
+            this.ckCnceladas = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnDetalle)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            this.groupControl4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luObra.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luClientes.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDetalle
@@ -177,14 +200,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.groupControl4, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupControl5, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.ckSaldo, 6, 7);
-            this.tableLayoutPanel1.Controls.Add(this.ckCnceladas, 7, 7);
             this.tableLayoutPanel1.Controls.Add(this.groupControl1, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupControl2, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupControl3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupControl2, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupControl4, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 5, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -199,230 +222,220 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1172, 554);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1220, 554);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // groupControl4
+            // groupControl5
             // 
-            this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.tableLayoutPanel1.SetColumnSpan(this.groupControl4, 2);
-            this.groupControl4.Controls.Add(this.tableLayoutPanel5);
-            this.groupControl4.Location = new System.Drawing.Point(894, 8);
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Padding = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel1.SetRowSpan(this.groupControl4, 7);
-            this.groupControl4.Size = new System.Drawing.Size(241, 252);
-            this.groupControl4.TabIndex = 74;
-            this.groupControl4.Text = "Por Cobrar";
+            this.groupControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.groupControl5.Controls.Add(this.tableLayoutPanel6);
+            this.groupControl5.Location = new System.Drawing.Point(925, 8);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Padding = new System.Windows.Forms.Padding(5);
+            this.groupControl5.Size = new System.Drawing.Size(172, 252);
+            this.groupControl5.TabIndex = 75;
+            this.groupControl5.Text = "Por Cobrar";
             // 
-            // tableLayoutPanel5
+            // tableLayoutPanel6
             // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.Controls.Add(this.label15, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label20, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label21, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label22, 0, 3);
-            this.tableLayoutPanel5.Controls.Add(this.label23, 0, 7);
-            this.tableLayoutPanel5.Controls.Add(this.txtObraCivil3, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txtSubcontratistas3, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.txtSuministros3, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.txtExtras3, 1, 3);
-            this.tableLayoutPanel5.Controls.Add(this.txtTotal3, 1, 7);
-            this.tableLayoutPanel5.Controls.Add(this.txtMantenimiento3, 1, 4);
-            this.tableLayoutPanel5.Controls.Add(this.txtNA3, 1, 5);
-            this.tableLayoutPanel5.Controls.Add(this.txtDescuentos3, 1, 6);
-            this.tableLayoutPanel5.Controls.Add(this.label29, 0, 5);
-            this.tableLayoutPanel5.Controls.Add(this.label30, 0, 6);
-            this.tableLayoutPanel5.Controls.Add(this.label31, 0, 4);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 26);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 8;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(227, 219);
-            this.tableLayoutPanel5.TabIndex = 0;
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.Controls.Add(this.label32, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label33, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label34, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.label35, 0, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label36, 0, 7);
+            this.tableLayoutPanel6.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.textBox2, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.textBox3, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.textBox4, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.textBox5, 1, 7);
+            this.tableLayoutPanel6.Controls.Add(this.textBox6, 1, 4);
+            this.tableLayoutPanel6.Controls.Add(this.textBox7, 1, 5);
+            this.tableLayoutPanel6.Controls.Add(this.textBox8, 1, 6);
+            this.tableLayoutPanel6.Controls.Add(this.label37, 0, 5);
+            this.tableLayoutPanel6.Controls.Add(this.label38, 0, 6);
+            this.tableLayoutPanel6.Controls.Add(this.label39, 0, 4);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(7, 26);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 8;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(158, 219);
+            this.tableLayoutPanel6.TabIndex = 0;
             // 
-            // label15
+            // label32
             // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(111, 27);
-            this.label15.TabIndex = 67;
-            this.label15.Text = "OBRA CIVIL";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label32.AutoSize = true;
+            this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(3, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(50, 27);
+            this.label32.TabIndex = 67;
+            this.label32.Text = "Obra C.";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label20
+            // label33
             // 
-            this.label20.AutoSize = true;
-            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(3, 27);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(111, 27);
-            this.label20.TabIndex = 68;
-            this.label20.Text = "SUBCONTRATISTAS";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label33.AutoSize = true;
+            this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(3, 27);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(50, 27);
+            this.label33.TabIndex = 68;
+            this.label33.Text = "Subcont.";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label21
+            // label34
             // 
-            this.label21.AutoSize = true;
-            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(3, 54);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(111, 27);
-            this.label21.TabIndex = 69;
-            this.label21.Text = "SUMINISTROS";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label34.AutoSize = true;
+            this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(3, 54);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(50, 27);
+            this.label34.TabIndex = 69;
+            this.label34.Text = "Sumin.";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label22
+            // label35
             // 
-            this.label22.AutoSize = true;
-            this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(3, 81);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(111, 27);
-            this.label22.TabIndex = 70;
-            this.label22.Text = "EXTRAS ";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label35.AutoSize = true;
+            this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(3, 81);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(50, 27);
+            this.label35.TabIndex = 70;
+            this.label35.Text = "Extras";
+            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label23
+            // label36
             // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(3, 189);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(111, 30);
-            this.label23.TabIndex = 71;
-            this.label23.Text = "TOTAL";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(3, 189);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(50, 30);
+            this.label36.TabIndex = 71;
+            this.label36.Text = "TOTAL";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtObraCivil3
+            // textBox1
             // 
-            this.txtObraCivil3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtObraCivil3.Location = new System.Drawing.Point(120, 3);
-            this.txtObraCivil3.Name = "txtObraCivil3";
-            this.txtObraCivil3.ReadOnly = true;
-            this.txtObraCivil3.Size = new System.Drawing.Size(104, 21);
-            this.txtObraCivil3.TabIndex = 72;
+            this.textBox1.Location = new System.Drawing.Point(59, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(90, 21);
+            this.textBox1.TabIndex = 72;
             // 
-            // txtSubcontratistas3
+            // textBox2
             // 
-            this.txtSubcontratistas3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSubcontratistas3.Location = new System.Drawing.Point(120, 30);
-            this.txtSubcontratistas3.Name = "txtSubcontratistas3";
-            this.txtSubcontratistas3.ReadOnly = true;
-            this.txtSubcontratistas3.Size = new System.Drawing.Size(104, 21);
-            this.txtSubcontratistas3.TabIndex = 73;
+            this.textBox2.Location = new System.Drawing.Point(59, 30);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(90, 21);
+            this.textBox2.TabIndex = 73;
             // 
-            // txtSuministros3
+            // textBox3
             // 
-            this.txtSuministros3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSuministros3.Location = new System.Drawing.Point(120, 57);
-            this.txtSuministros3.Name = "txtSuministros3";
-            this.txtSuministros3.ReadOnly = true;
-            this.txtSuministros3.Size = new System.Drawing.Size(104, 21);
-            this.txtSuministros3.TabIndex = 74;
+            this.textBox3.Location = new System.Drawing.Point(59, 57);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(90, 21);
+            this.textBox3.TabIndex = 74;
             // 
-            // txtExtras3
+            // textBox4
             // 
-            this.txtExtras3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtExtras3.Location = new System.Drawing.Point(120, 84);
-            this.txtExtras3.Name = "txtExtras3";
-            this.txtExtras3.ReadOnly = true;
-            this.txtExtras3.Size = new System.Drawing.Size(104, 21);
-            this.txtExtras3.TabIndex = 75;
+            this.textBox4.Location = new System.Drawing.Point(59, 84);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(90, 21);
+            this.textBox4.TabIndex = 75;
             // 
-            // txtTotal3
+            // textBox5
             // 
-            this.txtTotal3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTotal3.Location = new System.Drawing.Point(120, 192);
-            this.txtTotal3.Name = "txtTotal3";
-            this.txtTotal3.ReadOnly = true;
-            this.txtTotal3.Size = new System.Drawing.Size(104, 21);
-            this.txtTotal3.TabIndex = 76;
+            this.textBox5.Location = new System.Drawing.Point(59, 192);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(90, 21);
+            this.textBox5.TabIndex = 76;
             // 
-            // txtMantenimiento3
+            // textBox6
             // 
-            this.txtMantenimiento3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMantenimiento3.Location = new System.Drawing.Point(120, 111);
-            this.txtMantenimiento3.Name = "txtMantenimiento3";
-            this.txtMantenimiento3.ReadOnly = true;
-            this.txtMantenimiento3.Size = new System.Drawing.Size(104, 21);
-            this.txtMantenimiento3.TabIndex = 77;
+            this.textBox6.Location = new System.Drawing.Point(59, 111);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(90, 21);
+            this.textBox6.TabIndex = 77;
             // 
-            // txtNA3
+            // textBox7
             // 
-            this.txtNA3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNA3.Location = new System.Drawing.Point(120, 138);
-            this.txtNA3.Name = "txtNA3";
-            this.txtNA3.ReadOnly = true;
-            this.txtNA3.Size = new System.Drawing.Size(104, 21);
-            this.txtNA3.TabIndex = 78;
+            this.textBox7.Location = new System.Drawing.Point(59, 138);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(90, 21);
+            this.textBox7.TabIndex = 78;
             // 
-            // txtDescuentos3
+            // textBox8
             // 
-            this.txtDescuentos3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDescuentos3.Location = new System.Drawing.Point(120, 165);
-            this.txtDescuentos3.Name = "txtDescuentos3";
-            this.txtDescuentos3.ReadOnly = true;
-            this.txtDescuentos3.Size = new System.Drawing.Size(104, 21);
-            this.txtDescuentos3.TabIndex = 79;
+            this.textBox8.Location = new System.Drawing.Point(59, 165);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(90, 21);
+            this.textBox8.TabIndex = 79;
             // 
-            // label29
+            // label37
             // 
-            this.label29.AutoSize = true;
-            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(3, 135);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(111, 27);
-            this.label29.TabIndex = 80;
-            this.label29.Text = "N/A";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label37.AutoSize = true;
+            this.label37.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label37.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(3, 135);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(50, 27);
+            this.label37.TabIndex = 80;
+            this.label37.Text = "N/A";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label30
+            // label38
             // 
-            this.label30.AutoSize = true;
-            this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label30.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(3, 162);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(111, 27);
-            this.label30.TabIndex = 81;
-            this.label30.Text = "DESCUENTOS";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label38.AutoSize = true;
+            this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label38.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(3, 162);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(50, 27);
+            this.label38.TabIndex = 81;
+            this.label38.Text = "Desc.";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label31
+            // label39
             // 
-            this.label31.AutoSize = true;
-            this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label31.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(3, 108);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(111, 27);
-            this.label31.TabIndex = 82;
-            this.label31.Text = "MANTENIMIENTO";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label39.AutoSize = true;
+            this.label39.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label39.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(3, 108);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(50, 27);
+            this.label39.TabIndex = 82;
+            this.label39.Text = "Mant.";
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // grid
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.grid, 9);
+            this.tableLayoutPanel1.SetColumnSpan(this.grid, 7);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.grid.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
@@ -439,7 +452,7 @@
             this.grid.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grid.MainView = this.gv;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1156, 245);
+            this.grid.Size = new System.Drawing.Size(1193, 245);
             this.grid.TabIndex = 52;
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -501,7 +514,7 @@
             this.colFolio.OptionsColumn.ReadOnly = true;
             this.colFolio.Visible = true;
             this.colFolio.VisibleIndex = 3;
-            this.colFolio.Width = 49;
+            this.colFolio.Width = 53;
             // 
             // colFecha
             // 
@@ -514,7 +527,7 @@
             this.colFecha.OptionsColumn.ReadOnly = true;
             this.colFecha.Visible = true;
             this.colFecha.VisibleIndex = 2;
-            this.colFecha.Width = 49;
+            this.colFecha.Width = 53;
             // 
             // colSubtotal
             // 
@@ -529,7 +542,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Subtotal", "{0:c2}")});
             this.colSubtotal.Visible = true;
             this.colSubtotal.VisibleIndex = 4;
-            this.colSubtotal.Width = 56;
+            this.colSubtotal.Width = 61;
             // 
             // colIva
             // 
@@ -545,7 +558,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Iva", "{0:c2}")});
             this.colIva.Visible = true;
             this.colIva.VisibleIndex = 5;
-            this.colIva.Width = 56;
+            this.colIva.Width = 61;
             // 
             // colTotal
             // 
@@ -560,7 +573,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:c2}")});
             this.colTotal.Visible = true;
             this.colTotal.VisibleIndex = 6;
-            this.colTotal.Width = 80;
+            this.colTotal.Width = 87;
             // 
             // colNc
             // 
@@ -575,7 +588,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NotaCredito", "{0:c2}")});
             this.colNc.Visible = true;
             this.colNc.VisibleIndex = 13;
-            this.colNc.Width = 60;
+            this.colNc.Width = 65;
             // 
             // colObraCivil
             // 
@@ -590,7 +603,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ObraCivil", "{0:c2}")});
             this.colObraCivil.Visible = true;
             this.colObraCivil.VisibleIndex = 7;
-            this.colObraCivil.Width = 60;
+            this.colObraCivil.Width = 65;
             // 
             // colSubcontratistas
             // 
@@ -605,7 +618,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Subcontratistas", "{0:c2}")});
             this.colSubcontratistas.Visible = true;
             this.colSubcontratistas.VisibleIndex = 8;
-            this.colSubcontratistas.Width = 60;
+            this.colSubcontratistas.Width = 65;
             // 
             // colSuministros
             // 
@@ -620,7 +633,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Suministros", "{0:c2}")});
             this.colSuministros.Visible = true;
             this.colSuministros.VisibleIndex = 9;
-            this.colSuministros.Width = 60;
+            this.colSuministros.Width = 65;
             // 
             // colExtras
             // 
@@ -635,7 +648,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Extras", "{0:c2}")});
             this.colExtras.Visible = true;
             this.colExtras.VisibleIndex = 10;
-            this.colExtras.Width = 60;
+            this.colExtras.Width = 65;
             // 
             // colMantenimiento
             // 
@@ -650,7 +663,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Mantenimiento", "{0:c2}")});
             this.colMantenimiento.Visible = true;
             this.colMantenimiento.VisibleIndex = 11;
-            this.colMantenimiento.Width = 60;
+            this.colMantenimiento.Width = 65;
             // 
             // colNA
             // 
@@ -665,7 +678,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "No_Aplica", "{0:c2}")});
             this.colNA.Visible = true;
             this.colNA.VisibleIndex = 12;
-            this.colNA.Width = 60;
+            this.colNA.Width = 65;
             // 
             // colPagos
             // 
@@ -680,7 +693,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Pagos", "{0:c2}")});
             this.colPagos.Visible = true;
             this.colPagos.VisibleIndex = 14;
-            this.colPagos.Width = 60;
+            this.colPagos.Width = 65;
             // 
             // colObservaciones
             // 
@@ -691,7 +704,7 @@
             this.colObservaciones.OptionsColumn.ReadOnly = true;
             this.colObservaciones.Visible = true;
             this.colObservaciones.VisibleIndex = 16;
-            this.colObservaciones.Width = 176;
+            this.colObservaciones.Width = 185;
             // 
             // colDetalle
             // 
@@ -729,7 +742,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Saldo", "{0:C2}")});
             this.colSaldo.Visible = true;
             this.colSaldo.VisibleIndex = 15;
-            this.colSaldo.Width = 60;
+            this.colSaldo.Width = 79;
             // 
             // colFechaCancelacion
             // 
@@ -742,12 +755,12 @@
             this.colFechaCancelacion.OptionsColumn.ReadOnly = true;
             this.colFechaCancelacion.Visible = true;
             this.colFechaCancelacion.VisibleIndex = 1;
-            this.colFechaCancelacion.Width = 49;
+            this.colFechaCancelacion.Width = 53;
             // 
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.SetColumnSpan(this.toolStrip1, 6);
+            this.tableLayoutPanel1.SetColumnSpan(this.toolStrip1, 5);
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -765,7 +778,7 @@
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(880, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(911, 39);
             this.toolStrip1.TabIndex = 50;
             // 
             // btnAgregar
@@ -838,7 +851,6 @@
             // 
             // btnGuardarPresupuestos
             // 
-            this.btnGuardarPresupuestos.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.btnGuardarPresupuestos.Image = global::SistemaGEISA.Properties.Resources.Guardar;
             this.btnGuardarPresupuestos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardarPresupuestos.Name = "btnGuardarPresupuestos";
@@ -846,45 +858,15 @@
             this.btnGuardarPresupuestos.Text = "Guardar";
             this.btnGuardarPresupuestos.Click += new System.EventHandler(this.btnGuardarPresupuestos_Click);
             // 
-            // ckSaldo
-            // 
-            this.ckSaldo.AutoSize = true;
-            this.ckSaldo.BackColor = System.Drawing.Color.Transparent;
-            this.ckSaldo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.ckSaldo.Location = new System.Drawing.Point(894, 266);
-            this.ckSaldo.Name = "ckSaldo";
-            this.ckSaldo.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.ckSaldo.Size = new System.Drawing.Size(73, 37);
-            this.ckSaldo.TabIndex = 51;
-            this.ckSaldo.Text = "Saldo>0";
-            this.ckSaldo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.ckSaldo.UseVisualStyleBackColor = false;
-            this.ckSaldo.CheckedChanged += new System.EventHandler(this.ckSaldo_CheckedChanged);
-            // 
-            // ckCnceladas
-            // 
-            this.ckCnceladas.AutoSize = true;
-            this.ckCnceladas.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckCnceladas.Location = new System.Drawing.Point(973, 266);
-            this.ckCnceladas.Name = "ckCnceladas";
-            this.ckCnceladas.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.ckCnceladas.Size = new System.Drawing.Size(90, 37);
-            this.ckCnceladas.TabIndex = 64;
-            this.ckCnceladas.Text = "Canceladas";
-            this.ckCnceladas.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.ckCnceladas.UseVisualStyleBackColor = true;
-            this.ckCnceladas.CheckedChanged += new System.EventHandler(this.ckCnceladas_CheckedChanged);
-            // 
             // groupControl1
             // 
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.tableLayoutPanel1.SetColumnSpan(this.groupControl1, 2);
             this.groupControl1.Controls.Add(this.tableLayoutPanel2);
             this.groupControl1.Location = new System.Drawing.Point(398, 8);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.SetRowSpan(this.groupControl1, 7);
-            this.groupControl1.Size = new System.Drawing.Size(240, 252);
+            this.groupControl1.Size = new System.Drawing.Size(168, 252);
             this.groupControl1.TabIndex = 71;
             this.groupControl1.Text = "Presupuesto Inicial";
             // 
@@ -921,7 +903,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(226, 219);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(154, 219);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label9
@@ -931,9 +913,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(111, 27);
+            this.label9.Size = new System.Drawing.Size(50, 27);
             this.label9.TabIndex = 67;
-            this.label9.Text = "OBRA CIVIL";
+            this.label9.Text = "Obra C.";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
@@ -943,9 +925,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(3, 27);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 27);
+            this.label10.Size = new System.Drawing.Size(50, 27);
             this.label10.TabIndex = 68;
-            this.label10.Text = "SUBCONTRATISTAS";
+            this.label10.Text = "Subcont.";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
@@ -955,9 +937,9 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(3, 54);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(111, 27);
+            this.label11.Size = new System.Drawing.Size(50, 27);
             this.label11.TabIndex = 69;
-            this.label11.Text = "SUMINISTROS";
+            this.label11.Text = "Sumin.";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label12
@@ -967,9 +949,9 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(3, 81);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(111, 27);
+            this.label12.Size = new System.Drawing.Size(50, 27);
             this.label12.TabIndex = 70;
-            this.label12.Text = "EXTRAS ";
+            this.label12.Text = "Extras";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label13
@@ -980,54 +962,49 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(3, 189);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(111, 30);
+            this.label13.Size = new System.Drawing.Size(50, 30);
             this.label13.TabIndex = 71;
             this.label13.Text = "TOTAL";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtObraCivil1
             // 
-            this.txtObraCivil1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtObraCivil1.Location = new System.Drawing.Point(120, 3);
+            this.txtObraCivil1.Location = new System.Drawing.Point(59, 3);
             this.txtObraCivil1.Name = "txtObraCivil1";
-            this.txtObraCivil1.Size = new System.Drawing.Size(103, 21);
+            this.txtObraCivil1.Size = new System.Drawing.Size(90, 21);
             this.txtObraCivil1.TabIndex = 72;
             this.txtObraCivil1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
             // 
             // txtSubcontratistas1
             // 
-            this.txtSubcontratistas1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSubcontratistas1.Location = new System.Drawing.Point(120, 30);
+            this.txtSubcontratistas1.Location = new System.Drawing.Point(59, 30);
             this.txtSubcontratistas1.Name = "txtSubcontratistas1";
-            this.txtSubcontratistas1.Size = new System.Drawing.Size(103, 21);
+            this.txtSubcontratistas1.Size = new System.Drawing.Size(90, 21);
             this.txtSubcontratistas1.TabIndex = 73;
             this.txtSubcontratistas1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
             // 
             // txtSuministros1
             // 
-            this.txtSuministros1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSuministros1.Location = new System.Drawing.Point(120, 57);
+            this.txtSuministros1.Location = new System.Drawing.Point(59, 57);
             this.txtSuministros1.Name = "txtSuministros1";
-            this.txtSuministros1.Size = new System.Drawing.Size(103, 21);
+            this.txtSuministros1.Size = new System.Drawing.Size(90, 21);
             this.txtSuministros1.TabIndex = 74;
             this.txtSuministros1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
             // 
             // txtExtras1
             // 
-            this.txtExtras1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtExtras1.Location = new System.Drawing.Point(120, 84);
+            this.txtExtras1.Location = new System.Drawing.Point(59, 84);
             this.txtExtras1.Name = "txtExtras1";
-            this.txtExtras1.Size = new System.Drawing.Size(103, 21);
+            this.txtExtras1.Size = new System.Drawing.Size(90, 21);
             this.txtExtras1.TabIndex = 75;
             this.txtExtras1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
             // 
             // txtTotal1
             // 
-            this.txtTotal1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTotal1.Location = new System.Drawing.Point(120, 192);
+            this.txtTotal1.Location = new System.Drawing.Point(59, 192);
             this.txtTotal1.Name = "txtTotal1";
             this.txtTotal1.ReadOnly = true;
-            this.txtTotal1.Size = new System.Drawing.Size(103, 21);
+            this.txtTotal1.Size = new System.Drawing.Size(90, 21);
             this.txtTotal1.TabIndex = 76;
             // 
             // label4
@@ -1037,9 +1014,9 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(3, 108);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 27);
+            this.label4.Size = new System.Drawing.Size(50, 27);
             this.label4.TabIndex = 77;
-            this.label4.Text = "MANTENIMIENTO";
+            this.label4.Text = "Mant.";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label24
@@ -1049,7 +1026,7 @@
             this.label24.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label24.Location = new System.Drawing.Point(3, 135);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(111, 27);
+            this.label24.Size = new System.Drawing.Size(50, 27);
             this.label24.TabIndex = 78;
             this.label24.Text = "N/A";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1061,249 +1038,31 @@
             this.label25.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label25.Location = new System.Drawing.Point(3, 162);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(111, 27);
+            this.label25.Size = new System.Drawing.Size(50, 27);
             this.label25.TabIndex = 79;
-            this.label25.Text = "DESCUENTOS";
+            this.label25.Text = "Desc.";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtMantenimiento1
             // 
-            this.txtMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMantenimiento1.Location = new System.Drawing.Point(120, 111);
+            this.txtMantenimiento1.Location = new System.Drawing.Point(59, 111);
             this.txtMantenimiento1.Name = "txtMantenimiento1";
-            this.txtMantenimiento1.Size = new System.Drawing.Size(103, 21);
+            this.txtMantenimiento1.Size = new System.Drawing.Size(90, 21);
             this.txtMantenimiento1.TabIndex = 80;
             // 
             // txtNA1
             // 
-            this.txtNA1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNA1.Location = new System.Drawing.Point(120, 138);
+            this.txtNA1.Location = new System.Drawing.Point(59, 138);
             this.txtNA1.Name = "txtNA1";
-            this.txtNA1.Size = new System.Drawing.Size(103, 21);
+            this.txtNA1.Size = new System.Drawing.Size(90, 21);
             this.txtNA1.TabIndex = 81;
             // 
             // txtDescuentos1
             // 
-            this.txtDescuentos1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDescuentos1.Location = new System.Drawing.Point(120, 165);
+            this.txtDescuentos1.Location = new System.Drawing.Point(59, 165);
             this.txtDescuentos1.Name = "txtDescuentos1";
-            this.txtDescuentos1.Size = new System.Drawing.Size(103, 21);
+            this.txtDescuentos1.Size = new System.Drawing.Size(90, 21);
             this.txtDescuentos1.TabIndex = 82;
-            // 
-            // groupControl2
-            // 
-            this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.tableLayoutPanel1.SetColumnSpan(this.groupControl2, 2);
-            this.groupControl2.Controls.Add(this.tableLayoutPanel3);
-            this.groupControl2.Location = new System.Drawing.Point(644, 8);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Padding = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel1.SetRowSpan(this.groupControl2, 7);
-            this.groupControl2.Size = new System.Drawing.Size(244, 252);
-            this.groupControl2.TabIndex = 72;
-            this.groupControl2.Text = "Presupuesto Final";
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.Controls.Add(this.label14, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label16, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label18, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label19, 0, 7);
-            this.tableLayoutPanel3.Controls.Add(this.txtObraCivil2, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtSubcontratistas2, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.txtSuministros2, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.txtExtras2, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.txtTotal2, 1, 7);
-            this.tableLayoutPanel3.Controls.Add(this.txtMantenimiento2, 1, 4);
-            this.tableLayoutPanel3.Controls.Add(this.txtNA2, 1, 5);
-            this.tableLayoutPanel3.Controls.Add(this.txtDescuentos2, 1, 6);
-            this.tableLayoutPanel3.Controls.Add(this.label26, 0, 4);
-            this.tableLayoutPanel3.Controls.Add(this.label27, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label28, 0, 6);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(7, 26);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 8;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(230, 219);
-            this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(3, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(111, 27);
-            this.label14.TabIndex = 67;
-            this.label14.Text = "OBRA CIVIL";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(3, 27);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(111, 27);
-            this.label16.TabIndex = 68;
-            this.label16.Text = "SUBCONTRATISTAS";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(3, 54);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(111, 27);
-            this.label17.TabIndex = 69;
-            this.label17.Text = "SUMINISTROS";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(3, 81);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(111, 27);
-            this.label18.TabIndex = 70;
-            this.label18.Text = "EXTRAS ";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(3, 189);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(111, 30);
-            this.label19.TabIndex = 71;
-            this.label19.Text = "TOTAL";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtObraCivil2
-            // 
-            this.txtObraCivil2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtObraCivil2.Location = new System.Drawing.Point(120, 3);
-            this.txtObraCivil2.Name = "txtObraCivil2";
-            this.txtObraCivil2.Size = new System.Drawing.Size(107, 21);
-            this.txtObraCivil2.TabIndex = 72;
-            this.txtObraCivil2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
-            // 
-            // txtSubcontratistas2
-            // 
-            this.txtSubcontratistas2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSubcontratistas2.Location = new System.Drawing.Point(120, 30);
-            this.txtSubcontratistas2.Name = "txtSubcontratistas2";
-            this.txtSubcontratistas2.Size = new System.Drawing.Size(107, 21);
-            this.txtSubcontratistas2.TabIndex = 73;
-            this.txtSubcontratistas2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
-            // 
-            // txtSuministros2
-            // 
-            this.txtSuministros2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSuministros2.Location = new System.Drawing.Point(120, 57);
-            this.txtSuministros2.Name = "txtSuministros2";
-            this.txtSuministros2.Size = new System.Drawing.Size(107, 21);
-            this.txtSuministros2.TabIndex = 74;
-            this.txtSuministros2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
-            // 
-            // txtExtras2
-            // 
-            this.txtExtras2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtExtras2.Location = new System.Drawing.Point(120, 84);
-            this.txtExtras2.Name = "txtExtras2";
-            this.txtExtras2.Size = new System.Drawing.Size(107, 21);
-            this.txtExtras2.TabIndex = 75;
-            this.txtExtras2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
-            // 
-            // txtTotal2
-            // 
-            this.txtTotal2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTotal2.Location = new System.Drawing.Point(120, 192);
-            this.txtTotal2.Name = "txtTotal2";
-            this.txtTotal2.ReadOnly = true;
-            this.txtTotal2.Size = new System.Drawing.Size(107, 21);
-            this.txtTotal2.TabIndex = 76;
-            // 
-            // txtMantenimiento2
-            // 
-            this.txtMantenimiento2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMantenimiento2.Location = new System.Drawing.Point(120, 111);
-            this.txtMantenimiento2.Name = "txtMantenimiento2";
-            this.txtMantenimiento2.Size = new System.Drawing.Size(107, 21);
-            this.txtMantenimiento2.TabIndex = 77;
-            // 
-            // txtNA2
-            // 
-            this.txtNA2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNA2.Location = new System.Drawing.Point(120, 138);
-            this.txtNA2.Name = "txtNA2";
-            this.txtNA2.Size = new System.Drawing.Size(107, 21);
-            this.txtNA2.TabIndex = 78;
-            // 
-            // txtDescuentos2
-            // 
-            this.txtDescuentos2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDescuentos2.Location = new System.Drawing.Point(120, 165);
-            this.txtDescuentos2.Name = "txtDescuentos2";
-            this.txtDescuentos2.Size = new System.Drawing.Size(107, 21);
-            this.txtDescuentos2.TabIndex = 79;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label26.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label26.Location = new System.Drawing.Point(3, 108);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(111, 27);
-            this.label26.TabIndex = 80;
-            this.label26.Text = "MANTENIMIENTO";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label27.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label27.Location = new System.Drawing.Point(3, 135);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(111, 27);
-            this.label27.TabIndex = 81;
-            this.label27.Text = "N/A";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label28.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label28.Location = new System.Drawing.Point(3, 162);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(111, 27);
-            this.label28.TabIndex = 82;
-            this.label28.Text = "DESCUENTOS";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupControl3
             // 
@@ -1546,11 +1305,470 @@
             this.btnHistorial.UseVisualStyleBackColor = false;
             this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
             // 
+            // groupControl2
+            // 
+            this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.groupControl2.Controls.Add(this.tableLayoutPanel3);
+            this.groupControl2.Location = new System.Drawing.Point(572, 8);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Padding = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel1.SetRowSpan(this.groupControl2, 7);
+            this.groupControl2.Size = new System.Drawing.Size(174, 252);
+            this.groupControl2.TabIndex = 72;
+            this.groupControl2.Text = "Presupuesto Final";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.Controls.Add(this.label14, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label16, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label17, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label18, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label19, 0, 7);
+            this.tableLayoutPanel3.Controls.Add(this.txtObraCivil2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txtSubcontratistas2, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.txtSuministros2, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.txtExtras2, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.txtTotal2, 1, 7);
+            this.tableLayoutPanel3.Controls.Add(this.txtMantenimiento2, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.txtNA2, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.txtDescuentos2, 1, 6);
+            this.tableLayoutPanel3.Controls.Add(this.label26, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label27, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label28, 0, 6);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(7, 26);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 8;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(160, 219);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(3, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 27);
+            this.label14.TabIndex = 67;
+            this.label14.Text = "Obra C.";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 27);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(50, 27);
+            this.label16.TabIndex = 68;
+            this.label16.Text = "Subcont.";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(3, 54);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(50, 27);
+            this.label17.TabIndex = 69;
+            this.label17.Text = "Sumin.";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(3, 81);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(50, 27);
+            this.label18.TabIndex = 70;
+            this.label18.Text = "Extras";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(3, 189);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(50, 30);
+            this.label19.TabIndex = 71;
+            this.label19.Text = "TOTAL";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtObraCivil2
+            // 
+            this.txtObraCivil2.Location = new System.Drawing.Point(59, 3);
+            this.txtObraCivil2.Name = "txtObraCivil2";
+            this.txtObraCivil2.Size = new System.Drawing.Size(90, 21);
+            this.txtObraCivil2.TabIndex = 72;
+            this.txtObraCivil2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
+            // 
+            // txtSubcontratistas2
+            // 
+            this.txtSubcontratistas2.Location = new System.Drawing.Point(59, 30);
+            this.txtSubcontratistas2.Name = "txtSubcontratistas2";
+            this.txtSubcontratistas2.Size = new System.Drawing.Size(90, 21);
+            this.txtSubcontratistas2.TabIndex = 73;
+            this.txtSubcontratistas2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
+            // 
+            // txtSuministros2
+            // 
+            this.txtSuministros2.Location = new System.Drawing.Point(59, 57);
+            this.txtSuministros2.Name = "txtSuministros2";
+            this.txtSuministros2.Size = new System.Drawing.Size(90, 21);
+            this.txtSuministros2.TabIndex = 74;
+            this.txtSuministros2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
+            // 
+            // txtExtras2
+            // 
+            this.txtExtras2.Location = new System.Drawing.Point(59, 84);
+            this.txtExtras2.Name = "txtExtras2";
+            this.txtExtras2.Size = new System.Drawing.Size(90, 21);
+            this.txtExtras2.TabIndex = 75;
+            this.txtExtras2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObraCivil1_KeyPress);
+            // 
+            // txtTotal2
+            // 
+            this.txtTotal2.Location = new System.Drawing.Point(59, 192);
+            this.txtTotal2.Name = "txtTotal2";
+            this.txtTotal2.ReadOnly = true;
+            this.txtTotal2.Size = new System.Drawing.Size(90, 21);
+            this.txtTotal2.TabIndex = 76;
+            // 
+            // txtMantenimiento2
+            // 
+            this.txtMantenimiento2.Location = new System.Drawing.Point(59, 111);
+            this.txtMantenimiento2.Name = "txtMantenimiento2";
+            this.txtMantenimiento2.Size = new System.Drawing.Size(90, 21);
+            this.txtMantenimiento2.TabIndex = 77;
+            // 
+            // txtNA2
+            // 
+            this.txtNA2.Location = new System.Drawing.Point(59, 138);
+            this.txtNA2.Name = "txtNA2";
+            this.txtNA2.Size = new System.Drawing.Size(90, 21);
+            this.txtNA2.TabIndex = 78;
+            // 
+            // txtDescuentos2
+            // 
+            this.txtDescuentos2.Location = new System.Drawing.Point(59, 165);
+            this.txtDescuentos2.Name = "txtDescuentos2";
+            this.txtDescuentos2.Size = new System.Drawing.Size(90, 21);
+            this.txtDescuentos2.TabIndex = 79;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label26.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label26.Location = new System.Drawing.Point(3, 108);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(50, 27);
+            this.label26.TabIndex = 80;
+            this.label26.Text = "Mant.";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label27.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label27.Location = new System.Drawing.Point(3, 135);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(50, 27);
+            this.label27.TabIndex = 81;
+            this.label27.Text = "N/A";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label28.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label28.Location = new System.Drawing.Point(3, 162);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(50, 27);
+            this.label28.TabIndex = 82;
+            this.label28.Text = "Desc.";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.groupControl4.Controls.Add(this.tableLayoutPanel5);
+            this.groupControl4.Location = new System.Drawing.Point(752, 8);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Padding = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel1.SetRowSpan(this.groupControl4, 7);
+            this.groupControl4.Size = new System.Drawing.Size(167, 252);
+            this.groupControl4.TabIndex = 74;
+            this.groupControl4.Text = "Por Cobrar";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.Controls.Add(this.label15, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label20, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label21, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label22, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label23, 0, 7);
+            this.tableLayoutPanel5.Controls.Add(this.txtObraCivil3, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtSubcontratistas3, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtSuministros3, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txtExtras3, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.txtTotal3, 1, 7);
+            this.tableLayoutPanel5.Controls.Add(this.txtMantenimiento3, 1, 4);
+            this.tableLayoutPanel5.Controls.Add(this.txtNA3, 1, 5);
+            this.tableLayoutPanel5.Controls.Add(this.txtDescuentos3, 1, 6);
+            this.tableLayoutPanel5.Controls.Add(this.label29, 0, 5);
+            this.tableLayoutPanel5.Controls.Add(this.label30, 0, 6);
+            this.tableLayoutPanel5.Controls.Add(this.label31, 0, 4);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 26);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 8;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(153, 219);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(3, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(50, 27);
+            this.label15.TabIndex = 67;
+            this.label15.Text = "Obra C.";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(3, 27);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(50, 27);
+            this.label20.TabIndex = 68;
+            this.label20.Text = "Subcont.";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(3, 54);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(50, 27);
+            this.label21.TabIndex = 69;
+            this.label21.Text = "Sumin.";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(3, 81);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(50, 27);
+            this.label22.TabIndex = 70;
+            this.label22.Text = "Extras";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(3, 189);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(50, 30);
+            this.label23.TabIndex = 71;
+            this.label23.Text = "TOTAL";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtObraCivil3
+            // 
+            this.txtObraCivil3.Location = new System.Drawing.Point(59, 3);
+            this.txtObraCivil3.Name = "txtObraCivil3";
+            this.txtObraCivil3.ReadOnly = true;
+            this.txtObraCivil3.Size = new System.Drawing.Size(90, 21);
+            this.txtObraCivil3.TabIndex = 72;
+            // 
+            // txtSubcontratistas3
+            // 
+            this.txtSubcontratistas3.Location = new System.Drawing.Point(59, 30);
+            this.txtSubcontratistas3.Name = "txtSubcontratistas3";
+            this.txtSubcontratistas3.ReadOnly = true;
+            this.txtSubcontratistas3.Size = new System.Drawing.Size(90, 21);
+            this.txtSubcontratistas3.TabIndex = 73;
+            // 
+            // txtSuministros3
+            // 
+            this.txtSuministros3.Location = new System.Drawing.Point(59, 57);
+            this.txtSuministros3.Name = "txtSuministros3";
+            this.txtSuministros3.ReadOnly = true;
+            this.txtSuministros3.Size = new System.Drawing.Size(90, 21);
+            this.txtSuministros3.TabIndex = 74;
+            // 
+            // txtExtras3
+            // 
+            this.txtExtras3.Location = new System.Drawing.Point(59, 84);
+            this.txtExtras3.Name = "txtExtras3";
+            this.txtExtras3.ReadOnly = true;
+            this.txtExtras3.Size = new System.Drawing.Size(90, 21);
+            this.txtExtras3.TabIndex = 75;
+            // 
+            // txtTotal3
+            // 
+            this.txtTotal3.Location = new System.Drawing.Point(59, 192);
+            this.txtTotal3.Name = "txtTotal3";
+            this.txtTotal3.ReadOnly = true;
+            this.txtTotal3.Size = new System.Drawing.Size(90, 21);
+            this.txtTotal3.TabIndex = 76;
+            // 
+            // txtMantenimiento3
+            // 
+            this.txtMantenimiento3.Location = new System.Drawing.Point(59, 111);
+            this.txtMantenimiento3.Name = "txtMantenimiento3";
+            this.txtMantenimiento3.ReadOnly = true;
+            this.txtMantenimiento3.Size = new System.Drawing.Size(90, 21);
+            this.txtMantenimiento3.TabIndex = 77;
+            // 
+            // txtNA3
+            // 
+            this.txtNA3.Location = new System.Drawing.Point(59, 138);
+            this.txtNA3.Name = "txtNA3";
+            this.txtNA3.ReadOnly = true;
+            this.txtNA3.Size = new System.Drawing.Size(90, 21);
+            this.txtNA3.TabIndex = 78;
+            // 
+            // txtDescuentos3
+            // 
+            this.txtDescuentos3.Location = new System.Drawing.Point(59, 165);
+            this.txtDescuentos3.Name = "txtDescuentos3";
+            this.txtDescuentos3.ReadOnly = true;
+            this.txtDescuentos3.Size = new System.Drawing.Size(90, 21);
+            this.txtDescuentos3.TabIndex = 79;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label29.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(3, 135);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(50, 27);
+            this.label29.TabIndex = 80;
+            this.label29.Text = "N/A";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label30.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(3, 162);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(50, 27);
+            this.label30.TabIndex = 81;
+            this.label30.Text = "Desc.";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label31.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(3, 108);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(50, 27);
+            this.label31.TabIndex = 82;
+            this.label31.Text = "Mant.";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel7.Controls.Add(this.ckSaldo, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.ckCnceladas, 1, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(925, 266);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(172, 39);
+            this.tableLayoutPanel7.TabIndex = 76;
+            // 
+            // ckSaldo
+            // 
+            this.ckSaldo.AutoSize = true;
+            this.ckSaldo.BackColor = System.Drawing.Color.Transparent;
+            this.ckSaldo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.ckSaldo.Location = new System.Drawing.Point(3, 3);
+            this.ckSaldo.Name = "ckSaldo";
+            this.ckSaldo.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.ckSaldo.Size = new System.Drawing.Size(73, 27);
+            this.ckSaldo.TabIndex = 51;
+            this.ckSaldo.Text = "Saldo>0";
+            this.ckSaldo.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.ckSaldo.UseVisualStyleBackColor = false;
+            this.ckSaldo.CheckedChanged += new System.EventHandler(this.ckSaldo_CheckedChanged);
+            // 
+            // ckCnceladas
+            // 
+            this.ckCnceladas.AutoSize = true;
+            this.ckCnceladas.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckCnceladas.Location = new System.Drawing.Point(82, 3);
+            this.ckCnceladas.Name = "ckCnceladas";
+            this.ckCnceladas.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.ckCnceladas.Size = new System.Drawing.Size(87, 27);
+            this.ckCnceladas.TabIndex = 64;
+            this.ckCnceladas.Text = "Canceladas";
+            this.ckCnceladas.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.ckCnceladas.UseVisualStyleBackColor = true;
+            this.ckCnceladas.CheckedChanged += new System.EventHandler(this.ckCnceladas_CheckedChanged);
+            // 
             // frmIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 554);
+            this.ClientSize = new System.Drawing.Size(1220, 554);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmIngresos";
@@ -1559,10 +1777,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnDetalle)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            this.groupControl4.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -1571,16 +1789,22 @@
             this.groupControl1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luObra.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luClientes.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1694,5 +1918,24 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMantenimiento;
         private DevExpress.XtraGrid.Columns.GridColumn colNA;
         private System.Windows.Forms.Button btnHistorial;
+        private DevExpress.XtraEditors.GroupControl groupControl5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
     }
 }

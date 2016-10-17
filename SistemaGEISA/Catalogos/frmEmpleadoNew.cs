@@ -67,6 +67,7 @@ namespace SistemaGEISA
                 controler.SetError(lookupPerfil, isValid ? string.Empty : "Seleccione un Perfil");
             }
 
+            //Validando RFC
             areValid &= isValid = ValidaRFC();
             controler.SetError(txtRFC, isValid ? string.Empty : "El RFC ya existe, Favor de Verificar");
 
@@ -215,6 +216,14 @@ namespace SistemaGEISA
             form.empleado = this.empleado;
 
             form.ShowDialog();
+        }
+
+        private void txtRFC_Leave(object sender, EventArgs e)
+        {
+            if (ValidaRFC() == false)
+            {
+                new frmMessageBox(true) { Message = "RFC En uso, Favor de Verificar.", Title = "Aviso" }.ShowDialog();
+            }
         }
     }
 }

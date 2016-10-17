@@ -88,6 +88,10 @@ namespace SistemaGEISA
             areValid &= isValid = lookupCiudad.GetSelectedDataRow() != null;
             controler.SetError(lookupCiudad, isValid ? string.Empty : "Seleccione un Ciudad");
 
+            //Validando RFC
+            areValid &= isValid = ValidaRFC();
+            controler.SetError(txtRFC, isValid ? string.Empty : "El RFC ya existe, Favor de Verificar");
+
             return areValid;
         }
 
@@ -316,6 +320,33 @@ namespace SistemaGEISA
             }
         }
         #endregion
+
+        private void txtRFC_Leave(object sender, EventArgs e)
+        {
+            if (ValidaRFC() == false)
+            {
+                new frmMessageBox(true) { Message = "RFC En uso, Favor de Verificar.", Title = "Aviso" }.ShowDialog();
+            }
+        }
+        private bool ValidaRFC()
+        {
+            if (this.empresa != null)
+            {
+                int rfcs = controler.Model.Empresa.Where(p => p.RFC == txtRFC.Text.Trim() && p.Id != empresa.Id).Count();
+                if (rfcs == 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                int rfcs = controler.Model.Empresa.Where(p => p.RFC == txtRFC.Text.Trim()).Count();
+                if (rfcs == 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
 
     }
 }

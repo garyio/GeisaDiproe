@@ -413,7 +413,7 @@ namespace SistemaGEISA
                         {
                             Factura factura = Controler.Model.Factura.First(f => f.Id == item.Id);
                             if (factura.FechaCancelacion.HasValue) return;
-                            factura.FechaCancelacion = DateTime.Today;
+                                factura.FechaCancelacion = DateTime.Today;
                             try
                             {
                                 Controler.Model.SaveChanges();

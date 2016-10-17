@@ -101,31 +101,29 @@ namespace SistemaGEISA
                     try
                     {
                         transaccion = controler.Model.BeginTransaction();
-                        List<PagosFactura> fact = item_Pago.PagosFactura.ToList();
-                        if (fact.Count > 0)
+                        List<PagosFactura> pagosFact = item_Pago.PagosFactura.ToList();
+                        if (pagosFact.Count > 0)
                         {
-                            foreach (PagosFactura f in fact)
+                            foreach (PagosFactura f in pagosFact)
                             {
-                                if (f.Factura != null)
+                                if (f.Factura != null) // quito referencia de la factura y recalculo el saldo
+                                {
+                                    //Recalculo el saldo de la factura cuando se eliminan los PagosFactura
+                                    if (f.Factura != null && !f.Factura.FechaCancelacion.HasValue)
+                                    {
+                                        f.Factura.Saldo = f.Factura.Importe - controler.Model.getAbonosTotales(f.Factura.Id, f.Pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                                        f.Factura.Saldo = Math.Round(f.Factura.Saldo, 2);
+                                    }
                                     f.Factura = null;
-                                    //Controler.Model.DeleteObject(f.Factura);
-                                if (f.Pagos != null)
-                                    controler.Model.DeleteObject(f.Pagos);
-                                controler.Model.DeleteObject(f);
+                                }
+                                if (f.Pagos != null) //elimino el pago                                                                                      
+                                    controler.Model.DeleteObject(f); //elimino el PagoFactura
                             }
-                            
+                            controler.Model.DeleteObject(this.pagos);
                         }
                         else
                         {
                             controler.Model.DeleteObject(item_Pago);
-                        }
-
-                        //Recalculo el saldo de la factura cuando se eliminan los PagosFactura
-                        Factura factura_Recalculo = controler.Model.Factura.FirstOrDefault(p => p.Id == item.IdFactura);
-                        if (factura_Recalculo != null && !item.FechaCancelacion.HasValue) 
-                        {
-                            factura.Saldo = factura.Importe - controler.Model.getAbonosTotales(factura.Id, pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
-                            factura.Saldo = Math.Round(factura.Saldo, 2);
                         }
 
                         controler.Model.SaveChanges();
