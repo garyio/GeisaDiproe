@@ -90,6 +90,7 @@ namespace Reportes
         public string Facutura { get { return Item.FolioNum!=null ? Item.FolioNum.ToString(): string.Empty; } }
         public string Cliente { get { return Item.ClienteNombre; } }
         public double? SaldoActual { get { return Item.Saldo_Actual; } }
+        public double? TotalFactura { get { return Item.TotalFactura; } }
         public double? Monto_Pago { get { return Item.Monto_Pago; } }
         public double? Diferencia { get { return Item.Diferencia; } }
         public string FechaPago { get { return (Item.FechaCancelacionPago!=null || Item.FechaCancelacion!=null) ? "CANCELADA" : (Item.FechaPago!=null ? Item.FechaPago.Value.ToShortDateString():string.Empty) ; } }

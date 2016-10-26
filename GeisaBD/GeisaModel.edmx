@@ -1998,7 +1998,7 @@
           <Parameter Name="TipoMovimiento" Type="int" Mode="In" />
           <Parameter Name="Mes" Type="int" Mode="In" />
           <Parameter Name="Año" Type="int" Mode="In" />
-          <Parameter Name="EmpresaId" Type="int" Mode="In" />
+          <Parameter Name="EmpresaId" Type="varchar" Mode="In" />
         </Function>
         <Function Name="getFacturasDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="getNominaSemanal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2762,12 +2762,6 @@
             <End Role="TipoPago" EntitySet="TipoPago" />
             <End Role="GastosAdministrativos" EntitySet="GastosAdministrativos" />
           </AssociationSet>
-          <FunctionImport Name="getFacturasCompartidas" ReturnType="Collection(GEISAModel.getFacturasCompartidas_Result1)">
-            <Parameter Name="TipoMovimiento" Mode="In" Type="Int32" />
-            <Parameter Name="Mes" Mode="In" Type="Int32" />
-            <Parameter Name="Año" Mode="In" Type="Int32" />
-            <Parameter Name="EmpresaId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="Ciudad" EntityType="GEISAModel.Ciudad" />
           <AssociationSet Name="FK_Domicilios_Ciudad" Association="GEISAModel.FK_Domicilios_Ciudad">
             <End Role="Ciudad" EntitySet="Ciudad" />
@@ -3169,6 +3163,12 @@
             <Parameter Name="ObraId" Mode="In" Type="Int32" />
             <Parameter Name="ClienteId" Mode="In" Type="Int32" />
             <Parameter Name="getNC" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="getFacturasCompartidas" ReturnType="Collection(GEISAModel.getFacturasCompartidas_Result)">
+            <Parameter Name="TipoMovimiento" Mode="In" Type="Int32" />
+            <Parameter Name="Mes" Mode="In" Type="Int32" />
+            <Parameter Name="Año" Mode="In" Type="Int32" />
+            <Parameter Name="EmpresaId" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="Domicilios">
@@ -3769,42 +3769,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="getFacturasCompartidas_Result">
-          <Property Type="Int32" Name="IdPago" Nullable="false" />
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-          <Property Type="String" Name="Factura" Nullable="false" MaxLength="20" />
-          <Property Type="Double" Name="Importe" Nullable="false" />
-          <Property Type="String" Name="NoReferencia" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Concepto" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="300" />
-          <Property Type="Boolean" Name="Compartido" Nullable="true" />
-          <Property Type="Boolean" Name="GastoAdm" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="getFacturasCompartidas1_Result">
-          <Property Type="Int32" Name="IdPago" Nullable="false" />
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-          <Property Type="String" Name="Factura" Nullable="false" MaxLength="20" />
-          <Property Type="Double" Name="Importe" Nullable="false" />
-          <Property Type="String" Name="NoReferencia" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Concepto" Nullable="true" />
-          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="300" />
-        </ComplexType>
-        <ComplexType Name="getFacturasCompartidas_Result1">
-          <Property Type="Int32" Name="IdPago" Nullable="false" />
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-          <Property Type="String" Name="Factura" Nullable="true" MaxLength="50" />
-          <Property Type="Double" Name="Importe" Nullable="false" />
-          <Property Type="String" Name="NoReferencia" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Concepto" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="300" />
-          <Property Type="Boolean" Name="Compartido" Nullable="true" />
-          <Property Type="Boolean" Name="GastoAdm" Nullable="true" />
-          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="200" />
-          <Property Type="Int32" Name="EmpresaId" Nullable="false" />
-        </ComplexType>
         <EntityType Name="Ciudad">
           <Key>
             <PropertyRef Name="Id" />
@@ -4428,7 +4392,7 @@
           <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="Fecha" Nullable="false" />
           <Property Type="Int32" Name="FolioNumOriginal" Nullable="true" />
-          <Property Type="String" Name="FolioNum" Nullable="true" MaxLength="74" />
+          <Property Type="String" Name="FolioNum" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="ClienteNombre" Nullable="true" MaxLength="200" />
           <Property Type="Double" Name="Saldo_Actual" Nullable="true" />
           <Property Type="Double" Name="Saldo_ActualOriginal" Nullable="false" />
@@ -4437,6 +4401,7 @@
           <Property Type="String" Name="Capex_OC" Nullable="true" MaxLength="50" />
           <Property Type="Double" Name="Diferencia" Nullable="true" />
           <Property Type="Int32" Name="EmpresaId" Nullable="true" />
+          <Property Type="Double" Name="TotalFactura" Nullable="false" />
         </ComplexType>
         <EntityType Name="DetalleArticulos">
           <Key>
@@ -5480,6 +5445,20 @@
           <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
           <Property Type="Double" Name="Saldo" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="getFacturasCompartidas_Result">
+          <Property Type="Int32" Name="EmpresaId" Nullable="false" />
+          <Property Type="Int32" Name="IdPago" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="String" Name="Factura" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Importe" Nullable="false" />
+          <Property Type="String" Name="NoReferencia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Concepto" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="300" />
+          <Property Type="Boolean" Name="Compartido" Nullable="true" />
+          <Property Type="Boolean" Name="GastoAdm" Nullable="true" />
+          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="200" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5786,24 +5765,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="getFacturasCompartidas" FunctionName="GEISAModel.Store.getFacturasCompartidas">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GEISAModel.getFacturasCompartidas_Result1">
-                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Factura" ColumnName="Factura" />
-                <ScalarProperty Name="Importe" ColumnName="Importe" />
-                <ScalarProperty Name="NoReferencia" ColumnName="NoReferencia" />
-                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="Compartido" ColumnName="Compartido" />
-                <ScalarProperty Name="GastoAdm" ColumnName="GastoAdm" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="Ciudad">
             <EntityTypeMapping TypeName="GEISAModel.Ciudad">
               <MappingFragment StoreEntitySet="Ciudad">
@@ -6157,6 +6118,7 @@
                 <ScalarProperty Name="Capex_OC" ColumnName="Capex_OC" />
                 <ScalarProperty Name="Diferencia" ColumnName="Diferencia" />
                 <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="TotalFactura" ColumnName="TotalFactura" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -6533,6 +6495,24 @@
                 <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
                 <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getFacturasCompartidas" FunctionName="GEISAModel.Store.getFacturasCompartidas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEISAModel.getFacturasCompartidas_Result">
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="NoReferencia" ColumnName="NoReferencia" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Compartido" ColumnName="Compartido" />
+                <ScalarProperty Name="GastoAdm" ColumnName="GastoAdm" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

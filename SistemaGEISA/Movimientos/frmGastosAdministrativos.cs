@@ -92,7 +92,14 @@ namespace SistemaGEISA
             grid.DataSource = dt;
             List<Factura> facturas = new List<Factura>();
             GridView gv = (GridView)grid.FocusedView;
-            grid.DataSource = Controler.Model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, meses,Convert.ToInt32(editAño.Value), id).ToList();
+            if (grid.Name == "grid2")
+            {
+                string EmpresasId = string.Empty;
+                EmpresasId = "2,4";
+                grid.DataSource = Controler.Model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, meses, Convert.ToInt32(editAño.Value), EmpresasId).ToList();
+            }
+            else
+                grid.DataSource = Controler.Model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, meses, Convert.ToInt32(editAño.Value), id.ToString()).ToList();
             
         }
 

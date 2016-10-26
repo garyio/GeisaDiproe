@@ -380,7 +380,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Image = global::SistemaGEISA.Properties.Resources.Actualizar;
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
             this.btnActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(85, 26);
@@ -389,7 +389,7 @@
             // 
             // toolStripButton1
             // 
-            this.toolStripButton1.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);

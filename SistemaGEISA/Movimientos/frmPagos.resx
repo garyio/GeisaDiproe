@@ -121,6 +121,24 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnRecalcular.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALGSURBVFhH7VhLixNBEB7/gYqCD/AtiCC6gp4EFfwHCmLm
+        kawe9Cgo+AeS6Z5dxYPrskm6e3Z9gDc9qHhQ0JtHRRHF50W9CnuMEqsq1bOTsJNkw0xOW1Ck+6v6ur9k
+        urpm10GbFHqXK/TbQJr2WLxmPgRT87tpczQ/NLPLJhbpQt/m7R0nkOpBEgjNRxD0uAgPpP5k9/GFucfb
+        dwtwq3ObGc7dfLmwbaCA8s14LcMDzRP6oB+qS+huTe/3wuYeO6+E5gh+GVjzIs7LIj5x7np9Q64CfKFv
+        YX5Qnd8Kj06AX0MhhEkzU46UCzmncA6PYLYYAbV4nxuZwzAOUYAf6eOI4SEjAaE5i3NfmnruArCUykKd
+        Ri9Nq+3nI7UFx3DYzuCmF24019u5L9TEUAJwIYZzNxQ8UAD4L/DXRXip2vgNnwMFjMX7CWjBgfmDDuPF
+        FI6+mIq1UviKOZkCKsIcYNhx2u01EHvSialHjJJhnVtOeSo+xDBZ59aDmNAPGSLDg2g5mQJ6q8AL9RzH
+        Zhgig003WQ6ebobJsjgjleHYBeCtxjAZJjLBMESWLqne0vWkucuxmCEyuI53WE62AGG+wa32HB0WelWS
+        5h/h1cZfiL20MRj/sBxXNr+nOZS7DAfzLCdbwJi8n4DYl/oyOoyv2svDr5qf8C2u2FjqZ25DiS0Mw4Gq
+        uJNwsgSUxP11DJPB4nWKpd9gwLjVEmeypjcyTJbFwTzLyRSwWob8vI6hB5E6CS8Y7zn2Bt9qkhj0/oTT
+        ec6EYw5g7zg2wj2Qr48kIM9mtHIBvc3IC83TTqy7GQWyeXRpMTXBMBnkcgMbQcBqFeCLJcNk9sYDQmYz
+        wj84GCbL4mDTSjh9DuHnIFTPyKV6kTQWPGjYhDgGB+6r5bih+jIMh/KY0y1A6IYNjNGXHk8lMnsBwMuj
+        ReqLdNgD/xXgTTd2Oo7j/AfDso83oDt8NgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABEXAAARFwAAAAAAAAAA

@@ -84,10 +84,6 @@ namespace SistemaGEISA
             //    grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id).ToList();
         }
 
-        //private List<Cliente> getClientes(List<getDetalleIngresos_Result> facturas)
-        //{
-
-        //}
         private void getTotalesPorCobrar(List<getDetalleIngresos_Result> ingresosPorCObrar)
         {
             double Obracivil=0, subcontratistas=0, suministros=0, Extras=0, Mantenimiento=0, NoAplica=0;
@@ -98,39 +94,40 @@ namespace SistemaGEISA
             Mantenimiento = ingresosPorCObrar.Where(I => I.Mantenimiento.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
             NoAplica = ingresosPorCObrar.Where(I => I.No_Aplica.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
 
-            txtObraCivil4.Text = obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue
+            txtObraCivil4.Text = (obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue ? (obra.PresupuestoDetalle.PPFin_ObraCivil > 0 ? true : false) : false) 
                         ? (obra.PresupuestoDetalle.PPFin_ObraCivil.Value - (Obracivil)).ToString("c2") :
                         ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
                             (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Obracivil)).ToString("c2") : String.Format("{0:c2}", Obracivil));
             // Subcontratistas
-            txtSubcontratistas4.Text = obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue
+            txtSubcontratistas4.Text = (obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue ? (obra.PresupuestoDetalle.PPFin_Subcontratistas > 0 ? true : false) : false) 
                 ? (obra.PresupuestoDetalle.PPFin_Subcontratistas.Value - (Convert.ToDouble(subcontratistas))).ToString("c2")
                 : (obra.PresupuestoDetalle.PPIni_Subcontratistas.HasValue ? obra.PresupuestoDetalle.PPIni_Subcontratistas.Value : 0) > 0 ?
                    (obra.PresupuestoDetalle.PPIni_Subcontratistas.Value - (Convert.ToDouble(subcontratistas))).ToString("c2") : String.Format("{0:c2}", subcontratistas);
             // suministros
-            txtSuministros4.Text = obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(suministros))).ToString("c2")
+            txtSuministros4.Text = (obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros > 0 ? true : false) : false)  
+                ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(suministros))).ToString("c2")
                 : ((obra.PresupuestoDetalle.PPIni_Suministros.HasValue ? obra.PresupuestoDetalle.PPIni_Suministros.Value : 0) > 0 ?
                    (obra.PresupuestoDetalle.PPIni_Suministros.Value - (Convert.ToDouble(suministros))).ToString("c2") : String.Format("{0:c2}", suministros));
             // Extras
-            txtExtras4.Text = obra.PresupuestoDetalle.PPFin_Extras.HasValue
+            txtExtras4.Text = (obra.PresupuestoDetalle.PPFin_Extras.HasValue ? (obra.PresupuestoDetalle.PPFin_Extras > 0 ? true : false) : false)  
                 ? (obra.PresupuestoDetalle.PPFin_Extras.Value - (Convert.ToDouble(Extras))).ToString("c2")
                 : ((obra.PresupuestoDetalle.PPIni_Extras.HasValue ? obra.PresupuestoDetalle.PPIni_Extras.Value : 0) > 0
                     ? (obra.PresupuestoDetalle.PPIni_Extras.Value - (Convert.ToDouble(Extras))).ToString("c2")
                     : String.Format("{0:c2}", Extras));
             //Mantenimiento
-            txtMantenimiento4.Text = obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue
+            txtMantenimiento4.Text = (obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue ? (obra.PresupuestoDetalle.PPFin_Mantenimiento > 0 ? true : false) : false)  
                 ? (obra.PresupuestoDetalle.PPFin_Mantenimiento.Value - (Convert.ToDouble(Mantenimiento))).ToString("c2")
                 : (obra.PresupuestoDetalle.PPIni_Mantenimiento.HasValue ? obra.PresupuestoDetalle.PPIni_Mantenimiento.Value : 0) > 0
                     ? (obra.PresupuestoDetalle.PPIni_Mantenimiento.Value - (Convert.ToDouble(Mantenimiento))).ToString("c2")
                     : String.Format("{0:c2}", Mantenimiento);
             //No Aplica
-            txtNA4.Text = obra.PresupuestoDetalle.PPFin_NA.HasValue
+            txtNA4.Text = (obra.PresupuestoDetalle.PPFin_NA.HasValue ? (obra.PresupuestoDetalle.PPFin_NA > 0 ? true : false) : false)  
                 ? (obra.PresupuestoDetalle.PPFin_NA.Value - (Convert.ToDouble(NoAplica))).ToString("c2")
                 : ((obra.PresupuestoDetalle.PPIni_NA.HasValue ? obra.PresupuestoDetalle.PPIni_NA.Value : 0) > 0
                     ? (obra.PresupuestoDetalle.PPIni_NA.Value - (Convert.ToDouble(NoAplica))).ToString("c2")
                     : String.Format("{0:c2}", NoAplica));
             //Descuento
-            txtDescuentos4.Text = obra.PresupuestoDetalle.PPFin_Descuento.HasValue
+            txtDescuentos4.Text = (obra.PresupuestoDetalle.PPFin_Descuento.HasValue ? (obra.PresupuestoDetalle.PPFin_Descuento > 0 ? true : false) : false)  
                 ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
                 : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
 
@@ -188,39 +185,40 @@ namespace SistemaGEISA
                     //        : txtObraCivil3.Text = txtSubcontratistas3.Text = txtSuministros3.Text = txtExtras3.Text = txtTotal3.Text = "0.00";
                     //else
                     //{
-                    txtObraCivil3.Text = obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue
+                    txtObraCivil3.Text = (obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue ? (obra.PresupuestoDetalle.PPFin_ObraCivil > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_ObraCivil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") :
                         ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
                             (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colObraCivil.SummaryItem.SummaryValue));
                     // Subcontratistas
-                    txtSubcontratistas3.Text = obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue
+                    txtSubcontratistas3.Text = (obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue ? (obra.PresupuestoDetalle.PPFin_Subcontratistas > 0 ? true : false) : false) 
                         ? (obra.PresupuestoDetalle.PPFin_Subcontratistas.Value - (Convert.ToDouble(colSubcontratistas.SummaryItem.SummaryValue))).ToString("c2")
                         : (obra.PresupuestoDetalle.PPIni_Subcontratistas.HasValue ? obra.PresupuestoDetalle.PPIni_Subcontratistas.Value : 0) > 0 ?
                            (obra.PresupuestoDetalle.PPIni_Subcontratistas.Value - (Convert.ToDouble(colSubcontratistas.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colSubcontratistas.SummaryItem.SummaryValue);
                     // suministros
-                    txtSuministros3.Text = obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2")
+                    txtSuministros3.Text = (obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros > 0 ? true : false) : false) 
+                        ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Suministros.HasValue ? obra.PresupuestoDetalle.PPIni_Suministros.Value : 0) > 0 ?
                            (obra.PresupuestoDetalle.PPIni_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colSuministros.SummaryItem.SummaryValue));
                     // Extras
-                    txtExtras3.Text = obra.PresupuestoDetalle.PPFin_Extras.HasValue
+                    txtExtras3.Text = (obra.PresupuestoDetalle.PPFin_Extras.HasValue ? (obra.PresupuestoDetalle.PPFin_Extras > 0 ? true : false) : false) 
                         ? (obra.PresupuestoDetalle.PPFin_Extras.Value - (Convert.ToDouble(colExtras.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Extras.HasValue ? obra.PresupuestoDetalle.PPIni_Extras.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_Extras.Value - (Convert.ToDouble(colExtras.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colExtras.SummaryItem.SummaryValue));
                     //Mantenimiento
-                    txtMantenimiento3.Text = obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue
+                    txtMantenimiento3.Text = (obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue ? (obra.PresupuestoDetalle.PPFin_Mantenimiento > 0 ? true : false) : false) 
                         ? (obra.PresupuestoDetalle.PPFin_Mantenimiento.Value - (Convert.ToDouble(colMantenimiento.SummaryItem.SummaryValue))).ToString("c2")
                         : (obra.PresupuestoDetalle.PPIni_Mantenimiento.HasValue ? obra.PresupuestoDetalle.PPIni_Mantenimiento.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_Mantenimiento.Value - (Convert.ToDouble(colMantenimiento.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colMantenimiento.SummaryItem.SummaryValue);
                     //No Aplica
-                    txtNA3.Text = obra.PresupuestoDetalle.PPFin_NA.HasValue
+                    txtNA3.Text = (obra.PresupuestoDetalle.PPFin_NA.HasValue ? (obra.PresupuestoDetalle.PPFin_NA > 0 ? true : false) : false) 
                         ? (obra.PresupuestoDetalle.PPFin_NA.Value - (Convert.ToDouble(colNA.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_NA.HasValue ? obra.PresupuestoDetalle.PPIni_NA.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_NA.Value - (Convert.ToDouble(colNA.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colNA.SummaryItem.SummaryValue));
                     //Descuento
-                    txtDescuentos3.Text = obra.PresupuestoDetalle.PPFin_Descuento.HasValue
+                    txtDescuentos3.Text = (obra.PresupuestoDetalle.PPFin_Descuento.HasValue ? (obra.PresupuestoDetalle.PPFin_Descuento > 0 ? true : false) : false) 
                         ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
 
@@ -347,41 +345,42 @@ namespace SistemaGEISA
                     //        txtObraCivil3.Text = txtSubcontratistas3.Text = txtSuministros3.Text = txtExtras3.Text = txtTotal3.Text = "0.00";
                     //else
                     //{                       
-                    txtObraCivil3.Text = obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue
-                            ? (obra.PresupuestoDetalle.PPFin_ObraCivil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") :
-                            ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
-                                (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colObraCivil.SummaryItem.SummaryValue));
+                    txtObraCivil3.Text = (obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue ? (obra.PresupuestoDetalle.PPFin_ObraCivil > 0 ? true : false) : false)
+    ? (obra.PresupuestoDetalle.PPFin_ObraCivil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") :
+    ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
+        (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colObraCivil.SummaryItem.SummaryValue));
                     // Subcontratistas
-                    txtSubcontratistas3.Text = obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue
+                    txtSubcontratistas3.Text = (obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue ? (obra.PresupuestoDetalle.PPFin_Subcontratistas > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Subcontratistas.Value - (Convert.ToDouble(colSubcontratistas.SummaryItem.SummaryValue))).ToString("c2")
                         : (obra.PresupuestoDetalle.PPIni_Subcontratistas.HasValue ? obra.PresupuestoDetalle.PPIni_Subcontratistas.Value : 0) > 0 ?
                            (obra.PresupuestoDetalle.PPIni_Subcontratistas.Value - (Convert.ToDouble(colSubcontratistas.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colSubcontratistas.SummaryItem.SummaryValue);
                     // suministros
-                    txtSuministros3.Text = obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2")
+                    txtSuministros3.Text = (obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros > 0 ? true : false) : false)
+                        ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Suministros.HasValue ? obra.PresupuestoDetalle.PPIni_Suministros.Value : 0) > 0 ?
                            (obra.PresupuestoDetalle.PPIni_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colSuministros.SummaryItem.SummaryValue));
                     // Extras
-                    txtExtras3.Text = obra.PresupuestoDetalle.PPFin_Extras.HasValue
+                    txtExtras3.Text = (obra.PresupuestoDetalle.PPFin_Extras.HasValue ? (obra.PresupuestoDetalle.PPFin_Extras > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Extras.Value - (Convert.ToDouble(colExtras.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Extras.HasValue ? obra.PresupuestoDetalle.PPIni_Extras.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_Extras.Value - (Convert.ToDouble(colExtras.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colExtras.SummaryItem.SummaryValue));
                     //Mantenimiento
-                    txtMantenimiento3.Text = obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue
+                    txtMantenimiento3.Text = (obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue ? (obra.PresupuestoDetalle.PPFin_Mantenimiento > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Mantenimiento.Value - (Convert.ToDouble(colMantenimiento.SummaryItem.SummaryValue))).ToString("c2")
                         : (obra.PresupuestoDetalle.PPIni_Mantenimiento.HasValue ? obra.PresupuestoDetalle.PPIni_Mantenimiento.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_Mantenimiento.Value - (Convert.ToDouble(colMantenimiento.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colMantenimiento.SummaryItem.SummaryValue);
                     //No Aplica
-                    txtNA3.Text = obra.PresupuestoDetalle.PPFin_NA.HasValue
+                    txtNA3.Text = (obra.PresupuestoDetalle.PPFin_NA.HasValue ? (obra.PresupuestoDetalle.PPFin_NA > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_NA.Value - (Convert.ToDouble(colNA.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_NA.HasValue ? obra.PresupuestoDetalle.PPIni_NA.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_NA.Value - (Convert.ToDouble(colNA.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colNA.SummaryItem.SummaryValue));
                     //Descuento
-                    txtDescuentos3.Text = obra.PresupuestoDetalle.PPFin_Descuento.HasValue
-                           ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
-                           : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
+                    txtDescuentos3.Text = (obra.PresupuestoDetalle.PPFin_Descuento.HasValue ? (obra.PresupuestoDetalle.PPFin_Descuento > 0 ? true : false) : false)
+                        ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
+                        : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
 
                     txtObraCivil3.Text = convertirDouble(txtObraCivil3.Text).ToString("c2");
                     txtSubcontratistas3.Text = convertirDouble(txtSubcontratistas3.Text).ToString("c2");
@@ -675,41 +674,42 @@ namespace SistemaGEISA
                     //        txtObraCivil3.Text = txtSubcontratistas3.Text = txtSuministros3.Text = txtExtras3.Text = txtTotal3.Text = "0.00";
                     //else
                     //{
-                    txtObraCivil3.Text = obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue
-                            ? (obra.PresupuestoDetalle.PPFin_ObraCivil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") :
-                            ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
-                                (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colObraCivil.SummaryItem.SummaryValue));
+                    txtObraCivil3.Text = (obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue ? (obra.PresupuestoDetalle.PPFin_ObraCivil > 0 ? true : false) : false)
+    ? (obra.PresupuestoDetalle.PPFin_ObraCivil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") :
+    ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
+        (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colObraCivil.SummaryItem.SummaryValue));
                     // Subcontratistas
-                    txtSubcontratistas3.Text = obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue
+                    txtSubcontratistas3.Text = (obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue ? (obra.PresupuestoDetalle.PPFin_Subcontratistas > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Subcontratistas.Value - (Convert.ToDouble(colSubcontratistas.SummaryItem.SummaryValue))).ToString("c2")
                         : (obra.PresupuestoDetalle.PPIni_Subcontratistas.HasValue ? obra.PresupuestoDetalle.PPIni_Subcontratistas.Value : 0) > 0 ?
                            (obra.PresupuestoDetalle.PPIni_Subcontratistas.Value - (Convert.ToDouble(colSubcontratistas.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colSubcontratistas.SummaryItem.SummaryValue);
                     // suministros
-                    txtSuministros3.Text = obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2")
+                    txtSuministros3.Text = (obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros > 0 ? true : false) : false)
+                        ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Suministros.HasValue ? obra.PresupuestoDetalle.PPIni_Suministros.Value : 0) > 0 ?
                            (obra.PresupuestoDetalle.PPIni_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colSuministros.SummaryItem.SummaryValue));
                     // Extras
-                    txtExtras3.Text = obra.PresupuestoDetalle.PPFin_Extras.HasValue
+                    txtExtras3.Text = (obra.PresupuestoDetalle.PPFin_Extras.HasValue ? (obra.PresupuestoDetalle.PPFin_Extras > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Extras.Value - (Convert.ToDouble(colExtras.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Extras.HasValue ? obra.PresupuestoDetalle.PPIni_Extras.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_Extras.Value - (Convert.ToDouble(colExtras.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colExtras.SummaryItem.SummaryValue));
                     //Mantenimiento
-                    txtMantenimiento3.Text = obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue
+                    txtMantenimiento3.Text = (obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue ? (obra.PresupuestoDetalle.PPFin_Mantenimiento > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Mantenimiento.Value - (Convert.ToDouble(colMantenimiento.SummaryItem.SummaryValue))).ToString("c2")
                         : (obra.PresupuestoDetalle.PPIni_Mantenimiento.HasValue ? obra.PresupuestoDetalle.PPIni_Mantenimiento.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_Mantenimiento.Value - (Convert.ToDouble(colMantenimiento.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colMantenimiento.SummaryItem.SummaryValue);
                     //No Aplica
-                    txtNA3.Text = obra.PresupuestoDetalle.PPFin_NA.HasValue
+                    txtNA3.Text = (obra.PresupuestoDetalle.PPFin_NA.HasValue ? (obra.PresupuestoDetalle.PPFin_NA > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_NA.Value - (Convert.ToDouble(colNA.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_NA.HasValue ? obra.PresupuestoDetalle.PPIni_NA.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_NA.Value - (Convert.ToDouble(colNA.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colNA.SummaryItem.SummaryValue));
                     //Descuento
-                    txtDescuentos3.Text = obra.PresupuestoDetalle.PPFin_Descuento.HasValue
-                           ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
-                           : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
+                    txtDescuentos3.Text = (obra.PresupuestoDetalle.PPFin_Descuento.HasValue ? (obra.PresupuestoDetalle.PPFin_Descuento > 0 ? true : false) : false)
+                        ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
+                        : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
 
                     txtObraCivil3.Text = convertirDouble(txtObraCivil3.Text).ToString("c2");
                     txtSubcontratistas3.Text = convertirDouble(txtSubcontratistas3.Text).ToString("c2");

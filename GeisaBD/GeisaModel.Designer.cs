@@ -1520,58 +1520,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        /// <param name="tipoMovimiento">No hay documentación de metadatos disponible.</param>
-        /// <param name="mes">No hay documentación de metadatos disponible.</param>
-        /// <param name="año">No hay documentación de metadatos disponible.</param>
-        /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
-        public ObjectResult<getFacturasCompartidas_Result1> getFacturasCompartidas(Nullable<global::System.Int32> tipoMovimiento, Nullable<global::System.Int32> mes, Nullable<global::System.Int32> año, Nullable<global::System.Int32> empresaId)
-        {
-            ObjectParameter tipoMovimientoParameter;
-            if (tipoMovimiento.HasValue)
-            {
-                tipoMovimientoParameter = new ObjectParameter("TipoMovimiento", tipoMovimiento);
-            }
-            else
-            {
-                tipoMovimientoParameter = new ObjectParameter("TipoMovimiento", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter mesParameter;
-            if (mes.HasValue)
-            {
-                mesParameter = new ObjectParameter("Mes", mes);
-            }
-            else
-            {
-                mesParameter = new ObjectParameter("Mes", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter añoParameter;
-            if (año.HasValue)
-            {
-                añoParameter = new ObjectParameter("Año", año);
-            }
-            else
-            {
-                añoParameter = new ObjectParameter("Año", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter empresaIdParameter;
-            if (empresaId.HasValue)
-            {
-                empresaIdParameter = new ObjectParameter("EmpresaId", empresaId);
-            }
-            else
-            {
-                empresaIdParameter = new ObjectParameter("EmpresaId", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<getFacturasCompartidas_Result1>("getFacturasCompartidas", tipoMovimientoParameter, mesParameter, añoParameter, empresaIdParameter);
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         /// <param name="startDate">No hay documentación de metadatos disponible.</param>
         /// <param name="endDate">No hay documentación de metadatos disponible.</param>
         /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
@@ -2111,6 +2059,58 @@ namespace GeisaBD
             }
     
             return base.ExecuteFunction<getDetalleIngresos_Result>("getDetalleIngresos", obraIdParameter, clienteIdParameter, getNCParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="tipoMovimiento">No hay documentación de metadatos disponible.</param>
+        /// <param name="mes">No hay documentación de metadatos disponible.</param>
+        /// <param name="año">No hay documentación de metadatos disponible.</param>
+        /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<getFacturasCompartidas_Result> getFacturasCompartidas(Nullable<global::System.Int32> tipoMovimiento, Nullable<global::System.Int32> mes, Nullable<global::System.Int32> año, global::System.String empresaId)
+        {
+            ObjectParameter tipoMovimientoParameter;
+            if (tipoMovimiento.HasValue)
+            {
+                tipoMovimientoParameter = new ObjectParameter("TipoMovimiento", tipoMovimiento);
+            }
+            else
+            {
+                tipoMovimientoParameter = new ObjectParameter("TipoMovimiento", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter mesParameter;
+            if (mes.HasValue)
+            {
+                mesParameter = new ObjectParameter("Mes", mes);
+            }
+            else
+            {
+                mesParameter = new ObjectParameter("Mes", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter añoParameter;
+            if (año.HasValue)
+            {
+                añoParameter = new ObjectParameter("Año", año);
+            }
+            else
+            {
+                añoParameter = new ObjectParameter("Año", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter empresaIdParameter;
+            if (empresaId != null)
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", empresaId);
+            }
+            else
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<getFacturasCompartidas_Result>("getFacturasCompartidas", tipoMovimientoParameter, mesParameter, añoParameter, empresaIdParameter);
         }
 
         #endregion
@@ -23061,18 +23061,18 @@ namespace GeisaBD
         /// <summary>
         /// Crear un nuevo objeto getFacturasCompartidas_Result.
         /// </summary>
+        /// <param name="empresaId">Valor inicial de la propiedad EmpresaId.</param>
         /// <param name="idPago">Valor inicial de la propiedad IdPago.</param>
         /// <param name="id">Valor inicial de la propiedad Id.</param>
         /// <param name="fecha">Valor inicial de la propiedad Fecha.</param>
-        /// <param name="factura">Valor inicial de la propiedad Factura.</param>
         /// <param name="importe">Valor inicial de la propiedad Importe.</param>
-        public static getFacturasCompartidas_Result CreategetFacturasCompartidas_Result(global::System.Int32 idPago, global::System.Int32 id, global::System.DateTime fecha, global::System.String factura, global::System.Double importe)
+        public static getFacturasCompartidas_Result CreategetFacturasCompartidas_Result(global::System.Int32 empresaId, global::System.Int32 idPago, global::System.Int32 id, global::System.DateTime fecha, global::System.Double importe)
         {
             getFacturasCompartidas_Result getFacturasCompartidas_Result = new getFacturasCompartidas_Result();
+            getFacturasCompartidas_Result.EmpresaId = empresaId;
             getFacturasCompartidas_Result.IdPago = idPago;
             getFacturasCompartidas_Result.Id = id;
             getFacturasCompartidas_Result.Fecha = fecha;
-            getFacturasCompartidas_Result.Factura = factura;
             getFacturasCompartidas_Result.Importe = importe;
             return getFacturasCompartidas_Result;
         }
@@ -23086,277 +23086,24 @@ namespace GeisaBD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 IdPago
+        public global::System.Int32 EmpresaId
         {
             get
             {
-                return _IdPago;
+                return _EmpresaId;
             }
             set
             {
-                OnIdPagoChanging(value);
-                ReportPropertyChanging("IdPago");
-                _IdPago = StructuralObject.SetValidValue(value, "IdPago");
-                ReportPropertyChanged("IdPago");
-                OnIdPagoChanged();
+                OnEmpresaIdChanging(value);
+                ReportPropertyChanging("EmpresaId");
+                _EmpresaId = StructuralObject.SetValidValue(value, "EmpresaId");
+                ReportPropertyChanged("EmpresaId");
+                OnEmpresaIdChanged();
             }
         }
-        private global::System.Int32 _IdPago;
-        partial void OnIdPagoChanging(global::System.Int32 value);
-        partial void OnIdPagoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                OnIdChanging(value);
-                ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value, "Id");
-                ReportPropertyChanged("Id");
-                OnIdChanged();
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.DateTime Fecha
-        {
-            get
-            {
-                return _Fecha;
-            }
-            set
-            {
-                OnFechaChanging(value);
-                ReportPropertyChanging("Fecha");
-                _Fecha = StructuralObject.SetValidValue(value, "Fecha");
-                ReportPropertyChanged("Fecha");
-                OnFechaChanged();
-            }
-        }
-        private global::System.DateTime _Fecha;
-        partial void OnFechaChanging(global::System.DateTime value);
-        partial void OnFechaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Factura
-        {
-            get
-            {
-                return _Factura;
-            }
-            set
-            {
-                OnFacturaChanging(value);
-                ReportPropertyChanging("Factura");
-                _Factura = StructuralObject.SetValidValue(value, false, "Factura");
-                ReportPropertyChanged("Factura");
-                OnFacturaChanged();
-            }
-        }
-        private global::System.String _Factura;
-        partial void OnFacturaChanging(global::System.String value);
-        partial void OnFacturaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Double Importe
-        {
-            get
-            {
-                return _Importe;
-            }
-            set
-            {
-                OnImporteChanging(value);
-                ReportPropertyChanging("Importe");
-                _Importe = StructuralObject.SetValidValue(value, "Importe");
-                ReportPropertyChanged("Importe");
-                OnImporteChanged();
-            }
-        }
-        private global::System.Double _Importe;
-        partial void OnImporteChanging(global::System.Double value);
-        partial void OnImporteChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String NoReferencia
-        {
-            get
-            {
-                return _NoReferencia;
-            }
-            set
-            {
-                OnNoReferenciaChanging(value);
-                ReportPropertyChanging("NoReferencia");
-                _NoReferencia = StructuralObject.SetValidValue(value, true, "NoReferencia");
-                ReportPropertyChanged("NoReferencia");
-                OnNoReferenciaChanged();
-            }
-        }
-        private global::System.String _NoReferencia;
-        partial void OnNoReferenciaChanging(global::System.String value);
-        partial void OnNoReferenciaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Concepto
-        {
-            get
-            {
-                return _Concepto;
-            }
-            set
-            {
-                OnConceptoChanging(value);
-                ReportPropertyChanging("Concepto");
-                _Concepto = StructuralObject.SetValidValue(value, true, "Concepto");
-                ReportPropertyChanged("Concepto");
-                OnConceptoChanged();
-            }
-        }
-        private global::System.String _Concepto;
-        partial void OnConceptoChanging(global::System.String value);
-        partial void OnConceptoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Observaciones
-        {
-            get
-            {
-                return _Observaciones;
-            }
-            set
-            {
-                OnObservacionesChanging(value);
-                ReportPropertyChanging("Observaciones");
-                _Observaciones = StructuralObject.SetValidValue(value, true, "Observaciones");
-                ReportPropertyChanged("Observaciones");
-                OnObservacionesChanged();
-            }
-        }
-        private global::System.String _Observaciones;
-        partial void OnObservacionesChanging(global::System.String value);
-        partial void OnObservacionesChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> Compartido
-        {
-            get
-            {
-                return _Compartido;
-            }
-            set
-            {
-                OnCompartidoChanging(value);
-                ReportPropertyChanging("Compartido");
-                _Compartido = StructuralObject.SetValidValue(value, "Compartido");
-                ReportPropertyChanged("Compartido");
-                OnCompartidoChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _Compartido;
-        partial void OnCompartidoChanging(Nullable<global::System.Boolean> value);
-        partial void OnCompartidoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> GastoAdm
-        {
-            get
-            {
-                return _GastoAdm;
-            }
-            set
-            {
-                OnGastoAdmChanging(value);
-                ReportPropertyChanging("GastoAdm");
-                _GastoAdm = StructuralObject.SetValidValue(value, "GastoAdm");
-                ReportPropertyChanged("GastoAdm");
-                OnGastoAdmChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _GastoAdm;
-        partial void OnGastoAdmChanging(Nullable<global::System.Boolean> value);
-        partial void OnGastoAdmChanged();
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmComplexTypeAttribute(NamespaceName="GEISAModel", Name="getFacturasCompartidas_Result1")]
-    [DataContractAttribute(IsReference=true)]
-    [Serializable()]
-    public partial class getFacturasCompartidas_Result1 : ComplexObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto getFacturasCompartidas_Result1.
-        /// </summary>
-        /// <param name="idPago">Valor inicial de la propiedad IdPago.</param>
-        /// <param name="id">Valor inicial de la propiedad Id.</param>
-        /// <param name="fecha">Valor inicial de la propiedad Fecha.</param>
-        /// <param name="importe">Valor inicial de la propiedad Importe.</param>
-        /// <param name="empresaId">Valor inicial de la propiedad EmpresaId.</param>
-        public static getFacturasCompartidas_Result1 CreategetFacturasCompartidas_Result1(global::System.Int32 idPago, global::System.Int32 id, global::System.DateTime fecha, global::System.Double importe, global::System.Int32 empresaId)
-        {
-            getFacturasCompartidas_Result1 getFacturasCompartidas_Result1 = new getFacturasCompartidas_Result1();
-            getFacturasCompartidas_Result1.IdPago = idPago;
-            getFacturasCompartidas_Result1.Id = id;
-            getFacturasCompartidas_Result1.Fecha = fecha;
-            getFacturasCompartidas_Result1.Importe = importe;
-            getFacturasCompartidas_Result1.EmpresaId = empresaId;
-            return getFacturasCompartidas_Result1;
-        }
-
-        #endregion
-
-        #region Propiedades simples
+        private global::System.Int32 _EmpresaId;
+        partial void OnEmpresaIdChanging(global::System.Int32 value);
+        partial void OnEmpresaIdChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -23621,259 +23368,6 @@ namespace GeisaBD
         private global::System.String _Proveedor;
         partial void OnProveedorChanging(global::System.String value);
         partial void OnProveedorChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 EmpresaId
-        {
-            get
-            {
-                return _EmpresaId;
-            }
-            set
-            {
-                OnEmpresaIdChanging(value);
-                ReportPropertyChanging("EmpresaId");
-                _EmpresaId = StructuralObject.SetValidValue(value, "EmpresaId");
-                ReportPropertyChanged("EmpresaId");
-                OnEmpresaIdChanged();
-            }
-        }
-        private global::System.Int32 _EmpresaId;
-        partial void OnEmpresaIdChanging(global::System.Int32 value);
-        partial void OnEmpresaIdChanged();
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmComplexTypeAttribute(NamespaceName="GEISAModel", Name="getFacturasCompartidas1_Result")]
-    [DataContractAttribute(IsReference=true)]
-    [Serializable()]
-    public partial class getFacturasCompartidas1_Result : ComplexObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto getFacturasCompartidas1_Result.
-        /// </summary>
-        /// <param name="idPago">Valor inicial de la propiedad IdPago.</param>
-        /// <param name="id">Valor inicial de la propiedad Id.</param>
-        /// <param name="fecha">Valor inicial de la propiedad Fecha.</param>
-        /// <param name="factura">Valor inicial de la propiedad Factura.</param>
-        /// <param name="importe">Valor inicial de la propiedad Importe.</param>
-        public static getFacturasCompartidas1_Result CreategetFacturasCompartidas1_Result(global::System.Int32 idPago, global::System.Int32 id, global::System.DateTime fecha, global::System.String factura, global::System.Double importe)
-        {
-            getFacturasCompartidas1_Result getFacturasCompartidas1_Result = new getFacturasCompartidas1_Result();
-            getFacturasCompartidas1_Result.IdPago = idPago;
-            getFacturasCompartidas1_Result.Id = id;
-            getFacturasCompartidas1_Result.Fecha = fecha;
-            getFacturasCompartidas1_Result.Factura = factura;
-            getFacturasCompartidas1_Result.Importe = importe;
-            return getFacturasCompartidas1_Result;
-        }
-
-        #endregion
-
-        #region Propiedades simples
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IdPago
-        {
-            get
-            {
-                return _IdPago;
-            }
-            set
-            {
-                OnIdPagoChanging(value);
-                ReportPropertyChanging("IdPago");
-                _IdPago = StructuralObject.SetValidValue(value, "IdPago");
-                ReportPropertyChanged("IdPago");
-                OnIdPagoChanged();
-            }
-        }
-        private global::System.Int32 _IdPago;
-        partial void OnIdPagoChanging(global::System.Int32 value);
-        partial void OnIdPagoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                OnIdChanging(value);
-                ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value, "Id");
-                ReportPropertyChanged("Id");
-                OnIdChanged();
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.DateTime Fecha
-        {
-            get
-            {
-                return _Fecha;
-            }
-            set
-            {
-                OnFechaChanging(value);
-                ReportPropertyChanging("Fecha");
-                _Fecha = StructuralObject.SetValidValue(value, "Fecha");
-                ReportPropertyChanged("Fecha");
-                OnFechaChanged();
-            }
-        }
-        private global::System.DateTime _Fecha;
-        partial void OnFechaChanging(global::System.DateTime value);
-        partial void OnFechaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Factura
-        {
-            get
-            {
-                return _Factura;
-            }
-            set
-            {
-                OnFacturaChanging(value);
-                ReportPropertyChanging("Factura");
-                _Factura = StructuralObject.SetValidValue(value, false, "Factura");
-                ReportPropertyChanged("Factura");
-                OnFacturaChanged();
-            }
-        }
-        private global::System.String _Factura;
-        partial void OnFacturaChanging(global::System.String value);
-        partial void OnFacturaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Double Importe
-        {
-            get
-            {
-                return _Importe;
-            }
-            set
-            {
-                OnImporteChanging(value);
-                ReportPropertyChanging("Importe");
-                _Importe = StructuralObject.SetValidValue(value, "Importe");
-                ReportPropertyChanged("Importe");
-                OnImporteChanged();
-            }
-        }
-        private global::System.Double _Importe;
-        partial void OnImporteChanging(global::System.Double value);
-        partial void OnImporteChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String NoReferencia
-        {
-            get
-            {
-                return _NoReferencia;
-            }
-            set
-            {
-                OnNoReferenciaChanging(value);
-                ReportPropertyChanging("NoReferencia");
-                _NoReferencia = StructuralObject.SetValidValue(value, true, "NoReferencia");
-                ReportPropertyChanged("NoReferencia");
-                OnNoReferenciaChanged();
-            }
-        }
-        private global::System.String _NoReferencia;
-        partial void OnNoReferenciaChanging(global::System.String value);
-        partial void OnNoReferenciaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> Concepto
-        {
-            get
-            {
-                return _Concepto;
-            }
-            set
-            {
-                OnConceptoChanging(value);
-                ReportPropertyChanging("Concepto");
-                _Concepto = StructuralObject.SetValidValue(value, "Concepto");
-                ReportPropertyChanged("Concepto");
-                OnConceptoChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _Concepto;
-        partial void OnConceptoChanging(Nullable<global::System.Int32> value);
-        partial void OnConceptoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Observaciones
-        {
-            get
-            {
-                return _Observaciones;
-            }
-            set
-            {
-                OnObservacionesChanging(value);
-                ReportPropertyChanging("Observaciones");
-                _Observaciones = StructuralObject.SetValidValue(value, true, "Observaciones");
-                ReportPropertyChanged("Observaciones");
-                OnObservacionesChanged();
-            }
-        }
-        private global::System.String _Observaciones;
-        partial void OnObservacionesChanging(global::System.String value);
-        partial void OnObservacionesChanged();
 
         #endregion
 
@@ -25414,11 +24908,13 @@ namespace GeisaBD
         /// </summary>
         /// <param name="fecha">Valor inicial de la propiedad Fecha.</param>
         /// <param name="saldo_ActualOriginal">Valor inicial de la propiedad Saldo_ActualOriginal.</param>
-        public static getReporteIngresosMensual_Result CreategetReporteIngresosMensual_Result(global::System.DateTime fecha, global::System.Double saldo_ActualOriginal)
+        /// <param name="totalFactura">Valor inicial de la propiedad TotalFactura.</param>
+        public static getReporteIngresosMensual_Result CreategetReporteIngresosMensual_Result(global::System.DateTime fecha, global::System.Double saldo_ActualOriginal, global::System.Double totalFactura)
         {
             getReporteIngresosMensual_Result getReporteIngresosMensual_Result = new getReporteIngresosMensual_Result();
             getReporteIngresosMensual_Result.Fecha = fecha;
             getReporteIngresosMensual_Result.Saldo_ActualOriginal = saldo_ActualOriginal;
+            getReporteIngresosMensual_Result.TotalFactura = totalFactura;
             return getReporteIngresosMensual_Result;
         }
 
@@ -25833,6 +25329,30 @@ namespace GeisaBD
         private Nullable<global::System.Int32> _EmpresaId;
         partial void OnEmpresaIdChanging(Nullable<global::System.Int32> value);
         partial void OnEmpresaIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double TotalFactura
+        {
+            get
+            {
+                return _TotalFactura;
+            }
+            set
+            {
+                OnTotalFacturaChanging(value);
+                ReportPropertyChanging("TotalFactura");
+                _TotalFactura = StructuralObject.SetValidValue(value, "TotalFactura");
+                ReportPropertyChanged("TotalFactura");
+                OnTotalFacturaChanged();
+            }
+        }
+        private global::System.Double _TotalFactura;
+        partial void OnTotalFacturaChanging(global::System.Double value);
+        partial void OnTotalFacturaChanged();
 
         #endregion
 

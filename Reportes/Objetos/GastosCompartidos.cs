@@ -24,19 +24,19 @@ namespace Reportes
             double totalGastosCompartidosDivididos = 0;
             string mensajeGastosCompartidos = "";
 
-            List<getFacturasCompartidas_Result1> itemsGeisa = null;
-            List<getFacturasCompartidas_Result1> itemsDiproe = null;
+            List<getFacturasCompartidas_Result> itemsGeisa = null;
+            List<getFacturasCompartidas_Result> itemsDiproe = null;
 
             GEISAEntities model = new GEISAEntities(GEISAEntities.DefaultConnectionString);
 
-            itemsDiproe = model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, mes, year, TipoEmpresa.DIPROE.Id).ToList();
-            itemsGeisa = model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, mes, year, TipoEmpresa.GEISA.Id).ToList();
+            itemsDiproe = model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, mes, year, TipoEmpresa.DIPROE.Id.ToString()).ToList();
+            itemsGeisa = model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, mes, year, (TipoEmpresa.GEISA.Id.ToString() + "," + TipoEmpresa.GEISA_PERIFERICA.Id.ToString())).ToList();
             //items = model.GastosAdministrativos.Where(D => D.Fecha.Year == year && D.Fecha.Month == mes).OrderBy(D => D.Fecha).ToList();
             var items = itemsDiproe.Union(itemsGeisa).ToList();
 
             Items = new List<GastosCompartidosItem>();
 
-            foreach (getFacturasCompartidas_Result1 ga in items)
+            foreach (getFacturasCompartidas_Result ga in items)
             {
                 totalGastosDiproe += (ga.EmpresaId == TipoEmpresa.DIPROE.Id) ? ga.Importe : 0;
 
@@ -82,11 +82,11 @@ namespace Reportes
         //public int ID_EMPRESA_DIPROE = TipoEmpresa.DIPROE.Id;
 
         #region Miembros Privados
-        private getFacturasCompartidas_Result1 Item { get; set; }
+        private getFacturasCompartidas_Result Item { get; set; }
         #endregion
 
         #region Constructor
-        public GastosCompartidosItem(getFacturasCompartidas_Result1 item)
+        public GastosCompartidosItem(getFacturasCompartidas_Result item)
         {
             Item = item;
         }

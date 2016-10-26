@@ -850,6 +850,7 @@ namespace SistemaGEISA
             }
         }
 
+
         private bool? getGA()
         {
             bool GA = false;
