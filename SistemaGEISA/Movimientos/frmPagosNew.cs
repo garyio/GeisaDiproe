@@ -801,7 +801,7 @@ namespace SistemaGEISA
 
                             factura.Observaciones = row["Observaciones"].ToString().ToUpper();
                             if(factura.Saldo>0)
-                                factura.Saldo = factura.Saldo - detalle.MontoPagar;                            
+                                factura.Saldo = factura.Saldo - Math.Round(detalle.MontoPagar,2);                            
                             factura.Compartido = Convert.ToBoolean(row["Compartido"]);
                             factura.GastoAdm = Convert.ToBoolean(row["GastoAdm"]);
                             factura.esDevolucion = Convert.ToBoolean(row["esDevolucion"]);

@@ -95,11 +95,11 @@ namespace SistemaGEISA
             if (grid.Name == "grid2")
             {
                 string EmpresasId = string.Empty;
-                EmpresasId = "2,4";
-                grid.DataSource = Controler.Model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, meses, Convert.ToInt32(editAño.Value), EmpresasId).ToList();
+                EmpresasId = TipoEmpresa.GEISA.Id.ToString() + "," + TipoEmpresa.GEISA_PERIFERICA.Id.ToString(); 
+                grid.DataSource = Controler.Model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, meses, Convert.ToInt32(editAño.Value), EmpresasId).OrderByDescending(O => O.Fecha).ToList();
             }
             else
-                grid.DataSource = Controler.Model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, meses, Convert.ToInt32(editAño.Value), id.ToString()).ToList();
+                grid.DataSource = Controler.Model.getFacturasCompartidas(TipoMovimientoEnum.GastosAdministrativos.Id, meses, Convert.ToInt32(editAño.Value), id.ToString()).OrderByDescending(O => O.Fecha).ToList();
             
         }
 
