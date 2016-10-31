@@ -2894,10 +2894,6 @@
             <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
             <End Role="Ordenes" EntitySet="Ordenes" />
           </AssociationSet>
-          <FunctionImport Name="getReporteIngresosMensual" ReturnType="Collection(GEISAModel.getReporteIngresosMensual_Result)">
-            <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="DetalleArticulos" EntityType="GEISAModel.DetalleArticulos" />
           <AssociationSet Name="FK_DetalleArticulos_Articulos" Association="GEISAModel.FK_DetalleArticulos_Articulos">
             <End Role="Articulos" EntitySet="Articulos" />
@@ -3169,6 +3165,10 @@
             <Parameter Name="Mes" Mode="In" Type="Int32" />
             <Parameter Name="Año" Mode="In" Type="Int32" />
             <Parameter Name="EmpresaId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getReporteIngresosMensual" ReturnType="Collection(GEISAModel.getReporteIngresosMensual_Result)">
+            <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="Domicilios">
@@ -4383,26 +4383,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="getReporteIngresosMensual_Result">
-          <Property Type="Int32" Name="Id" Nullable="true" />
-          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="FechaCancelacionPago" Nullable="true" />
-          <Property Type="Int32" Name="ClienteId" Nullable="true" />
-          <Property Type="Int32" Name="ObraId" Nullable="true" />
-          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-          <Property Type="Int32" Name="FolioNumOriginal" Nullable="true" />
-          <Property Type="String" Name="FolioNum" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="ClienteNombre" Nullable="true" MaxLength="200" />
-          <Property Type="Double" Name="Saldo_Actual" Nullable="true" />
-          <Property Type="Double" Name="Saldo_ActualOriginal" Nullable="false" />
-          <Property Type="Double" Name="Monto_Pago" Nullable="true" />
-          <Property Type="DateTime" Name="FechaPago" Nullable="true" />
-          <Property Type="String" Name="Capex_OC" Nullable="true" MaxLength="50" />
-          <Property Type="Double" Name="Diferencia" Nullable="true" />
-          <Property Type="Int32" Name="EmpresaId" Nullable="true" />
-          <Property Type="Double" Name="TotalFactura" Nullable="false" />
-        </ComplexType>
         <EntityType Name="DetalleArticulos">
           <Key>
             <PropertyRef Name="Id" />
@@ -5459,6 +5439,28 @@
           <Property Type="Boolean" Name="GastoAdm" Nullable="true" />
           <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="200" />
         </ComplexType>
+        <ComplexType Name="getReporteIngresosMensual_Result">
+          <Property Type="Int32" Name="EmpresaId" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaCancelacionPago" Nullable="true" />
+          <Property Type="Int32" Name="ClienteId" Nullable="true" />
+          <Property Type="Int32" Name="ObraId" Nullable="true" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Int32" Name="FolioNumOriginal" Nullable="true" />
+          <Property Type="String" Name="FolioNum" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="ClienteNombre" Nullable="true" MaxLength="404" />
+          <Property Type="Double" Name="TotalFactura" Nullable="false" />
+          <Property Type="Double" Name="Saldo_Actual" Nullable="true" />
+          <Property Type="Double" Name="Saldo_ActualOriginal" Nullable="true" />
+          <Property Type="Double" Name="Monto_Pago" Nullable="true" />
+          <Property Type="DateTime" Name="FechaPago" Nullable="true" />
+          <Property Type="String" Name="Capex_OC" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="esTraspaso" Nullable="true" />
+          <Property Type="String" Name="ObraTraspaso" Nullable="true" MaxLength="404" />
+          <Property Type="Double" Name="Diferencia" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6098,30 +6100,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="getReporteIngresosMensual" FunctionName="GEISAModel.Store.getReporteIngresosMensual">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GEISAModel.getReporteIngresosMensual_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
-                <ScalarProperty Name="FechaCancelacionPago" ColumnName="FechaCancelacionPago" />
-                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
-                <ScalarProperty Name="ObraId" ColumnName="ObraId" />
-                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="FolioNumOriginal" ColumnName="FolioNumOriginal" />
-                <ScalarProperty Name="FolioNum" ColumnName="FolioNum" />
-                <ScalarProperty Name="ClienteNombre" ColumnName="ClienteNombre" />
-                <ScalarProperty Name="Saldo_Actual" ColumnName="Saldo_Actual" />
-                <ScalarProperty Name="Saldo_ActualOriginal" ColumnName="Saldo_ActualOriginal" />
-                <ScalarProperty Name="Monto_Pago" ColumnName="Monto_Pago" />
-                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
-                <ScalarProperty Name="Capex_OC" ColumnName="Capex_OC" />
-                <ScalarProperty Name="Diferencia" ColumnName="Diferencia" />
-                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
-                <ScalarProperty Name="TotalFactura" ColumnName="TotalFactura" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="DetalleArticulos">
             <EntityTypeMapping TypeName="GEISAModel.DetalleArticulos">
               <MappingFragment StoreEntitySet="DetalleArticulos">
@@ -6513,6 +6491,32 @@
                 <ScalarProperty Name="Compartido" ColumnName="Compartido" />
                 <ScalarProperty Name="GastoAdm" ColumnName="GastoAdm" />
                 <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getReporteIngresosMensual" FunctionName="GEISAModel.Store.getReporteIngresosMensual">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEISAModel.getReporteIngresosMensual_Result">
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="FechaCancelacionPago" ColumnName="FechaCancelacionPago" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="ObraId" ColumnName="ObraId" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FolioNumOriginal" ColumnName="FolioNumOriginal" />
+                <ScalarProperty Name="FolioNum" ColumnName="FolioNum" />
+                <ScalarProperty Name="ClienteNombre" ColumnName="ClienteNombre" />
+                <ScalarProperty Name="TotalFactura" ColumnName="TotalFactura" />
+                <ScalarProperty Name="Saldo_Actual" ColumnName="Saldo_Actual" />
+                <ScalarProperty Name="Saldo_ActualOriginal" ColumnName="Saldo_ActualOriginal" />
+                <ScalarProperty Name="Monto_Pago" ColumnName="Monto_Pago" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="Capex_OC" ColumnName="Capex_OC" />
+                <ScalarProperty Name="esTraspaso" ColumnName="esTraspaso" />
+                <ScalarProperty Name="ObraTraspaso" ColumnName="ObraTraspaso" />
+                <ScalarProperty Name="Diferencia" ColumnName="Diferencia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

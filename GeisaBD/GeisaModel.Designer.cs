@@ -1771,36 +1771,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        /// <param name="fechaIni">No hay documentación de metadatos disponible.</param>
-        /// <param name="fechaFin">No hay documentación de metadatos disponible.</param>
-        public ObjectResult<getReporteIngresosMensual_Result> getReporteIngresosMensual(Nullable<global::System.DateTime> fechaIni, Nullable<global::System.DateTime> fechaFin)
-        {
-            ObjectParameter fechaIniParameter;
-            if (fechaIni.HasValue)
-            {
-                fechaIniParameter = new ObjectParameter("FechaIni", fechaIni);
-            }
-            else
-            {
-                fechaIniParameter = new ObjectParameter("FechaIni", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter fechaFinParameter;
-            if (fechaFin.HasValue)
-            {
-                fechaFinParameter = new ObjectParameter("FechaFin", fechaFin);
-            }
-            else
-            {
-                fechaFinParameter = new ObjectParameter("FechaFin", typeof(global::System.DateTime));
-            }
-    
-            return base.ExecuteFunction<getReporteIngresosMensual_Result>("getReporteIngresosMensual", fechaIniParameter, fechaFinParameter);
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         /// <param name="facturaId">No hay documentación de metadatos disponible.</param>
         /// <param name="pagosId">No hay documentación de metadatos disponible.</param>
         public ObjectResult<getAbonosTotales_Result> getAbonosTotales(Nullable<global::System.Int32> facturaId, Nullable<global::System.Int32> pagosId)
@@ -2111,6 +2081,36 @@ namespace GeisaBD
             }
     
             return base.ExecuteFunction<getFacturasCompartidas_Result>("getFacturasCompartidas", tipoMovimientoParameter, mesParameter, añoParameter, empresaIdParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="fechaIni">No hay documentación de metadatos disponible.</param>
+        /// <param name="fechaFin">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<getReporteIngresosMensual_Result> getReporteIngresosMensual(Nullable<global::System.DateTime> fechaIni, Nullable<global::System.DateTime> fechaFin)
+        {
+            ObjectParameter fechaIniParameter;
+            if (fechaIni.HasValue)
+            {
+                fechaIniParameter = new ObjectParameter("FechaIni", fechaIni);
+            }
+            else
+            {
+                fechaIniParameter = new ObjectParameter("FechaIni", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter fechaFinParameter;
+            if (fechaFin.HasValue)
+            {
+                fechaFinParameter = new ObjectParameter("FechaFin", fechaFin);
+            }
+            else
+            {
+                fechaFinParameter = new ObjectParameter("FechaFin", typeof(global::System.DateTime));
+            }
+    
+            return base.ExecuteFunction<getReporteIngresosMensual_Result>("getReporteIngresosMensual", fechaIniParameter, fechaFinParameter);
         }
 
         #endregion
@@ -24907,13 +24907,11 @@ namespace GeisaBD
         /// Crear un nuevo objeto getReporteIngresosMensual_Result.
         /// </summary>
         /// <param name="fecha">Valor inicial de la propiedad Fecha.</param>
-        /// <param name="saldo_ActualOriginal">Valor inicial de la propiedad Saldo_ActualOriginal.</param>
         /// <param name="totalFactura">Valor inicial de la propiedad TotalFactura.</param>
-        public static getReporteIngresosMensual_Result CreategetReporteIngresosMensual_Result(global::System.DateTime fecha, global::System.Double saldo_ActualOriginal, global::System.Double totalFactura)
+        public static getReporteIngresosMensual_Result CreategetReporteIngresosMensual_Result(global::System.DateTime fecha, global::System.Double totalFactura)
         {
             getReporteIngresosMensual_Result getReporteIngresosMensual_Result = new getReporteIngresosMensual_Result();
             getReporteIngresosMensual_Result.Fecha = fecha;
-            getReporteIngresosMensual_Result.Saldo_ActualOriginal = saldo_ActualOriginal;
             getReporteIngresosMensual_Result.TotalFactura = totalFactura;
             return getReporteIngresosMensual_Result;
         }
@@ -24921,6 +24919,30 @@ namespace GeisaBD
         #endregion
 
         #region Propiedades simples
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> EmpresaId
+        {
+            get
+            {
+                return _EmpresaId;
+            }
+            set
+            {
+                OnEmpresaIdChanging(value);
+                ReportPropertyChanging("EmpresaId");
+                _EmpresaId = StructuralObject.SetValidValue(value, "EmpresaId");
+                ReportPropertyChanged("EmpresaId");
+                OnEmpresaIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _EmpresaId;
+        partial void OnEmpresaIdChanging(Nullable<global::System.Int32> value);
+        partial void OnEmpresaIdChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -25165,6 +25187,30 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double TotalFactura
+        {
+            get
+            {
+                return _TotalFactura;
+            }
+            set
+            {
+                OnTotalFacturaChanging(value);
+                ReportPropertyChanging("TotalFactura");
+                _TotalFactura = StructuralObject.SetValidValue(value, "TotalFactura");
+                ReportPropertyChanged("TotalFactura");
+                OnTotalFacturaChanged();
+            }
+        }
+        private global::System.Double _TotalFactura;
+        partial void OnTotalFacturaChanging(global::System.Double value);
+        partial void OnTotalFacturaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Double> Saldo_Actual
@@ -25189,9 +25235,9 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Double Saldo_ActualOriginal
+        public Nullable<global::System.Double> Saldo_ActualOriginal
         {
             get
             {
@@ -25206,8 +25252,8 @@ namespace GeisaBD
                 OnSaldo_ActualOriginalChanged();
             }
         }
-        private global::System.Double _Saldo_ActualOriginal;
-        partial void OnSaldo_ActualOriginalChanging(global::System.Double value);
+        private Nullable<global::System.Double> _Saldo_ActualOriginal;
+        partial void OnSaldo_ActualOriginalChanging(Nullable<global::System.Double> value);
         partial void OnSaldo_ActualOriginalChanged();
     
         /// <summary>
@@ -25287,6 +25333,54 @@ namespace GeisaBD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> esTraspaso
+        {
+            get
+            {
+                return _esTraspaso;
+            }
+            set
+            {
+                OnesTraspasoChanging(value);
+                ReportPropertyChanging("esTraspaso");
+                _esTraspaso = StructuralObject.SetValidValue(value, "esTraspaso");
+                ReportPropertyChanged("esTraspaso");
+                OnesTraspasoChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _esTraspaso;
+        partial void OnesTraspasoChanging(Nullable<global::System.Boolean> value);
+        partial void OnesTraspasoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ObraTraspaso
+        {
+            get
+            {
+                return _ObraTraspaso;
+            }
+            set
+            {
+                OnObraTraspasoChanging(value);
+                ReportPropertyChanging("ObraTraspaso");
+                _ObraTraspaso = StructuralObject.SetValidValue(value, true, "ObraTraspaso");
+                ReportPropertyChanged("ObraTraspaso");
+                OnObraTraspasoChanged();
+            }
+        }
+        private global::System.String _ObraTraspaso;
+        partial void OnObraTraspasoChanging(global::System.String value);
+        partial void OnObraTraspasoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public Nullable<global::System.Double> Diferencia
         {
             get
@@ -25305,54 +25399,6 @@ namespace GeisaBD
         private Nullable<global::System.Double> _Diferencia;
         partial void OnDiferenciaChanging(Nullable<global::System.Double> value);
         partial void OnDiferenciaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> EmpresaId
-        {
-            get
-            {
-                return _EmpresaId;
-            }
-            set
-            {
-                OnEmpresaIdChanging(value);
-                ReportPropertyChanging("EmpresaId");
-                _EmpresaId = StructuralObject.SetValidValue(value, "EmpresaId");
-                ReportPropertyChanged("EmpresaId");
-                OnEmpresaIdChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _EmpresaId;
-        partial void OnEmpresaIdChanging(Nullable<global::System.Int32> value);
-        partial void OnEmpresaIdChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Double TotalFactura
-        {
-            get
-            {
-                return _TotalFactura;
-            }
-            set
-            {
-                OnTotalFacturaChanging(value);
-                ReportPropertyChanging("TotalFactura");
-                _TotalFactura = StructuralObject.SetValidValue(value, "TotalFactura");
-                ReportPropertyChanged("TotalFactura");
-                OnTotalFacturaChanged();
-            }
-        }
-        private global::System.Double _TotalFactura;
-        partial void OnTotalFacturaChanging(global::System.Double value);
-        partial void OnTotalFacturaChanged();
 
         #endregion
 

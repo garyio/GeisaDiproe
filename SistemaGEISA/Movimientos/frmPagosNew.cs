@@ -615,13 +615,17 @@ namespace SistemaGEISA
                     if (pagos != null)
                     {
                         var id = Convert.ToInt32(row["Id"]);
-                        PagosFactura detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id);
+                        Factura fact = controler.Model.Factura.FirstOrDefault(P => P.Id == id);
+                        PagosFactura detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.PagosId == pagos.Id && P.FacturaId==fact.Id);
+                        //controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id);
 
                         if (detalle != null)
                         {
                             Factura factura = detalle.Factura;
 
                             factura.Saldo = factura.Saldo + detalle.MontoPagar;
+                            detalle.FacturaId = Convert.ToInt32((int?)null);
+                            detalle.PagosId = Convert.ToInt32((int?)null);
                             controler.Model.DeleteObject(detalle);
 
                             try
@@ -764,7 +768,7 @@ namespace SistemaGEISA
                             if (!isNew)
                             {
                                 detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id && P.PagosId == pagos.Id);
-                                detalleTraspaso = detalle.TraspasoSaldos;
+                                detalleTraspaso = detalle != null ? detalle.TraspasoSaldos : null;
                             }
                             else
                             {

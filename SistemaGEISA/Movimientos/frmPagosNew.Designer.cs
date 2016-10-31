@@ -717,8 +717,8 @@
             this.btnQuitar.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitar.Image")));
             this.btnQuitar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(114, 22);
-            this.btnQuitar.Text = "Eliminar Factura";
+            this.btnQuitar.Size = new System.Drawing.Size(111, 22);
+            this.btnQuitar.Text = "Eliminar Abono";
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // rgOpcion

@@ -34,18 +34,29 @@ namespace Reportes
                 {
                     Obra obra = model.Obra.FirstOrDefault(e => e.Id == prov.ObraId);
                     string id = string.Empty;
+                    PagosFactura pagoFacturaItem;
                     try
                     {
+                        pagoFacturaItem = model.PagosFactura.Where(P => P.Id == prov.Id).FirstOrDefault();
                         id=string.IsNullOrEmpty(prov.ClienteId.ToString()) ? obra.ClienteId.ToString() : prov.ClienteId.ToString();
                     }
                     catch (Exception ex)
                     {
                         id = string.Empty;
+                        pagoFacturaItem = null;
                     }
                     string idObra = obra != null ?obra.Id.ToString(): string.Empty;
                     string idEmpresa = prov.EmpresaId != null ?prov.EmpresaId.Value.ToString() : string.Empty;
-                    if (Cliente.Where(p => p == id).Count() > 0 && Obras.Where(p => p == idObra).Count() > 0 && Empresas.Where(E => E == idEmpresa).Count() > 0)
-                        ItemsValidos.Add(prov);
+                    if (prov.esTraspaso.Value && pagoFacturaItem!=null)
+                    {
+                        if (Cliente.Where(p => p == pagoFacturaItem.TraspasoSaldos.ClienteIdOrigen.ToString() || p == pagoFacturaItem.TraspasoSaldos.ClienteIdDestino.ToString()).Count() > 0 && Obras.Where(p => p == pagoFacturaItem.TraspasoSaldos.ObraIdOrigen.ToString() || p == pagoFacturaItem.TraspasoSaldos.ObraIdDestino.ToString()).Count() > 0 && Empresas.Where(E => E == idEmpresa).Count() > 0)
+                            ItemsValidos.Add(prov);
+                    }
+                    else
+                    {
+                        if (Cliente.Where(p => p == id).Count() > 0 && Obras.Where(p => p == idObra).Count() > 0 && Empresas.Where(E => E == idEmpresa).Count() > 0)
+                            ItemsValidos.Add(prov);
+                    }
                 }
 
             }
@@ -94,9 +105,15 @@ namespace Reportes
         public double? Monto_Pago { get { return Item.Monto_Pago; } }
         public double? Diferencia { get { return Item.Diferencia; } }
         public string FechaPago { get { return (Item.FechaCancelacionPago!=null || Item.FechaCancelacion!=null) ? "CANCELADA" : (Item.FechaPago!=null ? Item.FechaPago.Value.ToShortDateString():string.Empty) ; } }
-        public string ObraNombre { get { return model.Obra.FirstOrDefault( O => O.Id==Item.ObraId).Nombre; } }
+        public string ObraNombre { get { 
+                                            if(!Item.esTraspaso.Value)
+                                                return model.Obra.FirstOrDefault( O => O.Id==Item.ObraId).Nombre;
+                                            else
+                                                return Item.ObraTraspaso;                                            
+                                        } 
+                                 }
         public string Capex_OC { get { return Item.Capex_OC; } }
-        public double SaldoActualOriginal { get { return Item.FolioNum != null ? (Item.Saldo_ActualOriginal) : 0; } }
+        public double SaldoActualOriginal { get { return Item.FolioNum != null ? (Item.Saldo_ActualOriginal.Value) : 0; } }
         public int empresaId { get { return Item.EmpresaId.Value; } }
 
         #endregion Reporting Properties
