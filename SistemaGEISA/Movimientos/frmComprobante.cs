@@ -44,6 +44,7 @@ namespace SistemaGEISA
             txtNoDeducibles.Text = "";
             txtObservaciones.Text = "";
             txtBiaticos.Text = "";
+            txtDevoluciones.Text = "";
         }
         
         private void llenaGridF()
@@ -133,6 +134,10 @@ namespace SistemaGEISA
             var error = string.Empty;
             var isNew = false;
 
+            gv.CloseEditor();            
+            gv.CloseEditForm();
+            Calc_TipoComprobante();
+            
 
             if (!gridValido()) 
             { 
@@ -289,7 +294,7 @@ namespace SistemaGEISA
 
 
         private void Calc_TipoComprobante()
-        {
+        {           
             facturas_tot = 0; nominas_tot = 0; nodeducibles_tot = 0; biaticos_tot = 0; devolucion_tot = 0;
 
                 if (gv.DataRowCount > 0)
@@ -325,7 +330,7 @@ namespace SistemaGEISA
                                 else if (gv.GetRowCellValue(i, "TipoComprobanteId").ToString() == "5")//DEVOLUCION
                                 {
                                     devolucion_tot += Convert.ToDouble(gv.GetRowCellValue(i, "Importe"));
-                                    //txtBiaticos.Text = biaticos_tot.ToString("c2");
+                                    txtDevoluciones.Text = devolucion_tot.ToString("c2");
                                 }
                             }
                         }

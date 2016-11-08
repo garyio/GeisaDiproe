@@ -1730,7 +1730,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=sum(Fields!SaldoActualOriginal.Value)</Value>
+                                            <Value />
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -3667,7 +3667,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=sum(Fields!SaldoActual.Value)</Value>
+                                            <Value />
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -3839,7 +3839,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=Sum(Fields!SaldoActual.Value)</Value>
+                                            <Value />
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -5750,7 +5750,6 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                       <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                                     </Style>
                                   </Textbox>
-                                  <rd:Selected>true</rd:Selected>
                                 </CellContents>
                               </TablixHeader>
                               <TablixMembers>
@@ -5765,7 +5764,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=sum(Fields!SaldoActual.Value)</Value>
+                                                <Value />
                                                 <Style>
                                                   <FontFamily>calibri</FontFamily>
                                                   <FontSize>8.5pt</FontSize>
@@ -5978,7 +5977,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Sum(Fields!SaldoActual.Value)</Value>
+                                                <Value />
                                                 <Style>
                                                   <FontFamily>calibri</FontFamily>
                                                   <FontSize>8.5pt</FontSize>
@@ -7917,7 +7916,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=Sum(Fields!SaldoActual.Value)</Value>
+                                            <Value />
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -8089,7 +8088,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=Sum(Fields!SaldoActual.Value)</Value>
+                                            <Value />
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -10001,7 +10000,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Sum(Fields!SaldoActual.Value)</Value>
+                                                <Value />
                                                 <Style>
                                                   <FontFamily>calibri</FontFamily>
                                                   <FontSize>8.5pt</FontSize>
@@ -10211,7 +10210,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Sum(Fields!SaldoActual.Value)</Value>
+                                                <Value />
                                                 <Style>
                                                   <FontFamily>calibri</FontFamily>
                                                   <FontSize>8.5pt</FontSize>
@@ -11922,7 +11921,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=Sum(Fields!SaldoActualOriginal.Value)</Value>
+                                            <Value />
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>

@@ -62,6 +62,8 @@
             this.txtNominas = new System.Windows.Forms.TextBox();
             this.txtBiaticos = new System.Windows.Forms.TextBox();
             this.txtFacturas = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDevoluciones = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -86,7 +88,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(853, 35);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(934, 35);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // menu
@@ -104,7 +106,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(451, 35);
+            this.menu.Size = new System.Drawing.Size(482, 35);
             this.menu.TabIndex = 6;
             // 
             // btnGuardar
@@ -153,7 +155,7 @@
             // dtimeFecha
             // 
             this.dtimeFecha.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dtimeFecha.Location = new System.Drawing.Point(577, 3);
+            this.dtimeFecha.Location = new System.Drawing.Point(658, 3);
             this.dtimeFecha.Name = "dtimeFecha";
             this.dtimeFecha.Size = new System.Drawing.Size(273, 21);
             this.dtimeFecha.TabIndex = 7;
@@ -171,11 +173,16 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnCount = 7;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.txtDevoluciones, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 0);
@@ -187,6 +194,7 @@
             this.tableLayoutPanel1.Controls.Add(this.txtNominas, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtBiaticos, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtFacturas, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -195,12 +203,12 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(853, 329);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(934, 329);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
             // grid
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.grid, 4);
+            this.tableLayoutPanel1.SetColumnSpan(this.grid, 7);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.grid.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
@@ -219,7 +227,7 @@
             this.luObraComprobante,
             this.luTipoComprobante,
             this.luProveedor});
-            this.grid.Size = new System.Drawing.Size(847, 242);
+            this.grid.Size = new System.Drawing.Size(928, 242);
             this.grid.TabIndex = 15;
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -362,7 +370,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(334, 0);
+            this.label2.Location = new System.Drawing.Point(253, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 27);
             this.label2.TabIndex = 1;
@@ -384,7 +392,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(334, 27);
+            this.label5.Location = new System.Drawing.Point(253, 27);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 27);
             this.label5.TabIndex = 4;
@@ -393,11 +401,10 @@
             // 
             // txtNoDeducibles
             // 
-            this.txtNoDeducibles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNoDeducibles.Location = new System.Drawing.Point(413, 3);
+            this.txtNoDeducibles.Location = new System.Drawing.Point(332, 3);
             this.txtNoDeducibles.Name = "txtNoDeducibles";
             this.txtNoDeducibles.ReadOnly = true;
-            this.txtNoDeducibles.Size = new System.Drawing.Size(437, 21);
+            this.txtNoDeducibles.Size = new System.Drawing.Size(160, 21);
             this.txtNoDeducibles.TabIndex = 9;
             // 
             // label6
@@ -414,45 +421,61 @@
             // 
             // txtObservaciones
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.txtObservaciones, 3);
+            this.tableLayoutPanel1.SetColumnSpan(this.txtObservaciones, 5);
             this.txtObservaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtObservaciones.Location = new System.Drawing.Point(87, 57);
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(763, 21);
+            this.txtObservaciones.Size = new System.Drawing.Size(743, 21);
             this.txtObservaciones.TabIndex = 13;
             // 
             // txtNominas
             // 
-            this.txtNominas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNominas.Location = new System.Drawing.Point(87, 3);
             this.txtNominas.Name = "txtNominas";
             this.txtNominas.ReadOnly = true;
-            this.txtNominas.Size = new System.Drawing.Size(241, 21);
+            this.txtNominas.Size = new System.Drawing.Size(160, 21);
             this.txtNominas.TabIndex = 14;
             // 
             // txtBiaticos
             // 
-            this.txtBiaticos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBiaticos.Location = new System.Drawing.Point(413, 30);
+            this.txtBiaticos.Location = new System.Drawing.Point(332, 30);
             this.txtBiaticos.Name = "txtBiaticos";
             this.txtBiaticos.ReadOnly = true;
-            this.txtBiaticos.Size = new System.Drawing.Size(437, 21);
+            this.txtBiaticos.Size = new System.Drawing.Size(160, 21);
             this.txtBiaticos.TabIndex = 16;
             // 
             // txtFacturas
             // 
-            this.txtFacturas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFacturas.Location = new System.Drawing.Point(87, 30);
             this.txtFacturas.Name = "txtFacturas";
             this.txtFacturas.ReadOnly = true;
-            this.txtFacturas.Size = new System.Drawing.Size(241, 21);
+            this.txtFacturas.Size = new System.Drawing.Size(160, 21);
             this.txtFacturas.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(498, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 27);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Devoluciones";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtDevoluciones
+            // 
+            this.txtDevoluciones.Location = new System.Drawing.Point(574, 3);
+            this.txtDevoluciones.Name = "txtDevoluciones";
+            this.txtDevoluciones.ReadOnly = true;
+            this.txtDevoluciones.Size = new System.Drawing.Size(160, 21);
+            this.txtDevoluciones.TabIndex = 18;
             // 
             // frmComprobante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 364);
+            this.ClientSize = new System.Drawing.Size(934, 364);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -511,5 +534,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private System.Windows.Forms.ToolStripButton btnReporte;
         private System.Windows.Forms.ToolStripButton btnEliminar;
+        private System.Windows.Forms.TextBox txtDevoluciones;
+        private System.Windows.Forms.Label label4;
     }
 }

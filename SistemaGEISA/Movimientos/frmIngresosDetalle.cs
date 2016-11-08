@@ -119,7 +119,7 @@ namespace SistemaGEISA
                                 if (f.Pagos != null) //elimino el pago                                                                                      
                                     controler.Model.DeleteObject(f); //elimino el PagoFactura
                             }
-                            controler.Model.DeleteObject(this.pagos);
+                            controler.Model.DeleteObject(item_Pago);
                         }
                         else
                         {

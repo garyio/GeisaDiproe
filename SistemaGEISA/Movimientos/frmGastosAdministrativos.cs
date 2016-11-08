@@ -221,7 +221,7 @@ namespace SistemaGEISA
         private void abrirForm(bool nuevo)
         {
             Pagos pago = gv1.IsFocusedView ? pagosDiproe : pagosGeisa;
-            if (pagosGeisa != null || pagosDiproe!=null)
+            if ((pagosGeisa != null || pagosDiproe!=null) && pago!=null )
             {
                 if ((pago.TipoMovimientoId == TipoMovimientoEnum.GastosAdministrativos.Id || nuevo == true))
                 {

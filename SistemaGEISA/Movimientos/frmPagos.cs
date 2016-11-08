@@ -43,8 +43,8 @@ namespace SistemaGEISA
                 foreach (PagosFactura detalle in Controler.Model.PagosFactura.Where(P => P.Pagos.TipoMovimientoId == TipoMovimientoEnum.Pagos.Id).ToList())
                 {
 
-                    if (detalle != null && detalle.FacturaId == 45038)
-                    {
+                    //if (detalle != null && detalle.FacturaId == 45038)
+                    //{
                         
                         Factura factura = Controler.Model.Factura.FirstOrDefault(D => D.Id == detalle.FacturaId);
 
@@ -53,7 +53,7 @@ namespace SistemaGEISA
 
                         //detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id && P.PagosId == pagos.Id);
                         detalleTraspaso = detalle.TraspasoSaldos;
-                    }
+                    //}
                 }
 
                 Controler.Model.SaveChanges();
@@ -311,8 +311,7 @@ namespace SistemaGEISA
         }
 
         private void btnRecalcular_Click(object sender, EventArgs e)
-        {
-            
+        {            
             recalculaSaldos();
         }
     }

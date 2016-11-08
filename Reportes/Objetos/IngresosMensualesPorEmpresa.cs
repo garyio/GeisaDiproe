@@ -45,9 +45,10 @@ namespace Reportes
                         id = string.Empty;
                         pagoFacturaItem = null;
                     }
+          
                     string idObra = obra != null ?obra.Id.ToString(): string.Empty;
                     string idEmpresa = prov.EmpresaId != null ?prov.EmpresaId.Value.ToString() : string.Empty;
-                    if (prov.esTraspaso.Value && pagoFacturaItem!=null)
+                    if (prov.tipoMovimiento == 3 && pagoFacturaItem!=null)
                     {
                         if (Cliente.Where(p => p == pagoFacturaItem.TraspasoSaldos.ClienteIdOrigen.ToString() || p == pagoFacturaItem.TraspasoSaldos.ClienteIdDestino.ToString()).Count() > 0 && Obras.Where(p => p == pagoFacturaItem.TraspasoSaldos.ObraIdOrigen.ToString() || p == pagoFacturaItem.TraspasoSaldos.ObraIdDestino.ToString()).Count() > 0 && Empresas.Where(E => E == idEmpresa).Count() > 0)
                             ItemsValidos.Add(prov);
@@ -106,14 +107,14 @@ namespace Reportes
         public double? Diferencia { get { return Item.Diferencia; } }
         public string FechaPago { get { return (Item.FechaCancelacionPago!=null || Item.FechaCancelacion!=null) ? "CANCELADA" : (Item.FechaPago!=null ? Item.FechaPago.Value.ToShortDateString():string.Empty) ; } }
         public string ObraNombre { get { 
-                                            if(!Item.esTraspaso.Value)
+                                            if(Item.tipoMovimiento == 1)
                                                 return model.Obra.FirstOrDefault( O => O.Id==Item.ObraId).Nombre;
                                             else
                                                 return Item.ObraTraspaso;                                            
                                         } 
                                  }
         public string Capex_OC { get { return Item.Capex_OC; } }
-        public double SaldoActualOriginal { get { return Item.FolioNum != null ? (Item.Saldo_ActualOriginal.Value) : 0; } }
+        public double SaldoActualOriginal { get { return Item.FolioNum != null ? (Item.Saldo_ActualOriginal) : 0; } }
         public int empresaId { get { return Item.EmpresaId.Value; } }
 
         #endregion Reporting Properties

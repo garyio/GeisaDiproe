@@ -35,7 +35,11 @@ namespace SistemaGEISA
         }
 
         public void llenaGrid()
-        {            
+        {
+            //Refresco Informacion del Pago
+            controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, controler.Model.CajaChicaDetalle.Where(D => D.CajaChicaId == cajaChica.Id).ToList());
+            //******************************
+
             grid.DataSource = controler.Model.CajaChicaDetalle.Where(D => D.CajaChicaId == cajaChica.Id).OrderByDescending(O => O.Id).ToList();
             var Datos = controler.Model.CajaChicaDetalle.Where(D => D.CajaChicaId == cajaChica.Id).ToList();
             double tipoComprobantes = 0;
@@ -51,7 +55,7 @@ namespace SistemaGEISA
                 deposito += Convert.ToDouble(CajaDetalle.Deposito);
                 devolucion += Convert.ToDouble(CajaDetalle.Devolucion);
             }
-            saldo = (deposito + devolucion) - tipoComprobantes;
+            saldo = (deposito - devolucion) - tipoComprobantes;
             txtSaldo.Text = saldo.ToString("c2");
         }
 
@@ -268,7 +272,7 @@ namespace SistemaGEISA
 
                     if (form.DialogResult == DialogResult.OK)
                         llenaGrid();
-
+                    llenaGrid();
                     form.Dispose();
                 }
             }

@@ -267,7 +267,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.24008F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.75992F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 325F));
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
@@ -508,7 +508,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 26);
+            this.label1.Size = new System.Drawing.Size(71, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Empleado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -519,7 +519,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 27);
+            this.label2.Size = new System.Drawing.Size(71, 27);
             this.label2.TabIndex = 1;
             this.label2.Text = "Obra Actual";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -528,7 +528,7 @@
             // 
             this.luResidente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.luResidente.EditValue = "";
-            this.luResidente.Location = new System.Drawing.Point(81, 3);
+            this.luResidente.Location = new System.Drawing.Point(80, 3);
             this.luResidente.Name = "luResidente";
             this.luResidente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -542,7 +542,7 @@
             // luObra
             // 
             this.luObra.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.luObra.Location = new System.Drawing.Point(81, 29);
+            this.luObra.Location = new System.Drawing.Point(80, 29);
             this.luObra.Name = "luObra";
             this.luObra.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -555,10 +555,10 @@
             // txtSaldo
             // 
             this.txtSaldo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSaldo.Location = new System.Drawing.Point(719, 29);
+            this.txtSaldo.Location = new System.Drawing.Point(718, 29);
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.ReadOnly = true;
-            this.txtSaldo.Size = new System.Drawing.Size(319, 21);
+            this.txtSaldo.Size = new System.Drawing.Size(320, 21);
             this.txtSaldo.TabIndex = 3;
             this.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -566,7 +566,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(514, 26);
+            this.label3.Location = new System.Drawing.Point(513, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(199, 27);
             this.label3.TabIndex = 4;

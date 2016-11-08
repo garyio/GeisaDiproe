@@ -24907,12 +24907,20 @@ namespace GeisaBD
         /// Crear un nuevo objeto getReporteIngresosMensual_Result.
         /// </summary>
         /// <param name="fecha">Valor inicial de la propiedad Fecha.</param>
-        /// <param name="totalFactura">Valor inicial de la propiedad TotalFactura.</param>
-        public static getReporteIngresosMensual_Result CreategetReporteIngresosMensual_Result(global::System.DateTime fecha, global::System.Double totalFactura)
+        /// <param name="saldo_Actual">Valor inicial de la propiedad Saldo_Actual.</param>
+        /// <param name="saldo_ActualOriginal">Valor inicial de la propiedad Saldo_ActualOriginal.</param>
+        /// <param name="monto_Pago">Valor inicial de la propiedad Monto_Pago.</param>
+        /// <param name="diferencia">Valor inicial de la propiedad Diferencia.</param>
+        /// <param name="tipoMovimiento">Valor inicial de la propiedad tipoMovimiento.</param>
+        public static getReporteIngresosMensual_Result CreategetReporteIngresosMensual_Result(global::System.DateTime fecha, global::System.Double saldo_Actual, global::System.Double saldo_ActualOriginal, global::System.Double monto_Pago, global::System.Double diferencia, global::System.Int32 tipoMovimiento)
         {
             getReporteIngresosMensual_Result getReporteIngresosMensual_Result = new getReporteIngresosMensual_Result();
             getReporteIngresosMensual_Result.Fecha = fecha;
-            getReporteIngresosMensual_Result.TotalFactura = totalFactura;
+            getReporteIngresosMensual_Result.Saldo_Actual = saldo_Actual;
+            getReporteIngresosMensual_Result.Saldo_ActualOriginal = saldo_ActualOriginal;
+            getReporteIngresosMensual_Result.Monto_Pago = monto_Pago;
+            getReporteIngresosMensual_Result.Diferencia = diferencia;
+            getReporteIngresosMensual_Result.tipoMovimiento = tipoMovimiento;
             return getReporteIngresosMensual_Result;
         }
 
@@ -25187,9 +25195,9 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Double TotalFactura
+        public Nullable<global::System.Double> TotalFactura
         {
             get
             {
@@ -25204,16 +25212,16 @@ namespace GeisaBD
                 OnTotalFacturaChanged();
             }
         }
-        private global::System.Double _TotalFactura;
-        partial void OnTotalFacturaChanging(global::System.Double value);
+        private Nullable<global::System.Double> _TotalFactura;
+        partial void OnTotalFacturaChanging(Nullable<global::System.Double> value);
         partial void OnTotalFacturaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> Saldo_Actual
+        public global::System.Double Saldo_Actual
         {
             get
             {
@@ -25228,16 +25236,16 @@ namespace GeisaBD
                 OnSaldo_ActualChanged();
             }
         }
-        private Nullable<global::System.Double> _Saldo_Actual;
-        partial void OnSaldo_ActualChanging(Nullable<global::System.Double> value);
+        private global::System.Double _Saldo_Actual;
+        partial void OnSaldo_ActualChanging(global::System.Double value);
         partial void OnSaldo_ActualChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> Saldo_ActualOriginal
+        public global::System.Double Saldo_ActualOriginal
         {
             get
             {
@@ -25252,16 +25260,16 @@ namespace GeisaBD
                 OnSaldo_ActualOriginalChanged();
             }
         }
-        private Nullable<global::System.Double> _Saldo_ActualOriginal;
-        partial void OnSaldo_ActualOriginalChanging(Nullable<global::System.Double> value);
+        private global::System.Double _Saldo_ActualOriginal;
+        partial void OnSaldo_ActualOriginalChanging(global::System.Double value);
         partial void OnSaldo_ActualOriginalChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> Monto_Pago
+        public global::System.Double Monto_Pago
         {
             get
             {
@@ -25276,8 +25284,8 @@ namespace GeisaBD
                 OnMonto_PagoChanged();
             }
         }
-        private Nullable<global::System.Double> _Monto_Pago;
-        partial void OnMonto_PagoChanging(Nullable<global::System.Double> value);
+        private global::System.Double _Monto_Pago;
+        partial void OnMonto_PagoChanging(global::System.Double value);
         partial void OnMonto_PagoChanged();
     
         /// <summary>
@@ -25333,30 +25341,6 @@ namespace GeisaBD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> esTraspaso
-        {
-            get
-            {
-                return _esTraspaso;
-            }
-            set
-            {
-                OnesTraspasoChanging(value);
-                ReportPropertyChanging("esTraspaso");
-                _esTraspaso = StructuralObject.SetValidValue(value, "esTraspaso");
-                ReportPropertyChanged("esTraspaso");
-                OnesTraspasoChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _esTraspaso;
-        partial void OnesTraspasoChanging(Nullable<global::System.Boolean> value);
-        partial void OnesTraspasoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public global::System.String ObraTraspaso
         {
             get
@@ -25379,9 +25363,9 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> Diferencia
+        public global::System.Double Diferencia
         {
             get
             {
@@ -25396,9 +25380,33 @@ namespace GeisaBD
                 OnDiferenciaChanged();
             }
         }
-        private Nullable<global::System.Double> _Diferencia;
-        partial void OnDiferenciaChanging(Nullable<global::System.Double> value);
+        private global::System.Double _Diferencia;
+        partial void OnDiferenciaChanging(global::System.Double value);
         partial void OnDiferenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 tipoMovimiento
+        {
+            get
+            {
+                return _tipoMovimiento;
+            }
+            set
+            {
+                OntipoMovimientoChanging(value);
+                ReportPropertyChanging("tipoMovimiento");
+                _tipoMovimiento = StructuralObject.SetValidValue(value, "tipoMovimiento");
+                ReportPropertyChanged("tipoMovimiento");
+                OntipoMovimientoChanged();
+            }
+        }
+        private global::System.Int32 _tipoMovimiento;
+        partial void OntipoMovimientoChanging(global::System.Int32 value);
+        partial void OntipoMovimientoChanged();
 
         #endregion
 

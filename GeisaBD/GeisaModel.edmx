@@ -5451,15 +5451,15 @@
           <Property Type="Int32" Name="FolioNumOriginal" Nullable="true" />
           <Property Type="String" Name="FolioNum" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="ClienteNombre" Nullable="true" MaxLength="404" />
-          <Property Type="Double" Name="TotalFactura" Nullable="false" />
-          <Property Type="Double" Name="Saldo_Actual" Nullable="true" />
-          <Property Type="Double" Name="Saldo_ActualOriginal" Nullable="true" />
-          <Property Type="Double" Name="Monto_Pago" Nullable="true" />
+          <Property Type="Double" Name="TotalFactura" Nullable="true" />
+          <Property Type="Double" Name="Saldo_Actual" Nullable="false" />
+          <Property Type="Double" Name="Saldo_ActualOriginal" Nullable="false" />
+          <Property Type="Double" Name="Monto_Pago" Nullable="false" />
           <Property Type="DateTime" Name="FechaPago" Nullable="true" />
           <Property Type="String" Name="Capex_OC" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="esTraspaso" Nullable="true" />
           <Property Type="String" Name="ObraTraspaso" Nullable="true" MaxLength="404" />
-          <Property Type="Double" Name="Diferencia" Nullable="true" />
+          <Property Type="Double" Name="Diferencia" Nullable="false" />
+          <Property Type="Int32" Name="tipoMovimiento" Nullable="false" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -6514,9 +6514,9 @@
                 <ScalarProperty Name="Monto_Pago" ColumnName="Monto_Pago" />
                 <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
                 <ScalarProperty Name="Capex_OC" ColumnName="Capex_OC" />
-                <ScalarProperty Name="esTraspaso" ColumnName="esTraspaso" />
                 <ScalarProperty Name="ObraTraspaso" ColumnName="ObraTraspaso" />
                 <ScalarProperty Name="Diferencia" ColumnName="Diferencia" />
+                <ScalarProperty Name="tipoMovimiento" ColumnName="tipoMovimiento" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

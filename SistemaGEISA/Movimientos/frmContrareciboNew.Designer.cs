@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup1 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmContrareciboNew));
+            this.rgOpciones = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.dateEditFecha = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.menu = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.rgOpcion = new DevExpress.XtraEditors.RadioGroup();
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -42,6 +43,7 @@
             this.colFecha = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colImporte = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObra = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.luObra = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colObservaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTipoContrarecibo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dtFechaPago = new DevExpress.XtraEditors.DateEdit();
@@ -56,15 +58,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
-            this.rgOpcion = new DevExpress.XtraEditors.RadioGroup();
-            this.luObra = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgOpciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.CalendarTimeProperties)).BeginInit();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgOpcion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemRadioGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luObra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaPago.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaPago.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFecha.Properties.CalendarTimeProperties)).BeginInit();
@@ -72,9 +74,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luProveedor.Properties)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rgOpcion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.luObra)).BeginInit();
             this.SuspendLayout();
+            // 
+            // rgOpciones
+            // 
+            this.rgOpciones.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.rgOpciones.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Factura"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Nota Credito")});
+            this.rgOpciones.Name = "rgOpciones";
+            this.rgOpciones.NullText = "1";
             // 
             // dateEditFecha
             // 
@@ -162,6 +171,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 347);
             this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // rgOpcion
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.rgOpcion, 2);
+            this.rgOpcion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rgOpcion.EditValue = 2;
+            this.rgOpcion.Location = new System.Drawing.Point(66, 30);
+            this.rgOpcion.Name = "rgOpcion";
+            this.rgOpcion.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Cliente"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Proveedor")});
+            this.rgOpcion.Size = new System.Drawing.Size(223, 23);
+            this.rgOpcion.TabIndex = 51;
+            this.rgOpcion.EditValueChanged += new System.EventHandler(this.rgOpcion_EditValueChanged);
             // 
             // grid
             // 
@@ -262,6 +285,17 @@
             this.colObra.VisibleIndex = 4;
             this.colObra.Width = 180;
             // 
+            // luObra
+            // 
+            this.luObra.AutoHeight = false;
+            this.luObra.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luObra.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
+            this.luObra.Name = "luObra";
+            this.luObra.NullText = "";
+            // 
             // colObservaciones
             // 
             this.colObservaciones.Caption = "Observaciones";
@@ -274,13 +308,7 @@
             // colTipoContrarecibo
             // 
             this.colTipoContrarecibo.Caption = "Tipo";
-            repositoryItemRadioGroup1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            repositoryItemRadioGroup1.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Facutra"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Nota Credito")});
-            repositoryItemRadioGroup1.Name = "rgOpciones";
-            repositoryItemRadioGroup1.NullText = "1";
-            this.colTipoContrarecibo.ColumnEdit = repositoryItemRadioGroup1;
+            this.colTipoContrarecibo.ColumnEdit = this.rgOpciones;
             this.colTipoContrarecibo.FieldName = "tipoComprobante";
             this.colTipoContrarecibo.Name = "colTipoContrarecibo";
             this.colTipoContrarecibo.Visible = true;
@@ -457,31 +485,6 @@
             this.btnEliminar.ToolTipText = "Eliminar Factura";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // rgOpcion
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.rgOpcion, 2);
-            this.rgOpcion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rgOpcion.EditValue = 2;
-            this.rgOpcion.Location = new System.Drawing.Point(66, 30);
-            this.rgOpcion.Name = "rgOpcion";
-            this.rgOpcion.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Cliente"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Proveedor")});
-            this.rgOpcion.Size = new System.Drawing.Size(223, 23);
-            this.rgOpcion.TabIndex = 51;
-            this.rgOpcion.EditValueChanged += new System.EventHandler(this.rgOpcion_EditValueChanged);
-            // 
-            // luObra
-            // 
-            this.luObra.AutoHeight = false;
-            this.luObra.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.luObra.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
-            this.luObra.Name = "luObra";
-            this.luObra.NullText = "";
-            // 
             // frmContrareciboNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,15 +498,17 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contra-recibo : Nuevo";
             this.Load += new System.EventHandler(this.frmContrareciboNew_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.rgOpciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditFecha)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgOpcion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemRadioGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luObra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaPago.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaPago.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFecha.Properties.CalendarTimeProperties)).EndInit();
@@ -512,8 +517,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.luProveedor.Properties)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rgOpcion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.luObra)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -549,5 +552,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTipoContrarecibo;
         private DevExpress.XtraEditors.RadioGroup rgOpcion;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit luObra;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup rgOpciones;
     }
 }
