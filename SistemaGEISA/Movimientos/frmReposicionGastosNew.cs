@@ -486,9 +486,14 @@ namespace SistemaGEISA
                         {
                             
                             var id = string.IsNullOrEmpty(row["Id"].ToString()) ? 0 : Convert.ToInt32(row["Id"]);
+                            
+
                             if (id != 0)
                             {
                                 factura = controler.Model.Factura.FirstOrDefault(D => D.Id == id);
+                                factura.Saldo = factura.Importe - controler.Model.getAbonosTotales(factura.Id, pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                                factura.Saldo = Math.Round(factura.Saldo, 2);
+
                                 //Console.WriteLine(factura.PagosFactura.Count());
                                 if (!isNew && id != 0)
                                     detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id && P.PagosId == pagos.Id);
@@ -508,9 +513,11 @@ namespace SistemaGEISA
                             factura.Observaciones = row["Observaciones"].ToString().ToUpper();
                             factura.ProveedorId = string.IsNullOrEmpty(row["ProveedorId"].ToString()) ? (int?)null : Convert.ToInt32(row["ProveedorId"].ToString());
                             factura.ObraId = string.IsNullOrEmpty(row["ObraId"].ToString()) ? (int?)null : Convert.ToInt32(row["ObraId"].ToString());
-                            factura.Saldo = Convert.ToDouble(row["SaldoFinal"].ToString());
+                            //factura.Saldo = Convert.ToDouble(row["SaldoFinal"].ToString());
                             factura.Compartido = Convert.ToBoolean(row["Compartido"]);
                             factura.GastoAdm = Convert.ToBoolean(row["GastoAdm"]);
+                            if (factura.Saldo > 0)
+                                factura.Saldo = factura.Saldo - Math.Round(Convert.ToDouble(row["SaldoFinal"]), 2); 
 
                             if (!factura.NoEsNuevo) controler.Model.AddToFactura(factura);
 
@@ -752,10 +759,17 @@ namespace SistemaGEISA
                     {
                         Factura fac = facpagos.Factura;
                         fac.Saldo = fac.Saldo + facpagos.MontoPagar;
+
+                        //fac.Saldo = fac.Importe - controler.Model.getAbonosTotales(fac.Id, pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                        //fac.Saldo = Math.Round(fac.Saldo, 2);
+
+                        if (facpagos.TraspasoSaldos !=null)
+                            facpagos.TraspasoSaldos.FechaCancelacion = DateTime.Now;
                     }
 
                     pagos.FechaCancelacion = DateTime.Now;
                     pagos.UsuarioId = frmPrincipal.UsuarioDelSistema.Id;
+
 
                     controler.Model.SaveChanges();
                     transaccion.Commit();

@@ -186,6 +186,10 @@ namespace SistemaGEISA
                         new frmMessageBox(true) { Message = "Error al quitar la Orden: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
+                    finally
+                    {
+                        Controler.Model.CloseConnection();
+                    }
                 }
                 else
                 {
@@ -196,7 +200,7 @@ namespace SistemaGEISA
             {
                 new frmMessageBox(true) { Message = "Seleccione una Orden a Eliminar.", Title = "Aviso" }.ShowDialog();
             }
-            Controler.Model.CloseConnection();
+            
 
         }
 

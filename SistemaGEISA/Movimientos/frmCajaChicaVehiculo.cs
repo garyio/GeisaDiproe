@@ -164,6 +164,10 @@ namespace SistemaGEISA
                         new frmMessageBox(true) { Message = "Error al quitar La Caja chica: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
+                    finally
+                    {
+                        Controler.Model.CloseConnection();
+                    }
                 }
                 else
                 {
@@ -174,7 +178,7 @@ namespace SistemaGEISA
             {
                 new frmMessageBox(true) { Message = "Seleccione La Caja chica a Eliminar.", Title = "Aviso" }.ShowDialog();
             }
-            Controler.Model.CloseConnection();
+            
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)

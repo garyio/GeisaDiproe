@@ -229,8 +229,11 @@ namespace SistemaGEISA
                                              }
                                              f.Factura = null;
                                          }
+                                         if (f.TraspasoSaldos != null) //Quito referencia del Traspaso                                                                                  
+                                             f.TraspasoSaldos = null; 
                                          if (f.Pagos !=null) //elimino el pago                                                                                      
-                                         Controler.Model.DeleteObject(f); //elimino el PagoFactura
+                                            Controler.Model.DeleteObject(f); //elimino el PagoFactura
+                                         
                                      }
                                      Controler.Model.DeleteObject(pago);
                                  }
@@ -250,6 +253,10 @@ namespace SistemaGEISA
                             new frmMessageBox(true) { Message = "Error al quitar el Pago: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
                             if (transaccion != null) transaccion.Rollback();
                         }
+                      finally
+                      {
+                          Controler.Model.CloseConnection();
+                      }
                     }
                     else
                     {
@@ -260,12 +267,7 @@ namespace SistemaGEISA
                 {
                     new frmMessageBox(true) { Message = "Seleccione un Pago a Eliminar.", Title = "Aviso" }.ShowDialog();
                 }
-            Controler.Model.CloseConnection();
-        }
-
-        private void grid_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -311,8 +313,10 @@ namespace SistemaGEISA
         }
 
         private void btnRecalcular_Click(object sender, EventArgs e)
-        {            
+        {
+            this.Cursor = Cursors.WaitCursor;
             recalculaSaldos();
+            this.Cursor = Cursors.Default;
         }
     }
 }

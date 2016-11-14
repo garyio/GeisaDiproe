@@ -182,7 +182,6 @@
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv});
-            this.grid.Click += new System.EventHandler(this.grid_Click);
             // 
             // gv
             // 

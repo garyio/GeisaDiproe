@@ -1993,47 +1993,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        /// <param name="obraId">No hay documentación de metadatos disponible.</param>
-        /// <param name="clienteId">No hay documentación de metadatos disponible.</param>
-        /// <param name="getNC">No hay documentación de metadatos disponible.</param>
-        public ObjectResult<getDetalleIngresos_Result> getDetalleIngresos(Nullable<global::System.Int32> obraId, Nullable<global::System.Int32> clienteId, Nullable<global::System.Boolean> getNC)
-        {
-            ObjectParameter obraIdParameter;
-            if (obraId.HasValue)
-            {
-                obraIdParameter = new ObjectParameter("ObraId", obraId);
-            }
-            else
-            {
-                obraIdParameter = new ObjectParameter("ObraId", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter clienteIdParameter;
-            if (clienteId.HasValue)
-            {
-                clienteIdParameter = new ObjectParameter("ClienteId", clienteId);
-            }
-            else
-            {
-                clienteIdParameter = new ObjectParameter("ClienteId", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter getNCParameter;
-            if (getNC.HasValue)
-            {
-                getNCParameter = new ObjectParameter("getNC", getNC);
-            }
-            else
-            {
-                getNCParameter = new ObjectParameter("getNC", typeof(global::System.Boolean));
-            }
-    
-            return base.ExecuteFunction<getDetalleIngresos_Result>("getDetalleIngresos", obraIdParameter, clienteIdParameter, getNCParameter);
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         /// <param name="tipoMovimiento">No hay documentación de metadatos disponible.</param>
         /// <param name="mes">No hay documentación de metadatos disponible.</param>
         /// <param name="año">No hay documentación de metadatos disponible.</param>
@@ -2111,6 +2070,58 @@ namespace GeisaBD
             }
     
             return base.ExecuteFunction<getReporteIngresosMensual_Result>("getReporteIngresosMensual", fechaIniParameter, fechaFinParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="obraId">No hay documentación de metadatos disponible.</param>
+        /// <param name="clienteId">No hay documentación de metadatos disponible.</param>
+        /// <param name="getNC">No hay documentación de metadatos disponible.</param>
+        /// <param name="soloIngresos">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<getDetalleIngresos_Result> getDetalleIngresos(Nullable<global::System.Int32> obraId, Nullable<global::System.Int32> clienteId, Nullable<global::System.Boolean> getNC, Nullable<global::System.Boolean> soloIngresos)
+        {
+            ObjectParameter obraIdParameter;
+            if (obraId.HasValue)
+            {
+                obraIdParameter = new ObjectParameter("ObraId", obraId);
+            }
+            else
+            {
+                obraIdParameter = new ObjectParameter("ObraId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter clienteIdParameter;
+            if (clienteId.HasValue)
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", clienteId);
+            }
+            else
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter getNCParameter;
+            if (getNC.HasValue)
+            {
+                getNCParameter = new ObjectParameter("getNC", getNC);
+            }
+            else
+            {
+                getNCParameter = new ObjectParameter("getNC", typeof(global::System.Boolean));
+            }
+    
+            ObjectParameter soloIngresosParameter;
+            if (soloIngresos.HasValue)
+            {
+                soloIngresosParameter = new ObjectParameter("soloIngresos", soloIngresos);
+            }
+            else
+            {
+                soloIngresosParameter = new ObjectParameter("soloIngresos", typeof(global::System.Boolean));
+            }
+    
+            return base.ExecuteFunction<getDetalleIngresos_Result>("getDetalleIngresos", obraIdParameter, clienteIdParameter, getNCParameter, soloIngresosParameter);
         }
 
         #endregion
@@ -21766,6 +21777,30 @@ namespace GeisaBD
         private Nullable<global::System.DateTime> _FechaCancelacion;
         partial void OnFechaCancelacionChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaCancelacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Referencia
+        {
+            get
+            {
+                return _Referencia;
+            }
+            set
+            {
+                OnReferenciaChanging(value);
+                ReportPropertyChanging("Referencia");
+                _Referencia = StructuralObject.SetValidValue(value, true, "Referencia");
+                ReportPropertyChanged("Referencia");
+                OnReferenciaChanged();
+            }
+        }
+        private global::System.String _Referencia;
+        partial void OnReferenciaChanging(global::System.String value);
+        partial void OnReferenciaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.

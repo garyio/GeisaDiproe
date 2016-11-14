@@ -40,13 +40,13 @@ namespace Reportes
             {
                 totalGastosDiproe += (ga.EmpresaId == TipoEmpresa.DIPROE.Id) ? ga.Importe : 0;
 
-                totalGastosGeisa += (ga.EmpresaId == TipoEmpresa.GEISA.Id) ? ga.Importe : 0;
+                totalGastosGeisa += (ga.EmpresaId == TipoEmpresa.GEISA.Id || ga.EmpresaId == TipoEmpresa.GEISA_PERIFERICA.Id) ? ga.Importe : 0;
 
                 totalGastosCompartidos += (ga.Compartido == true) ? ga.Importe : 0;
 
                 totalGastosCompartidosDiproe += (ga.EmpresaId == TipoEmpresa.DIPROE.Id && ga.Compartido == true) ? ga.Importe : 0;
 
-                totalGastosCompartidosGeisa += (ga.EmpresaId == TipoEmpresa.GEISA.Id && ga.Compartido == true) ? ga.Importe : 0;
+                totalGastosCompartidosGeisa += ((ga.EmpresaId == TipoEmpresa.GEISA.Id || ga.EmpresaId == TipoEmpresa.GEISA_PERIFERICA.Id) && ga.Compartido == true) ? ga.Importe : 0;
             }
 
             totalGastosCompartidosDivididos = totalGastosCompartidos / 2;

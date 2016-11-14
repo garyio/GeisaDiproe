@@ -539,13 +539,17 @@ namespace SistemaGEISA
                     new frmMessageBox(true) { Message = "Error al quitar el Registro: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
                     if (transaccion != null) transaccion.Rollback();
                 }
+                finally
+                {
+                    controler.Model.CloseConnection();
+                }
             }
             else
             {
                 new frmMessageBox(true) { Message = "No es posible eliminar este Registro.", Title = "Error" }.ShowDialog();
             }
 
-            controler.Model.CloseConnection();
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

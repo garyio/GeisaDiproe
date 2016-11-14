@@ -1089,12 +1089,15 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>GastosCompartidos</DataSetName>
+        <PageBreak>
+          <BreakLocation>End</BreakLocation>
+        </PageBreak>
         <Filters>
           <Filter>
             <FilterExpression>=Fields!Empresa.Value</FilterExpression>
-            <Operator>Equal</Operator>
+            <Operator>NotEqual</Operator>
             <FilterValues>
-              <FilterValue>=Fields!ItemIdGeisa.Value</FilterValue>
+              <FilterValue>=Fields!ItemIdDiproe.Value</FilterValue>
             </FilterValues>
           </Filter>
         </Filters>

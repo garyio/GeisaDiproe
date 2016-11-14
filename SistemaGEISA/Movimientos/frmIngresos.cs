@@ -157,7 +157,7 @@ namespace SistemaGEISA
                 txtCobrar.Text = txtFacturar.Text = txtTotal1.Text = txtTotal2.Text = "";
                 //obra = luObra.GetSelectedDataRow() as Obra;
                 cliente = luClientes.GetSelectedDataRow() as Cliente;
-                grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false).ToList();                
+                grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();                
                 txtEmpresa.Text = obra.Empresa.NombreFiscal;
                 if (obra.PresupuestoDetalle != null)
                 {
@@ -240,6 +240,7 @@ namespace SistemaGEISA
                 }
                 // ****************************
 
+                double totNC = gv.Columns["NotaCredito"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["NotaCredito"].SummaryItem.SummaryValue) : 0;
                 double totPPfinal = obra.PPFinal;// obra.PPFinal.HasValue ? obra.PPFinal.Value : 0;
                 double totFactura = gv.Columns["Total"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["Total"].SummaryItem.SummaryValue) : 0;
                 double totExtra = gv.Columns["Extras"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["Extras"].SummaryItem.SummaryValue) : 0;
@@ -252,7 +253,7 @@ namespace SistemaGEISA
                 //txtSaldoFavor.Text = Convert.ToDouble(colSaldo.SummaryItem.SummaryValue) < 0 ? Math.Abs(Convert.ToDouble(colSaldo.SummaryItem.SummaryValue)).ToString("c2") : "$0.00";
                 if (obra.PresupuestoDetalle != null)
                 {
-                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
+                    double saldoFavor = ((totPagos + totNC) - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
                     txtSaldoFavor.Text = saldoFavor >= 0 ? saldoFavor.ToString("c2") : "0.00";
                 }
                 else
@@ -267,7 +268,7 @@ namespace SistemaGEISA
             try
             {
                 //controler.Model.get(factura.Id, pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value; 
-                Console.WriteLine(Controler.Model.getDetalleTraspasos(obraId, clienteId, empresaId).Sum().Value);
+                //Console.WriteLine(Controler.Model.getDetalleTraspasos(obraId, clienteId, empresaId).Sum().Value);
                 return Controler.Model.getDetalleTraspasos(obraId, clienteId, empresaId).Sum().Value;
             }
             catch (Exception ex)
@@ -295,18 +296,18 @@ namespace SistemaGEISA
 
         private void ckSaldo_CheckedChanged(object sender, EventArgs e)
         {
-            List<getDetalleIngresos_Result> ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false).ToList();
+            List<getDetalleIngresos_Result> ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false,true).ToList();
             grid.DataSource = ingresos;
             if (ckSaldo.Checked)
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false).Where(d => d.Saldo > 0).ToList();  
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).Where(d => d.Saldo > 0).ToList();  
                     //grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList().Where(d => d.Saldo > 0);
             }
             else
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false).ToList();  
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();  
                     //grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
             }
 
@@ -400,6 +401,7 @@ namespace SistemaGEISA
                 }
                 // ****************************
 
+                double totNC = gv.Columns["NotaCredito"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["NotaCredito"].SummaryItem.SummaryValue) : 0;
                 double totPPfinal = obra.PPFinal;// obra.PPFinal.HasValue ? obra.PPFinal.Value : 0;
                 double totFactura = gv.Columns["Total"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["Total"].SummaryItem.SummaryValue) : 0;
                 double totExtra = gv.Columns["Extras"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["Extras"].SummaryItem.SummaryValue) : 0;
@@ -412,7 +414,7 @@ namespace SistemaGEISA
                 //txtSaldoFavor.Text = Convert.ToDouble(colSaldo.SummaryItem.SummaryValue) < 0 ? Math.Abs(Convert.ToDouble(colSaldo.SummaryItem.SummaryValue)).ToString("c2") : "$0.00";
                 if (obra.PresupuestoDetalle != null)
                 {
-                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
+                    double saldoFavor = ( (totPagos+totNC) - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
                     txtSaldoFavor.Text = saldoFavor >= 0 ? saldoFavor.ToString("c2") : "0.00";
                 }
                 else
@@ -492,7 +494,7 @@ namespace SistemaGEISA
                         }
                     }
                     if (obra != null && cliente != null)
-                        grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
+                        grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false, true).ToList();
                 }
             }
         }
@@ -632,12 +634,12 @@ namespace SistemaGEISA
             if (ckCnceladas.Checked)
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false,true).ToList();
             }
             else
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).Where(c => c.FechaCancelacion == null).ToList();
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false, true).Where(c => c.FechaCancelacion == null).ToList();
             }
 
             if (obra != null)
@@ -728,6 +730,7 @@ namespace SistemaGEISA
                 }
                 // ****************************
 
+                double totNC = gv.Columns["NotaCredito"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["NotaCredito"].SummaryItem.SummaryValue) : 0;
                 double totPPfinal = obra.PPFinal;// obra.PPFinal.HasValue ? obra.PPFinal.Value : 0;
                 double totFactura = gv.Columns["Total"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["Total"].SummaryItem.SummaryValue) : 0;
                 double totExtra = gv.Columns["Extras"].SummaryItem.SummaryValue != null ? Convert.ToDouble(gv.Columns["Extras"].SummaryItem.SummaryValue) : 0;
@@ -740,7 +743,7 @@ namespace SistemaGEISA
                 //txtSaldoFavor.Text = Convert.ToDouble(colSaldo.SummaryItem.SummaryValue) < 0 ? Math.Abs(Convert.ToDouble(colSaldo.SummaryItem.SummaryValue)).ToString("c2") : "$0.00";
                 if (obra.PresupuestoDetalle != null)
                 {
-                    double saldoFavor = (totPagos - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
+                    double saldoFavor = ( (totPagos + totNC) - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
                     txtSaldoFavor.Text = saldoFavor >= 0 ? saldoFavor.ToString("c2") : "0.00";
                 }
                 else
@@ -828,13 +831,17 @@ namespace SistemaGEISA
                         new frmMessageBox(true) { Message = "Error al quitar la Factura, La Factura tiene Documentos Asociados.", Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
+                    finally
+                    {
+                        Controler.Model.CloseConnection();
+                    }
                 }
             }
             else
             {
                 new frmMessageBox(true) { Message = "Seleccione una Factura a Eliminar.", Title = "Aviso" }.ShowDialog();
             }
-            Controler.Model.CloseConnection();
+            
         }
 
         private void btnGuardarPresupuestos_Click(object sender, EventArgs e)
@@ -886,13 +893,17 @@ namespace SistemaGEISA
                         new frmMessageBox(true) { Message = "Error al Guardar el Presupuesto", Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
+                    finally
+                    {
+                        Controler.Model.CloseConnection();
+                    }
                 }
             }
             else
             {
                 new frmMessageBox(true) { Message = "Seleccione una Obra para Asignar Presupuesto.", Title = "Aviso" }.ShowDialog();
             }
-            Controler.Model.CloseConnection();
+            
         }
 
         private void txtObraCivil1_KeyPress(object sender, KeyPressEventArgs e)
@@ -925,12 +936,15 @@ namespace SistemaGEISA
 
         private void btnSaldoFavor_Click(object sender, EventArgs e)
         {
+            frmIngresosTraspaso form = new frmIngresosTraspaso(this.Controler,this.obra,this.cliente,this.obra.Empresa);            
+
             saldoFavor = convertirDouble(txtSaldoFavor.Text);
             if (saldoFavor > 0)
             {
                 if (obra != null & gv.DataRowCount > 0)
                 {
-                    abrirForm(true, true);
+                    form.ShowDialog();
+                    //abrirForm(true, true);
                 }
                 else
                 {
@@ -939,6 +953,7 @@ namespace SistemaGEISA
             }
             else
             {
+                form = null;
                 new frmMessageBox(true) { Message = "El saldo debe ser mayor a 0 para poder Trasferir.", Title = "Aviso" }.ShowDialog();
             }
         }

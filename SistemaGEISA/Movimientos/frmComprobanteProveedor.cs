@@ -65,20 +65,22 @@ namespace SistemaGEISA.Movimientos
                 }
                 finally
                 {
+                    controler.Model.CloseConnection();
                     if (string.IsNullOrEmpty(error))
                     {
-                        controler.Model.CloseConnection();
+                        
                         var title = "Confirmación";
                         var message = "El Proveedor se Genero Exitosamente.";
                         new frmMessageBox(true) { Message = message, Title = title }.ShowDialog();
                     }
                     else
                     {
-                        controler.Model.CloseConnection();
+                        
                         var title = "Error";
                         var message = string.Concat("Error al Crear el Proveedor:\n", error);
                         new frmMessageBox(true) { Message = message, Title = title }.ShowDialog();
                     }
+
                 }
 
                 if (string.IsNullOrEmpty(error))

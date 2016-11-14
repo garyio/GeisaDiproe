@@ -42,42 +42,6 @@ namespace SistemaGEISA
         private void llenaGrid()
         {
             grid.DataSource = Controler.Model.Pagos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.Reposicion_Gastos.Id).ToList();
-            //dt = new DataTable();
-            //dt.Columns.Add("Id", typeof(int));
-            //dt.Columns.Add("Folio", typeof(string));
-            //dt.Columns.Add("Fecha", typeof(DateTime));
-            //dt.Columns.Add("EmpleadoNombre", typeof(string));
-            //dt.Columns.Add("EmpresaNombre", typeof(string));
-            //dt.Columns.Add("TipoPagoNombre", typeof(string));
-            //dt.Columns.Add("BancosNombre", typeof(string));
-            //dt.Columns.Add("Referencias", typeof(string));
-            //dt.Columns.Add("Total", typeof(double));
-            //dt.Columns.Add("MontoPagar", typeof(double));
-            //dt.Columns.Add("Diferencia", typeof(double));
-            //grid.DataSource = dt;
-            //foreach (Pagos pagos in Controler.Model.Pagos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.Reposicion_Gastos.Id).ToList())
-            //{
-            //    gv.AddNewRow();
-
-            //    int rowHandle = gv.GetRowHandle(gv.DataRowCount);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["Id"], pagos.Id);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["Folio"], pagos.Folio);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["Fecha"], pagos.Fecha);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["EmpleadoNombre"], pagos.EmpleadoNombre);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["EmpresaNombre"], pagos.EmpleadoNombre);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["TipoPagoNombre"], pagos.TipoPagoNombre);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["BancosNombre"], pagos.BancosNombre);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["Referencias"], pagos.Referencia);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["Total"], pagos.Total == null ? 0 : pagos.Total);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["MontoPagar"], pagos.MontoPagar == null ? 0 : pagos.MontoPagar);
-            //    gv.SetRowCellValue(rowHandle, gv.Columns["Diferencia"], (pagos.MontoPagar == null ? 0 : pagos.MontoPagar) - pagos.Total);
-
-            //    gv.UpdateCurrentRow();
-            //    gv.RefreshData();
-            //}
-            ////grid.DataSource = Controler.Model.Pagos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.Reposicion_Gastos.Id).ToList();
-            
-            ////grid.DataSource = Controler.Model.ReposicionGastos.Where(P => P.TipoMovimientoId == TipoMovimientoEnum.Reposicion_Gastos.Id).ToList();
         }
 
         private void abrirForm(bool nuevo)
@@ -216,18 +180,26 @@ namespace SistemaGEISA
                     try
                     {
                         transaccion = Controler.Model.BeginTransaction();
-                        List<PagosFactura> fact = pago.PagosFactura.ToList();
-                        if (fact.Count > 0)
+                        List<PagosFactura> pagosFact = pago.PagosFactura.ToList();
+                        if (pagosFact.Count > 0)
                         {
-                            foreach (PagosFactura f in fact)
+                            foreach (PagosFactura f in pagosFact)
                             {
-                                if (f.Factura != null)
+                                if (f.Factura != null) // quito referencia de la factura y recalculo el saldo
                                 {
-                                    //Controler.Model.DeleteObject(f);
-                                    Controler.Model.DeleteObject(f.Factura);
+                                    //Recalculo el saldo de la factura cuando se eliminan los PagosFactura
+                                    if (f.Factura != null && !f.Factura.FechaCancelacion.HasValue)
+                                    {
+                                        f.Factura.Saldo = f.Factura.Importe - Controler.Model.getAbonosTotales(f.Factura.Id, f.Pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                                        f.Factura.Saldo = Math.Round(f.Factura.Saldo, 2);
+                                    }
+                                    f.Factura = null;
                                 }
-                                Controler.Model.DeleteObject(f);
-
+                                if (f.TraspasoSaldos != null) //Quito referencia del Traspaso                                                                                  
+                                    f.TraspasoSaldos = null; 
+                                if (f.Pagos != null) //elimino el pago                                                                                      
+                                    Controler.Model.DeleteObject(f); //elimino el PagoFactura
+                                
                             }
                             Controler.Model.DeleteObject(pago);
                         }
@@ -247,6 +219,10 @@ namespace SistemaGEISA
                         new frmMessageBox(true) { Message = "Error al quitar la Reposición: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
+                    finally
+                    {
+                        Controler.Model.CloseConnection();
+                    }
                 }
                 else
                 {
@@ -257,7 +233,7 @@ namespace SistemaGEISA
             {
                 new frmMessageBox(true) { Message = "Seleccione una Reposición a Eliminar.", Title = "Aviso" }.ShowDialog();
             }
-            Controler.Model.CloseConnection();
+            
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
@@ -300,6 +276,60 @@ namespace SistemaGEISA
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             Funciones.Print(grid);
+        }
+
+        private void btnRecalcular_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            recalculaSaldos();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void recalculaSaldos()
+        {
+            var error = string.Empty;
+            DbTransaction transaccion = null;
+
+            try
+            {
+                transaccion = Controler.Model.BeginTransaction();
+                //PagosFactura detalle = null;
+                TraspasoSaldos detalleTraspaso = null;
+
+
+                foreach (PagosFactura detalle in Controler.Model.PagosFactura.Where(P => P.Pagos.TipoMovimientoId == TipoMovimientoEnum.Reposicion_Gastos.Id).ToList())
+                {
+
+                    //if (detalle != null && detalle.FacturaId == 3432)
+                    //{
+
+                    Factura factura = Controler.Model.Factura.FirstOrDefault(D => D.Id == detalle.FacturaId);
+
+                    factura.Saldo = factura.Importe - Controler.Model.getAbonosTotales(factura.Id, null).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                    factura.Saldo = Math.Round(factura.Saldo, 2);
+
+                    //detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id && P.PagosId == pagos.Id);
+                    detalleTraspaso = detalle.TraspasoSaldos;
+                    //}
+                }
+
+                Controler.Model.SaveChanges();
+                transaccion.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (transaccion != null) transaccion.Rollback();
+                error = ex.InnerException.Message;
+            }
+            finally
+            {
+                Controler.Model.CloseConnection();
+
+                var title = string.IsNullOrEmpty(error) ? "Confirmación" : "Error";
+                var message = string.Empty;
+                message = string.IsNullOrEmpty(error) ? string.Concat("Los Saldos han sido actualizados exitosamente.") : string.Concat("Error al actualizar los Saldos:\n", error);
+                new frmMessageBox(true) { Message = message, Title = title }.ShowDialog();
+            }
         }
     }
 }

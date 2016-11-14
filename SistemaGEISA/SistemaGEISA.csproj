@@ -461,6 +461,12 @@
     <Compile Include="Movimientos\frmIngresosHistorialTraspasos.Designer.cs">
       <DependentUpon>frmIngresosHistorialTraspasos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Movimientos\frmIngresosTraspaso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmIngresosTraspaso.Designer.cs">
+      <DependentUpon>frmIngresosTraspaso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Movimientos\frmNominas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -740,6 +746,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Movimientos\frmIngresosHistorialTraspasos.resx">
       <DependentUpon>frmIngresosHistorialTraspasos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmIngresosTraspaso.resx">
+      <DependentUpon>frmIngresosTraspaso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Movimientos\frmNominas.resx">
       <DependentUpon>frmNominas.cs</DependentUpon>

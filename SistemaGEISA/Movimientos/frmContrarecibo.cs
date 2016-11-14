@@ -145,55 +145,59 @@ namespace SistemaGEISA
                     {
                         transaccion = Controler.Model.BeginTransaction();
                         List<Factura> fact = recibo.Factura.ToList();
-                                 if (fact.Count > 0)
-                                 {
-                                     foreach (Factura f in fact)
-                                     {
-                                         if (f.PagosFactura.Count() > 0)
-                                         {
-                                             string pagos = String.Empty;
-                                             foreach (PagosFactura pago in f.PagosFactura)
-                                             {
-                                                 pagos += string.Concat(pago.Pagos.Folio, ",");
-                                             }
-                                             pagos = pagos.TrimEnd(',');
-                                             new frmMessageBox(true) { Message = "La Factura " + f.NoFactura + " con los pagos (" + pagos + ") No es posible eliminar.", Title = "Aviso" }.ShowDialog();
-                                             if (transaccion != null) transaccion.Rollback();
-                                             return;
-
-                                         }
-                                         else { Controler.Model.DeleteObject(f); }
-                                        
-                                     }
-                                     Controler.Model.DeleteObject(recibo);
-                                 }
-                                 else
-                                 {
-                                     Controler.Model.DeleteObject(recibo);
-                                 }
-                            
-                            Controler.Model.SaveChanges();
-                            transaccion.Commit();
-                            new frmMessageBox(true) { Message = "El Comprobante ha sido Eliminado.", Title = "Aviso" }.ShowDialog();
-                            gv.DeleteRow(gv.FocusedRowHandle);
-                            gv.RefreshData();
-                        }
-                        catch (Exception ex)
+                        if (fact.Count > 0)
                         {
-                            new frmMessageBox(true) { Message = "Error al quitar el Comprobante: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
-                            if (transaccion != null) transaccion.Rollback();
+                            foreach (Factura f in fact)
+                            {
+                                if (f.PagosFactura.Count() > 0)
+                                {
+                                    string pagos = String.Empty;
+                                    foreach (PagosFactura pago in f.PagosFactura)
+                                    {
+                                        pagos += string.Concat(pago.Pagos.Folio, ",");
+                                    }
+                                    pagos = pagos.TrimEnd(',');
+                                    new frmMessageBox(true) { Message = "La Factura " + f.NoFactura + " con los pagos (" + pagos + ") No es posible eliminar.", Title = "Aviso" }.ShowDialog();
+                                    if (transaccion != null) transaccion.Rollback();
+                                    return;
+
+                                }
+                                else { Controler.Model.DeleteObject(f); }
+
+                            }
+                            Controler.Model.DeleteObject(recibo);
                         }
+                        else
+                        {
+                            Controler.Model.DeleteObject(recibo);
+                        }
+
+                        Controler.Model.SaveChanges();
+                        transaccion.Commit();
+                        new frmMessageBox(true) { Message = "El Comprobante ha sido Eliminado.", Title = "Aviso" }.ShowDialog();
+                        gv.DeleteRow(gv.FocusedRowHandle);
+                        gv.RefreshData();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        new frmMessageBox(true) { Message = "No es posible eliminar este Comprobante.", Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "Error al quitar el Comprobante: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                        if (transaccion != null) transaccion.Rollback();
+                    }
+                    finally
+                    {
+                        Controler.Model.CloseConnection();
                     }
                 }
                 else
                 {
-                    new frmMessageBox(true) { Message = "Seleccione un Comprobante a Eliminar.", Title = "Aviso" }.ShowDialog();
+                    new frmMessageBox(true) { Message = "No es posible eliminar este Comprobante.", Title = "Error" }.ShowDialog();
                 }
-            Controler.Model.CloseConnection();
+            }
+            else
+            {
+                new frmMessageBox(true) { Message = "Seleccione un Comprobante a Eliminar.", Title = "Aviso" }.ShowDialog();
+            }
+
         }
 
         private void btnExportar_Click(object sender, EventArgs e)

@@ -1973,6 +1973,7 @@
           <Parameter Name="ObraId" Type="int" Mode="In" />
           <Parameter Name="ClienteId" Type="int" Mode="In" />
           <Parameter Name="getNC" Type="bit" Mode="In" />
+          <Parameter Name="soloIngresos" Type="bit" Mode="In" />
         </Function>
         <Function Name="getDetallePrestamos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TipoObjetoId" Type="int" Mode="In" />
@@ -3155,11 +3156,6 @@
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Contrarecibo" EntitySet="Contrarecibo" />
           </AssociationSet>
-          <FunctionImport Name="getDetalleIngresos" ReturnType="Collection(GEISAModel.getDetalleIngresos_Result)">
-            <Parameter Name="ObraId" Mode="In" Type="Int32" />
-            <Parameter Name="ClienteId" Mode="In" Type="Int32" />
-            <Parameter Name="getNC" Mode="In" Type="Boolean" />
-          </FunctionImport>
           <FunctionImport Name="getFacturasCompartidas" ReturnType="Collection(GEISAModel.getFacturasCompartidas_Result)">
             <Parameter Name="TipoMovimiento" Mode="In" Type="Int32" />
             <Parameter Name="Mes" Mode="In" Type="Int32" />
@@ -3169,6 +3165,12 @@
           <FunctionImport Name="getReporteIngresosMensual" ReturnType="Collection(GEISAModel.getReporteIngresosMensual_Result)">
             <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="getDetalleIngresos" ReturnType="Collection(GEISAModel.getDetalleIngresos_Result)">
+            <Parameter Name="ObraId" Mode="In" Type="Int32" />
+            <Parameter Name="ClienteId" Mode="In" Type="Int32" />
+            <Parameter Name="getNC" Mode="In" Type="Boolean" />
+            <Parameter Name="soloIngresos" Mode="In" Type="Boolean" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="Domicilios">
@@ -5406,25 +5408,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="getDetalleIngresos_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="NoFactura" Nullable="true" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-          <Property Type="Double" Name="Subtotal" Nullable="true" />
-          <Property Type="Double" Name="Iva" Nullable="true" />
-          <Property Type="Double" Name="Total" Nullable="true" />
-          <Property Type="Double" Name="NotaCredito" Nullable="true" />
-          <Property Type="Double" Name="ObraCivil" Nullable="true" />
-          <Property Type="Double" Name="Subcontratistas" Nullable="true" />
-          <Property Type="Double" Name="Suministros" Nullable="true" />
-          <Property Type="Double" Name="Extras" Nullable="true" />
-          <Property Type="Double" Name="Mantenimiento" Nullable="true" />
-          <Property Type="Double" Name="No_Aplica" Nullable="true" />
-          <Property Type="Double" Name="Pagos" Nullable="true" />
-          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="300" />
-          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
-          <Property Type="Double" Name="Saldo" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="getFacturasCompartidas_Result">
           <Property Type="Int32" Name="EmpresaId" Nullable="false" />
           <Property Type="Int32" Name="IdPago" Nullable="false" />
@@ -5460,6 +5443,26 @@
           <Property Type="String" Name="ObraTraspaso" Nullable="true" MaxLength="404" />
           <Property Type="Double" Name="Diferencia" Nullable="false" />
           <Property Type="Int32" Name="tipoMovimiento" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getDetalleIngresos_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="NoFactura" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Double" Name="Subtotal" Nullable="true" />
+          <Property Type="Double" Name="Iva" Nullable="true" />
+          <Property Type="Double" Name="Total" Nullable="true" />
+          <Property Type="Double" Name="NotaCredito" Nullable="true" />
+          <Property Type="Double" Name="ObraCivil" Nullable="true" />
+          <Property Type="Double" Name="Subcontratistas" Nullable="true" />
+          <Property Type="Double" Name="Suministros" Nullable="true" />
+          <Property Type="Double" Name="Extras" Nullable="true" />
+          <Property Type="Double" Name="Mantenimiento" Nullable="true" />
+          <Property Type="Double" Name="No_Aplica" Nullable="true" />
+          <Property Type="Double" Name="Pagos" Nullable="true" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="300" />
+          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Saldo" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -6453,29 +6456,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getDetalleIngresos" FunctionName="GEISAModel.Store.getDetalleIngresos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GEISAModel.getDetalleIngresos_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
-                <ScalarProperty Name="Iva" ColumnName="Iva" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="NotaCredito" ColumnName="NotaCredito" />
-                <ScalarProperty Name="ObraCivil" ColumnName="ObraCivil" />
-                <ScalarProperty Name="Subcontratistas" ColumnName="Subcontratistas" />
-                <ScalarProperty Name="Suministros" ColumnName="Suministros" />
-                <ScalarProperty Name="Extras" ColumnName="Extras" />
-                <ScalarProperty Name="Mantenimiento" ColumnName="Mantenimiento" />
-                <ScalarProperty Name="No_Aplica" ColumnName="No_Aplica" />
-                <ScalarProperty Name="Pagos" ColumnName="Pagos" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="getFacturasCompartidas" FunctionName="GEISAModel.Store.getFacturasCompartidas">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GEISAModel.getFacturasCompartidas_Result">
@@ -6517,6 +6497,30 @@
                 <ScalarProperty Name="ObraTraspaso" ColumnName="ObraTraspaso" />
                 <ScalarProperty Name="Diferencia" ColumnName="Diferencia" />
                 <ScalarProperty Name="tipoMovimiento" ColumnName="tipoMovimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getDetalleIngresos" FunctionName="GEISAModel.Store.getDetalleIngresos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEISAModel.getDetalleIngresos_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="NotaCredito" ColumnName="NotaCredito" />
+                <ScalarProperty Name="ObraCivil" ColumnName="ObraCivil" />
+                <ScalarProperty Name="Subcontratistas" ColumnName="Subcontratistas" />
+                <ScalarProperty Name="Suministros" ColumnName="Suministros" />
+                <ScalarProperty Name="Extras" ColumnName="Extras" />
+                <ScalarProperty Name="Mantenimiento" ColumnName="Mantenimiento" />
+                <ScalarProperty Name="No_Aplica" ColumnName="No_Aplica" />
+                <ScalarProperty Name="Pagos" ColumnName="Pagos" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

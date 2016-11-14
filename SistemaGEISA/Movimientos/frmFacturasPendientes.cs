@@ -84,7 +84,7 @@ namespace SistemaGEISA
 
             if ((obra != null && idCliente>0) || this.agregarNCPagos) // Aqui entran las NC de ingresos , NC desde Pagos, Abonos Ingresos
             {
-                foreach (getDetalleIngresos_Result item in controler.Model.getDetalleIngresos((this.agregarNCPagos ? (int?)null : this.obra.Id), this.idCliente, (this.agregarNCPagos ? true : false)).ToList())
+                foreach (getDetalleIngresos_Result item in controler.Model.getDetalleIngresos((this.agregarNCPagos ? (int?)null : this.obra.Id), this.idCliente, (this.agregarNCPagos ? true : false), true).ToList())
                 {
                     Factura invoice;
                     if (source != string.Empty)                    

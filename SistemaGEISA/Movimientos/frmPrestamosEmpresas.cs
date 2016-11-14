@@ -156,6 +156,10 @@ namespace SistemaGEISA
                         new frmMessageBox(true) { Message = "Error al quitar el Prestamo: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
+                    finally
+                    {
+                        Controler.Model.CloseConnection();
+                    }
                 }
                 else
                 {
@@ -166,7 +170,7 @@ namespace SistemaGEISA
             {
                 new frmMessageBox(true) { Message = "Seleccione el Prestamo a Eliminar.", Title = "Aviso" }.ShowDialog();
             }
-            Controler.Model.CloseConnection();
+            
         }
 
         private void btnExportar_Click(object sender, EventArgs e)

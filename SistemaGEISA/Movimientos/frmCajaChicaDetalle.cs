@@ -46,12 +46,13 @@ namespace SistemaGEISA
             double saldo = 0;
             double deposito = 0;
             double devolucion = 0;
-            
-            foreach(CajaChicaDetalle CajaDetalle in Datos){
+
+            foreach (CajaChicaDetalle CajaDetalle in Datos)
+            {
                 tipoComprobantes += Convert.ToDouble(CajaDetalle.Biaticos);
                 tipoComprobantes += Convert.ToDouble(CajaDetalle.Nominas);
                 tipoComprobantes += Convert.ToDouble(CajaDetalle.Facturas);
-                tipoComprobantes += Convert.ToDouble(CajaDetalle.NoDeducibles);              
+                tipoComprobantes += Convert.ToDouble(CajaDetalle.NoDeducibles);
                 deposito += Convert.ToDouble(CajaDetalle.Deposito);
                 devolucion += Convert.ToDouble(CajaDetalle.Devolucion);
             }
@@ -66,9 +67,9 @@ namespace SistemaGEISA
 
             if (cajaChica == null)
                 datosCaja = controler.Model.CajaChica.Select(x => x.EmpleadoId).ToList();
-            else 
+            else
                 datosCaja = controler.Model.CajaChica.Where(x => x.EmpleadoId != cajaChica.EmpleadoId).Select(x => x.EmpleadoId).ToList();
-            
+
             luResidente.Properties.DataSource = controler.Model.Empleado.Where(D => D.Activo == true && !datosCaja.Contains(D.Id)).ToList();
             luResidente.Properties.DisplayMember = "Residente";
             luResidente.Properties.ValueMember = "Id";
@@ -106,7 +107,7 @@ namespace SistemaGEISA
             return areValid;
         }
 
-        private void llenaObras() 
+        private void llenaObras()
         {
             luObra.Properties.DataSource = controler.Model.Obra.ToList();
             luObra.Properties.DisplayMember = "Nombre";
@@ -130,7 +131,7 @@ namespace SistemaGEISA
             }
             else
             {
-                
+
                 btnGuardar.Visible = true;
                 btnComprobante.Visible = false;
                 btnDepositar.Visible = false;
@@ -148,7 +149,7 @@ namespace SistemaGEISA
             form.cajaChica = cajaChica;
             form.empleado = luResidente.GetSelectedDataRow() as Empleado;
             form.ShowDialog();
-            if (form.DialogResult == DialogResult.OK) 
+            if (form.DialogResult == DialogResult.OK)
             {
                 llenaGrid();
             }
@@ -178,11 +179,11 @@ namespace SistemaGEISA
                     cajaChica = new CajaChica();
                     isNew = true;
                 }
-                
+
                 cajaChica.Empleado = luResidente.GetSelectedDataRow() as Empleado;
                 cajaChica.Fecha = DateTime.Now;
-                if(nuevo)
-                controler.Model.AddToCajaChica(cajaChica);
+                if (nuevo)
+                    controler.Model.AddToCajaChica(cajaChica);
 
                 try
                 {
@@ -213,7 +214,7 @@ namespace SistemaGEISA
 
         private bool empleadoValido()
         {
-            Empleado emp =  luResidente.GetSelectedDataRow() as Empleado;
+            Empleado emp = luResidente.GetSelectedDataRow() as Empleado;
             var allEmp = controler.Model.CajaChica.Where(C => C.EmpleadoId == emp.Id).ToList();
             if (allEmp.Count > 1)
                 return false;
@@ -233,7 +234,7 @@ namespace SistemaGEISA
         private void luResidente_EditValueChanged(object sender, EventArgs e)
         {
             llenaObra();
-            if (!nuevo && luResidente.EditValue!=null)
+            if (!nuevo && luResidente.EditValue != null)
             {
                 btnGuardar.Visible = true;
             }
@@ -280,7 +281,7 @@ namespace SistemaGEISA
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            
+
             frmMessageBox msg = new frmMessageBox(false) { Message = "¿Estas seguro de eliminar este Pago?", Title = "Eliminar Registro" };
             msg.ShowDialog();
 
@@ -294,62 +295,75 @@ namespace SistemaGEISA
 
                     try
                     {
-                    transaccion = controler.Model.BeginTransaction();
-                    if (cajachica.Deposito.HasValue)
-                    {
-                        controler.Model.DeleteObject(cajachica);
-                    }else{
-                        List<CajaChicaComprobante> comprobantes= cajachica.CajaChicaComprobante.ToList();
-
-                        foreach(CajaChicaComprobante comprobante in comprobantes){
-                            if (comprobante.TipoComprobanteId == TipoComprobante.Deducible.Id || comprobante.Factura.Count()>0){
-                                 List<Factura> fact= comprobante.Factura.ToList();
-                                foreach(Factura f in fact){
-                                    if (f.PagosFactura.Count() > 0)
-                                    {
-                                        string pagos=String.Empty;
-                                        foreach(PagosFactura pago in f.PagosFactura){
-                                            pagos+=string.Concat(pago.Pagos.Folio,",");
-                                        }
-                                        pagos=pagos.TrimEnd(',');
-                                        new frmMessageBox(true) { Message = "La Factura " + f.NoFactura + " con los pagos("+pagos+") No es posible eliminar.", Title = "Aviso" }.ShowDialog();
-                                        if (transaccion != null) transaccion.Rollback();
-                                        return;
-
-                                    }
-                                    controler.Model.DeleteObject(f);
-                                }
-                                 controler.Model.DeleteObject(comprobante);
-                            }else{
-                                controler.Model.DeleteObject(comprobante);
-                            }
-                            
-                        }
-                        controler.Model.DeleteObject(cajachica);
-                    }
-                        
-                            controler.Model.SaveChanges();
-                            transaccion.Commit();
-                            new frmMessageBox(true) { Message = "El Pago ha sido Eliminado.", Title = "Aviso" }.ShowDialog();
-                            gv.DeleteRow(gv.FocusedRowHandle);
-                            llenaGrid();
-                        }
-                        catch (Exception ex)
+                        transaccion = controler.Model.BeginTransaction();
+                        if (cajachica.Deposito.HasValue)
                         {
-                            new frmMessageBox(true) { Message = "Error al quitar el Pago: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
-                            if (transaccion != null) transaccion.Rollback();
+                            controler.Model.DeleteObject(cajachica);
                         }
+                        else
+                        {
+                            List<CajaChicaComprobante> comprobantes = cajachica.CajaChicaComprobante.ToList();
+
+                            foreach (CajaChicaComprobante comprobante in comprobantes)
+                            {
+                                if (comprobante.TipoComprobanteId == TipoComprobante.Deducible.Id || comprobante.Factura.Count() > 0)
+                                {
+                                    List<Factura> fact = comprobante.Factura.ToList();
+                                    foreach (Factura f in fact)
+                                    {
+                                        if (f.PagosFactura.Count() > 0)
+                                        {
+                                            string pagos = String.Empty;
+                                            foreach (PagosFactura pago in f.PagosFactura)
+                                            {
+                                                pagos += string.Concat(pago.Pagos.Folio, ",");
+                                            }
+                                            pagos = pagos.TrimEnd(',');
+                                            new frmMessageBox(true) { Message = "La Factura " + f.NoFactura + " con los pagos(" + pagos + ") No es posible eliminar.", Title = "Aviso" }.ShowDialog();
+                                            if (transaccion != null) transaccion.Rollback();
+                                            return;
+
+                                        }
+                                        controler.Model.DeleteObject(f);
+                                    }
+                                    controler.Model.DeleteObject(comprobante);
+                                }
+                                else
+                                {
+                                    controler.Model.DeleteObject(comprobante);
+                                }
+
+                            }
+                            controler.Model.DeleteObject(cajachica);
+                        }
+
+                        controler.Model.SaveChanges();
+                        transaccion.Commit();
+                        new frmMessageBox(true) { Message = "El Pago ha sido Eliminado.", Title = "Aviso" }.ShowDialog();
+                        gv.DeleteRow(gv.FocusedRowHandle);
+                        llenaGrid();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        new frmMessageBox(true) { Message = "No es posible eliminar este Pago.", Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "Error al quitar el Pago: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                        if (transaccion != null) transaccion.Rollback();
                     }
+                    finally
+                    {
+                        controler.Model.CloseConnection();
+                    }
+
                 }
                 else
                 {
-                    new frmMessageBox(true) { Message = "Seleccione un Pago a Eliminar.", Title = "Aviso" }.ShowDialog();
+                    new frmMessageBox(true) { Message = "No es posible eliminar este Pago.", Title = "Error" }.ShowDialog();
                 }
-            controler.Model.CloseConnection();
+            }
+            else
+            {
+                new frmMessageBox(true) { Message = "Seleccione un Pago a Eliminar.", Title = "Aviso" }.ShowDialog();
+            }
+
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
