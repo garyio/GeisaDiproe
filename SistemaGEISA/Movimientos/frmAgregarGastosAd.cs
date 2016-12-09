@@ -313,7 +313,7 @@ namespace SistemaGEISA
 
         private void luProveedor_EditValueChanged(object sender, EventArgs e)
         {
-            llenaGrid();
+            //llenaGrid();
         }
 
         private void luEmpresa_EditValueChanged(object sender, EventArgs e)

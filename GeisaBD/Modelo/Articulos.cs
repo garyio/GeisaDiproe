@@ -53,7 +53,7 @@ namespace GeisaBD
             get
             {
                 if (this.Proveedor != null)
-                    return this.Proveedor.NombreComercial;
+                    return this.Proveedor.NombreFiscal;
                 else
                     return string.Empty;
             }

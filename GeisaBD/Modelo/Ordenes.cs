@@ -26,7 +26,7 @@ namespace GeisaBD
 
         public string ProveedorNombre
         {
-            get { return this.Proveedor != null ? Proveedor.NombreComercial : ""; }
+            get { return this.Proveedor != null ? Proveedor.NombreFiscal : ""; }
         }
 
         public string EmpleadoSolicito
@@ -36,7 +36,7 @@ namespace GeisaBD
 
         public string CompradorNombre
         {
-            get { return this.CompradorId != null ? model.Empleado.FirstOrDefault(E=>E.Id==CompradorId).NombreCompleto : ""; }
+            get { return string.IsNullOrEmpty(CompradorId.ToString()) ==false ? model.Empleado.FirstOrDefault(E=>E.Id==CompradorId).NombreCompleto : ""; }
         }
 
         public string TipoMovimientoNombre

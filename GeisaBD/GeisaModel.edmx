@@ -138,6 +138,8 @@
           <Property Name="BancosId" Type="int" Nullable="false" />
           <Property Name="NoCuenta" Type="varchar" MaxLength="10" />
           <Property Name="CLABE" Type="varchar" MaxLength="18" />
+          <Property Name="NoCIE" Type="varchar" MaxLength="50" />
+          <Property Name="Referencia" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Conceptos">
           <Key>
@@ -565,6 +567,8 @@
           <Property Name="BancosId" Type="int" Nullable="false" />
           <Property Name="NoCuenta" Type="varchar" MaxLength="10" />
           <Property Name="CLABE" Type="varchar" MaxLength="18" />
+          <Property Name="NoCIE" Type="varchar" MaxLength="50" />
+          <Property Name="Referencia" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ReposicionGastos">
           <Key>
@@ -2661,13 +2665,6 @@
           </AssociationSet>
           <EntitySet Name="PagosFactura" EntityType="GEISAModel.PagosFactura" />
           <EntitySet Name="CajaChica" EntityType="GEISAModel.CajaChica" />
-          <FunctionImport Name="getEstadoCuentaProveedores" ReturnType="Collection(GEISAModel.getEstadoCuentaProveedores_Result)">
-            <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
-            <Parameter Name="Proveedor" Mode="In" Type="String" />
-            <Parameter Name="Obra" Mode="In" Type="String" />
-            <Parameter Name="ConSaldo" Mode="In" Type="Boolean" />
-          </FunctionImport>
           <EntitySet Name="Conceptos" EntityType="GEISAModel.Conceptos" />
           <EntitySet Name="Proveedor" EntityType="GEISAModel.Proveedor" />
           <AssociationSet Name="FK_ProveedorBancos_Proveedor" Association="GEISAModel.FK_ProveedorBancos_Proveedor">
@@ -2923,7 +2920,6 @@
             <Parameter Name="FacturaId" Mode="In" Type="Int32" />
             <Parameter Name="PagosId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="getFacturasDetalle" ReturnType="Collection(GEISAModel.getFacturasDetalle_Result)" />
           <FunctionImport Name="getNominaSemanal" ReturnType="Collection(GEISAModel.getNominaSemanal_Result)">
             <Parameter Name="StartDate" Mode="In" Type="DateTime" />
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
@@ -3147,11 +3143,6 @@
             <Parameter Name="ObraId" Mode="In" Type="Int32" />
             <Parameter Name="FacturaId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="getTraspasos" ReturnType="Collection(GEISAModel.getTraspasos_Result)">
-            <Parameter Name="ObraId" Mode="In" Type="Int32" />
-            <Parameter Name="ClienteId" Mode="In" Type="Int32" />
-            <Parameter Name="EmpresaId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <AssociationSet Name="FK_Contrarecibo_Cliente" Association="GEISAModel.FK_Contrarecibo_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Contrarecibo" EntitySet="Contrarecibo" />
@@ -3171,6 +3162,19 @@
             <Parameter Name="ClienteId" Mode="In" Type="Int32" />
             <Parameter Name="getNC" Mode="In" Type="Boolean" />
             <Parameter Name="soloIngresos" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="getFacturasDetalle" ReturnType="Collection(GEISAModel.getFacturasDetalle_Result)" />
+          <FunctionImport Name="getTraspasos" ReturnType="Collection(GEISAModel.getTraspasos_Result)">
+            <Parameter Name="ObraId" Mode="In" Type="Int32" />
+            <Parameter Name="ClienteId" Mode="In" Type="Int32" />
+            <Parameter Name="EmpresaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getEstadoCuentaProveedores" ReturnType="Collection(GEISAModel.getEstadoCuentaProveedores_Result)">
+            <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="Proveedor" Mode="In" Type="String" />
+            <Parameter Name="Obra" Mode="In" Type="String" />
+            <Parameter Name="ConSaldo" Mode="In" Type="Boolean" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="Domicilios">
@@ -3242,6 +3246,8 @@
           <Property Name="CLABE" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bancos" Relationship="GEISAModel.FK_ProveedorBancos_Bancos" FromRole="ProveedorBancos" ToRole="Bancos" />
           <NavigationProperty Name="Proveedor" Relationship="GEISAModel.FK_ProveedorBancos_Proveedor" FromRole="ProveedorBancos" ToRole="Proveedor" />
+          <Property Name="NoCIE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_ProveedorBancos_Bancos">
           <End Type="GEISAModel.Bancos" Role="Bancos" Multiplicity="1" />
@@ -3324,21 +3330,6 @@
           <NavigationProperty Name="CajaChicaDetalle" Relationship="GEISAModel.FK_CajaChicaDetalle_CajaChica" FromRole="CajaChica" ToRole="CajaChicaDetalle" />
           <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_CajaChica_Empleado" FromRole="CajaChica" ToRole="Empleado" />
         </EntityType>
-        <ComplexType Name="getEstadoCuentaProveedores_Result">
-          <Property Type="DateTime" Name="Fecha" Nullable="false" />
-          <Property Type="String" Name="NoFactura" Nullable="true" MaxLength="50" />
-          <Property Type="Double" Name="Importe" Nullable="false" />
-          <Property Type="Double" Name="MontoPagar" Nullable="false" />
-          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="FechaPago" Nullable="false" Precision="23" />
-          <Property Type="Double" Name="Saldo" Nullable="false" />
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
-          <Property Type="Int32" Name="ProveedorId" Nullable="false" />
-          <Property Type="Int32" Name="FacturaId" Nullable="false" />
-          <Property Type="String" Name="NombreComercial" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="EmpresaNombre" Nullable="true" MaxLength="200" />
-        </ComplexType>
         <EntityType Name="Conceptos">
           <Key>
             <PropertyRef Name="Id" />
@@ -4519,28 +4510,6 @@
           <Property Type="Int32" Name="FacturaId" Nullable="false" />
           <Property Type="Double" Name="MontoPagar" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="getFacturasDetalle_Result">
-          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" />
-          <Property Type="String" Name="Factura" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="FechaFactura" Nullable="false" />
-          <Property Type="Double" Name="Importe" Nullable="false" />
-          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Obra_Nombre" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="TipoMovimiento_Nombre" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Pago_Consecutivo" Nullable="true" />
-          <Property Type="String" Name="TipoPago_Nombre" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Contrarecibo_Folio" Nullable="true" />
-          <Property Type="String" Name="TarjetaCredito" Nullable="true" />
-          <Property Type="String" Name="Concepto" Nullable="true" MaxLength="200" />
-          <Property Type="Int32" Name="Compartido" Nullable="false" />
-          <Property Type="Int32" Name="GastoAdm" Nullable="false" />
-          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="300" />
-          <Property Type="String" Name="EmpresaNombre" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="EmpleadoNombre" Nullable="true" MaxLength="202" />
-          <Property Type="DateTime" Name="FechaPago" Nullable="true" />
-          <Property Type="String" Name="TarjetaEmpleado" Nullable="false" />
-          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="200" />
-        </ComplexType>
         <ComplexType Name="getNominaSemanal_Result">
           <Property Type="Int32" Name="NominaId" Nullable="false" />
           <Property Type="Int32" Name="NominaDetalleId" Nullable="true" />
@@ -5078,6 +5047,8 @@
           <Property Name="CLABE" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Bancos" Relationship="GEISAModel.FK_ClienteBancos_Bancos" FromRole="ClienteBancos" ToRole="Bancos" />
           <NavigationProperty Name="Cliente" Relationship="GEISAModel.FK_ClienteBancos_Cliente" FromRole="ClienteBancos" ToRole="Cliente" />
+          <Property Name="NoCIE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_ClienteBancos_Bancos">
           <End Type="GEISAModel.Bancos" Role="Bancos" Multiplicity="1" />
@@ -5381,21 +5352,6 @@
           <Property Type="Double" Name="MontoPagar" Nullable="false" />
           <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="getTraspasos_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="IdPago" Nullable="false" />
-          <Property Type="String" Name="ObraOrigen" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="ClienteOrigen" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="EmpresaOrigen" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="ObraDestino" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="ClienteDestino" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="EmpresaDestino" Nullable="true" MaxLength="200" />
-          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="FolioNum" Nullable="true" />
-          <Property Type="String" Name="TipoPago_Nombre" Nullable="true" MaxLength="100" />
-          <Property Type="Double" Name="Monto" Nullable="false" />
-        </ComplexType>
         <Association Name="FK_Contrarecibo_Cliente">
           <End Type="GEISAModel.Cliente" Role="Cliente" Multiplicity="0..1" />
           <End Type="GEISAModel.Contrarecibo" Role="Contrarecibo" Multiplicity="*" />
@@ -5463,6 +5419,59 @@
           <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
           <Property Type="String" Name="Referencia" Nullable="true" MaxLength="50" />
           <Property Type="Double" Name="Saldo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getFacturasDetalle_Result">
+          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" />
+          <Property Type="String" Name="Factura" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaFactura" Nullable="false" />
+          <Property Type="Double" Name="Importe" Nullable="false" />
+          <Property Type="String" Name="ProveedorComercial" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ProveedorFiscal" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Obra_Nombre" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TipoMovimiento_Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Pago_Consecutivo" Nullable="true" />
+          <Property Type="String" Name="TipoPago_Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Contrarecibo_Folio" Nullable="true" />
+          <Property Type="String" Name="TarjetaCredito" Nullable="true" />
+          <Property Type="String" Name="Concepto" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Compartido" Nullable="false" />
+          <Property Type="Int32" Name="GastoAdm" Nullable="false" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="EmpleadoNombre" Nullable="true" MaxLength="202" />
+          <Property Type="String" Name="EmpresaNombre" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="FechaPago" Nullable="true" />
+          <Property Type="String" Name="TarjetaEmpleado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getTraspasos_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdPago" Nullable="false" />
+          <Property Type="String" Name="ObraOrigen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ClienteOrigen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmpresaOrigen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ObraDestino" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ClienteDestino" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmpresaDestino" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="FolioNum" Nullable="true" />
+          <Property Type="String" Name="TipoPago_Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Monto" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getEstadoCuentaProveedores_Result">
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="String" Name="NoFactura" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Importe" Nullable="false" />
+          <Property Type="Double" Name="MontoPagar" Nullable="true" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaPago" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="Saldo" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="ProveedorId" Nullable="true" />
+          <Property Type="String" Name="NombreComercial" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="FacturaId" Nullable="false" />
+          <Property Type="String" Name="EmpresaNombre" Nullable="true" MaxLength="254" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -5564,6 +5573,8 @@
           <EntitySetMapping Name="ProveedorBancos">
             <EntityTypeMapping TypeName="GEISAModel.ProveedorBancos">
               <MappingFragment StoreEntitySet="ProveedorBancos">
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="NoCIE" ColumnName="NoCIE" />
                 <ScalarProperty Name="CLABE" ColumnName="CLABE" />
                 <ScalarProperty Name="NoCuenta" ColumnName="NoCuenta" />
                 <ScalarProperty Name="BancosId" ColumnName="BancosId" />
@@ -5607,25 +5618,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="getEstadoCuentaProveedores" FunctionName="GEISAModel.Store.getEstadoCuentaProveedores">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GEISAModel.getEstadoCuentaProveedores_Result">
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
-                <ScalarProperty Name="Importe" ColumnName="Importe" />
-                <ScalarProperty Name="MontoPagar" ColumnName="MontoPagar" />
-                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
-                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
-                <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
-                <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
-                <ScalarProperty Name="EmpresaNombre" ColumnName="EmpresaNombre" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="Conceptos">
             <EntityTypeMapping TypeName="GEISAModel.Conceptos">
               <MappingFragment StoreEntitySet="Conceptos">
@@ -6177,32 +6169,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getFacturasDetalle" FunctionName="GEISAModel.Store.getFacturasDetalle">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GEISAModel.getFacturasDetalle_Result">
-                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
-                <ScalarProperty Name="Factura" ColumnName="Factura" />
-                <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
-                <ScalarProperty Name="Importe" ColumnName="Importe" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="Obra_Nombre" ColumnName="Obra_Nombre" />
-                <ScalarProperty Name="TipoMovimiento_Nombre" ColumnName="TipoMovimiento_Nombre" />
-                <ScalarProperty Name="Pago_Consecutivo" ColumnName="Pago_Consecutivo" />
-                <ScalarProperty Name="TipoPago_Nombre" ColumnName="TipoPago_Nombre" />
-                <ScalarProperty Name="Contrarecibo_Folio" ColumnName="Contrarecibo_Folio" />
-                <ScalarProperty Name="TarjetaCredito" ColumnName="TarjetaCredito" />
-                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
-                <ScalarProperty Name="Compartido" ColumnName="Compartido" />
-                <ScalarProperty Name="GastoAdm" ColumnName="GastoAdm" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="EmpresaNombre" ColumnName="EmpresaNombre" />
-                <ScalarProperty Name="EmpleadoNombre" ColumnName="EmpleadoNombre" />
-                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
-                <ScalarProperty Name="TarjetaEmpleado" ColumnName="TarjetaEmpleado" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="getNominaSemanal" FunctionName="GEISAModel.Store.getNominaSemanal">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GEISAModel.getNominaSemanal_Result">
@@ -6380,6 +6346,8 @@
           <EntitySetMapping Name="ClienteBancos">
             <EntityTypeMapping TypeName="GEISAModel.ClienteBancos">
               <MappingFragment StoreEntitySet="ClienteBancos">
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="NoCIE" ColumnName="NoCIE" />
                 <ScalarProperty Name="CLABE" ColumnName="CLABE" />
                 <ScalarProperty Name="NoCuenta" ColumnName="NoCuenta" />
                 <ScalarProperty Name="BancosId" ColumnName="BancosId" />
@@ -6434,25 +6402,6 @@
                 <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
                 <ScalarProperty Name="MontoPagar" ColumnName="MontoPagar" />
                 <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getTraspasos" FunctionName="GEISAModel.Store.getTraspasos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="GEISAModel.getTraspasos_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
-                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
-                <ScalarProperty Name="ObraOrigen" ColumnName="ObraOrigen" />
-                <ScalarProperty Name="ClienteOrigen" ColumnName="ClienteOrigen" />
-                <ScalarProperty Name="EmpresaOrigen" ColumnName="EmpresaOrigen" />
-                <ScalarProperty Name="ObraDestino" ColumnName="ObraDestino" />
-                <ScalarProperty Name="ClienteDestino" ColumnName="ClienteDestino" />
-                <ScalarProperty Name="EmpresaDestino" ColumnName="EmpresaDestino" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="FolioNum" ColumnName="FolioNum" />
-                <ScalarProperty Name="TipoPago_Nombre" ColumnName="TipoPago_Nombre" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -6521,6 +6470,71 @@
                 <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
                 <ScalarProperty Name="Referencia" ColumnName="Referencia" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getFacturasDetalle" FunctionName="GEISAModel.Store.getFacturasDetalle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEISAModel.getFacturasDetalle_Result">
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="ProveedorComercial" ColumnName="ProveedorComercial" />
+                <ScalarProperty Name="ProveedorFiscal" ColumnName="ProveedorFiscal" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Obra_Nombre" ColumnName="Obra_Nombre" />
+                <ScalarProperty Name="TipoMovimiento_Nombre" ColumnName="TipoMovimiento_Nombre" />
+                <ScalarProperty Name="Pago_Consecutivo" ColumnName="Pago_Consecutivo" />
+                <ScalarProperty Name="TipoPago_Nombre" ColumnName="TipoPago_Nombre" />
+                <ScalarProperty Name="Contrarecibo_Folio" ColumnName="Contrarecibo_Folio" />
+                <ScalarProperty Name="TarjetaCredito" ColumnName="TarjetaCredito" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="Compartido" ColumnName="Compartido" />
+                <ScalarProperty Name="GastoAdm" ColumnName="GastoAdm" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="EmpleadoNombre" ColumnName="EmpleadoNombre" />
+                <ScalarProperty Name="EmpresaNombre" ColumnName="EmpresaNombre" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="TarjetaEmpleado" ColumnName="TarjetaEmpleado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getTraspasos" FunctionName="GEISAModel.Store.getTraspasos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEISAModel.getTraspasos_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+                <ScalarProperty Name="ObraOrigen" ColumnName="ObraOrigen" />
+                <ScalarProperty Name="ClienteOrigen" ColumnName="ClienteOrigen" />
+                <ScalarProperty Name="EmpresaOrigen" ColumnName="EmpresaOrigen" />
+                <ScalarProperty Name="ObraDestino" ColumnName="ObraDestino" />
+                <ScalarProperty Name="ClienteDestino" ColumnName="ClienteDestino" />
+                <ScalarProperty Name="EmpresaDestino" ColumnName="EmpresaDestino" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FolioNum" ColumnName="FolioNum" />
+                <ScalarProperty Name="TipoPago_Nombre" ColumnName="TipoPago_Nombre" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getEstadoCuentaProveedores" FunctionName="GEISAModel.Store.getEstadoCuentaProveedores">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEISAModel.getEstadoCuentaProveedores_Result">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="NoFactura" ColumnName="NoFactura" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="MontoPagar" ColumnName="MontoPagar" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+                <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
+                <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
+                <ScalarProperty Name="EmpresaNombre" ColumnName="EmpresaNombre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

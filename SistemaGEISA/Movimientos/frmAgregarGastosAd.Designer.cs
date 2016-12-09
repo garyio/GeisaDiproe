@@ -220,7 +220,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.80965F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.19035F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 442F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 445F));
             this.tableLayoutPanel1.Controls.Add(this.lbCancelado, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.dtFecha, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.luProveedor, 1, 1);
@@ -241,14 +241,13 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 34);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(884, 527);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
@@ -262,7 +261,7 @@
             this.lbCancelado.Location = new System.Drawing.Point(3, 82);
             this.lbCancelado.Margin = new System.Windows.Forms.Padding(3);
             this.lbCancelado.Name = "lbCancelado";
-            this.lbCancelado.Size = new System.Drawing.Size(355, 21);
+            this.lbCancelado.Size = new System.Drawing.Size(352, 21);
             this.lbCancelado.TabIndex = 32;
             this.lbCancelado.Text = "C A N C E L A D O";
             this.lbCancelado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -272,7 +271,7 @@
             // 
             this.dtFecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtFecha.EditValue = new System.DateTime(2015, 1, 8, 11, 16, 49, 426);
-            this.dtFecha.Location = new System.Drawing.Point(444, 3);
+            this.dtFecha.Location = new System.Drawing.Point(441, 3);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.dtFecha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -284,14 +283,14 @@
             this.dtFecha.Properties.EditFormat.FormatString = "D";
             this.dtFecha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtFecha.Properties.Mask.EditMask = "D";
-            this.dtFecha.Size = new System.Drawing.Size(437, 20);
+            this.dtFecha.Size = new System.Drawing.Size(440, 20);
             this.dtFecha.TabIndex = 31;
             this.dtFecha.EditValueChanged += new System.EventHandler(this.dtFecha_EditValueChanged);
             // 
             // luProveedor
             // 
             this.luProveedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.luProveedor.Location = new System.Drawing.Point(100, 30);
+            this.luProveedor.Location = new System.Drawing.Point(99, 30);
             this.luProveedor.Name = "luProveedor";
             this.luProveedor.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.luProveedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -301,7 +300,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreFiscal", "Nombre")});
             this.luProveedor.Properties.NullText = "";
             this.luProveedor.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.luProveedor.Size = new System.Drawing.Size(258, 20);
+            this.luProveedor.Size = new System.Drawing.Size(256, 20);
             this.luProveedor.TabIndex = 28;
             this.luProveedor.EditValueChanged += new System.EventHandler(this.luProveedor_EditValueChanged);
             // 
@@ -312,7 +311,7 @@
             this.label3.Location = new System.Drawing.Point(3, 30);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 20);
+            this.label3.Size = new System.Drawing.Size(90, 20);
             this.label3.TabIndex = 27;
             this.label3.Text = "Proveedor";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -341,7 +340,7 @@
             this.repositoryItemCheckedComboBoxEdit1,
             this.repositoryItemButtonEdit1,
             this.repositoryItemTextEdit1});
-            this.grid.Size = new System.Drawing.Size(878, 366);
+            this.grid.Size = new System.Drawing.Size(878, 390);
             this.grid.TabIndex = 26;
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -503,7 +502,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(364, 27);
+            this.label1.Location = new System.Drawing.Point(361, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 26);
             this.label1.TabIndex = 0;
@@ -516,7 +515,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 26);
+            this.label4.Size = new System.Drawing.Size(90, 26);
             this.label4.TabIndex = 3;
             this.label4.Text = "Empresa";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -524,7 +523,7 @@
             // luEmpresa
             // 
             this.luEmpresa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.luEmpresa.Location = new System.Drawing.Point(100, 56);
+            this.luEmpresa.Location = new System.Drawing.Point(99, 56);
             this.luEmpresa.Name = "luEmpresa";
             this.luEmpresa.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.luEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -532,7 +531,7 @@
             this.luEmpresa.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreComercial", "Nombre")});
             this.luEmpresa.Properties.NullText = "";
-            this.luEmpresa.Size = new System.Drawing.Size(258, 20);
+            this.luEmpresa.Size = new System.Drawing.Size(256, 20);
             this.luEmpresa.TabIndex = 22;
             this.luEmpresa.EditValueChanged += new System.EventHandler(this.luEmpresa_EditValueChanged);
             // 
@@ -542,14 +541,14 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 27);
+            this.label5.Size = new System.Drawing.Size(90, 27);
             this.label5.TabIndex = 15;
             this.label5.Text = "Folio";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtFolio
             // 
-            this.txtFolio.Location = new System.Drawing.Point(100, 3);
+            this.txtFolio.Location = new System.Drawing.Point(99, 3);
             this.txtFolio.Name = "txtFolio";
             this.txtFolio.Size = new System.Drawing.Size(184, 21);
             this.txtFolio.TabIndex = 17;
@@ -558,7 +557,7 @@
             // 
             this.lblBanco.AutoSize = true;
             this.lblBanco.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBanco.Location = new System.Drawing.Point(364, 53);
+            this.lblBanco.Location = new System.Drawing.Point(361, 53);
             this.lblBanco.Name = "lblBanco";
             this.lblBanco.Size = new System.Drawing.Size(74, 26);
             this.lblBanco.TabIndex = 14;
@@ -570,7 +569,7 @@
             // 
             this.lblReferencia.AutoSize = true;
             this.lblReferencia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblReferencia.Location = new System.Drawing.Point(364, 79);
+            this.lblReferencia.Location = new System.Drawing.Point(361, 79);
             this.lblReferencia.Name = "lblReferencia";
             this.lblReferencia.Size = new System.Drawing.Size(74, 27);
             this.lblReferencia.TabIndex = 1;
@@ -581,7 +580,7 @@
             // luBancos
             // 
             this.luBancos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.luBancos.Location = new System.Drawing.Point(444, 56);
+            this.luBancos.Location = new System.Drawing.Point(441, 56);
             this.luBancos.Name = "luBancos";
             this.luBancos.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.luBancos.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -591,7 +590,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreBanco", "Nombre"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NoCuenta", "Cuenta")});
             this.luBancos.Properties.NullText = "";
-            this.luBancos.Size = new System.Drawing.Size(437, 20);
+            this.luBancos.Size = new System.Drawing.Size(440, 20);
             this.luBancos.TabIndex = 24;
             this.luBancos.Visible = false;
             this.luBancos.EditValueChanged += new System.EventHandler(this.luBancos_EditValueChanged);
@@ -599,15 +598,15 @@
             // txtReferencia
             // 
             this.txtReferencia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtReferencia.Location = new System.Drawing.Point(444, 82);
+            this.txtReferencia.Location = new System.Drawing.Point(441, 82);
             this.txtReferencia.Name = "txtReferencia";
-            this.txtReferencia.Size = new System.Drawing.Size(437, 21);
+            this.txtReferencia.Size = new System.Drawing.Size(440, 21);
             this.txtReferencia.TabIndex = 25;
             this.txtReferencia.Visible = false;
             // 
             // luTipoPago
             // 
-            this.luTipoPago.Location = new System.Drawing.Point(444, 30);
+            this.luTipoPago.Location = new System.Drawing.Point(441, 30);
             this.luTipoPago.Name = "luTipoPago";
             this.luTipoPago.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.luTipoPago.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -623,7 +622,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(364, 0);
+            this.label8.Location = new System.Drawing.Point(361, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 27);
             this.label8.TabIndex = 29;
@@ -643,7 +642,7 @@
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(361, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(358, 25);
             this.toolStrip1.TabIndex = 30;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -672,6 +671,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAgregarGastosAd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar gastos";

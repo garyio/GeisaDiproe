@@ -39,6 +39,7 @@
             this.dtimeFecha = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtDevoluciones = new System.Windows.Forms.TextBox();
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -63,7 +64,6 @@
             this.txtBiaticos = new System.Windows.Forms.TextBox();
             this.txtFacturas = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtDevoluciones = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -106,7 +106,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(482, 35);
+            this.menu.Size = new System.Drawing.Size(451, 35);
             this.menu.TabIndex = 6;
             // 
             // btnGuardar
@@ -205,6 +205,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(934, 329);
             this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // txtDevoluciones
+            // 
+            this.txtDevoluciones.Location = new System.Drawing.Point(574, 3);
+            this.txtDevoluciones.Name = "txtDevoluciones";
+            this.txtDevoluciones.ReadOnly = true;
+            this.txtDevoluciones.Size = new System.Drawing.Size(160, 21);
+            this.txtDevoluciones.TabIndex = 18;
             // 
             // grid
             // 
@@ -425,7 +433,7 @@
             this.txtObservaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtObservaciones.Location = new System.Drawing.Point(87, 57);
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(743, 21);
+            this.txtObservaciones.Size = new System.Drawing.Size(824, 21);
             this.txtObservaciones.TabIndex = 13;
             // 
             // txtNominas
@@ -462,14 +470,6 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Devoluciones";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtDevoluciones
-            // 
-            this.txtDevoluciones.Location = new System.Drawing.Point(574, 3);
-            this.txtDevoluciones.Name = "txtDevoluciones";
-            this.txtDevoluciones.ReadOnly = true;
-            this.txtDevoluciones.Size = new System.Drawing.Size(160, 21);
-            this.txtDevoluciones.TabIndex = 18;
             // 
             // frmComprobante
             // 

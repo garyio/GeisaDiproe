@@ -34,15 +34,15 @@
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTipo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.luTipo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.rgTipo = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.menu = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
-            this.luTipo = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luTipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgTipo)).BeginInit();
             this.menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.luTipo)).BeginInit();
             this.SuspendLayout();
             // 
             // grid
@@ -62,7 +62,7 @@
             this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rgTipo,
             this.luTipo});
-            this.grid.Size = new System.Drawing.Size(445, 218);
+            this.grid.Size = new System.Drawing.Size(445, 175);
             this.grid.TabIndex = 14;
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -111,6 +111,17 @@
             this.colTipo.VisibleIndex = 1;
             this.colTipo.Width = 183;
             // 
+            // luTipo
+            // 
+            this.luTipo.AutoHeight = false;
+            this.luTipo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luTipo.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Nombre")});
+            this.luTipo.Name = "luTipo";
+            this.luTipo.NullText = "";
+            // 
             // rgTipo
             // 
             this.rgTipo.Name = "rgTipo";
@@ -138,22 +149,11 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // luTipo
-            // 
-            this.luTipo.AutoHeight = false;
-            this.luTipo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.luTipo.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Nombre")});
-            this.luTipo.Name = "luTipo";
-            this.luTipo.NullText = "";
-            // 
             // frmDptoPuesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 253);
+            this.ClientSize = new System.Drawing.Size(445, 210);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -163,10 +163,10 @@
             this.Load += new System.EventHandler(this.frmDptoPuesto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luTipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgTipo)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.luTipo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

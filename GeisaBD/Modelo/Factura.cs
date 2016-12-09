@@ -17,7 +17,7 @@ namespace GeisaBD
 
         public string NombreProveedor
         {
-            get { return ProveedorLoaded == null ? ProveedorOtro : ProveedorLoaded.NombreComercial; }
+            get { return ProveedorLoaded == null ? ProveedorOtro : ProveedorLoaded.NombreFiscal; }
         }
 
         public string ObraNombre

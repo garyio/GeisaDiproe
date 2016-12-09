@@ -243,7 +243,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.txtNombre, 3);
             this.txtNombre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNombre.Location = new System.Drawing.Point(101, 35);
-            this.txtNombre.MaxLength = 50;
+            this.txtNombre.MaxLength = 90;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(224, 21);
             this.txtNombre.TabIndex = 4;

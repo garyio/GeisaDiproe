@@ -17,6 +17,17 @@ namespace GeisaBD
             }
         }
 
+        public TarjetasCredito tarjetaLoaded { get { return this.Load(TarjetasCreditoReference); } }
+        public string Nombre_y_Tarjeta
+        {
+            get
+            {
+                return tarjetaLoaded != null 
+                    ? (tarjetaLoaded.Empleado.Nombre + " " + tarjetaLoaded.Empleado.ApPaterno + " - " + (tarjetaLoaded.NumeroCuenta.HasValue ? (tarjetaLoaded.NumeroCuenta.Value.ToString().Substring(tarjetaLoaded.NumeroCuenta.Value.ToString().Length - 4)) : (tarjetaLoaded.NumeroTarjeta.Value.ToString().Substring(tarjetaLoaded.NumeroTarjeta.Value.ToString().Length - 4)))) 
+                    : string.Empty;
+            }
+        }
+
         public string ProveedorNombre
         {
             get {           
@@ -81,7 +92,7 @@ namespace GeisaBD
         {
             get
             {
-                    return this.Load(PagosFactura).Sum(T => T.MontoPagar);
+                return this.Load(PagosFactura).Sum(T => T.MontoPagar);
             }
         }
 

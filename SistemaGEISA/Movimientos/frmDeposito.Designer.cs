@@ -320,7 +320,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(196, 34);
+            this.menu.Size = new System.Drawing.Size(165, 34);
             this.menu.TabIndex = 6;
             // 
             // btnGuardar

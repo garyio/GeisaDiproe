@@ -58,13 +58,13 @@ namespace Reportes
         public string Fecha { get { return Item.Fecha.ToShortDateString(); } }
         public string NoFactura { get { return Item.NoFactura.ToString(); } }
         public double Importe { get { return Item.Importe; } }
-        public double MontoPagar { get { return Item.MontoPagar; } }
+        public double MontoPagar { get { return (Item.MontoPagar != null ? Item.MontoPagar.Value : 0  ) ; } }
         public string Referencia { get { return Item.Referencia; } }
-        public string FechaPago { get { return Item.FechaPago.ToShortDateString(); } }
+        public string FechaPago { get { return Item.FechaPago != null ? Item.FechaPago.Value.ToShortDateString() : string.Empty ; } }
         public double Saldo { get { return Item.Saldo; } }
-        public int ObraId { get { return Item.Id; } }
+        public int ObraId { get { return Item.Id !=null ? Item.Id.Value : Convert.ToInt32((int?)null); } }
         public string ObraNombre { get { return Item.Nombre.ToString(); } }
-        public int ProveedorId { get { return Item.ProveedorId; } }
+        public int ProveedorId { get { return Item.ProveedorId != null ? Item.ProveedorId.Value : Convert.ToInt32((int?)null); } }
         public string Proveedor { get { return Item.NombreComercial; } }
         public int FacturaId { get { return Item.FacturaId; } }
         public string EmpresaNombre { get { return Item.EmpresaNombre; } }

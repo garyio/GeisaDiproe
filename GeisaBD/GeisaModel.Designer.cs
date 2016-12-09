@@ -1457,69 +1457,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        /// <param name="fechaIni">No hay documentación de metadatos disponible.</param>
-        /// <param name="fechaFin">No hay documentación de metadatos disponible.</param>
-        /// <param name="proveedor">No hay documentación de metadatos disponible.</param>
-        /// <param name="obra">No hay documentación de metadatos disponible.</param>
-        /// <param name="conSaldo">No hay documentación de metadatos disponible.</param>
-        public ObjectResult<getEstadoCuentaProveedores_Result> getEstadoCuentaProveedores(Nullable<global::System.DateTime> fechaIni, Nullable<global::System.DateTime> fechaFin, global::System.String proveedor, global::System.String obra, Nullable<global::System.Boolean> conSaldo)
-        {
-            ObjectParameter fechaIniParameter;
-            if (fechaIni.HasValue)
-            {
-                fechaIniParameter = new ObjectParameter("FechaIni", fechaIni);
-            }
-            else
-            {
-                fechaIniParameter = new ObjectParameter("FechaIni", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter fechaFinParameter;
-            if (fechaFin.HasValue)
-            {
-                fechaFinParameter = new ObjectParameter("FechaFin", fechaFin);
-            }
-            else
-            {
-                fechaFinParameter = new ObjectParameter("FechaFin", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter proveedorParameter;
-            if (proveedor != null)
-            {
-                proveedorParameter = new ObjectParameter("Proveedor", proveedor);
-            }
-            else
-            {
-                proveedorParameter = new ObjectParameter("Proveedor", typeof(global::System.String));
-            }
-    
-            ObjectParameter obraParameter;
-            if (obra != null)
-            {
-                obraParameter = new ObjectParameter("Obra", obra);
-            }
-            else
-            {
-                obraParameter = new ObjectParameter("Obra", typeof(global::System.String));
-            }
-    
-            ObjectParameter conSaldoParameter;
-            if (conSaldo.HasValue)
-            {
-                conSaldoParameter = new ObjectParameter("ConSaldo", conSaldo);
-            }
-            else
-            {
-                conSaldoParameter = new ObjectParameter("ConSaldo", typeof(global::System.Boolean));
-            }
-    
-            return base.ExecuteFunction<getEstadoCuentaProveedores_Result>("getEstadoCuentaProveedores", fechaIniParameter, fechaFinParameter, proveedorParameter, obraParameter, conSaldoParameter);
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         /// <param name="startDate">No hay documentación de metadatos disponible.</param>
         /// <param name="endDate">No hay documentación de metadatos disponible.</param>
         /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
@@ -1801,14 +1738,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectResult<getFacturasDetalle_Result> getFacturasDetalle()
-        {
-            return base.ExecuteFunction<getFacturasDetalle_Result>("getFacturasDetalle");
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         /// <param name="startDate">No hay documentación de metadatos disponible.</param>
         /// <param name="endDate">No hay documentación de metadatos disponible.</param>
         /// <param name="tipoNomina">No hay documentación de metadatos disponible.</param>
@@ -1952,47 +1881,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        /// <param name="obraId">No hay documentación de metadatos disponible.</param>
-        /// <param name="clienteId">No hay documentación de metadatos disponible.</param>
-        /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
-        public ObjectResult<getTraspasos_Result> getTraspasos(Nullable<global::System.Int32> obraId, Nullable<global::System.Int32> clienteId, Nullable<global::System.Int32> empresaId)
-        {
-            ObjectParameter obraIdParameter;
-            if (obraId.HasValue)
-            {
-                obraIdParameter = new ObjectParameter("ObraId", obraId);
-            }
-            else
-            {
-                obraIdParameter = new ObjectParameter("ObraId", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter clienteIdParameter;
-            if (clienteId.HasValue)
-            {
-                clienteIdParameter = new ObjectParameter("ClienteId", clienteId);
-            }
-            else
-            {
-                clienteIdParameter = new ObjectParameter("ClienteId", typeof(global::System.Int32));
-            }
-    
-            ObjectParameter empresaIdParameter;
-            if (empresaId.HasValue)
-            {
-                empresaIdParameter = new ObjectParameter("EmpresaId", empresaId);
-            }
-            else
-            {
-                empresaIdParameter = new ObjectParameter("EmpresaId", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<getTraspasos_Result>("getTraspasos", obraIdParameter, clienteIdParameter, empresaIdParameter);
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         /// <param name="tipoMovimiento">No hay documentación de metadatos disponible.</param>
         /// <param name="mes">No hay documentación de metadatos disponible.</param>
         /// <param name="año">No hay documentación de metadatos disponible.</param>
@@ -2122,6 +2010,118 @@ namespace GeisaBD
             }
     
             return base.ExecuteFunction<getDetalleIngresos_Result>("getDetalleIngresos", obraIdParameter, clienteIdParameter, getNCParameter, soloIngresosParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectResult<getFacturasDetalle_Result> getFacturasDetalle()
+        {
+            return base.ExecuteFunction<getFacturasDetalle_Result>("getFacturasDetalle");
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="obraId">No hay documentación de metadatos disponible.</param>
+        /// <param name="clienteId">No hay documentación de metadatos disponible.</param>
+        /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<getTraspasos_Result> getTraspasos(Nullable<global::System.Int32> obraId, Nullable<global::System.Int32> clienteId, Nullable<global::System.Int32> empresaId)
+        {
+            ObjectParameter obraIdParameter;
+            if (obraId.HasValue)
+            {
+                obraIdParameter = new ObjectParameter("ObraId", obraId);
+            }
+            else
+            {
+                obraIdParameter = new ObjectParameter("ObraId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter clienteIdParameter;
+            if (clienteId.HasValue)
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", clienteId);
+            }
+            else
+            {
+                clienteIdParameter = new ObjectParameter("ClienteId", typeof(global::System.Int32));
+            }
+    
+            ObjectParameter empresaIdParameter;
+            if (empresaId.HasValue)
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", empresaId);
+            }
+            else
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<getTraspasos_Result>("getTraspasos", obraIdParameter, clienteIdParameter, empresaIdParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="fechaIni">No hay documentación de metadatos disponible.</param>
+        /// <param name="fechaFin">No hay documentación de metadatos disponible.</param>
+        /// <param name="proveedor">No hay documentación de metadatos disponible.</param>
+        /// <param name="obra">No hay documentación de metadatos disponible.</param>
+        /// <param name="conSaldo">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<getEstadoCuentaProveedores_Result> getEstadoCuentaProveedores(Nullable<global::System.DateTime> fechaIni, Nullable<global::System.DateTime> fechaFin, global::System.String proveedor, global::System.String obra, Nullable<global::System.Boolean> conSaldo)
+        {
+            ObjectParameter fechaIniParameter;
+            if (fechaIni.HasValue)
+            {
+                fechaIniParameter = new ObjectParameter("FechaIni", fechaIni);
+            }
+            else
+            {
+                fechaIniParameter = new ObjectParameter("FechaIni", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter fechaFinParameter;
+            if (fechaFin.HasValue)
+            {
+                fechaFinParameter = new ObjectParameter("FechaFin", fechaFin);
+            }
+            else
+            {
+                fechaFinParameter = new ObjectParameter("FechaFin", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter proveedorParameter;
+            if (proveedor != null)
+            {
+                proveedorParameter = new ObjectParameter("Proveedor", proveedor);
+            }
+            else
+            {
+                proveedorParameter = new ObjectParameter("Proveedor", typeof(global::System.String));
+            }
+    
+            ObjectParameter obraParameter;
+            if (obra != null)
+            {
+                obraParameter = new ObjectParameter("Obra", obra);
+            }
+            else
+            {
+                obraParameter = new ObjectParameter("Obra", typeof(global::System.String));
+            }
+    
+            ObjectParameter conSaldoParameter;
+            if (conSaldo.HasValue)
+            {
+                conSaldoParameter = new ObjectParameter("ConSaldo", conSaldo);
+            }
+            else
+            {
+                conSaldoParameter = new ObjectParameter("ConSaldo", typeof(global::System.Boolean));
+            }
+    
+            return base.ExecuteFunction<getEstadoCuentaProveedores_Result>("getEstadoCuentaProveedores", fechaIniParameter, fechaFinParameter, proveedorParameter, obraParameter, conSaldoParameter);
         }
 
         #endregion
@@ -5545,6 +5545,54 @@ namespace GeisaBD
         private global::System.String _CLABE;
         partial void OnCLABEChanging(global::System.String value);
         partial void OnCLABEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NoCIE
+        {
+            get
+            {
+                return _NoCIE;
+            }
+            set
+            {
+                OnNoCIEChanging(value);
+                ReportPropertyChanging("NoCIE");
+                _NoCIE = StructuralObject.SetValidValue(value, true, "NoCIE");
+                ReportPropertyChanged("NoCIE");
+                OnNoCIEChanged();
+            }
+        }
+        private global::System.String _NoCIE;
+        partial void OnNoCIEChanging(global::System.String value);
+        partial void OnNoCIEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Referencia
+        {
+            get
+            {
+                return _Referencia;
+            }
+            set
+            {
+                OnReferenciaChanging(value);
+                ReportPropertyChanging("Referencia");
+                _Referencia = StructuralObject.SetValidValue(value, true, "Referencia");
+                ReportPropertyChanged("Referencia");
+                OnReferenciaChanged();
+            }
+        }
+        private global::System.String _Referencia;
+        partial void OnReferenciaChanging(global::System.String value);
+        partial void OnReferenciaChanged();
 
         #endregion
 
@@ -17303,6 +17351,54 @@ namespace GeisaBD
         private global::System.String _CLABE;
         partial void OnCLABEChanging(global::System.String value);
         partial void OnCLABEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NoCIE
+        {
+            get
+            {
+                return _NoCIE;
+            }
+            set
+            {
+                OnNoCIEChanging(value);
+                ReportPropertyChanging("NoCIE");
+                _NoCIE = StructuralObject.SetValidValue(value, true, "NoCIE");
+                ReportPropertyChanged("NoCIE");
+                OnNoCIEChanged();
+            }
+        }
+        private global::System.String _NoCIE;
+        partial void OnNoCIEChanging(global::System.String value);
+        partial void OnNoCIEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Referencia
+        {
+            get
+            {
+                return _Referencia;
+            }
+            set
+            {
+                OnReferenciaChanging(value);
+                ReportPropertyChanging("Referencia");
+                _Referencia = StructuralObject.SetValidValue(value, true, "Referencia");
+                ReportPropertyChanged("Referencia");
+                OnReferenciaChanged();
+            }
+        }
+        private global::System.String _Referencia;
+        partial void OnReferenciaChanging(global::System.String value);
+        partial void OnReferenciaChanged();
 
         #endregion
 
@@ -22290,27 +22386,15 @@ namespace GeisaBD
         /// </summary>
         /// <param name="fecha">Valor inicial de la propiedad Fecha.</param>
         /// <param name="importe">Valor inicial de la propiedad Importe.</param>
-        /// <param name="montoPagar">Valor inicial de la propiedad MontoPagar.</param>
-        /// <param name="fechaPago">Valor inicial de la propiedad FechaPago.</param>
         /// <param name="saldo">Valor inicial de la propiedad Saldo.</param>
-        /// <param name="id">Valor inicial de la propiedad Id.</param>
-        /// <param name="nombre">Valor inicial de la propiedad Nombre.</param>
-        /// <param name="proveedorId">Valor inicial de la propiedad ProveedorId.</param>
         /// <param name="facturaId">Valor inicial de la propiedad FacturaId.</param>
-        /// <param name="nombreComercial">Valor inicial de la propiedad NombreComercial.</param>
-        public static getEstadoCuentaProveedores_Result CreategetEstadoCuentaProveedores_Result(global::System.DateTime fecha, global::System.Double importe, global::System.Double montoPagar, global::System.DateTime fechaPago, global::System.Double saldo, global::System.Int32 id, global::System.String nombre, global::System.Int32 proveedorId, global::System.Int32 facturaId, global::System.String nombreComercial)
+        public static getEstadoCuentaProveedores_Result CreategetEstadoCuentaProveedores_Result(global::System.DateTime fecha, global::System.Double importe, global::System.Double saldo, global::System.Int32 facturaId)
         {
             getEstadoCuentaProveedores_Result getEstadoCuentaProveedores_Result = new getEstadoCuentaProveedores_Result();
             getEstadoCuentaProveedores_Result.Fecha = fecha;
             getEstadoCuentaProveedores_Result.Importe = importe;
-            getEstadoCuentaProveedores_Result.MontoPagar = montoPagar;
-            getEstadoCuentaProveedores_Result.FechaPago = fechaPago;
             getEstadoCuentaProveedores_Result.Saldo = saldo;
-            getEstadoCuentaProveedores_Result.Id = id;
-            getEstadoCuentaProveedores_Result.Nombre = nombre;
-            getEstadoCuentaProveedores_Result.ProveedorId = proveedorId;
             getEstadoCuentaProveedores_Result.FacturaId = facturaId;
-            getEstadoCuentaProveedores_Result.NombreComercial = nombreComercial;
             return getEstadoCuentaProveedores_Result;
         }
 
@@ -22393,9 +22477,9 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Double MontoPagar
+        public Nullable<global::System.Double> MontoPagar
         {
             get
             {
@@ -22410,8 +22494,8 @@ namespace GeisaBD
                 OnMontoPagarChanged();
             }
         }
-        private global::System.Double _MontoPagar;
-        partial void OnMontoPagarChanging(global::System.Double value);
+        private Nullable<global::System.Double> _MontoPagar;
+        partial void OnMontoPagarChanging(Nullable<global::System.Double> value);
         partial void OnMontoPagarChanged();
     
         /// <summary>
@@ -22441,9 +22525,9 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime FechaPago
+        public Nullable<global::System.DateTime> FechaPago
         {
             get
             {
@@ -22458,8 +22542,8 @@ namespace GeisaBD
                 OnFechaPagoChanged();
             }
         }
-        private global::System.DateTime _FechaPago;
-        partial void OnFechaPagoChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _FechaPago;
+        partial void OnFechaPagoChanging(Nullable<global::System.DateTime> value);
         partial void OnFechaPagoChanged();
     
         /// <summary>
@@ -22489,9 +22573,9 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 Id
+        public Nullable<global::System.Int32> Id
         {
             get
             {
@@ -22506,14 +22590,14 @@ namespace GeisaBD
                 OnIdChanged();
             }
         }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _Id;
+        partial void OnIdChanging(Nullable<global::System.Int32> value);
         partial void OnIdChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Nombre
         {
@@ -22525,7 +22609,7 @@ namespace GeisaBD
             {
                 OnNombreChanging(value);
                 ReportPropertyChanging("Nombre");
-                _Nombre = StructuralObject.SetValidValue(value, false, "Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, true, "Nombre");
                 ReportPropertyChanged("Nombre");
                 OnNombreChanged();
             }
@@ -22537,9 +22621,9 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 ProveedorId
+        public Nullable<global::System.Int32> ProveedorId
         {
             get
             {
@@ -22554,9 +22638,33 @@ namespace GeisaBD
                 OnProveedorIdChanged();
             }
         }
-        private global::System.Int32 _ProveedorId;
-        partial void OnProveedorIdChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _ProveedorId;
+        partial void OnProveedorIdChanging(Nullable<global::System.Int32> value);
         partial void OnProveedorIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NombreComercial
+        {
+            get
+            {
+                return _NombreComercial;
+            }
+            set
+            {
+                OnNombreComercialChanging(value);
+                ReportPropertyChanging("NombreComercial");
+                _NombreComercial = StructuralObject.SetValidValue(value, true, "NombreComercial");
+                ReportPropertyChanged("NombreComercial");
+                OnNombreComercialChanged();
+            }
+        }
+        private global::System.String _NombreComercial;
+        partial void OnNombreComercialChanging(global::System.String value);
+        partial void OnNombreComercialChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -22581,30 +22689,6 @@ namespace GeisaBD
         private global::System.Int32 _FacturaId;
         partial void OnFacturaIdChanging(global::System.Int32 value);
         partial void OnFacturaIdChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String NombreComercial
-        {
-            get
-            {
-                return _NombreComercial;
-            }
-            set
-            {
-                OnNombreComercialChanging(value);
-                ReportPropertyChanging("NombreComercial");
-                _NombreComercial = StructuralObject.SetValidValue(value, false, "NombreComercial");
-                ReportPropertyChanged("NombreComercial");
-                OnNombreComercialChanged();
-            }
-        }
-        private global::System.String _NombreComercial;
-        partial void OnNombreComercialChanging(global::System.String value);
-        partial void OnNombreComercialChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -23542,24 +23626,72 @@ namespace GeisaBD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Proveedor
+        public global::System.String ProveedorComercial
         {
             get
             {
-                return _Proveedor;
+                return _ProveedorComercial;
             }
             set
             {
-                OnProveedorChanging(value);
-                ReportPropertyChanging("Proveedor");
-                _Proveedor = StructuralObject.SetValidValue(value, true, "Proveedor");
-                ReportPropertyChanged("Proveedor");
-                OnProveedorChanged();
+                OnProveedorComercialChanging(value);
+                ReportPropertyChanging("ProveedorComercial");
+                _ProveedorComercial = StructuralObject.SetValidValue(value, true, "ProveedorComercial");
+                ReportPropertyChanged("ProveedorComercial");
+                OnProveedorComercialChanged();
             }
         }
-        private global::System.String _Proveedor;
-        partial void OnProveedorChanging(global::System.String value);
-        partial void OnProveedorChanged();
+        private global::System.String _ProveedorComercial;
+        partial void OnProveedorComercialChanging(global::System.String value);
+        partial void OnProveedorComercialChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ProveedorFiscal
+        {
+            get
+            {
+                return _ProveedorFiscal;
+            }
+            set
+            {
+                OnProveedorFiscalChanging(value);
+                ReportPropertyChanging("ProveedorFiscal");
+                _ProveedorFiscal = StructuralObject.SetValidValue(value, true, "ProveedorFiscal");
+                ReportPropertyChanged("ProveedorFiscal");
+                OnProveedorFiscalChanged();
+            }
+        }
+        private global::System.String _ProveedorFiscal;
+        partial void OnProveedorFiscalChanging(global::System.String value);
+        partial void OnProveedorFiscalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Cliente
+        {
+            get
+            {
+                return _Cliente;
+            }
+            set
+            {
+                OnClienteChanging(value);
+                ReportPropertyChanging("Cliente");
+                _Cliente = StructuralObject.SetValidValue(value, true, "Cliente");
+                ReportPropertyChanged("Cliente");
+                OnClienteChanged();
+            }
+        }
+        private global::System.String _Cliente;
+        partial void OnClienteChanging(global::System.String value);
+        partial void OnClienteChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -23806,30 +23938,6 @@ namespace GeisaBD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String EmpresaNombre
-        {
-            get
-            {
-                return _EmpresaNombre;
-            }
-            set
-            {
-                OnEmpresaNombreChanging(value);
-                ReportPropertyChanging("EmpresaNombre");
-                _EmpresaNombre = StructuralObject.SetValidValue(value, true, "EmpresaNombre");
-                ReportPropertyChanged("EmpresaNombre");
-                OnEmpresaNombreChanged();
-            }
-        }
-        private global::System.String _EmpresaNombre;
-        partial void OnEmpresaNombreChanging(global::System.String value);
-        partial void OnEmpresaNombreChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public global::System.String EmpleadoNombre
         {
             get
@@ -23848,6 +23956,30 @@ namespace GeisaBD
         private global::System.String _EmpleadoNombre;
         partial void OnEmpleadoNombreChanging(global::System.String value);
         partial void OnEmpleadoNombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EmpresaNombre
+        {
+            get
+            {
+                return _EmpresaNombre;
+            }
+            set
+            {
+                OnEmpresaNombreChanging(value);
+                ReportPropertyChanging("EmpresaNombre");
+                _EmpresaNombre = StructuralObject.SetValidValue(value, true, "EmpresaNombre");
+                ReportPropertyChanged("EmpresaNombre");
+                OnEmpresaNombreChanged();
+            }
+        }
+        private global::System.String _EmpresaNombre;
+        partial void OnEmpresaNombreChanging(global::System.String value);
+        partial void OnEmpresaNombreChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -23896,30 +24028,6 @@ namespace GeisaBD
         private global::System.String _TarjetaEmpleado;
         partial void OnTarjetaEmpleadoChanging(global::System.String value);
         partial void OnTarjetaEmpleadoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Cliente
-        {
-            get
-            {
-                return _Cliente;
-            }
-            set
-            {
-                OnClienteChanging(value);
-                ReportPropertyChanging("Cliente");
-                _Cliente = StructuralObject.SetValidValue(value, true, "Cliente");
-                ReportPropertyChanged("Cliente");
-                OnClienteChanged();
-            }
-        }
-        private global::System.String _Cliente;
-        partial void OnClienteChanging(global::System.String value);
-        partial void OnClienteChanged();
 
         #endregion
 

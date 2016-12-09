@@ -179,8 +179,10 @@ namespace SistemaGEISA
 
                                 proveedorBancos.Proveedor = controler.GetObjectFromContext(proveedor);
                                 proveedorBancos.BancosId = Convert.ToInt32(row["BancosId"]);
-                                proveedorBancos.NoCuenta = row["NoCuenta"].ToString();
-                                proveedorBancos.CLABE = row["CLABE"].ToString();
+                                proveedorBancos.NoCuenta = row["NoCuenta"].ToString().Replace("-","");
+                                proveedorBancos.CLABE = row["CLABE"].ToString().Replace("-", "");
+                                proveedorBancos.NoCIE = row["NoCIE"].ToString().Replace("-", "");;
+                                proveedorBancos.Referencia = row["Referencia"].ToString();
 
 
                                 if (!proveedorBancos.NoEsNuevo)
@@ -278,6 +280,8 @@ namespace SistemaGEISA
                 gv.SetRowCellValue(newRowHandle, "BancosId", serv.BancosId);
                 gv.SetRowCellValue(newRowHandle, "NoCuenta", serv.NoCuenta);
                 gv.SetRowCellValue(newRowHandle, "CLABE", serv.CLABE);
+                gv.SetRowCellValue(newRowHandle, "NoCIE", serv.NoCIE);
+                gv.SetRowCellValue(newRowHandle, "Referencia", serv.Referencia);
                 gv.UpdateCurrentRow();
                 gv.RefreshData();
             }
@@ -290,6 +294,8 @@ namespace SistemaGEISA
             dt.Columns.Add("BancosId", typeof(int));
             dt.Columns.Add("NoCuenta", typeof(string));
             dt.Columns.Add("CLABE", typeof(string));
+            dt.Columns.Add("NoCIE", typeof(string)).MaxLength=50;
+            dt.Columns.Add("Referencia", typeof(string)).MaxLength=50;
             
             grid.DataSource = dt;
         }

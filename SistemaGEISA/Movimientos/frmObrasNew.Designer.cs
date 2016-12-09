@@ -59,6 +59,7 @@
             this.btnDetalle = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.dtFecha = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luEstado.Properties)).BeginInit();
@@ -132,6 +133,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dtFechaIni, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.grid, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -470,6 +472,18 @@
             this.label1.Text = "Estado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(364, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 27);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "<=>";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmObrasNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,5 +550,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDetalle;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit dtFecha;
         private DevExpress.XtraGrid.Columns.GridColumn colNombre;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -57,7 +57,7 @@ namespace SistemaGEISA
             if (this.contrarecibo == null)
             {
                 luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).ToList();
-                luProveedor.Properties.DisplayMember = "NombreComercial";
+                luProveedor.Properties.DisplayMember = "NombreFiscal";
                 luProveedor.Properties.ValueMember = "Id";
                 lblProveedor.Text = "Proveedor";
             }
@@ -73,7 +73,7 @@ namespace SistemaGEISA
                     luProveedor.Properties.DataSource = controler.Model.Cliente.Where(E => E.Activo == true).ToList();
                     lblProveedor.Text = "Cliente";
                 }
-                luProveedor.Properties.DisplayMember = "NombreComercial";
+                luProveedor.Properties.DisplayMember = "NombreFiscal";
                 luProveedor.Properties.ValueMember = "Id";
             }
 

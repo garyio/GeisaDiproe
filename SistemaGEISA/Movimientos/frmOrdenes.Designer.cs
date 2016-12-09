@@ -50,8 +50,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
-            this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.btnImprimir = new System.Windows.Forms.ToolStripButton();
+            this.btnExportar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo)).BeginInit();
@@ -259,7 +259,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(0);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(469, 29);
+            this.menu.Size = new System.Drawing.Size(438, 29);
             this.menu.TabIndex = 5;
             // 
             // btnNuevo
@@ -294,15 +294,6 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // btnExportar
-            // 
-            this.btnExportar.Image = global::SistemaGEISA.Properties.Resources.Reportes;
-            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(144, 26);
-            this.btnExportar.Text = "Exportar Informacion";
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
             // btnImprimir
             // 
             this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
@@ -311,6 +302,15 @@
             this.btnImprimir.Size = new System.Drawing.Size(79, 26);
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Image = global::SistemaGEISA.Properties.Resources.Reportes;
+            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(144, 26);
+            this.btnExportar.Text = "Exportar Informacion";
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // frmOrdenes
             // 

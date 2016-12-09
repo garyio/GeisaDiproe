@@ -68,7 +68,7 @@ namespace SistemaGEISA
             if (rbCliente.Checked == true)
             {
                 luNombre.Properties.DataSource = controler.Model.Cliente.Where(D => D.Activo == true).ToList();
-                luNombre.Properties.DisplayMember = "NombreComercial";
+                luNombre.Properties.DisplayMember = "NombreFiscal";
                 luNombre.Properties.ValueMember = "Id";
 
             }

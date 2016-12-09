@@ -33,6 +33,7 @@
             this.menu = new System.Windows.Forms.ToolStrip();
             this.btnNuevo = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.btnActivo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -47,7 +48,6 @@
             this.colCredito = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colActivo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkActivo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -87,7 +87,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(542, 35);
+            this.menu.Size = new System.Drawing.Size(435, 35);
             this.menu.TabIndex = 5;
             // 
             // btnNuevo
@@ -107,6 +107,15 @@
             this.btnEditar.Size = new System.Drawing.Size(63, 26);
             this.btnEditar.Text = "Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
+            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnExportar
             // 
@@ -197,7 +206,7 @@
             // 
             // colNombre
             // 
-            this.colNombre.Caption = "Nombre";
+            this.colNombre.Caption = "Nombre Fiscal";
             this.colNombre.FieldName = "NombreFiscal";
             this.colNombre.Name = "colNombre";
             this.colNombre.Visible = true;
@@ -255,15 +264,6 @@
             this.chkActivo.AutoHeight = false;
             this.chkActivo.Caption = "Check";
             this.chkActivo.Name = "chkActivo";
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
-            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // frmCliente
             // 

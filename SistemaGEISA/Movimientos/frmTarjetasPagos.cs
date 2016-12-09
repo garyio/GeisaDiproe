@@ -37,42 +37,44 @@ namespace SistemaGEISA
 
         private void llenaGrid()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Id", typeof(int));
-            dt.Columns.Add("Folio", typeof(int));
-            dt.Columns.Add("FechaPago", typeof(DateTime));
-            dt.Columns.Add("Nombre_y_Tarjeta", typeof(string));
-            dt.Columns.Add("EmpresaNombre", typeof(string));
-            dt.Columns.Add("TipoPagoNombre", typeof(string));
-            dt.Columns.Add("BancosNombre", typeof(string));
-            dt.Columns.Add("Referencias", typeof(string));
-            dt.Columns.Add("Total", typeof(double));
-            dt.Columns.Add("FechaCancelacion", typeof(DateTime));
-            dt.Columns.Add("Periodo", typeof(string));
+            grid.DataSource = Controler.Model.Pagos.Include("TarjetasCredito").Where(P => P.TarjetaCreditoId != null && P.TipoMovimientoId == TipoMovimientoEnum.TarjetaCredito.Id).ToList();
             
-            grid.DataSource = dt;
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add("Id", typeof(int));
+            //dt.Columns.Add("Folio", typeof(int));
+            //dt.Columns.Add("FechaPago", typeof(DateTime));
+            //dt.Columns.Add("Nombre_y_Tarjeta", typeof(string));
+            //dt.Columns.Add("EmpresaNombre", typeof(string));
+            //dt.Columns.Add("TipoPagoNombre", typeof(string));
+            //dt.Columns.Add("BancosNombre", typeof(string));
+            //dt.Columns.Add("Referencias", typeof(string));
+            //dt.Columns.Add("Total", typeof(double));
+            //dt.Columns.Add("FechaCancelacion", typeof(DateTime));
+            //dt.Columns.Add("Periodo", typeof(string));
+            
+            //grid.DataSource = dt;
 
-            foreach (Pagos t in Controler.Model.Pagos.Where(P => P.TarjetaCreditoId != null && P.TipoMovimientoId == TipoMovimientoEnum.TarjetaCredito.Id).ToList())
-            {
-                gv.AddNewRow();
+            //foreach (Pagos t in Controler.Model.Pagos.Where(P => P.TarjetaCreditoId != null && P.TipoMovimientoId == TipoMovimientoEnum.TarjetaCredito.Id).ToList())
+            //{
+            //    gv.AddNewRow();
 
-                int rowHandle = gv.GetRowHandle(gv.DataRowCount);
-                gv.SetRowCellValue(rowHandle, gv.Columns["Id"], t.Id);
-                gv.SetRowCellValue(rowHandle, gv.Columns["Folio"], t.Folio);
-                gv.SetRowCellValue(rowHandle, gv.Columns["FechaPago"], t.FechaPago);
-                gv.SetRowCellValue(rowHandle, gv.Columns["Nombre_y_Tarjeta"], t.TarjetasCredito != null ? t.TarjetasCredito.Nombre_y_Tarjeta : string.Empty);
-                gv.SetRowCellValue(rowHandle, gv.Columns["EmpresaNombre"], t.EmpresaNombre);
-                gv.SetRowCellValue(rowHandle, gv.Columns["TipoPagoNombre"], t.TipoPagoNombre);
-                gv.SetRowCellValue(rowHandle, gv.Columns["BancosNombre"], t.BancosNombre);
-                gv.SetRowCellValue(rowHandle, gv.Columns["Referencias"], t.Referencias);
-                gv.SetRowCellValue(rowHandle, gv.Columns["Total"], t.Total);
-                gv.SetRowCellValue(rowHandle, gv.Columns["FechaCancelacion"], t.FechaCancelacion);
-                gv.SetRowCellValue(rowHandle, gv.Columns["Periodo"], t.Periodo);
+            //    int rowHandle = gv.GetRowHandle(gv.DataRowCount);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["Id"], t.Id);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["Folio"], t.Folio);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["FechaPago"], t.FechaPago);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["Nombre_y_Tarjeta"], t.TarjetasCredito != null ? t.TarjetasCredito.Nombre_y_Tarjeta : string.Empty);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["EmpresaNombre"], t.EmpresaNombre);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["TipoPagoNombre"], t.TipoPagoNombre);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["BancosNombre"], t.BancosNombre);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["Referencias"], t.Referencias);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["Total"], t.Total);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["FechaCancelacion"], t.FechaCancelacion);
+            //    gv.SetRowCellValue(rowHandle, gv.Columns["Periodo"], t.Periodo);
 
-                gv.UpdateCurrentRow();
-                gv.RefreshData();
-                
-            }
+            //    gv.UpdateCurrentRow();
+            //    gv.RefreshData();
+
+            //}           
         }
 
         private void abrirForm(bool nuevo)
@@ -87,18 +89,19 @@ namespace SistemaGEISA
             form.tipoMovimientoId = TipoMovimientoEnum.TarjetaCredito.Id;
 
             form.ShowDialog();
+            //Actualizo registro abierto
+            Controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, Controler.Model.Pagos.Where(P => P.TarjetaCreditoId != null).ToList());
             if (nuevo)
             {
                 llenaGrid();
             }
             else
             {
-                Controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, Controler.Model.Pagos.Where(P => P.TarjetaCreditoId != null).ToList());
-                llenaGrid();
-                gv.FocusedRowHandle = 0;
+                grid.RefreshDataSource();
             }
 
             gv_FocusedRowChanged(null, null);
+
         }
 
         private void gv_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -106,7 +109,11 @@ namespace SistemaGEISA
             if (gv.DataRowCount > 0)
             {
                 pagos = gv.GetFocusedRow() as Pagos;
-                botones(2);
+
+                if (pagos != null)
+                {
+                    botones(2);
+                }
             }
         }
 
@@ -151,8 +158,7 @@ namespace SistemaGEISA
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            DataRow row = gv.GetDataRow(gv.FocusedRowHandle);
-            if (gv.SelectedRowsCount == 1 && row != null)
+            if (gv.SelectedRowsCount == 1 && pagos!=null)
             {
                 abrirForm(false);
             }
@@ -167,12 +173,14 @@ namespace SistemaGEISA
             GridView View = sender as GridView;
             if (e.RowHandle >= 0)
             {
-                string category = View.GetRowCellValue(e.RowHandle, "FechaCancelacion").ToString();
-
-                if (!string.IsNullOrEmpty(category))
+                var category = View.GetRowCellValue(e.RowHandle, "FechaCancelacion");
+                if (category != null)
                 {
-                    e.Appearance.ForeColor = Color.Red;
+                    if (!string.IsNullOrEmpty(category.ToString()))
+                    {
+                        e.Appearance.ForeColor = Color.Red;
 
+                    }
                 }
             }
         }

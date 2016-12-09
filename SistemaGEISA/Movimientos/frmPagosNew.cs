@@ -93,6 +93,7 @@ namespace SistemaGEISA
                     gv2.AddNewRow();
 
                     var rowHandle = gv2.GetRowHandle(gv2.DataRowCount);
+                    gv2.SetRowCellValue(rowHandle, gv2.Columns["TipoComprobante"], serv.FacturaLoaded.tipoComprobante.HasValue ? serv.FacturaLoaded.tipoComprobante.Value.ToString() : "0" );
                     gv2.SetRowCellValue(rowHandle, gv2.Columns["Id"], serv.FacturaLoaded.Id);
                     gv2.SetRowCellValue(rowHandle, gv2.Columns["NoFactura"], serv.NoFactura);
                     gv2.SetRowCellValue(rowHandle, gv2.Columns["Fecha"], serv.Fecha);
@@ -209,20 +210,19 @@ namespace SistemaGEISA
 
 
                 luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).ToList();
-                luProveedor.Properties.DisplayMember = "NombreComercial";
+                luProveedor.Properties.DisplayMember = "NombreFiscal";
                 luProveedor.Properties.ValueMember = "Id";
 
                 luTipoPago.Properties.DataSource = controler.Model.TipoPago.ToList();
                 luTipoPago.Properties.DisplayMember = "Nombre";
                 luTipoPago.Properties.ValueMember = "Id";
-            }
-
-            
+            }            
         }
 
         private void llenaGridP()
         {
             dt2 = new DataTable();
+            dt2.Columns.Add("TipoComprobante", typeof(string));
             dt2.Columns.Add("Id", typeof(int));
             dt2.Columns.Add("NoFactura", typeof(string));
             dt2.Columns.Add("Fecha", typeof(DateTime));
@@ -349,19 +349,19 @@ namespace SistemaGEISA
                 }
             }
 
-            if (areValid)
-            {
-                for (int i = 0; i < gv2.RowCount; i++)
-                {
-                    double valor = Convert.ToDouble(gv2.GetRowCellValue(i, "MontoPagar"));
-                    if (valor <= 0)
-                    {
-                        new frmMessageBox(true) { Message = "El monto a pagar de la factura: " + gv2.GetRowCellValue(i, "NoFactura").ToString() + " debe ser mayor a 0.00", Title = "Error" }.ShowDialog();
-                        areValid &= false;
-                        break;
-                    }
-                }
-            }
+            //if (areValid)
+            //{
+            //    for (int i = 0; i < gv2.RowCount; i++)
+            //    {
+            //        double valor = Convert.ToDouble(gv2.GetRowCellValue(i, "MontoPagar"));
+            //        if (valor <= 0)
+            //        {
+            //            new frmMessageBox(true) { Message = "El monto a pagar de la factura: " + gv2.GetRowCellValue(i, "NoFactura").ToString() + " debe ser mayor a 0.00", Title = "Error" }.ShowDialog();
+            //            areValid &= false;
+            //            break;
+            //        }
+            //    }
+            //}
 
             return areValid;
         }
@@ -510,7 +510,7 @@ namespace SistemaGEISA
                 //{
                 //    gv2.SetRowCellValue(e.RowHandle, gv2.Columns["SaldoFinal"], saldoactual - montoPagar);
                 //}
-                gv2.SetRowCellValue(e.RowHandle, gv2.Columns["SaldoFinal"], saldoactual - montoPagar);
+                gv2.SetRowCellValue(e.RowHandle, gv2.Columns["SaldoFinal"], (gv2.GetRowCellValue(e.RowHandle,"TipoComprobante").ToString() == "2" ? (saldoactual - Math.Abs(montoPagar)) : (saldoactual - montoPagar)));
 
             }
         }
@@ -580,13 +580,15 @@ namespace SistemaGEISA
                         Factura fact = controler.Model.Factura.FirstOrDefault(F => F.Id == id);
 
                         var rowHandle = gv2.GetRowHandle(gv2.DataRowCount);
+                        gv2.SetRowCellValue(rowHandle, gv2.Columns["TipoComprobante"], string.IsNullOrEmpty(form.rowSelected[j]["TipoComprobante"].ToString()) ? "0" : (form.rowSelected[j]["TipoComprobante"]).ToString());
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Id"], form.rowSelected[j]["Id"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["NoFactura"], form.rowSelected[j]["NoFactura"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Fecha"], form.rowSelected[j]["Fecha"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["SaldoActual"], form.rowSelected[j]["Saldo"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Importe"], form.rowSelected[j]["Importe"]);
-                        gv2.SetRowCellValue(rowHandle, gv2.Columns["MontoPagar"], esTraspaso ? this.saldoFavor : form.rowSelected[j]["Saldo"]); // Si es Traspaso pone por default el monto traspasado
-                        gv2.SetRowCellValue(rowHandle, gv2.Columns["SaldoFinal"], esTraspaso ? ((Convert.ToDouble(form.rowSelected[j]["Saldo"])) - this.saldoFavor) : 0);
+                        gv2.SetRowCellValue(rowHandle, gv2.Columns["MontoPagar"], esTraspaso ? this.saldoFavor : (form.rowSelected[j]["TipoComprobante"].ToString() == "2" ? (Convert.ToDouble(form.rowSelected[j]["Saldo"]) * -1) : form.rowSelected[j]["Saldo"])); // Si es Traspaso pone por default el monto traspasado
+                        if (esTraspaso)
+                            gv2.SetRowCellValue(rowHandle, gv2.Columns["SaldoFinal"], (Convert.ToDouble(form.rowSelected[j]["Saldo"])) - this.saldoFavor);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Observaciones"], form.rowSelected[j]["Observaciones"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["ObraNombre"], form.rowSelected[j]["Obra"]);
                         gv2.SetRowCellValue(rowHandle, gv2.Columns["Compartido"], fact.Compartido == null || Convert.ToInt32(fact.Compartido) == 0 ? false : true);
@@ -623,7 +625,10 @@ namespace SistemaGEISA
                         {
                             Factura factura = detalle.Factura;
 
-                            factura.Saldo = factura.Saldo + detalle.MontoPagar;
+                            if(factura.tipoComprobante==2)
+                                factura.Saldo = factura.Saldo - Math.Round(Math.Abs(detalle.MontoPagar), 2);
+                            else
+                                factura.Saldo = factura.Saldo + detalle.MontoPagar;
                             detalle.FacturaId = Convert.ToInt32((int?)null);
                             detalle.PagosId = Convert.ToInt32((int?)null);
                             controler.Model.DeleteObject(detalle);
@@ -787,6 +792,7 @@ namespace SistemaGEISA
                             detalle.Pagos = pagos;
                             detalle.SaldoActual = Convert.ToDouble(row["SaldoActual"]);
                             detalle.MontoPagar = Convert.ToDouble(row["MontoPagar"]);
+                            //detalle.MontoPagar = row["TipoComprobante"].ToString() == "2" ? Math.Abs(Convert.ToDouble(row["MontoPagar"])) : Convert.ToDouble(row["MontoPagar"]);
                             if (esTraspaso)
                             {
                                 detalleTraspaso.ObraIdOrigen = this.obra.Id;

@@ -118,7 +118,7 @@ namespace SistemaGEISA
 
         private void gv_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gv.RowCount > 0)
+            if (gv.DataRowCount > 0)
             {
                 pagos = gv.GetFocusedRow() as Pagos;
 

@@ -143,7 +143,8 @@ namespace SistemaGEISA
                         gv.SetRowCellValue(newRowHandle, "NoFactura", serv.NoFactura);
                         gv.SetRowCellValue(newRowHandle, "Fecha", serv.Fecha);
                         gv.SetRowCellValue(newRowHandle, "Importe", serv.Importe);
-                        gv.SetRowCellValue(newRowHandle, "Saldo", serv.tipoComprobante.HasValue ? (serv.tipoComprobante.Value == 1 ? serv.Saldo : serv.Saldo*-1 ) : serv.Saldo );
+                        //gv.SetRowCellValue(newRowHandle, "Saldo", serv.tipoComprobante.HasValue ? (serv.tipoComprobante.Value == 1 ? serv.Saldo : serv.Saldo*-1 ) : serv.Saldo );
+                        gv.SetRowCellValue(newRowHandle, "Saldo", serv.Saldo );
                         gv.SetRowCellValue(newRowHandle, "Proveedor", serv.NombreProveedor);
                         gv.SetRowCellValue(newRowHandle, "Obra", serv.ObraNombre);
                         gv.SetRowCellValue(newRowHandle, "Observaciones", serv.Observaciones);

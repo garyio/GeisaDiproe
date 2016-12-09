@@ -172,12 +172,17 @@ namespace SistemaGEISA
 
             if (msg.DialogResult == System.Windows.Forms.DialogResult.Yes)
             {
+                if (gv.IsFocusedView)
+                    proveedor = gv.GetFocusedRow() as Proveedor;
+                else
+                    proveedor = gv2.GetFocusedRow() as Proveedor;
+
                 if (proveedor != null)
                 {
                     DbTransaction transaccion = null;
                     try
                     {
-                        transaccion = Controler.Model.BeginTransaction();
+                        transaccion = Controler.Model.BeginTransaction();                  
 
                         if (Controler.Model.Factura.Where(f => f.ProveedorId == proveedor.Id).Count() > 0)
                         {
@@ -225,7 +230,7 @@ namespace SistemaGEISA
                         Controler.Model.SaveChanges();
                         transaccion.Commit();
                         new frmMessageBox(true) { Message = "El Proveedor ha sido Eliminado.", Title = "Aviso" }.ShowDialog();
-                        if (gv.IsEditorFocused)
+                        if (gv.IsFocusedView)
                         {
                             gv.DeleteRow(gv.FocusedRowHandle);
                             gv.RefreshData();

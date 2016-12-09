@@ -177,7 +177,7 @@ namespace SistemaGEISA
             luEmpresa.Properties.ValueMember = "Id";
 
             luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).ToList();
-            luProveedor.Properties.DisplayMember = "NombreComercial";
+            luProveedor.Properties.DisplayMember = "NombreFiscal";
             luProveedor.Properties.ValueMember = "Id";
 
             luCompradoPor.Properties.DataSource = controler.Model.Empleado.Where(D => D.Activo == true).ToList();

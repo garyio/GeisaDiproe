@@ -935,27 +935,27 @@ namespace SistemaGEISA
         }
 
         private void btnSaldoFavor_Click(object sender, EventArgs e)
-        {
-            frmIngresosTraspaso form = new frmIngresosTraspaso(this.Controler,this.obra,this.cliente,this.obra.Empresa);            
+        {            
+            //frmIngresosTraspaso form = new frmIngresosTraspaso(this.Controler,this.obra,this.cliente,this.obra.Empresa);            
 
-            saldoFavor = convertirDouble(txtSaldoFavor.Text);
-            if (saldoFavor > 0)
-            {
-                if (obra != null & gv.DataRowCount > 0)
-                {
-                    form.ShowDialog();
-                    //abrirForm(true, true);
-                }
-                else
-                {
-                    new frmMessageBox(true) { Message = "Seleccione una Obra.", Title = "Aviso" }.ShowDialog();
-                }
-            }
-            else
-            {
-                form = null;
-                new frmMessageBox(true) { Message = "El saldo debe ser mayor a 0 para poder Trasferir.", Title = "Aviso" }.ShowDialog();
-            }
+            //saldoFavor = convertirDouble(txtSaldoFavor.Text);
+            //if (saldoFavor > 0)
+            //{
+            //    if (obra != null & gv.DataRowCount > 0)
+            //    {
+            //        form.ShowDialog();
+            //        //abrirForm(true, true);
+            //    }
+            //    else
+            //    {
+            //        new frmMessageBox(true) { Message = "Seleccione una Obra.", Title = "Aviso" }.ShowDialog();
+            //    }
+            //}
+            //else
+            //{
+            //    form = null;
+            //    new frmMessageBox(true) { Message = "El saldo debe ser mayor a 0 para poder Trasferir.", Title = "Aviso" }.ShowDialog();
+            //}
         }
 
         private void btnHistorial_Click(object sender, EventArgs e)

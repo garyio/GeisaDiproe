@@ -42,7 +42,7 @@ namespace SistemaGEISA
         }
         public void llenaEmpresas() 
         {
-            empresas = Controler.Model.Empresa.Where(E => !E.NombreComercial.Contains("FRANCISCO JAVIER")).OrderBy(D => D.NombreComercial).ToList();
+            empresas = Controler.Model.Empresa.Where(E => E.Id == TipoEmpresa.DIPROE.Id || E.Id == TipoEmpresa.GEISA.Id).OrderBy(D => D.NombreComercial).ToList();
             if (empresas != null) 
             {
                         label1.Text = empresas[0].NombreComercial;

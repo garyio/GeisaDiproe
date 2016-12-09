@@ -56,6 +56,9 @@
             this.colObservaciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFechaPago = new DevExpress.XtraGrid.Columns.GridColumn();
             this.luEmpresa = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colProveedorFiscal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
@@ -136,6 +139,7 @@
             this.colFechaFactura,
             this.colImporte,
             this.colProveedor,
+            this.colProveedorFiscal,
             this.colCliente,
             this.colObra,
             this.colTipoMovimiento,
@@ -148,6 +152,7 @@
             this.colGastoAdm,
             this.colObservaciones,
             this.colFechaPago});
+            this.gv.CustomizationFormBounds = new System.Drawing.Rectangle(920, 222, 216, 192);
             this.gv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gv.GridControl = this.grid;
             this.gv.Name = "gv";
@@ -167,7 +172,7 @@
             this.colEmpresa.OptionsColumn.ReadOnly = true;
             this.colEmpresa.Visible = true;
             this.colEmpresa.VisibleIndex = 1;
-            this.colEmpresa.Width = 60;
+            this.colEmpresa.Width = 55;
             // 
             // colFechaCancelacion
             // 
@@ -178,7 +183,7 @@
             this.colFechaCancelacion.OptionsColumn.ReadOnly = true;
             this.colFechaCancelacion.Visible = true;
             this.colFechaCancelacion.VisibleIndex = 0;
-            this.colFechaCancelacion.Width = 65;
+            this.colFechaCancelacion.Width = 60;
             // 
             // colFactura
             // 
@@ -189,7 +194,7 @@
             this.colFactura.OptionsColumn.ReadOnly = true;
             this.colFactura.Visible = true;
             this.colFactura.VisibleIndex = 2;
-            this.colFactura.Width = 46;
+            this.colFactura.Width = 42;
             // 
             // colFechaFactura
             // 
@@ -200,7 +205,7 @@
             this.colFechaFactura.OptionsColumn.ReadOnly = true;
             this.colFechaFactura.Visible = true;
             this.colFechaFactura.VisibleIndex = 3;
-            this.colFechaFactura.Width = 67;
+            this.colFechaFactura.Width = 62;
             // 
             // colImporte
             // 
@@ -213,18 +218,19 @@
             this.colImporte.OptionsColumn.ReadOnly = true;
             this.colImporte.Visible = true;
             this.colImporte.VisibleIndex = 5;
-            this.colImporte.Width = 54;
+            this.colImporte.Width = 50;
             // 
             // colProveedor
             // 
-            this.colProveedor.Caption = "Proveedor";
-            this.colProveedor.FieldName = "Proveedor";
+            this.colProveedor.Caption = "Proveedor Comercial";
+            this.colProveedor.FieldName = "ProveedorComercial";
             this.colProveedor.Name = "colProveedor";
             this.colProveedor.OptionsColumn.AllowEdit = false;
+            this.colProveedor.OptionsColumn.FixedWidth = true;
             this.colProveedor.OptionsColumn.ReadOnly = true;
             this.colProveedor.Visible = true;
             this.colProveedor.VisibleIndex = 6;
-            this.colProveedor.Width = 98;
+            this.colProveedor.Width = 100;
             // 
             // colCliente
             // 
@@ -235,7 +241,7 @@
             this.colCliente.OptionsColumn.FixedWidth = true;
             this.colCliente.OptionsColumn.ReadOnly = true;
             this.colCliente.Visible = true;
-            this.colCliente.VisibleIndex = 7;
+            this.colCliente.VisibleIndex = 8;
             this.colCliente.Width = 90;
             // 
             // colObra
@@ -246,8 +252,8 @@
             this.colObra.OptionsColumn.AllowEdit = false;
             this.colObra.OptionsColumn.ReadOnly = true;
             this.colObra.Visible = true;
-            this.colObra.VisibleIndex = 8;
-            this.colObra.Width = 89;
+            this.colObra.VisibleIndex = 9;
+            this.colObra.Width = 80;
             // 
             // colTipoMovimiento
             // 
@@ -257,8 +263,8 @@
             this.colTipoMovimiento.OptionsColumn.AllowEdit = false;
             this.colTipoMovimiento.OptionsColumn.ReadOnly = true;
             this.colTipoMovimiento.Visible = true;
-            this.colTipoMovimiento.VisibleIndex = 9;
-            this.colTipoMovimiento.Width = 58;
+            this.colTipoMovimiento.VisibleIndex = 10;
+            this.colTipoMovimiento.Width = 52;
             // 
             // colConsecutivo
             // 
@@ -268,8 +274,8 @@
             this.colConsecutivo.OptionsColumn.AllowEdit = false;
             this.colConsecutivo.OptionsColumn.ReadOnly = true;
             this.colConsecutivo.Visible = true;
-            this.colConsecutivo.VisibleIndex = 10;
-            this.colConsecutivo.Width = 27;
+            this.colConsecutivo.VisibleIndex = 11;
+            this.colConsecutivo.Width = 24;
             // 
             // colTipoPago
             // 
@@ -279,8 +285,8 @@
             this.colTipoPago.OptionsColumn.AllowEdit = false;
             this.colTipoPago.OptionsColumn.ReadOnly = true;
             this.colTipoPago.Visible = true;
-            this.colTipoPago.VisibleIndex = 11;
-            this.colTipoPago.Width = 69;
+            this.colTipoPago.VisibleIndex = 12;
+            this.colTipoPago.Width = 62;
             // 
             // colContrarecibo
             // 
@@ -290,8 +296,8 @@
             this.colContrarecibo.OptionsColumn.AllowEdit = false;
             this.colContrarecibo.OptionsColumn.ReadOnly = true;
             this.colContrarecibo.Visible = true;
-            this.colContrarecibo.VisibleIndex = 12;
-            this.colContrarecibo.Width = 50;
+            this.colContrarecibo.VisibleIndex = 13;
+            this.colContrarecibo.Width = 45;
             // 
             // colTarjetaCredito
             // 
@@ -301,8 +307,8 @@
             this.colTarjetaCredito.OptionsColumn.AllowEdit = false;
             this.colTarjetaCredito.OptionsColumn.ReadOnly = true;
             this.colTarjetaCredito.Visible = true;
-            this.colTarjetaCredito.VisibleIndex = 13;
-            this.colTarjetaCredito.Width = 70;
+            this.colTarjetaCredito.VisibleIndex = 14;
+            this.colTarjetaCredito.Width = 62;
             // 
             // colConcepto
             // 
@@ -322,8 +328,8 @@
             this.colCompartido.OptionsColumn.AllowEdit = false;
             this.colCompartido.OptionsColumn.ReadOnly = true;
             this.colCompartido.Visible = true;
-            this.colCompartido.VisibleIndex = 14;
-            this.colCompartido.Width = 22;
+            this.colCompartido.VisibleIndex = 15;
+            this.colCompartido.Width = 20;
             // 
             // ckCompartido
             // 
@@ -341,8 +347,8 @@
             this.colGastoAdm.OptionsColumn.AllowEdit = false;
             this.colGastoAdm.OptionsColumn.ReadOnly = true;
             this.colGastoAdm.Visible = true;
-            this.colGastoAdm.VisibleIndex = 15;
-            this.colGastoAdm.Width = 24;
+            this.colGastoAdm.VisibleIndex = 16;
+            this.colGastoAdm.Width = 21;
             // 
             // ckGastoAdm
             // 
@@ -360,8 +366,8 @@
             this.colObservaciones.OptionsColumn.ReadOnly = true;
             this.colObservaciones.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colObservaciones.Visible = true;
-            this.colObservaciones.VisibleIndex = 16;
-            this.colObservaciones.Width = 110;
+            this.colObservaciones.VisibleIndex = 17;
+            this.colObservaciones.Width = 100;
             // 
             // colFechaPago
             // 
@@ -372,7 +378,7 @@
             this.colFechaPago.OptionsColumn.ReadOnly = true;
             this.colFechaPago.Visible = true;
             this.colFechaPago.VisibleIndex = 4;
-            this.colFechaPago.Width = 60;
+            this.colFechaPago.Width = 55;
             // 
             // luEmpresa
             // 
@@ -385,6 +391,40 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreComercial", "Nombre Comercial")});
             this.luEmpresa.Name = "luEmpresa";
             this.luEmpresa.NullText = "";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Proveedor";
+            this.gridColumn1.FieldName = "ProveedorComercial";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 6;
+            this.gridColumn1.Width = 98;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Proveedor";
+            this.gridColumn2.FieldName = "ProveedorComercial";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.OptionsColumn.ReadOnly = true;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 6;
+            this.gridColumn2.Width = 98;
+            // 
+            // colProveedorFiscal
+            // 
+            this.colProveedorFiscal.Caption = "Proveedor Fiscal";
+            this.colProveedorFiscal.FieldName = "ProveedorFiscal";
+            this.colProveedorFiscal.Name = "colProveedorFiscal";
+            this.colProveedorFiscal.OptionsColumn.AllowEdit = false;
+            this.colProveedorFiscal.OptionsColumn.FixedWidth = true;
+            this.colProveedorFiscal.OptionsColumn.ReadOnly = true;
+            this.colProveedorFiscal.Visible = true;
+            this.colProveedorFiscal.VisibleIndex = 7;
+            this.colProveedorFiscal.Width = 100;
             // 
             // frmBuscadorFacturas
             // 
@@ -438,5 +478,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colFechaPago;
         private System.Windows.Forms.ToolStripButton btnImprimir;
         private DevExpress.XtraGrid.Columns.GridColumn colCliente;
+        private DevExpress.XtraGrid.Columns.GridColumn colProveedorFiscal;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

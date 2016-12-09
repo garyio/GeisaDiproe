@@ -16,12 +16,12 @@ namespace GeisaBD
 
         public string ProveedorNombre
         {
-            get { return ProveedorLoaded != null ? ProveedorLoaded.NombreComercial : ""; }
+            get { return ProveedorLoaded != null ? ProveedorLoaded.NombreFiscal : ""; }
         }
 
         public string ClienteNombre
         {
-            get { return ClienteLoaded != null ? ClienteLoaded.NombreComercial : ""; }
+            get { return ClienteLoaded != null ? ClienteLoaded.NombreFiscal : ""; }
         }
         public string EmpresaNombre
         {

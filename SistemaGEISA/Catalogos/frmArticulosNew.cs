@@ -55,7 +55,7 @@ namespace SistemaGEISA
             luEmpresa.Properties.ValueMember = "Id";
 
             luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).OrderBy(O => O.NombreComercial).ToList();
-            luProveedor.Properties.DisplayMember = "NombreComercial";
+            luProveedor.Properties.DisplayMember = "NombreFiscal";
             luProveedor.Properties.ValueMember = "Id";
 
             luSubcategoria.Properties.DataSource = controler.Model.Subcategoria.Where(D => D.Activo == true).ToList();

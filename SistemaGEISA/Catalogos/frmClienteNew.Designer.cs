@@ -40,7 +40,12 @@
             this.colBanco = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LookUpBancos = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colNoCuenta = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtNoCuenta = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colCLABE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtCLABE = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.colNoCIE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtNoCIE = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.colReferencia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtRFC = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCiudad = new System.Windows.Forms.Button();
@@ -76,6 +81,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpBancos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoCuenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCLABE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoCIE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupCiudad.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupEstado.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgRazonSocial.Properties)).BeginInit();
@@ -93,7 +101,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(427, 35);
+            this.menu.Size = new System.Drawing.Size(458, 35);
             this.menu.TabIndex = 7;
             // 
             // btnGuardar
@@ -174,7 +182,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(427, 462);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(458, 494);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // grid
@@ -187,8 +195,11 @@
             this.grid.MainView = this.gv;
             this.grid.Name = "grid";
             this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.LookUpBancos});
-            this.grid.Size = new System.Drawing.Size(421, 114);
+            this.LookUpBancos,
+            this.txtNoCuenta,
+            this.txtCLABE,
+            this.txtNoCIE});
+            this.grid.Size = new System.Drawing.Size(452, 146);
             this.grid.TabIndex = 35;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv});
@@ -209,12 +220,16 @@
             this.colCliente,
             this.colBanco,
             this.colNoCuenta,
-            this.colCLABE});
+            this.colCLABE,
+            this.colNoCIE,
+            this.colReferencia});
             this.gv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gv.GridControl = this.grid;
             this.gv.GroupPanelText = "Cuentas Bancarias";
+            this.gv.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gv.Name = "gv";
             this.gv.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gv.OptionsView.ColumnAutoWidth = false;
             this.gv.OptionsView.EnableAppearanceEvenRow = true;
             this.gv.OptionsView.EnableAppearanceOddRow = true;
             this.gv.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
@@ -224,7 +239,9 @@
             this.colId.Caption = "Id";
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
+            this.colId.OptionsColumn.AllowEdit = false;
             this.colId.OptionsColumn.FixedWidth = true;
+            this.colId.OptionsColumn.ReadOnly = true;
             this.colId.Width = 20;
             // 
             // colCliente
@@ -232,8 +249,7 @@
             this.colCliente.Caption = "Cliente";
             this.colCliente.FieldName = "ClienteId";
             this.colCliente.Name = "colCliente";
-            this.colCliente.OptionsColumn.FixedWidth = true;
-            this.colCliente.Width = 20;
+            this.colCliente.Width = 100;
             // 
             // colBanco
             // 
@@ -241,10 +257,9 @@
             this.colBanco.ColumnEdit = this.LookUpBancos;
             this.colBanco.FieldName = "BancosId";
             this.colBanco.Name = "colBanco";
-            this.colBanco.OptionsColumn.FixedWidth = true;
             this.colBanco.Visible = true;
             this.colBanco.VisibleIndex = 0;
-            this.colBanco.Width = 120;
+            this.colBanco.Width = 110;
             // 
             // LookUpBancos
             // 
@@ -261,22 +276,62 @@
             // colNoCuenta
             // 
             this.colNoCuenta.Caption = "No. Cuenta";
+            this.colNoCuenta.ColumnEdit = this.txtNoCuenta;
             this.colNoCuenta.FieldName = "NoCuenta";
             this.colNoCuenta.Name = "colNoCuenta";
-            this.colNoCuenta.OptionsColumn.FixedWidth = true;
             this.colNoCuenta.Visible = true;
             this.colNoCuenta.VisibleIndex = 1;
-            this.colNoCuenta.Width = 90;
+            this.colNoCuenta.Width = 110;
+            // 
+            // txtNoCuenta
+            // 
+            this.txtNoCuenta.AutoHeight = false;
+            this.txtNoCuenta.Mask.EditMask = "\\d\\d-\\d\\d-\\d\\d-\\d\\d-\\d\\d";
+            this.txtNoCuenta.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtNoCuenta.Name = "txtNoCuenta";
             // 
             // colCLABE
             // 
             this.colCLABE.Caption = "CLABE";
+            this.colCLABE.ColumnEdit = this.txtCLABE;
             this.colCLABE.FieldName = "CLABE";
             this.colCLABE.Name = "colCLABE";
-            this.colCLABE.OptionsColumn.FixedWidth = true;
             this.colCLABE.Visible = true;
             this.colCLABE.VisibleIndex = 2;
-            this.colCLABE.Width = 130;
+            this.colCLABE.Width = 150;
+            // 
+            // txtCLABE
+            // 
+            this.txtCLABE.AutoHeight = false;
+            this.txtCLABE.Mask.EditMask = "\\d\\d-\\d\\d-\\d\\d-\\d\\d-\\d\\d-\\d\\d-\\d\\d-\\d\\d-\\d\\d";
+            this.txtCLABE.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtCLABE.Name = "txtCLABE";
+            // 
+            // colNoCIE
+            // 
+            this.colNoCIE.Caption = "No. CIE";
+            this.colNoCIE.ColumnEdit = this.txtNoCIE;
+            this.colNoCIE.FieldName = "NoCIE";
+            this.colNoCIE.Name = "colNoCIE";
+            this.colNoCIE.Visible = true;
+            this.colNoCIE.VisibleIndex = 3;
+            this.colNoCIE.Width = 150;
+            // 
+            // txtNoCIE
+            // 
+            this.txtNoCIE.AutoHeight = false;
+            this.txtNoCIE.Mask.EditMask = "\\d\\d-\\d\\d-\\d\\d\\d*";
+            this.txtNoCIE.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtNoCIE.Name = "txtNoCIE";
+            // 
+            // colReferencia
+            // 
+            this.colReferencia.Caption = "Referencia";
+            this.colReferencia.FieldName = "Referencia";
+            this.colReferencia.Name = "colReferencia";
+            this.colReferencia.Visible = true;
+            this.colReferencia.VisibleIndex = 4;
+            this.colReferencia.Width = 150;
             // 
             // txtRFC
             // 
@@ -393,7 +448,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.txtNomComercial, 3);
             this.txtNomComercial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNomComercial.Location = new System.Drawing.Point(102, 30);
-            this.txtNomComercial.MaxLength = 50;
+            this.txtNomComercial.MaxLength = 190;
             this.txtNomComercial.Name = "txtNomComercial";
             this.txtNomComercial.Size = new System.Drawing.Size(282, 21);
             this.txtNomComercial.TabIndex = 3;
@@ -417,7 +472,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.txtNomFiscal, 3);
             this.txtNomFiscal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNomFiscal.Location = new System.Drawing.Point(102, 57);
-            this.txtNomFiscal.MaxLength = 50;
+            this.txtNomFiscal.MaxLength = 190;
             this.txtNomFiscal.Name = "txtNomFiscal";
             this.txtNomFiscal.Size = new System.Drawing.Size(282, 21);
             this.txtNomFiscal.TabIndex = 5;
@@ -655,7 +710,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 497);
+            this.ClientSize = new System.Drawing.Size(458, 529);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -671,6 +726,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpBancos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoCuenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCLABE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoCIE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupCiudad.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupEstado.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgRazonSocial.Properties)).EndInit();
@@ -723,5 +781,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn colNoCuenta;
         private DevExpress.XtraGrid.Columns.GridColumn colCLABE;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpBancos;
+        private DevExpress.XtraGrid.Columns.GridColumn colNoCIE;
+        private DevExpress.XtraGrid.Columns.GridColumn colReferencia;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit txtNoCuenta;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit txtCLABE;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit txtNoCIE;
     }
 }

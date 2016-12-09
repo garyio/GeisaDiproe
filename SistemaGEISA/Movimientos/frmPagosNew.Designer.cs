@@ -58,6 +58,7 @@
             this.colObra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDevolucion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrestamo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTipoCombronate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.luBanco = new DevExpress.XtraEditors.LookUpEdit();
             this.lblBancoTarjeta = new System.Windows.Forms.Label();
             this.luEmpresa = new DevExpress.XtraEditors.LookUpEdit();
@@ -303,7 +304,8 @@
             this.colGastoAdm,
             this.colObra,
             this.colDevolucion,
-            this.colPrestamo});
+            this.colPrestamo,
+            this.colTipoCombronate});
             this.gv2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gv2.GridControl = this.grid2;
             this.gv2.GroupPanelText = "Facturas a pagar";
@@ -468,6 +470,11 @@
             this.colPrestamo.Visible = true;
             this.colPrestamo.VisibleIndex = 9;
             this.colPrestamo.Width = 40;
+            // 
+            // colTipoCombronate
+            // 
+            this.colTipoCombronate.FieldName = "TipoComprobante";
+            this.colTipoCombronate.Name = "colTipoCombronate";
             // 
             // luBanco
             // 
@@ -839,5 +846,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckPrestamo;
         private System.Windows.Forms.ToolStripLabel lblSaldoFavor;
         private System.Windows.Forms.ToolStripButton btnAgregarNC;
+        private DevExpress.XtraGrid.Columns.GridColumn colTipoCombronate;
     }
 }

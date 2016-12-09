@@ -171,7 +171,7 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Nombre";
+            this.gridColumn2.Caption = "Nombre Fiscal";
             this.gridColumn2.FieldName = "NombreFiscal";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
@@ -341,7 +341,7 @@
             // 
             // colNombre
             // 
-            this.colNombre.Caption = "Nombre";
+            this.colNombre.Caption = "Nombre Fiscal";
             this.colNombre.FieldName = "NombreFiscal";
             this.colNombre.Name = "colNombre";
             this.colNombre.Visible = true;
