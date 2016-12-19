@@ -220,7 +220,7 @@ namespace SistemaGEISA
                     catch (Exception ex)
                     {
                         if (transaccion != null) transaccion.Rollback();
-                        new frmMessageBox(true) { Message = "El Empleado tiene Documentos Asociadas, no es posible Eliminar.\n" + ex.InnerException.ToString(), Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "El Empleado tiene Documentos Asociadas, no es posible Eliminar.\n" + (ex.GetBaseException().Message), Title = "Error" }.ShowDialog();
                     }
                 }
                 else
