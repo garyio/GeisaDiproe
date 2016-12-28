@@ -1030,9 +1030,9 @@ namespace SistemaGEISA
             var form = new frmContrareciboNew(this.controler);
             form.Text = "Contra-recibo : " + (nuevo ? "Nuevo" : "Editar");
             form.contrarecibo = null;
-            form.proveedorId_pago = (Int32)luProveedor.EditValue;
-            form.empresaId_pago = (Int32)luEmpresa.EditValue;
-            form.fecha_pago = (DateTime)dtFechaPago.EditValue;
+            form.proveedorId_pago = luProveedor.EditValue != null ? (Int32)luProveedor.EditValue : (Int32?)null ;
+            form.empresaId_pago = luEmpresa.EditValue != null ? (Int32)luEmpresa.EditValue : (Int32?)null;
+            form.fecha_pago = dtFechaPago.EditValue != null ? (DateTime)dtFechaPago.EditValue : (DateTime?)null;
             form.ShowDialog();
         }
 
