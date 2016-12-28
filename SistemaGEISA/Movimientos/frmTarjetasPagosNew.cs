@@ -622,9 +622,11 @@ namespace SistemaGEISA
 
                         if (detalle != null)
                         {
-                            Factura factura = detalle.Factura;
+                            //Factura factura = detalle.Factura;
+                            //factura.Saldo = factura.Saldo + detalle.MontoPagar;
 
-                            factura.Saldo = factura.Saldo + detalle.MontoPagar;
+                            detalle.Pagos = null;
+                            controler.Model.DeleteObject(detalle.Factura);
                             controler.Model.DeleteObject(detalle);
 
                             try

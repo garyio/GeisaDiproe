@@ -13,6 +13,9 @@ namespace SistemaGEISA
 {
     public partial class frmContrareciboNew : DevExpress.XtraEditors.XtraForm
     {
+        public int? proveedorId_pago;
+        public int? empresaId_pago;
+        public DateTime? fecha_pago;
         private Controler controler { get; set; }
 
         public Contrarecibo contrarecibo { get; set; }
@@ -30,22 +33,26 @@ namespace SistemaGEISA
             dtFecha.EditValue = DateTime.Now;
             llenaCombos();
             llenaGrid();
-           
+
             if (contrarecibo != null)
             {
                 txtFolio.Text = contrarecibo.Folio.ToString();
                 luProveedor.EditValue = contrarecibo.ProveedorId.HasValue ? contrarecibo.ProveedorId : contrarecibo.ClienteId;
-                rgOpcion.EditValue = contrarecibo.Proveedor != null ? 2 : 1; 
+                rgOpcion.EditValue = contrarecibo.Proveedor != null ? 2 : 1;
                 luEmpresa.EditValue = contrarecibo.EmpresaId;
                 dtFecha.EditValue = contrarecibo.FechaRegistro;
 
-                dtFechaPago.EditValue = contrarecibo.FechaPago.AddDays(contrarecibo.Proveedor != null ? ( contrarecibo.Proveedor.PlazoCredito.HasValue ? (int)contrarecibo.Proveedor.PlazoCredito : 0) : 0) ;
+                dtFechaPago.EditValue = contrarecibo.FechaPago.AddDays(contrarecibo.Proveedor != null ? (contrarecibo.Proveedor.PlazoCredito.HasValue ? (int)contrarecibo.Proveedor.PlazoCredito : 0) : 0);
                 obtenerFacturas();
             }
             else
             {
                 int? folio = controler.Model.Contrarecibo.Select(C => C.Folio).DefaultIfEmpty(0).Max();
                 txtFolio.Text = (folio + 1).ToString();
+                this.luProveedor.EditValue = proveedorId_pago != null ? proveedorId_pago.Value : Convert.ToInt32(null);
+                this.luEmpresa.EditValue = empresaId_pago != null ? empresaId_pago.Value : Convert.ToInt32(null);
+                dtFecha.EditValue = fecha_pago != null ? fecha_pago.Value : ((DateTime?)null);
+
             }
 
             btnImprimir.Visible = contrarecibo != null;
@@ -94,10 +101,10 @@ namespace SistemaGEISA
             dt.Columns.Add("Observaciones", typeof(string));
             dt.Columns.Add("tipoComprobante", typeof(int)).DefaultValue = 1;
             //dt.Columns.Add("Saldo", typeof(double));
-            
+
             //dt.Columns.Add("ContrareciboId", typeof(int));
             //dt.Columns.Add("ProveedorId", typeof(int));
-            
+
             grid.DataSource = dt;
 
             luObra.DataSource = controler.Model.Obra.ToList();
@@ -120,7 +127,7 @@ namespace SistemaGEISA
 
             if (areValid)
             {
-                if (gv.DataRowCount==0)
+                if (gv.DataRowCount == 0)
                 {
                     new frmMessageBox(true) { Message = "Favor de ingresar facturas al Contra Recibo.", Title = "Error" }.ShowDialog();
                     areValid &= false;
@@ -154,7 +161,7 @@ namespace SistemaGEISA
             {
 
             }
-            
+
             return areValid;
         }
 
@@ -225,9 +232,9 @@ namespace SistemaGEISA
         private void luProveedor_EditValueChanged(object sender, EventArgs e)
         {
             Proveedor prov = luProveedor.GetSelectedDataRow() as Proveedor;
-            if(prov!=null)
-                if(prov.PlazoCredito!=null)
-                    dtFechaPago.EditValue = Convert.ToDateTime(dtFecha.EditValue).AddDays(Convert.ToInt32(controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor).PlazoCredito));            
+            if (prov != null)
+                if (prov.PlazoCredito != null)
+                    dtFechaPago.EditValue = Convert.ToDateTime(dtFecha.EditValue).AddDays(Convert.ToInt32(controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor).PlazoCredito));
                 else
                     dtFechaPago.EditValue = Convert.ToDateTime(dtFecha.EditValue);
         }
@@ -238,7 +245,7 @@ namespace SistemaGEISA
             DataRowView CurrentRow = (DataRowView)e.Row;
             for (int nColumn = 1; nColumn < CurrentRow.Row.ItemArray.Length - 1; nColumn++)
             {
-                if (CurrentRow.Row[nColumn].ToString() == "" && nColumn!=4 && nColumn!=5)
+                if (CurrentRow.Row[nColumn].ToString() == "" && nColumn != 4 && nColumn != 5)
                 {
                     e.Valid = false;
                     gv.SetColumnError(gv.Columns[nColumn], "Este Campo no debe ser vacio");
@@ -310,14 +317,14 @@ namespace SistemaGEISA
 
                     Factura factura = null;
 
-                    
+
                     for (int i = 0; i < gv.RowCount; i++)
                     {
                         DataRow row = gv.GetDataRow(i);
 
                         if (row != null)
                         {
-                            
+
                             if (!Convert.IsDBNull(row["Id"]))
                             {
                                 var id = Convert.ToInt32(row["Id"]);
@@ -346,7 +353,7 @@ namespace SistemaGEISA
                                 factura.Proveedor = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor);
                                 factura.Cliente = null; // no puede tener valor en proveedor y cliente a la ves, debe ser uno u otro
                             }
-                            
+
                             //factura.Proveedor = controler.GetObjectFromContext(luProveedor.GetSelectedDataRow() as Proveedor);
                             factura.ObraId = string.IsNullOrEmpty(row["ObraId"].ToString()) ? (int?)null : Convert.ToInt32(row["ObraId"]);
                             factura.tipoComprobante = Convert.ToInt32(string.IsNullOrEmpty(row["tipoComprobante"].ToString()) ? 1 : Convert.ToInt32(row["tipoComprobante"]));
@@ -405,14 +412,14 @@ namespace SistemaGEISA
 
         private double getSaldoFactura(Factura factura, double Importe)
         {
-            if(factura!=null)
+            if (factura != null)
             {
-                if(factura.Id!=0 && factura.PagosFactura.Count() > 0)
-                    actualizaPagosFactura(factura,Importe);
-                return Importe - controler.Model.getAbonosTotales(factura.Id, 0).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value; 
+                if (factura.Id != 0 && factura.PagosFactura.Count() > 0)
+                    actualizaPagosFactura(factura, Importe);
+                return Importe - controler.Model.getAbonosTotales(factura.Id, 0).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
             }
             else
-                return Importe;            
+                return Importe;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -427,7 +434,7 @@ namespace SistemaGEISA
                 if (row != null)
                 {
                     Factura factura = null;
-                    
+
                     if (!Convert.IsDBNull(row["Id"]))
                     {
                         var id = Convert.ToInt32(row["Id"]);
@@ -438,7 +445,7 @@ namespace SistemaGEISA
                         {
                             factura = controler.Model.Factura.Where(D => D.Id == id).FirstOrDefault();
                             controler.Model.DeleteObject(factura);
-                            gv.DeleteRow(gv.FocusedRowHandle); 
+                            gv.DeleteRow(gv.FocusedRowHandle);
                         }
                         else
                             new frmMessageBox(true) { Message = "Esta factura ya tiene pagos asignados.", Title = "Advertencia" }.ShowDialog();
@@ -457,22 +464,22 @@ namespace SistemaGEISA
 
         private void rgOpcion_EditValueChanged(object sender, EventArgs e)
         {
-                if ((int)rgOpcion.EditValue == 1)
-                {
-                    luProveedor.Properties.DataSource = controler.Model.Cliente.Where(D => D.Activo == true).ToList();
-                    luProveedor.Properties.DisplayMember = "NombreFiscal";
-                    luProveedor.Properties.ValueMember = "Id";
-                    lblProveedor.Text = "Cliente";
-                    luProveedor.EditValue = this.contrarecibo != null ? contrarecibo.ClienteId : null;
-                }
-                else
-                {
-                    luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).ToList();
-                    luProveedor.Properties.DisplayMember = "NombreComercial";
-                    luProveedor.Properties.ValueMember = "Id";
-                    lblProveedor.Text = "Proveedor";
-                    luProveedor.EditValue = this.contrarecibo != null ? contrarecibo.ProveedorId : null;
-                }
+            if ((int)rgOpcion.EditValue == 1)
+            {
+                luProveedor.Properties.DataSource = controler.Model.Cliente.Where(D => D.Activo == true).ToList();
+                luProveedor.Properties.DisplayMember = "NombreFiscal";
+                luProveedor.Properties.ValueMember = "Id";
+                lblProveedor.Text = "Cliente";
+                luProveedor.EditValue = this.contrarecibo != null ? contrarecibo.ClienteId : null;
+            }
+            else
+            {
+                luProveedor.Properties.DataSource = controler.Model.Proveedor.Where(D => D.Activo == true).ToList();
+                luProveedor.Properties.DisplayMember = "NombreComercial";
+                luProveedor.Properties.ValueMember = "Id";
+                lblProveedor.Text = "Proveedor";
+                luProveedor.EditValue = this.contrarecibo != null ? contrarecibo.ProveedorId : null;
+            }
         }
     }
 }
