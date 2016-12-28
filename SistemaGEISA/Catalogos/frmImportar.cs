@@ -126,7 +126,7 @@ namespace SistemaGEISA
                 }
                 catch (Exception ex)
                 {
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                     Cursor.Current = Cursors.Default;
                 }
                 finally
@@ -190,7 +190,7 @@ namespace SistemaGEISA
                 {
                     transaccion.Rollback();
                 }
-                error = ex.InnerException.Message;
+                error = ex.GetBaseException().Message;
             }
             finally
             {

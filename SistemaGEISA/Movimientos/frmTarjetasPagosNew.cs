@@ -470,7 +470,7 @@ namespace SistemaGEISA
                 {
                     if (isNew) pagos = null;
                     if (transaccion != null) transaccion.Rollback();
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {
@@ -529,7 +529,7 @@ namespace SistemaGEISA
                             }
                             catch (Exception ex)
                             {
-                                new frmMessageBox(true) { Message = "Error al quitar la factura: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                                new frmMessageBox(true) { Message = "Error al quitar la factura: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                             }
                         }
                     }
@@ -576,7 +576,7 @@ namespace SistemaGEISA
                 catch (Exception ex)
                 {
                     if (transaccion != null) transaccion.Rollback();
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {
@@ -633,7 +633,7 @@ namespace SistemaGEISA
                             }
                             catch (Exception ex)
                             {
-                                new frmMessageBox(true) { Message = "Error al quitar la factura: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                                new frmMessageBox(true) { Message = "Error al quitar la factura: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                             }
                         }
                     }

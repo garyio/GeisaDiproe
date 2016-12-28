@@ -161,7 +161,7 @@ namespace SistemaGEISA
                     }
                     catch (Exception ex)
                     {
-                        new frmMessageBox(true) { Message = "Error al quitar La Caja chica: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "Error al quitar La Caja chica: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
                     finally

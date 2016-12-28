@@ -61,7 +61,7 @@ namespace SistemaGEISA.Movimientos
                 catch (Exception ex)
                 {
                     if (transaccion != null) transaccion.Rollback();
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {

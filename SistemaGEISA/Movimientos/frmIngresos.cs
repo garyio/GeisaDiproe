@@ -489,7 +489,7 @@ namespace SistemaGEISA
                             }
                             catch (Exception ex)
                             {
-                                new frmMessageBox(true) { Message = "Error al Cancelar la factura: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                                new frmMessageBox(true) { Message = "Error al Cancelar la factura: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                             }
                         }
                     }
@@ -606,7 +606,7 @@ namespace SistemaGEISA
                 }
                 catch (Exception ex)
                 {
-                    new frmMessageBox(true) { Message = "Error al Giardar el Iva: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                    new frmMessageBox(true) { Message = "Error al Giardar el Iva: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                 }
             }
         }

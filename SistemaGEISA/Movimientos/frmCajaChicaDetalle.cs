@@ -194,7 +194,7 @@ namespace SistemaGEISA
                 }
                 catch (Exception ex)
                 {
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {
@@ -345,7 +345,7 @@ namespace SistemaGEISA
                     }
                     catch (Exception ex)
                     {
-                        new frmMessageBox(true) { Message = "Error al quitar el Pago: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "Error al quitar el Pago: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
                     finally

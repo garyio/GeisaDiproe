@@ -135,7 +135,7 @@ namespace SistemaGEISA
                 catch (Exception ex)
                 {
                     if (transaccion != null) transaccion.Rollback();
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {
@@ -177,7 +177,7 @@ namespace SistemaGEISA
                 }
                 catch (Exception ex)
                 {
-                    new frmMessageBox(true) { Message = string.Concat("No es Posible Cancelar este Abono, Favor de Verificar\n",ex.InnerException.Message), Title = "Error." }.ShowDialog();
+                    new frmMessageBox(true) { Message = string.Concat("No es Posible Cancelar este Abono, Favor de Verificar\n",ex.GetBaseException().Message), Title = "Error." }.ShowDialog();
                     return;
                 }
             }

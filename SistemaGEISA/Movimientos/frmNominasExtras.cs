@@ -184,7 +184,7 @@ namespace SistemaGEISA
                 catch (Exception ex)
                 {
                     new frmMessageBox(true) { Message = "Error al guardar el Registro: \n" + ex.InnerException, Title = "Error" }.ShowDialog();
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {

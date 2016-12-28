@@ -216,7 +216,7 @@ namespace SistemaGEISA
                     }
                     catch (Exception ex)
                     {
-                        new frmMessageBox(true) { Message = "Error al quitar la Reposición: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "Error al quitar la Reposición: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
                     finally
@@ -319,7 +319,7 @@ namespace SistemaGEISA
             catch (Exception ex)
             {
                 if (transaccion != null) transaccion.Rollback();
-                error = ex.InnerException.Message;
+                error = ex.GetBaseException().Message;
             }
             finally
             {

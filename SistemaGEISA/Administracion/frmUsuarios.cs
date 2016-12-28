@@ -149,7 +149,7 @@ namespace SistemaGEISA
                 }
                 catch (Exception ex)
                 {
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {

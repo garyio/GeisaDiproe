@@ -132,7 +132,7 @@ namespace SistemaGEISA
                     }
                     catch (Exception ex)
                     {
-                        new frmMessageBox(true) { Message = "Error al quitar el Traspaso: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "Error al quitar el Traspaso: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                         if (transaccion != null) transaccion.Rollback();
                     }
                     finally
@@ -187,7 +187,7 @@ namespace SistemaGEISA
                             }
                             catch (Exception ex)
                             {
-                                new frmMessageBox(true) { Message = "Error al Cancelar el Traspaso: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                                new frmMessageBox(true) { Message = "Error al Cancelar el Traspaso: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                             }
                         
                     }

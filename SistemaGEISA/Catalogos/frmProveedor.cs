@@ -245,7 +245,7 @@ namespace SistemaGEISA
                     catch (Exception ex)
                     {
                         if (transaccion != null) transaccion.Rollback();
-                        new frmMessageBox(true) { Message = "Error al quitar el Proveedor: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                        new frmMessageBox(true) { Message = "Error al quitar el Proveedor: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                     }
                 }
                 else

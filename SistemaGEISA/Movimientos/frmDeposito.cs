@@ -156,7 +156,7 @@ namespace SistemaGEISA
                 }
                 catch (Exception ex)
                 {
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
 
                 var title = string.IsNullOrEmpty(error) ? "Confirmación" : "Error";
@@ -188,7 +188,7 @@ namespace SistemaGEISA
                 }
                 catch (Exception ex)
                 {
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
 
                 var title = string.IsNullOrEmpty(error) ? "Confirmación" : "Error";

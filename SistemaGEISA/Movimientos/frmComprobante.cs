@@ -232,7 +232,7 @@ namespace SistemaGEISA
             {
                 if (isNew) cajaDetalle = null;
                 if (transaccion != null) transaccion.Rollback();
-                error = ex.InnerException.Message;
+                error = ex.GetBaseException().Message;
             }
             finally
             {
@@ -401,7 +401,7 @@ namespace SistemaGEISA
                 catch (Exception ex)
                 {
                     if (transaccion != null) transaccion.Rollback();
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {
@@ -536,7 +536,7 @@ namespace SistemaGEISA
                 }
                 catch (Exception ex)
                 {
-                    new frmMessageBox(true) { Message = "Error al quitar el Registro: " + ex.InnerException.Message, Title = "Error" }.ShowDialog();
+                    new frmMessageBox(true) { Message = "Error al quitar el Registro: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                     if (transaccion != null) transaccion.Rollback();
                 }
                 finally

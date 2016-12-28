@@ -151,7 +151,7 @@ namespace SistemaGEISA
                     {
                         transaccion.Rollback();
                     }
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {

@@ -444,7 +444,7 @@ namespace SistemaGEISA
                 {
                     if (isNew) pagos = null;
                     if (transaccion != null) transaccion.Rollback();
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {

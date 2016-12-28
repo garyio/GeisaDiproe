@@ -361,7 +361,7 @@ namespace SistemaGEISA
                 {
                     if (isNew) contrarecibo = null;
                     if (transaccion != null) transaccion.Rollback();
-                    error = ex.InnerException.Message;
+                    error = ex.GetBaseException().Message;
                 }
                 finally
                 {
