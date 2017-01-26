@@ -7347,6 +7347,30 @@ namespace GeisaBD
         private global::System.String _RFC;
         partial void OnRFCChanging(global::System.String value);
         partial void OnRFCChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> EsContratista
+        {
+            get
+            {
+                return _EsContratista;
+            }
+            set
+            {
+                OnEsContratistaChanging(value);
+                ReportPropertyChanging("EsContratista");
+                _EsContratista = StructuralObject.SetValidValue(value, "EsContratista");
+                ReportPropertyChanged("EsContratista");
+                OnEsContratistaChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _EsContratista;
+        partial void OnEsContratistaChanging(Nullable<global::System.Boolean> value);
+        partial void OnEsContratistaChanged();
 
         #endregion
 

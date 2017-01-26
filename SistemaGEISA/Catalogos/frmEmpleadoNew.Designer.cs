@@ -61,6 +61,8 @@
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.chkContratista = new DevExpress.XtraEditors.CheckEdit();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -73,6 +75,7 @@
             this.tabUsuario.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookupPerfil.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkContratista.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // menu
@@ -114,7 +117,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 35);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tabEmpleado;
-            this.xtraTabControl1.Size = new System.Drawing.Size(359, 201);
+            this.xtraTabControl1.Size = new System.Drawing.Size(359, 228);
             this.xtraTabControl1.TabIndex = 9;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabEmpleado,
@@ -124,7 +127,7 @@
             // 
             this.tabEmpleado.Controls.Add(this.tableLayoutPanel1);
             this.tabEmpleado.Name = "tabEmpleado";
-            this.tabEmpleado.Size = new System.Drawing.Size(353, 173);
+            this.tabEmpleado.Size = new System.Drawing.Size(353, 200);
             this.tabEmpleado.Text = "Empleado";
             // 
             // tableLayoutPanel1
@@ -135,6 +138,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.txtRFC, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.chkObra, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtApMaterno, 1, 3);
@@ -151,11 +155,14 @@
             this.tableLayoutPanel1.Controls.Add(this.label11, 2, 7);
             this.tableLayoutPanel1.Controls.Add(this.chkOficina, 3, 7);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chkContratista, 1, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowCount = 10;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -164,7 +171,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(353, 173);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(353, 200);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
             // txtRFC
@@ -309,7 +316,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(8, 145);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 23);
+            this.label10.Size = new System.Drawing.Size(87, 25);
             this.label10.TabIndex = 15;
             this.label10.Text = "Obra";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -320,7 +327,7 @@
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Location = new System.Drawing.Point(182, 145);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(62, 23);
+            this.label11.Size = new System.Drawing.Size(62, 25);
             this.label11.TabIndex = 17;
             this.label11.Text = "Oficina";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -474,15 +481,35 @@
             this.label9.Text = "E-Mail";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(8, 170);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(87, 25);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "Contratista";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // chkContratista
+            // 
+            this.chkContratista.Location = new System.Drawing.Point(101, 173);
+            this.chkContratista.Name = "chkContratista";
+            this.chkContratista.Properties.Caption = "";
+            this.chkContratista.Size = new System.Drawing.Size(75, 19);
+            this.chkContratista.TabIndex = 28;
+            // 
             // frmEmpleadoNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 236);
+            this.ClientSize = new System.Drawing.Size(359, 263);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
+            this.MaximizeBox = false;
             this.Name = "frmEmpleadoNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleado : Nuevo";
@@ -502,6 +529,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookupPerfil.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkContratista.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,5 +569,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private DevExpress.XtraEditors.CheckEdit chkOficina;
+        private System.Windows.Forms.Label label13;
+        private DevExpress.XtraEditors.CheckEdit chkContratista;
     }
 }

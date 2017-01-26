@@ -214,6 +214,7 @@
           <Property Name="EsOficina" Type="bit" />
           <Property Name="ObraId" Type="int" />
           <Property Name="RFC" Type="varchar" MaxLength="13" />
+          <Property Name="EsContratista" Type="bit" />
         </EntityType>
         <EntityType Name="EmpleadoHistorial">
           <Key>
@@ -4876,6 +4877,7 @@
           <NavigationProperty Name="Vehiculo" Relationship="GEISAModel.FK_Vehiculo_Empleado" FromRole="Empleado" ToRole="Vehiculo" />
           <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Obra_Empleado" FromRole="Empleado" ToRole="Obra" />
+          <Property Name="EsContratista" Type="Boolean" />
         </EntityType>
         <Association Name="FK_CajaChica_Empleado">
           <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
@@ -6303,6 +6305,7 @@
           <EntitySetMapping Name="Empleado">
             <EntityTypeMapping TypeName="GEISAModel.Empleado">
               <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="EsContratista" ColumnName="EsContratista" />
                 <ScalarProperty Name="RFC" ColumnName="RFC" />
                 <ScalarProperty Name="ObraId" ColumnName="ObraId" />
                 <ScalarProperty Name="EsOficina" ColumnName="EsOficina" />

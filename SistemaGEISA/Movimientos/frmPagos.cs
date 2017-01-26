@@ -42,15 +42,11 @@ namespace SistemaGEISA
 
                 foreach (PagosFactura detalle in Controler.Model.PagosFactura.Where(P => P.Pagos.TipoMovimientoId == TipoMovimientoEnum.Pagos.Id).ToList())
                 {
-
-                    //if (detalle != null && detalle.FacturaId == 45038)
-                    //{
-                        
+                    //if (detalle != null && detalle.FacturaId == 40389)
+                    //{                        
                         Factura factura = Controler.Model.Factura.FirstOrDefault(D => D.Id == detalle.FacturaId);
-
                         factura.Saldo = factura.Importe - Controler.Model.getAbonosTotales(factura.Id, null).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
                         factura.Saldo = Math.Round(factura.Saldo, 2);
-
                         //detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id && P.PagosId == pagos.Id);
                         detalleTraspaso = detalle.TraspasoSaldos;
                     //}

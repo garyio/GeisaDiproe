@@ -38,7 +38,16 @@ namespace GeisaBD
         }
         public double SaldoFinal
         {
-            get { return this.SaldoActual - this.MontoPagar; }
+            get {
+                if (Factura.tipoComprobante != null)
+                {
+                    if (Factura.tipoComprobante.Value == 2) // es una NC desde comprobantes
+                        return this.SaldoActual - Math.Abs(this.MontoPagar);
+                    else
+                        return this.SaldoActual - this.MontoPagar; 
+                }
+                return this.SaldoActual - this.MontoPagar; 
+            }
         }
         public Proveedor Proveedor
         {

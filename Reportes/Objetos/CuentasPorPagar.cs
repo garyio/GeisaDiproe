@@ -20,27 +20,6 @@ namespace Reportes
 
             items = model.getReporteCuentasPagar(startDate, endDate, EmpresaId, proveedores, obras).ToList();
 
-            //string[] Provedor = proveedores.Split(',');
-
-            //if (Provedor.Count()>0)
-            //{
-            //    //foreach (getReporteGastosViaticos1_Result prov in items)
-            //    //{
-            //    //    string id = prov.ProveedorId.ToString();
-            //    //    if (proveedores.Contains(id) == true)
-            //    //        ItemsValidos.Add(prov);
-            //    //}
-            //    foreach (getReporteCuentasPagar_Result prov in items)
-            //    {
-            //        string id = prov.ProveedorId.ToString();
-            //        if (Provedor.Where(p => p == id).Count()>0)
-            //            ItemsValidos.Add(prov);
-            //    }
-            //}
-            //else
-            //{
-            //    ItemsValidos = items;
-            //}
             Items = new List<CuentasPorPagarItem>();
             CuentasPorPagarItem._Periodo = startDate.ToShortDateString() + " - " + endDate.ToShortDateString();
             CuentasPorPagarItem._Empresa = EmpresasNombres;
@@ -78,7 +57,7 @@ namespace Reportes
         public DateTime? FechaPago { get { return Item.FechaPago; } }
         public string Factura { get { return Item.Factura; } }
 
-        public double? SaldoFinal { get { return Item.SaldoFinal; } }
+        public double? SaldoFinal { get { return  Item.SaldoFinal; } }
         public string Observaciones { get { return Item.Observaciones; } }
         public string Obra { get { return Item.Obra; } }
         #endregion Reporting Properties

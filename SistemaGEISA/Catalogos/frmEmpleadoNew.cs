@@ -137,6 +137,7 @@ namespace SistemaGEISA
                 empleado.EsResidente = chkResidente.Checked;
                 empleado.EsObra = chkObra.Checked;
                 empleado.EsOficina = chkOficina.Checked;
+                empleado.EsContratista = chkContratista.Checked;
                 empleado.RFC = txtRFC.Text.Trim();
 
                 if (!empleado.NoEsNuevo) controler.Model.AddToEmpleado(empleado);
