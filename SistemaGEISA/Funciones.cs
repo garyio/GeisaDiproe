@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraGrid;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.XtraGrid;
+using DevExpress.XtraPrinting;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -43,8 +45,29 @@ namespace SistemaGEISA
                 return false;
             }
 
-            // Print.
-            grid.Print();
+            // Print Settings
+            var ps = new PrintingSystem();
+            //ps.PageSettings.Margins.Bottom = 10;
+            //ps.PageSettings.Margins.Left = 10;
+            //ps.PageSettings.Margins.Right = 10;
+            //ps.PageSettings.Margins.Top = 10;
+            // Create a link that will print a control. 
+            var link = new PrintableComponentLink(ps);
+            // Specify the control to be printed. 
+            link.Component = grid;
+            // Subscribe to the CreateReportHeaderArea event used to generate the report header. 
+            //link.CreateReportHeaderArea += printableComponentLinkPatientList_CreateReportHeaderArea;
+            // Generate the report. 
+            link.Margins.Right = 1;
+            link.Margins.Left = 1;
+            link.Margins.Top = 1;
+            link.Margins.Bottom = 1;
+            link.CreateDocument();
+            // Show the report. 
+            //link.PrintingSystem.PreviewRibbonFormEx.Ribbon.ApplicationIcon = BackLinkCheck.Properties.Resources.RibbonIco;
+            link.ShowRibbonPreviewDialog(UserLookAndFeel.Default);                   
+            
+            //grid.Print();
             return true;
         }
 

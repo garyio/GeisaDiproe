@@ -31,7 +31,7 @@ namespace SistemaGEISA
 
         public void llenaGrid()
         {
-            grid.DataSource = controler.Model.VehiculoCajaChicaDetalle.Where(D=> D.VehiculoCajaChicaId == VehiculoCajaChica.Id).ToList();
+            grid.DataSource = controler.Model.VehiculoCajaChicaDetalle.Where(D=> D.VehiculoCajaChicaId == VehiculoCajaChica.Id).OrderByDescending(O => O.Fecha).ToList();
         }
         
 

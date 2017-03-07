@@ -24,7 +24,7 @@ namespace SistemaGEISA
         public Pagos pagos { get; set; }
         public int tipoMovimientoId;
         private DataTable dt;
-        public bool tienePermisoAgregar, tienePermisoModificar, tienePermisoCancelar;        
+        public bool tienePermisoAgregar, tienePermisoModificar, tienePermisoCancelar;
 
         public frmReposicionGastosNew(Controler _controler)
         {
@@ -63,7 +63,7 @@ namespace SistemaGEISA
                     total += Convert.ToDouble(row["Importe"].ToString());
                 }
             }
-            diferencia = totalMonto-total;
+            diferencia = totalMonto - total;
             txtDif.Text = diferencia.ToString("c2");
             if (diferencia < 0)
                 txtDif.BackColor = System.Drawing.Color.Red;
@@ -79,7 +79,7 @@ namespace SistemaGEISA
             btnGuardar.Enabled = btnEliminar.Enabled = tienePermisoAgregar || tienePermisoModificar;
             llenaGrid();
             llenaCombos();
-            
+
 
             if (pagos != null)
             {
@@ -89,7 +89,7 @@ namespace SistemaGEISA
                 luEmpresa.EditValue = pagos.EmpresaId;
                 luTipoPago.EditValue = pagos.TipoPagoId;
                 txtTotMov.Text = pagos.MontoPagar == null ? String.Format("{0:C2}", "0") : String.Format("{0:C2}", pagos.MontoPagar);
-                
+
 
                 if (TipoPagoEnum.Cheque.Id == pagos.TipoPagoId || TipoPagoEnum.Transferencia.Id == pagos.TipoPagoId)
                 {
@@ -114,21 +114,21 @@ namespace SistemaGEISA
                     gv.SetRowCellValue(rowHandle, gv.Columns["Id"], serv.FacturaLoaded.Id);
                     gv.SetRowCellValue(rowHandle, gv.Columns["NoFactura"], serv.NoFactura);
                     gv.SetRowCellValue(rowHandle, gv.Columns["Fecha"], serv.Fecha);
-                    gv.SetRowCellValue(rowHandle, gv.Columns["SaldoActual"], serv.SaldoActual);
                     gv.SetRowCellValue(rowHandle, gv.Columns["Importe"], serv.Importe);
-                    gv.SetRowCellValue(rowHandle, gv.Columns["MontoPagar"], serv.MontoPagar);
-                    gv.SetRowCellValue(rowHandle, gv.Columns["SaldoFinal"], serv.SaldoFinal);
+                    //gv.SetRowCellValue(rowHandle, gv.Columns["SaldoActual"], serv.SaldoActual);
+                    //gv.SetRowCellValue(rowHandle, gv.Columns["MontoPagar"], serv.MontoPagar);
+                    //gv.SetRowCellValue(rowHandle, gv.Columns["SaldoFinal"], serv.SaldoFinal);
                     gv.SetRowCellValue(rowHandle, gv.Columns["Observaciones"], serv.Observaciones);
                     gv.SetRowCellValue(rowHandle, gv.Columns["ProveedorId"], serv.Proveedor != null ? serv.Proveedor.Id : (int?)null);
                     gv.SetRowCellValue(rowHandle, gv.Columns["ObraId"], serv.Factura.Obra != null ? serv.Factura.ObraId : (int?)null);
-                    gv.SetRowCellValue(rowHandle, gv.Columns["Compartido"], serv.Factura.Compartido==null || Convert.ToInt32(serv.Factura.Compartido)==0 ? false: true);
+                    gv.SetRowCellValue(rowHandle, gv.Columns["Compartido"], serv.Factura.Compartido == null || Convert.ToInt32(serv.Factura.Compartido) == 0 ? false : true);
                     gv.SetRowCellValue(rowHandle, gv.Columns["GastoAdm"], serv.Factura.GastoAdm == null || Convert.ToInt32(serv.Factura.GastoAdm) == 0 ? false : true);
 
                     gv.UpdateCurrentRow();
                     gv.RefreshData();
                 }
-                
-        
+
+
             }
             else
             {
@@ -179,7 +179,7 @@ namespace SistemaGEISA
             dt.Columns.Add("Observaciones", typeof(string));
             dt.Columns.Add("ProveedorId", typeof(int));
             dt.Columns.Add("ObraId", typeof(int));
-            dt.Columns.Add("Compartido", typeof(Boolean)).DefaultValue=false;
+            dt.Columns.Add("Compartido", typeof(Boolean)).DefaultValue = false;
             dt.Columns.Add("GastoAdm", typeof(Boolean)).DefaultValue = false;
             grid2.DataSource = dt;
         }
@@ -319,7 +319,7 @@ namespace SistemaGEISA
             {
                 List<ReportParameter> paramReport = new List<ReportParameter>();
 
-                paramReport.Add(new ReportParameter("Empleado",pagos.Empleado.NombreCompleto));
+                paramReport.Add(new ReportParameter("Empleado", pagos.Empleado.NombreCompleto));
                 paramReport.Add(new ReportParameter("Banco", pagos.BancosNombre));
                 paramReport.Add(new ReportParameter("Fecha", pagos.Fecha.ToShortDateString()));
                 paramReport.Add(new ReportParameter("Empresa", pagos.EmpresaNombre));
@@ -456,8 +456,8 @@ namespace SistemaGEISA
                     {
                         EmpresaBancos banco = luBanco.GetSelectedDataRow() as EmpresaBancos;
                         pagos.EmpresaBancos = controler.GetObjectFromContext(luBanco.GetSelectedDataRow() as EmpresaBancos);
-                        pagos.Consecutivo = string.IsNullOrEmpty(txtReferencia.Text)==false? Convert.ToInt32(txtReferencia.Text): (int?)null;
-                        banco.FolioActual = banco!=null ? banco.FolioActual + 1: (int?)null;
+                        pagos.Consecutivo = string.IsNullOrEmpty(txtReferencia.Text) == false ? Convert.ToInt32(txtReferencia.Text) : (int?)null;
+                        banco.FolioActual = banco != null ? banco.FolioActual + 1 : (int?)null;
                     }
                     else if (pagos.TipoPago == TipoPagoEnum.NotaCredito)
                     {
@@ -474,7 +474,7 @@ namespace SistemaGEISA
                     {
                         controler.Model.AddToPagos(pagos);
                     }
-                    
+
 
                     PagosFactura detalle = null;
                     Factura factura;
@@ -484,9 +484,9 @@ namespace SistemaGEISA
 
                         if (row != null)
                         {
-                            
+
                             var id = string.IsNullOrEmpty(row["Id"].ToString()) ? 0 : Convert.ToInt32(row["Id"]);
-                            
+
 
                             if (id != 0)
                             {
@@ -497,7 +497,7 @@ namespace SistemaGEISA
                                 //Console.WriteLine(factura.PagosFactura.Count());
                                 if (!isNew && id != 0)
                                     detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id && P.PagosId == pagos.Id);
-                                else  
+                                else
                                     detalle = null;
                             }
                             else
@@ -517,7 +517,7 @@ namespace SistemaGEISA
                             factura.Compartido = Convert.ToBoolean(row["Compartido"]);
                             factura.GastoAdm = Convert.ToBoolean(row["GastoAdm"]);
                             if (factura.Saldo > 0)
-                                factura.Saldo = factura.Saldo - Math.Round(Convert.ToDouble(row["SaldoFinal"]), 2); 
+                                factura.Saldo = factura.Saldo - Math.Round(Convert.ToDouble(row["SaldoFinal"]), 2);
 
                             if (!factura.NoEsNuevo) controler.Model.AddToFactura(factura);
 
@@ -648,7 +648,7 @@ namespace SistemaGEISA
 
                 if (row != null)
                 {
-                    if (pagos != null && (gv.GetRowCellValue(gv.FocusedRowHandle, "Id")!=null && string.IsNullOrEmpty(gv.GetRowCellValue(gv.FocusedRowHandle, "Id").ToString())==false))
+                    if (pagos != null && (gv.GetRowCellValue(gv.FocusedRowHandle, "Id") != null && string.IsNullOrEmpty(gv.GetRowCellValue(gv.FocusedRowHandle, "Id").ToString()) == false))
                     {
                         var id = Convert.ToInt32(row["Id"]);
                         PagosFactura detalle = controler.Model.PagosFactura.FirstOrDefault(P => P.FacturaId == id);
@@ -656,23 +656,22 @@ namespace SistemaGEISA
                         if (detalle != null)
                         {
                             Factura factura = detalle.Factura;
-
                             factura.Saldo = factura.Saldo + detalle.MontoPagar;
                             controler.Model.DeleteObject(detalle);
+                        }
 
-                            try
-                            {
-                                controler.Model.SaveChanges();
-                            }
-                            catch (Exception ex)
-                            {
-                                new frmMessageBox(true) { Message = "Error al quitar la factura: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
-                            }
+                        try
+                        {
+                            controler.Model.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            new frmMessageBox(true) { Message = "Error al quitar la factura: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
                         }
                     }
-
-                    gv.DeleteRow(gv.FocusedRowHandle);
                 }
+
+                gv.DeleteRow(gv.FocusedRowHandle);
             }
         }
 
@@ -694,7 +693,7 @@ namespace SistemaGEISA
                     DataRow row = gv.GetDataRow(i);
                     if (row != null)
                     {
-                        if (string.IsNullOrEmpty(gv.GetRowCellValue(i, "Id").ToString())==false)
+                        if (string.IsNullOrEmpty(gv.GetRowCellValue(i, "Id").ToString()) == false)
                         {
                             int id = Convert.ToInt32(gv.GetRowCellValue(i, "Id"));
                             form.pagadas.Add(controler.Model.Factura.FirstOrDefault(F => F.Id == id));
@@ -718,8 +717,8 @@ namespace SistemaGEISA
                         gv.SetRowCellValue(rowHandle, gv.Columns["Id"], id);
                         gv.SetRowCellValue(rowHandle, gv.Columns["NoFactura"], form.rowSelected[j]["NoFactura"]);
                         gv.SetRowCellValue(rowHandle, gv.Columns["Fecha"], form.rowSelected[j]["Fecha"]);
-                        gv.SetRowCellValue(rowHandle, gv.Columns["SaldoActual"], form.rowSelected[j]["Saldo"]);
                         gv.SetRowCellValue(rowHandle, gv.Columns["Importe"], form.rowSelected[j]["Importe"]);
+                        gv.SetRowCellValue(rowHandle, gv.Columns["SaldoActual"], form.rowSelected[j]["Saldo"]);
                         gv.SetRowCellValue(rowHandle, gv.Columns["MontoPagar"], form.rowSelected[j]["Saldo"]);
                         gv.SetRowCellValue(rowHandle, gv.Columns["SaldoFinal"], 0);
                         gv.SetRowCellValue(rowHandle, gv.Columns["ProveedorId"], fact.ProveedorId);
@@ -763,7 +762,7 @@ namespace SistemaGEISA
                         //fac.Saldo = fac.Importe - controler.Model.getAbonosTotales(fac.Id, pagos.Id).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
                         //fac.Saldo = Math.Round(fac.Saldo, 2);
 
-                        if (facpagos.TraspasoSaldos !=null)
+                        if (facpagos.TraspasoSaldos != null)
                             facpagos.TraspasoSaldos.FechaCancelacion = DateTime.Now;
                     }
 
@@ -805,9 +804,9 @@ namespace SistemaGEISA
             {
                 //if (string.IsNullOrEmpty(gv.GetRowCellValue(gv.FocusedRowHandle, "Id").ToString()))
                 //{
-                    gv.SetRowCellValue(e.RowHandle, gv.Columns["SaldoActual"], Convert.ToDouble(gv.GetRowCellValue(gv.FocusedRowHandle, "Importe")));
-                    gv.SetRowCellValue(e.RowHandle, gv.Columns["MontoPagar"], Convert.ToDouble(gv.GetRowCellValue(gv.FocusedRowHandle, "Importe")));
-                    gv.SetRowCellValue(e.RowHandle, gv.Columns["SaldoFinal"], 0);
+                gv.SetRowCellValue(e.RowHandle, gv.Columns["SaldoActual"], Convert.ToDouble(gv.GetRowCellValue(gv.FocusedRowHandle, "Importe")));
+                gv.SetRowCellValue(e.RowHandle, gv.Columns["MontoPagar"], Convert.ToDouble(gv.GetRowCellValue(gv.FocusedRowHandle, "Importe")));
+                gv.SetRowCellValue(e.RowHandle, gv.Columns["SaldoFinal"], 0);
                 //}
             }
         }

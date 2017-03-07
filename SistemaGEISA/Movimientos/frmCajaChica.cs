@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using GeisaBD;
 using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
+using System.Data.Common;
 namespace SistemaGEISA
 {
     public partial class frmCajaChica : DevExpress.XtraEditors.XtraForm
@@ -118,6 +119,7 @@ namespace SistemaGEISA
             double tipoComprobantes = 0;
             double saldo = 0;
             double deposito = 0;
+            double devolucion = 0;
             foreach (CajaChicaDetalle CajaDetalle in Datos)
             {
                 tipoComprobantes += Convert.ToDouble(CajaDetalle.Biaticos);
@@ -125,8 +127,9 @@ namespace SistemaGEISA
                 tipoComprobantes += Convert.ToDouble(CajaDetalle.Facturas);
                 tipoComprobantes += Convert.ToDouble(CajaDetalle.NoDeducibles);
                 deposito += Convert.ToDouble(CajaDetalle.Deposito);
+                devolucion += Convert.ToDouble(CajaDetalle.Devolucion);
             }
-            return (saldo = deposito - tipoComprobantes);
+            return (saldo = (deposito - devolucion) - tipoComprobantes);
         }
 
         private void frmCajaChica_Load(object sender, EventArgs e)
@@ -192,6 +195,47 @@ namespace SistemaGEISA
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             Funciones.Print(grid);
+        }
+
+        private void btnRecalcular_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            recalculaSaldos();
+            this.Cursor = Cursors.Default;
+        }
+
+        private void recalculaSaldos()
+        {
+            var error = string.Empty;
+            DbTransaction transaccion = null;
+
+            try
+            {
+                transaccion = Controler.Model.BeginTransaction();
+
+                foreach (Factura factura in Controler.Model.Factura.Where(D => D.Saldo > 0 && D.CajaComprobanteId != null && D.FechaCancelacion==null).ToList())
+                {
+                        factura.Saldo = factura.Importe - Controler.Model.getAbonosTotales(factura.Id, null).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
+                        factura.Saldo = Math.Round(factura.Saldo, 2);                    
+                }
+
+                Controler.Model.SaveChanges();
+                transaccion.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (transaccion != null) transaccion.Rollback();
+                error = ex.GetBaseException().Message;
+            }
+            finally
+            {
+                Controler.Model.CloseConnection();
+
+                var title = string.IsNullOrEmpty(error) ? "Confirmación" : "Error";
+                var message = string.Empty;
+                message = string.IsNullOrEmpty(error) ? string.Concat("Los Saldos han sido actualizados exitosamente.") : string.Concat("Error al actualizar los Saldos:\n", error);
+                new frmMessageBox(true) { Message = message, Title = title }.ShowDialog();
+            }
         }
     }
 }

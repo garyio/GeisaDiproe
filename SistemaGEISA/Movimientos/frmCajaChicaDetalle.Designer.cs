@@ -267,7 +267,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.24008F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.75992F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 326F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 327F));
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
@@ -535,7 +535,7 @@
             this.luResidente.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Residente", "Nombre")});
             this.luResidente.Properties.NullText = "";
-            this.luResidente.Size = new System.Drawing.Size(426, 20);
+            this.luResidente.Size = new System.Drawing.Size(425, 20);
             this.luResidente.TabIndex = 0;
             this.luResidente.EditValueChanged += new System.EventHandler(this.luResidente_EditValueChanged);
             // 
@@ -549,16 +549,16 @@
             this.luObra.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
             this.luObra.Properties.NullText = "";
-            this.luObra.Size = new System.Drawing.Size(426, 20);
+            this.luObra.Size = new System.Drawing.Size(425, 20);
             this.luObra.TabIndex = 1;
             // 
             // txtSaldo
             // 
             this.txtSaldo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSaldo.Location = new System.Drawing.Point(717, 29);
+            this.txtSaldo.Location = new System.Drawing.Point(716, 29);
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.ReadOnly = true;
-            this.txtSaldo.Size = new System.Drawing.Size(321, 21);
+            this.txtSaldo.Size = new System.Drawing.Size(322, 21);
             this.txtSaldo.TabIndex = 3;
             this.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -566,7 +566,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(512, 26);
+            this.label3.Location = new System.Drawing.Point(511, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(199, 27);
             this.label3.TabIndex = 4;

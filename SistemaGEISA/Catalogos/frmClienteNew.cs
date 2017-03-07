@@ -20,6 +20,7 @@ namespace SistemaGEISA
         }
         private void llenaEstados()
         {
+            refreshState();
             lookupEstado.Properties.DataSource = controler.Model.Estado.ToList();
             lookupEstado.Properties.DisplayMember = "Nombre";
             lookupEstado.Properties.ValueMember = "Id";
@@ -27,13 +28,27 @@ namespace SistemaGEISA
         private void llenaCiudad()
         {
             var estado = lookupEstado.GetSelectedDataRow() as Estado;
-
+            refreshCities(estado);
             if (estado != null)
             {
                 lookupCiudad.Properties.DataSource = controler.Model.Ciudad.Where(C => C.EstadoId == estado.Id).ToList();
                 lookupCiudad.Properties.DisplayMember = "Nombre";
                 lookupCiudad.Properties.ValueMember = "Id";
             }
+        }
+
+        private void refreshCities(Estado _estado)
+        {
+            //Refresco Informacion del Pago
+            controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, controler.Model.Ciudad.Where(C => C.EstadoId == _estado.Id).ToList());
+            //******************************
+        }
+
+        private void refreshState()
+        {
+            //Refresco Informacion del Pago
+            controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, controler.Model.Estado.ToList());
+            //******************************
         }
         private bool isValid()
         {

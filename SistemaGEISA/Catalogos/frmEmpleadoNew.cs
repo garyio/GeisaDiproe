@@ -34,6 +34,8 @@ namespace SistemaGEISA
                 chkResidente.Checked = empleado.EsResidente;
                 chkObra.Checked = empleado.EsObra.HasValue ? empleado.EsObra.Value : false;
                 chkOficina.Checked = empleado.EsOficina.HasValue ? empleado.EsOficina.Value : false;
+                chkContratista.Checked = empleado.EsContratista.HasValue ? empleado.EsContratista.Value : false;
+                chkContratistaPrincipal.Checked = empleado.EsContratistaPrincipal.HasValue ? empleado.EsContratistaPrincipal.Value : false;
                 txtRFC.Text = empleado.RFC;
 
                 usuario = controler.Model.Usuario.Where(f => f.EmpleadoId == empleado.Id).FirstOrDefault();
@@ -137,6 +139,7 @@ namespace SistemaGEISA
                 empleado.EsResidente = chkResidente.Checked;
                 empleado.EsObra = chkObra.Checked;
                 empleado.EsOficina = chkOficina.Checked;
+                empleado.EsContratistaPrincipal = chkContratistaPrincipal.Checked;
                 empleado.EsContratista = chkContratista.Checked;
                 empleado.RFC = txtRFC.Text.Trim();
 
@@ -212,9 +215,9 @@ namespace SistemaGEISA
 
         private void abrirForm(bool nuevo)
         {
-            var form = new frmEmpleadoNewNomina(controler);
+            
+            var form = new frmEmpleadoNewNomina(controler,this.empleado);
             form.Text = "Nomina " + this.empleado.NombreCompleto + " - " + (nuevo ? "Nuevo" : "Editar");
-            form.empleado = this.empleado;
 
             form.ShowDialog();
         }

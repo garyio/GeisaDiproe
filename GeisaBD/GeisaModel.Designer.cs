@@ -7371,6 +7371,30 @@ namespace GeisaBD
         private Nullable<global::System.Boolean> _EsContratista;
         partial void OnEsContratistaChanging(Nullable<global::System.Boolean> value);
         partial void OnEsContratistaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> EsContratistaPrincipal
+        {
+            get
+            {
+                return _EsContratistaPrincipal;
+            }
+            set
+            {
+                OnEsContratistaPrincipalChanging(value);
+                ReportPropertyChanging("EsContratistaPrincipal");
+                _EsContratistaPrincipal = StructuralObject.SetValidValue(value, "EsContratistaPrincipal");
+                ReportPropertyChanged("EsContratistaPrincipal");
+                OnEsContratistaPrincipalChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _EsContratistaPrincipal;
+        partial void OnEsContratistaPrincipalChanging(Nullable<global::System.Boolean> value);
+        partial void OnEsContratistaPrincipalChanged();
 
         #endregion
 
@@ -12427,6 +12451,54 @@ namespace GeisaBD
         private Nullable<global::System.Boolean> _esPagoEfectivo;
         partial void OnesPagoEfectivoChanging(Nullable<global::System.Boolean> value);
         partial void OnesPagoEfectivoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> SueldoFiscal2
+        {
+            get
+            {
+                return _SueldoFiscal2;
+            }
+            set
+            {
+                OnSueldoFiscal2Changing(value);
+                ReportPropertyChanging("SueldoFiscal2");
+                _SueldoFiscal2 = StructuralObject.SetValidValue(value, "SueldoFiscal2");
+                ReportPropertyChanged("SueldoFiscal2");
+                OnSueldoFiscal2Changed();
+            }
+        }
+        private Nullable<global::System.Double> _SueldoFiscal2;
+        partial void OnSueldoFiscal2Changing(Nullable<global::System.Double> value);
+        partial void OnSueldoFiscal2Changed();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> Complemento
+        {
+            get
+            {
+                return _Complemento;
+            }
+            set
+            {
+                OnComplementoChanging(value);
+                ReportPropertyChanging("Complemento");
+                _Complemento = StructuralObject.SetValidValue(value, "Complemento");
+                ReportPropertyChanged("Complemento");
+                OnComplementoChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Complemento;
+        partial void OnComplementoChanging(Nullable<global::System.Double> value);
+        partial void OnComplementoChanged();
 
         #endregion
 

@@ -462,25 +462,41 @@ namespace SistemaGEISA
             var row = gv.GetRow(e.RowHandle);
             if (row != null)
             {
-                 if( e.Column.FieldName.In("ExtrasCalc","CompensacionCalc","AdeudosPagosCalc","FaltasCalc","Infonavit","ViaticosCalc")){ 
-                string c1 = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ExtrasCalc"]).ToString();
-                string c2 = View.GetRowCellDisplayText(e.RowHandle, View.Columns["CompensacionCalc"]).ToString();
-                string c3 = View.GetRowCellDisplayText(e.RowHandle, View.Columns["AdeudosPagosCalc"]).ToString();
-                string c4 = View.GetRowCellDisplayText(e.RowHandle, View.Columns["FaltasCalc"]).ToString();
-                string c5 = View.GetRowCellDisplayText(e.RowHandle, View.Columns["Infonavit"]).ToString();
-                string c6 = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ViaticosCalc"]).ToString();
+                 if( e.Column.FieldName.In("ExtrasCalc","CompensacionCalc","AdeudosPagosCalc","FaltasCalc","Infonavit","ViaticosCalc")){
+                double c1 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["ExtrasCalc"]));
+                double c2 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["CompensacionCalc"]));
+                double c3 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["AdeudosPagosCalc"]));
+                double c4 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["FaltasCalc"]));
+                double c5 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["Infonavit"]));
+                double c6 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["ViaticosCalc"]));
 
-                if (e.Column.FieldName == "ExtrasCalc" && !c1.In("$0.00",string.Empty))                
+                double c7 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["SueldoFiscal"]));
+                double c8 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["Complemento"]));
+                double c9 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["SueldoReal"]));
+                double c10 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["Total"]));
+                double c11 = Convert.ToDouble(View.GetRowCellValue(e.RowHandle, View.Columns["calcAsimilados"]));
+
+                if (e.Column.FieldName == "ExtrasCalc" && c1<=0)                
                     e.Appearance.ForeColor = Color.Red;
-                else if (e.Column.FieldName == "CompensacionCalc" && !c2.In("$0.00", string.Empty))
+                else if (e.Column.FieldName == "CompensacionCalc" && c2 <= 0)
                     e.Appearance.ForeColor = Color.Red;
-                else if (e.Column.FieldName == "AdeudosPagosCalc" && !c3.In("$0.00", string.Empty)) 
+                else if (e.Column.FieldName == "AdeudosPagosCalc" && c3 <= 0) 
                     e.Appearance.ForeColor = Color.Red;
-                else if (e.Column.FieldName == "FaltasCalc" && !c4.In("$0.00", string.Empty))
+                else if (e.Column.FieldName == "FaltasCalc" && c4 <= 0)
                     e.Appearance.ForeColor = Color.Red;
-                else if (e.Column.FieldName == "Infonavit" && !c5.In("$0.00", string.Empty))
+                else if (e.Column.FieldName == "Infonavit" && c5 <= 0)
                     e.Appearance.ForeColor = Color.Red;
-                else if (e.Column.FieldName == "ViaticosCalc" && !c6.In("$0.00", string.Empty))
+                else if (e.Column.FieldName == "ViaticosCalc" && c6 <= 0)
+                    e.Appearance.ForeColor = Color.Red;
+                else if (e.Column.FieldName == "ViaticosCalc" && c7 <= 0)
+                    e.Appearance.ForeColor = Color.Red;
+                else if (e.Column.FieldName == "ViaticosCalc" && c8 <= 0)
+                    e.Appearance.ForeColor = Color.Red;
+                else if (e.Column.FieldName == "ViaticosCalc" && c9 <= 0)
+                    e.Appearance.ForeColor = Color.Red;
+                else if (e.Column.FieldName == "ViaticosCalc" && c10 <= 0)
+                    e.Appearance.ForeColor = Color.Red;
+                else if (e.Column.FieldName == "ViaticosCalc" && c11 <= 0)
                     e.Appearance.ForeColor = Color.Red;
                 else
                     e.Appearance.ForeColor = Color.Black;

@@ -34,8 +34,9 @@
             this.btnNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
-            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.btnExportar = new System.Windows.Forms.ToolStripButton();
+            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnActivo = new System.Windows.Forms.ToolStripButton();
             this.grid = new DevExpress.XtraGrid.GridControl();
@@ -54,7 +55,10 @@
             this.colOficina = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ckOficina = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.colCtaClabe = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
+            this.colContratista = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colContratistaPrincipal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ckContratista = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.ckContratistaPrincipal = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.tableLayoutPanel1.SuspendLayout();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -64,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkObra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckOficina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckContratista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckContratistaPrincipal)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -99,7 +105,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(548, 35);
+            this.menu.Size = new System.Drawing.Size(517, 35);
             this.menu.TabIndex = 5;
             // 
             // btnNuevo
@@ -125,14 +131,14 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // btnEliminar
+            // btnImprimir
             // 
-            this.btnEliminar.Image = global::SistemaGEISA.Properties.Resources.Eliminar;
-            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(76, 26);
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
+            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnExportar
             // 
@@ -142,6 +148,15 @@
             this.btnExportar.Size = new System.Drawing.Size(144, 26);
             this.btnExportar.Text = "Exportar Informacion";
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Image = global::SistemaGEISA.Properties.Resources.Eliminar;
+            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(76, 26);
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -176,7 +191,9 @@
             this.chkResidente,
             this.chkUsuario,
             this.chkObra,
-            this.ckOficina});
+            this.ckOficina,
+            this.ckContratista,
+            this.ckContratistaPrincipal});
             this.grid.Size = new System.Drawing.Size(792, 222);
             this.grid.TabIndex = 11;
             this.grid.UseEmbeddedNavigator = true;
@@ -194,7 +211,9 @@
             this.colUsuario,
             this.colObra,
             this.colOficina,
-            this.colCtaClabe});
+            this.colCtaClabe,
+            this.colContratista,
+            this.colContratistaPrincipal});
             this.gv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gv.GridControl = this.grid;
             this.gv.Name = "gv";
@@ -250,6 +269,7 @@
             this.chkActivo.AutoHeight = false;
             this.chkActivo.Caption = "Check";
             this.chkActivo.Name = "chkActivo";
+            this.chkActivo.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // colResidente
             // 
@@ -267,6 +287,7 @@
             this.chkResidente.AutoHeight = false;
             this.chkResidente.Caption = "Check";
             this.chkResidente.Name = "chkResidente";
+            this.chkResidente.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // colUsuario
             // 
@@ -284,6 +305,7 @@
             this.chkUsuario.AutoHeight = false;
             this.chkUsuario.Caption = "Check";
             this.chkUsuario.Name = "chkUsuario";
+            this.chkUsuario.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // colObra
             // 
@@ -301,6 +323,7 @@
             this.chkObra.AutoHeight = false;
             this.chkObra.Caption = "Check";
             this.chkObra.Name = "chkObra";
+            this.chkObra.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // colOficina
             // 
@@ -317,6 +340,7 @@
             this.ckOficina.AutoHeight = false;
             this.ckOficina.Caption = "Check";
             this.ckOficina.Name = "ckOficina";
+            this.ckOficina.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // colCtaClabe
             // 
@@ -328,14 +352,39 @@
             this.colCtaClabe.VisibleIndex = 3;
             this.colCtaClabe.Width = 91;
             // 
-            // btnImprimir
+            // colContratista
             // 
-            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
-            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            this.colContratista.Caption = "Contratista";
+            this.colContratista.ColumnEdit = this.ckContratista;
+            this.colContratista.FieldName = "EsContratista";
+            this.colContratista.Name = "colContratista";
+            this.colContratista.OptionsColumn.FixedWidth = true;
+            this.colContratista.Visible = true;
+            this.colContratista.VisibleIndex = 9;
+            // 
+            // colContratistaPrincipal
+            // 
+            this.colContratistaPrincipal.Caption = "Contr. Princ.";
+            this.colContratistaPrincipal.ColumnEdit = this.ckContratistaPrincipal;
+            this.colContratistaPrincipal.FieldName = "EsContratistaPrincipal";
+            this.colContratistaPrincipal.Name = "colContratistaPrincipal";
+            this.colContratistaPrincipal.OptionsColumn.FixedWidth = true;
+            this.colContratistaPrincipal.Visible = true;
+            this.colContratistaPrincipal.VisibleIndex = 10;
+            // 
+            // ckContratista
+            // 
+            this.ckContratista.AutoHeight = false;
+            this.ckContratista.Caption = "Check";
+            this.ckContratista.Name = "ckContratista";
+            this.ckContratista.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            // 
+            // ckContratistaPrincipal
+            // 
+            this.ckContratistaPrincipal.AutoHeight = false;
+            this.ckContratistaPrincipal.Caption = "Check";
+            this.ckContratistaPrincipal.Name = "ckContratistaPrincipal";
+            this.ckContratistaPrincipal.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // frmEmpleado
             // 
@@ -359,6 +408,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkObra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckOficina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckContratista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckContratistaPrincipal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -391,5 +442,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckOficina;
         private DevExpress.XtraGrid.Columns.GridColumn colCtaClabe;
         private System.Windows.Forms.ToolStripButton btnImprimir;
+        private DevExpress.XtraGrid.Columns.GridColumn colContratista;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckContratista;
+        private DevExpress.XtraGrid.Columns.GridColumn colContratistaPrincipal;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit ckContratistaPrincipal;
     }
 }

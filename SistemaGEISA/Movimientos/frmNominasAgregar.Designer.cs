@@ -324,7 +324,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.luEmpleado.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreCompleto", "Nombre")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreCompleto", "Nombre", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.luEmpleado.Properties.NullText = "";
             this.luEmpleado.Size = new System.Drawing.Size(289, 20);
             this.luEmpleado.TabIndex = 59;
@@ -447,6 +447,9 @@
             this.txtComplemento.ReadOnly = true;
             this.txtComplemento.Size = new System.Drawing.Size(289, 21);
             this.txtComplemento.TabIndex = 74;
+            this.txtComplemento.TextChanged += new System.EventHandler(this.txtComplemento_TextChanged);
+            this.txtComplemento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComplemento_KeyPress);
+            this.txtComplemento.Leave += new System.EventHandler(this.txtComplemento_Leave);
             // 
             // label7
             // 
@@ -864,6 +867,7 @@
             this.lblSueldo2.TabIndex = 84;
             this.lblSueldo2.Text = "Sueldo Fiscal 2";
             this.lblSueldo2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSueldo2.Visible = false;
             // 
             // txtSueldoFiscal2
             // 
@@ -872,6 +876,10 @@
             this.txtSueldoFiscal2.Name = "txtSueldoFiscal2";
             this.txtSueldoFiscal2.Size = new System.Drawing.Size(289, 21);
             this.txtSueldoFiscal2.TabIndex = 85;
+            this.txtSueldoFiscal2.Visible = false;
+            this.txtSueldoFiscal2.TextChanged += new System.EventHandler(this.txtSueldoFiscal2_TextChanged);
+            this.txtSueldoFiscal2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSueldoFiscal2_KeyPress);
+            this.txtSueldoFiscal2.Leave += new System.EventHandler(this.txtSueldoFiscal2_Leave);
             // 
             // frmNominasAgregar
             // 

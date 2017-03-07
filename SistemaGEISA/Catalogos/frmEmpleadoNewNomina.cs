@@ -33,10 +33,13 @@ namespace SistemaGEISA
         public Empleado empleado { get; set; }
 
 
-        public frmEmpleadoNewNomina(Controler _controler)
+        public frmEmpleadoNewNomina(Controler _controler, Empleado _empleado)
         {
             InitializeComponent();
-            controler = _controler;            
+            controler = _controler;
+            this.empleado = _empleado;
+            empleado.EsContratista = empleado.EsContratista.HasValue ? empleado.EsContratista.Value : false;
+            empleado.EsContratistaPrincipal = empleado.EsContratistaPrincipal.HasValue ? empleado.EsContratistaPrincipal.Value : false;
         }
 
         private void frmEmpleadoNewNomina_Load(object sender, EventArgs e)
@@ -47,10 +50,10 @@ namespace SistemaGEISA
             bool? sueldoCompartido=false;
 
             if (empleadoNominda != null)
-            {
+            {                
                 sueldoCompartido = empleadoNominda.SueldoCompartido.HasValue ? empleadoNominda.SueldoCompartido.Value : false;
 
-                if (sueldoCompartido == true)
+                if (sueldoCompartido.Value)
                 {
                     chkGeisaDiproe.EditValue = true;
                     colFechaInicio2.Visible = colFechaFin2.Visible = colSueldo2.Visible = true; 
@@ -68,7 +71,7 @@ namespace SistemaGEISA
                 dtFechaNacimiento.EditValue = empleadoNominda.FechaNacimiento;
                 txtNss.Text = empleadoNominda.Nss;
                 txtDomicilio.Text = empleadoNominda.Domicilio;
-                txtRfc.Text = empleadoNominda.Rfc;
+                //txtRfc.Text = empleadoNominda.Rfc;
                 txtCurp.Text = empleadoNominda.Curp;
                 txtCreditoInfonavit.Text = empleadoNominda.CreditoInfonavit;
                 txtMontoInfonavit.Text = empleadoNominda.MontoRetener.HasValue ? empleadoNominda.MontoRetener.Value.ToString("N2") : string.Empty;
@@ -76,9 +79,7 @@ namespace SistemaGEISA
                 txtClabe.Text = empleadoNominda.Cable;
                 luBancos.EditValue = empleadoNominda.BancosId;
                 spinVacaciones.EditValue = empleadoNominda.DiasVacaciones;
-                txtHorasExtras.Text = empleadoNominda.MontoHoraExtra.HasValue ? empleadoNominda.MontoHoraExtra.Value.ToString("N2") : string.Empty;
-                
-                
+                txtHorasExtras.Text = empleadoNominda.MontoHoraExtra.HasValue ? empleadoNominda.MontoHoraExtra.Value.ToString("N2") : string.Empty;                                
 
                 if (dt.Rows.Count > 0)
                 {
@@ -294,7 +295,7 @@ namespace SistemaGEISA
                     }
                     else
                     {
-                        empleadoNominda.Empresa = controler.GetObjectFromContext(luEmpresa.GetSelectedDataRow() as Empresa); ;
+                        empleadoNominda.Empresa = controler.GetObjectFromContext(luEmpresa.GetSelectedDataRow() as Empresa);
                         empleadoNominda.SueldoCompartido = false;
                     }
 
@@ -305,7 +306,7 @@ namespace SistemaGEISA
                     empleadoNominda.FechaNacimiento = (DateTime)dtFechaNacimiento.EditValue;
                     empleadoNominda.Nss = txtNss.Text.ToUpper();
                     empleadoNominda.Domicilio = txtDomicilio.Text.ToUpper();
-                    empleadoNominda.Rfc = txtRfc.Text.ToUpper();
+                    //empleadoNominda.Rfc = txtRfc.Text.ToUpper();
                     empleadoNominda.Curp = txtCurp.Text.ToUpper();
                     empleadoNominda.CuentaBanco = txtCtaBancaria.Text.ToUpper();
                     empleadoNominda.Cable = txtClabe.Text.ToUpper();

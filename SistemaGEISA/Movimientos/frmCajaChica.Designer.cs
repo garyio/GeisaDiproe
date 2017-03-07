@@ -34,6 +34,8 @@
             this.btnNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
+            this.btnExportar = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -42,8 +44,7 @@
             this.colSaldo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFechaCancelacion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkActivo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.btnExportar = new System.Windows.Forms.ToolStripButton();
-            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
+            this.btnRecalcular = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -75,13 +76,14 @@
             this.btnNuevo,
             this.toolStripSeparator1,
             this.btnEditar,
+            this.btnRecalcular,
             this.btnExportar,
             this.btnImprimir});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(399, 35);
+            this.menu.Size = new System.Drawing.Size(530, 35);
             this.menu.TabIndex = 5;
             // 
             // btnNuevo
@@ -106,6 +108,24 @@
             this.btnEditar.Size = new System.Drawing.Size(63, 26);
             this.btnEditar.Text = "Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Image = global::SistemaGEISA.Properties.Resources.Reportes;
+            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(144, 26);
+            this.btnExportar.Text = "Exportar Informacion";
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
+            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // grid
             // 
@@ -193,23 +213,14 @@
             this.chkActivo.Caption = "Check";
             this.chkActivo.Name = "chkActivo";
             // 
-            // btnExportar
+            // btnRecalcular
             // 
-            this.btnExportar.Image = global::SistemaGEISA.Properties.Resources.Reportes;
-            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(144, 26);
-            this.btnExportar.Text = "Exportar Informacion";
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
-            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            this.btnRecalcular.Image = ((System.Drawing.Image)(resources.GetObject("btnRecalcular.Image")));
+            this.btnRecalcular.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRecalcular.Name = "btnRecalcular";
+            this.btnRecalcular.Size = new System.Drawing.Size(131, 26);
+            this.btnRecalcular.Text = "Re-Calcular Saldos";
+            this.btnRecalcular.Click += new System.EventHandler(this.btnRecalcular_Click);
             // 
             // frmCajaChica
             // 
@@ -250,5 +261,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colFechaCancelacion;
         private System.Windows.Forms.ToolStripButton btnExportar;
         private System.Windows.Forms.ToolStripButton btnImprimir;
+        private System.Windows.Forms.ToolStripButton btnRecalcular;
     }
 }

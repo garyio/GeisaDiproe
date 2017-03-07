@@ -395,7 +395,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Diferencia</Value>
+                                  <Value>Por cobrar</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>SemiBold</FontWeight>
@@ -594,6 +594,7 @@
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -637,6 +638,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -1506,6 +1508,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                           <Format>'$'#,0.00;('$'#,0.00)</Format>
                                           <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                         </Style>
                                       </TextRun>
@@ -1562,6 +1565,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                               <Format>'$'#,0.00;('$'#,0.00)</Format>
                                               <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                             </Style>
                                           </TextRun>
@@ -2097,7 +2101,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Diferencia</Value>
+                                  <Value>Por cobrar</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>SemiBold</FontWeight>
@@ -2296,6 +2300,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -2339,6 +2344,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -3471,6 +3477,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                           <Format>'$'#,0.00;('$'#,0.00)</Format>
                                           <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                         </Style>
                                       </TextRun>
@@ -3527,6 +3534,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                               <Format>'$'#,0.00;('$'#,0.00)</Format>
                                               <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                             </Style>
                                           </TextRun>
@@ -4166,7 +4174,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Diferencia</Value>
+                                  <Value>Por cobrar</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>SemiBold</FontWeight>
@@ -4328,6 +4336,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -4352,6 +4361,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -4371,6 +4381,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -4395,6 +4406,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -5524,6 +5536,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                               <Format>'$'#,0.00;('$'#,0.00)</Format>
                                               <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                             </Style>
                                           </TextRun>
@@ -5548,6 +5561,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                       <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                                     </Style>
                                   </Textbox>
+                                  <rd:Selected>true</rd:Selected>
                                 </CellContents>
                               </TablixHeader>
                               <TablixMembers>
@@ -5580,6 +5594,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                                   <Format>'$'#,0.00;('$'#,0.00)</Format>
                                                   <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                                 </Style>
                                               </TextRun>
@@ -5604,6 +5619,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                           <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                                         </Style>
                                       </Textbox>
+                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixHeader>
                                   <TablixMembers>
@@ -6345,7 +6361,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Diferencia</Value>
+                                  <Value>Por cobrar</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>SemiBold</FontWeight>
@@ -6544,6 +6560,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -6587,6 +6604,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -7720,6 +7738,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                           <Format>'$'#,0.00;('$'#,0.00)</Format>
                                           <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                         </Style>
                                       </TextRun>
@@ -7776,6 +7795,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                               <Format>'$'#,0.00;('$'#,0.00)</Format>
                                               <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                             </Style>
                                           </TextRun>
@@ -8414,7 +8434,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Diferencia</Value>
+                                  <Value>Por cobrar</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>SemiBold</FontWeight>
@@ -8575,6 +8595,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -8617,6 +8638,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -9761,6 +9783,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                               <Format>'$'#,0.00;('$'#,0.00)</Format>
                                               <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                             </Style>
                                           </TextRun>
@@ -9816,6 +9839,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                                   <Format>'$'#,0.00;('$'#,0.00)</Format>
                                                   <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                                 </Style>
                                               </TextRun>
@@ -10579,7 +10603,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Diferencia</Value>
+                                  <Value>Por cobrar</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>SemiBold</FontWeight>
@@ -10778,6 +10802,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -10821,6 +10846,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                     <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                   </Style>
                                 </TextRun>
@@ -11698,6 +11724,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                           <Format>'$'#,0.00;('$'#,0.00)</Format>
                                           <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                         </Style>
                                       </TextRun>
@@ -11754,6 +11781,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                               <Format>'$'#,0.00;('$'#,0.00)</Format>
                                               <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+,Fields!Facutura.Value like "*NC*", "Red"
 )</Color>
                                             </Style>
                                           </TextRun>

@@ -17,10 +17,10 @@ namespace GeisaBD
             }
         }
 
-        public double Complemento
-        {
-            get { return (this.SueldoReal.HasValue ? this.SueldoReal.Value : 0) - (this.SueldoFiscal.HasValue ? this.SueldoFiscal.Value : 0); }
-        }
+        //public double Complemento
+        //{
+        //    get { return (this.SueldoReal.HasValue ? this.SueldoReal.Value : 0) - ((this.SueldoFiscal.HasValue ? this.SueldoFiscal.Value : 0) + (this.SueldoFiscal2.HasValue ? this.SueldoFiscal2.Value : 0)); }
+        //}
 
         public double CompensacionCalc
         {
@@ -49,12 +49,23 @@ namespace GeisaBD
 
         public double Total
         {
-            get { return (this.SueldoReal.HasValue ? this.SueldoReal.Value : 0) + this.ExtrasCalc + this.CompensacionCalc + this.AdeudosPagosCalc + this.FaltasCalc - (this.Infonavit.HasValue ? this.Infonavit.Value : 0) + this.ViaticosCalc; }
+            //get { return (this.SueldoReal.HasValue ? this.SueldoReal.Value : 0) + this.ExtrasCalc + this.CompensacionCalc + this.AdeudosPagosCalc + this.FaltasCalc - (this.Infonavit.HasValue ? this.Infonavit.Value : 0) + this.ViaticosCalc; }
+            get { 
+                return 
+                (this.SueldoFiscal.HasValue ? this.SueldoFiscal.Value : 0) + 
+                (this.SueldoFiscal2.HasValue ? this.SueldoFiscal2.Value : 0) +
+                (this.Complemento.HasValue ? this.Complemento.Value : 0) +
+                this.ExtrasCalc +
+                this.CompensacionCalc +
+                this.AdeudosPagosCalc +
+                this.FaltasCalc -
+                (this.Infonavit.HasValue ? this.Infonavit.Value : 0) + this.ViaticosCalc; 
+            }
         }
 
         public double calcAsimilados
         {
-            get { return (this.Total - this.SueldoFiscal.Value ); }
+            get { return (this.Total - (this.SueldoFiscal.Value + (this.SueldoFiscal2.HasValue ? this.SueldoFiscal2.Value : 0))); }
         }
 
         public string Banco
@@ -79,7 +90,7 @@ namespace GeisaBD
 
         public string Rfc
         {
-            get { return (this.Empleado.EmpleadoNomina != null ? this.Empleado.EmpleadoNomina.FirstOrDefault().Rfc : string.Empty); }
+            get { return (this.Empleado != null ? this.Empleado.RFC : string.Empty); }
         }
 
         public string Puesto

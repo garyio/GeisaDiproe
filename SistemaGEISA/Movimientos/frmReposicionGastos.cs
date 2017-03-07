@@ -300,11 +300,16 @@ namespace SistemaGEISA
                 foreach (PagosFactura detalle in Controler.Model.PagosFactura.Where(P => P.Pagos.TipoMovimientoId == TipoMovimientoEnum.Reposicion_Gastos.Id).ToList())
                 {
 
-                    //if (detalle != null && detalle.FacturaId == 3432)
+                    //if (detalle != null && detalle.FacturaId == 52535)
                     //{
 
                     Factura factura = Controler.Model.Factura.FirstOrDefault(D => D.Id == detalle.FacturaId);
+                    foreach (PagosFactura item in factura.PagosFactura.ToList())
+                    {
+                        item.MontoPagar = item.SaldoActual;
 
+                    }
+                    Controler.Model.SaveChanges();
                     factura.Saldo = factura.Importe - Controler.Model.getAbonosTotales(factura.Id, null).Select(A => A.MontoPagar).DefaultIfEmpty(0).Sum().Value;
                     factura.Saldo = Math.Round(factura.Saldo, 2);
 

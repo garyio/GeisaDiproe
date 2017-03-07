@@ -29,13 +29,13 @@ namespace SistemaGEISA
         {
             Extras = 1,
             Pagos = 2,
-            Viaticos =3,
-            Faltas =4,
+            Viaticos = 3,
+            Faltas = 4,
             Vacaciones = 5
         };
 
         private DataTable dt;
-
+        private bool sueldoCompartido = false;
         public DateTime FechaIni;
         public DateTime FechaFin;
         private Controler controler { get; set; }
@@ -56,19 +56,36 @@ namespace SistemaGEISA
         {
             IniGrid();
             llenaCombos();
-                        
+
             if (nominas != null)
             {
+                //Si es Contratista Principal puede modificar el complemento
+                if ((nominas.Empleado.EsContratistaPrincipal.HasValue ? nominas.Empleado.EsContratistaPrincipal.Value : false) == true)
+                    txtComplemento.ReadOnly = false;
+                else
+                    txtComplemento.ReadOnly = true;
+
+                //if ((nominas.Empleado.EsContratista.HasValue ? nominas.Empleado.EsContratista.Value : false) == true || (nominas.Empleado.EsContratista.HasValue ? nominas.Empleado.EsContratista.Value : false) == true)
+
+
                 this.empleadoNomina = controler.Model.EmpleadoNomina.FirstOrDefault(X => X.EmpleadoId == this.nominas.EmpleadoId);
+                //Si es sueldo compartido mostrar los 2 sueldos, si no solo el primer sueldo fiscal    
+                if ((empleadoNomina.SueldoCompartido.HasValue ? empleadoNomina.SueldoCompartido.Value : false) == true)
+                    lblSueldo2.Visible = txtSueldoFiscal2.Visible = sueldoCompartido = true;
+                else
+                    lblSueldo2.Visible = txtSueldoFiscal2.Visible = sueldoCompartido = false;
+
                 luEmpleado.EditValue = nominas.EmpleadoId;
                 luObra.EditValue = nominas.ObraId;
                 txtCompensacion.Text = nominas.Compensacion.HasValue ? nominas.Compensacion.Value.ToString("N2") : "0.00";
-                txtViaticos.Text = nominas.Viaticos.HasValue ? nominas.Viaticos.Value.ToString("N2") :  "0.00";
-                txtSueldoFiscal.Text = nominas.SueldoFiscal.HasValue ? nominas.SueldoFiscal.Value.ToString("N2"): "0.00";
+                txtViaticos.Text = nominas.Viaticos.HasValue ? nominas.Viaticos.Value.ToString("N2") : "0.00";
+                txtSueldoFiscal.Text = nominas.SueldoFiscal.HasValue ? nominas.SueldoFiscal.Value.ToString("N2") : "0.00";
+                if (sueldoCompartido) // si no es sueldo compartido seteamos el sueldo Fiscal 2                     
+                    txtSueldoFiscal2.Text = nominas.SueldoFiscal2.HasValue ? nominas.SueldoFiscal2.Value.ToString("N2") : "0.00";
                 //txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
                 txtSueldoReal.Text = nominas.SueldoReal.HasValue ? nominas.SueldoReal.Value.ToString("N2") : "0.00";
                 //txtComplemento.Text = (Convert.ToDouble(txtSueldoReal.Text) - Convert.ToDouble(txtSueldoFiscal.Text)).ToString("N2");
-                txtComplemento.Text = string.IsNullOrEmpty(nominas.Complemento.ToString()) ? "0.00" : nominas.Complemento.ToString("N2");
+                txtComplemento.Text = nominas.Complemento.HasValue ? nominas.Complemento.Value.ToString("N2") : "0.00";
                 //txtInfonavit.Text = empleadoNomina.MontoRetener.Value.ToString("N2");
                 txtInfonavit.Text = nominas.Infonavit.HasValue ? nominas.Infonavit.Value.ToString("N2") : "0.00";
                 txtObservaciones.Text = nominas.Observaciones;
@@ -99,13 +116,14 @@ namespace SistemaGEISA
             else
             {
                 chkViaticos.Checked = true;
-                chkCompensacion.Checked = true;                
+                chkCompensacion.Checked = true;
                 txtCompensacion.Text = "200.00";
-                txtViaticos.Text = "800.00";                
+                txtViaticos.Text = "800.00";
                 txtSueldoReal.Text = "0.00";
                 txtComplemento.Text = "0.00";
                 txtInfonavit.Text = "0.00";
                 lblTotalSueldo.Text = "$0.00";
+                sueldoCompartido = false;
             }
         }
 
@@ -113,40 +131,45 @@ namespace SistemaGEISA
         {
             double total = 0;
             total += Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? 0 : Convert.ToDouble(txtSueldoFiscal.Text));
+
+            total += Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? 0 : Convert.ToDouble(txtSueldoFiscal2.Text));
+
             total += Convert.ToDouble(string.IsNullOrEmpty(txtComplemento.Text) ? 0 : Convert.ToDouble(txtComplemento.Text));
 
             total += Convert.ToDouble(chkCompensacion.Checked && !string.IsNullOrEmpty(txtCompensacion.Text) ? txtCompensacion.Text : "0");
-            
+
             total += Convert.ToDouble(chkViaticos.Checked && !string.IsNullOrEmpty(txtViaticos.Text) ? txtViaticos.Text : "0");
-            
+
             total -= Convert.ToDouble(string.IsNullOrEmpty(txtInfonavit.Text) ? 0 : Convert.ToDouble(txtInfonavit.Text));
-            
+
             total += Convert.ToDouble(colMonto.SummaryItem.SummaryValue != null ? colMonto.SummaryItem.SummaryValue : 0);
-            
+
             lblTotalSueldo.Text = total.ToString("c2");
+
+            Console.WriteLine(total);
         }
 
         private void llenaCombos()
         {
-            var empleadosNomina= controler.Model.Nominas.Where(N => N.PeriodoInicio >= this.FechaIni && N.PeriodoFin <= this.FechaFin).Select(I=> I.EmpleadoId).ToList();
+            var empleadosNomina = controler.Model.Nominas.Where(N => N.PeriodoInicio >= this.FechaIni && N.PeriodoFin <= this.FechaFin).Select(I => I.EmpleadoId).ToList();
             var todoEmpleados = controler.Model.Empleado.Where(E => E.Activo == true).ToList();
 
-            
+
             luObra.Properties.DataSource = controler.Model.Obra.ToList();
             luObra.Properties.DisplayMember = "Nombre";
             luObra.Properties.ValueMember = "Id";
 
             if (nominas == null)
-                luEmpleado.Properties.DataSource = todoEmpleados.Where(x => !empleadosNomina.Contains(x.Id)).ToList();
+                luEmpleado.Properties.DataSource = todoEmpleados.Where(x => !empleadosNomina.Contains(x.Id)).OrderBy(O => O.NombreCompleto).ToList();
             else
                 luEmpleado.Properties.DataSource = todoEmpleados.ToList();
 
             luEmpleado.Properties.DisplayMember = "NombreCompleto";
             luEmpleado.Properties.ValueMember = "Id";
 
-            luObrasDetalle.DataSource = controler.Model.Obra.ToList();
+            luObrasDetalle.DataSource = controler.Model.Obra.OrderBy(O => O.Nombre).ToList();
             luObrasDetalle.DisplayMember = "Nombre";
-            luObrasDetalle.ValueMember = "Id";           
+            luObrasDetalle.ValueMember = "Id";
 
             DataTable dtEstatus = new DataTable();
             dtEstatus.Columns.Add("Id", typeof(int));
@@ -186,8 +209,10 @@ namespace SistemaGEISA
         private void txtSueldoFiscal_Leave(object sender, EventArgs e)
         {
             double amount = 0;
-            if (!string.IsNullOrEmpty(txtSueldoFiscal.Text) && double.TryParse(txtSueldoFiscal.Text,out amount))
+            if (!string.IsNullOrEmpty(txtSueldoFiscal.Text) && double.TryParse(txtSueldoFiscal.Text, out amount))
                 txtSueldoFiscal.Text = Convert.ToDouble(txtSueldoFiscal.Text).ToString("N2");
+            else
+                txtSueldoFiscal.Text = Convert.ToDouble("0").ToString("N2");
         }
 
         private void txtInfonavit_KeyPress(object sender, KeyPressEventArgs e)
@@ -200,8 +225,8 @@ namespace SistemaGEISA
         {
             double amount = 0;
             if (!string.IsNullOrEmpty(txtInfonavit.Text) && double.TryParse(txtInfonavit.Text, out amount))
-                txtInfonavit.Text = Convert.ToDouble(txtInfonavit.Text).ToString("N2");            
-                
+                txtInfonavit.Text = Convert.ToDouble(txtInfonavit.Text).ToString("N2");
+
         }
 
         private void txtCompensacion_KeyPress(object sender, KeyPressEventArgs e)
@@ -257,10 +282,17 @@ namespace SistemaGEISA
             controler.SetError(luEmpleado, isValid ? string.Empty : "Valor Obligatorio.");
 
             areValid &= isValid = Funciones.validaNumeroDecimal(txtSueldoFiscal.Text);
-            controler.SetError(txtSueldoFiscal, isValid ? string.Empty : "Valor Obligatorio.");  
-      
+            controler.SetError(txtSueldoFiscal, isValid ? string.Empty : "Valor Obligatorio.");
+
+            areValid &= isValid = Funciones.validaNumeroDecimal(txtSueldoFiscal2.Text);
+            controler.SetError(txtSueldoFiscal2, isValid ? string.Empty : "Valor Obligatorio.");
+
             areValid &= isValid = luObra.EditValue != null ? true : false;
             controler.SetError(luObra, isValid ? string.Empty : "Valor Obligatorio.");
+
+            areValid &= isValid = string.IsNullOrEmpty(txtComplemento.Text) ? false : true;
+            controler.SetError(txtComplemento, isValid ? string.Empty : "Valor Obligatorio.");
+
 
             //areValid &= isValid = gv.DataRowCount > 0 ? true : false;
             //controler.SetError(grid, isValid ? string.Empty : "Favor de llenar la Nomina Completa.");
@@ -284,69 +316,74 @@ namespace SistemaGEISA
                 {
                     transaccion = controler.Model.BeginTransaction();
 
-                        if (nominas == null)
+                    if (nominas == null)
+                    {
+                        nominas = new Nominas();
+                        isNew = true;
+                    }
+
+                    nominas.Empleado = controler.GetObjectFromContext(luEmpleado.GetSelectedDataRow() as Empleado);
+                    nominas.ObraId = luObra.GetSelectedDataRow() != null ? controler.GetObjectFromContext(luObra.GetSelectedDataRow() as Obra).Id : Convert.ToInt32((int?)null);
+                    nominas.CompensacionActivo = chkCompensacion.Checked;
+                    nominas.Compensacion = chkCompensacion.Checked ? Convert.ToDouble(txtCompensacion.Text) : (double?)null;
+                    nominas.ViaticosActivo = chkViaticos.Checked;
+                    nominas.Viaticos = chkViaticos.Checked ? Convert.ToDouble(txtViaticos.Text) : (double?)null;
+                    nominas.SueldoFiscal = Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text);
+                    if (sueldoCompartido)
+                        nominas.SueldoFiscal2 = Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text);
+                    else
+                        nominas.SueldoFiscal2 = (double)0;
+                    nominas.Complemento = Convert.ToDouble(string.IsNullOrEmpty(txtComplemento.Text) ? "0" : txtComplemento.Text);
+                    nominas.PeriodoInicio = (isNew ? this.FechaIni : nominas.PeriodoInicio);
+                    nominas.PeriodoFin = (isNew ? this.FechaFin : nominas.PeriodoFin);
+                    nominas.Observaciones = txtObservaciones.Text.ToUpper();
+                    nominas.SueldoReal = Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text);
+                    nominas.Infonavit = Convert.ToDouble(string.IsNullOrEmpty(txtInfonavit.Text) ? "0" : txtInfonavit.Text);
+                    nominas.esPagoEfectivo = chkPagoEfectivo.Checked;
+                    if (!nominas.NoEsNuevo) controler.Model.AddToNominas(nominas);
+
+                    NominasDetalle detalle = null;
+
+                    for (int i = 0; i < gv.RowCount; i++)
+                    {
+
+                        DataRow row = gv.GetDataRow(i);
+
+                        if (row != null)
                         {
-                            nominas = new Nominas();
-                            isNew = true;
-                        }
-
-                        nominas.Empleado = controler.GetObjectFromContext(luEmpleado.GetSelectedDataRow() as Empleado);
-                        nominas.ObraId = luObra.GetSelectedDataRow() != null ? controler.GetObjectFromContext(luObra.GetSelectedDataRow() as Obra).Id : Convert.ToInt32((int?)null);
-                        nominas.CompensacionActivo = chkCompensacion.Checked;
-                        nominas.Compensacion = chkCompensacion.Checked ? Convert.ToDouble(txtCompensacion.Text) : (double?)null;
-                        nominas.ViaticosActivo = chkViaticos.Checked;
-                        nominas.Viaticos = chkViaticos.Checked ? Convert.ToDouble(txtViaticos.Text) : (double?)null;
-                        nominas.SueldoFiscal = Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text);
-                        nominas.PeriodoInicio = (isNew ? this.FechaIni : nominas.PeriodoInicio);
-                        nominas.PeriodoFin = (isNew ? this.FechaFin : nominas.PeriodoFin);
-                        nominas.Observaciones = txtObservaciones.Text.ToUpper();
-                        nominas.SueldoReal = Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text);
-                        nominas.Infonavit = Convert.ToDouble(string.IsNullOrEmpty(txtInfonavit.Text) ? "0" : txtInfonavit.Text);
-                        nominas.esPagoEfectivo = chkPagoEfectivo.Checked;
-                        if (!nominas.NoEsNuevo) controler.Model.AddToNominas(nominas);
-
-                        NominasDetalle detalle = null;
-
-                        for (int i = 0; i < gv.RowCount; i++)
-                        {
-
-                            DataRow row = gv.GetDataRow(i);
-
-                            if (row != null)
+                            var id = (int?)null;
+                            if (string.IsNullOrEmpty(row["Id"].ToString()) || Convert.ToInt32(row["Id"]) == 0)
                             {
-                                var id = (int?)null;
-                                if (string.IsNullOrEmpty(row["Id"].ToString()) || Convert.ToInt32(row["Id"]) == 0)
-                                {
-                                    detalle = new NominasDetalle();
-                                    id = (int?)null;
+                                detalle = new NominasDetalle();
+                                id = (int?)null;
 
-                                    int? tipoCargoId = string.IsNullOrEmpty(row["TipoCargoId"].ToString()) ? (int?)null : Convert.ToInt32(row["TipoCargoId"]);
-                                    if (tipoCargoId.HasValue)
+                                int? tipoCargoId = string.IsNullOrEmpty(row["TipoCargoId"].ToString()) ? (int?)null : Convert.ToInt32(row["TipoCargoId"]);
+                                if (tipoCargoId.HasValue)
+                                {
+                                    if (tipoCargoId.Value == Convert.ToInt32(tipoCargo.Vacaciones))
                                     {
-                                        if (tipoCargoId.Value == Convert.ToInt32(tipoCargo.Vacaciones))
-                                        {
-                                            empleadoNomina.DiasVacaciones += -1;
-                                        }
+                                        empleadoNomina.DiasVacaciones += -1;
                                     }
                                 }
-                                else
-                                {
-                                    id = Convert.ToInt32(row["Id"].ToString());
-                                    detalle = !isNew ? controler.Model.NominasDetalle.FirstOrDefault(D => D.Id == id) : null;
-                                }
-                                detalle.Nominas = this.nominas;
-                                detalle.TipoCargoId = string.IsNullOrEmpty(row["TipoCargoId"].ToString()) ? Convert.ToInt32((int?)null) : Convert.ToInt32(row["TipoCargoId"]);
-                                detalle.FechaDetalle = string.IsNullOrEmpty(row["FechaDetalle"].ToString()) ? (DateTime?)null : Convert.ToDateTime(row["FechaDetalle"]);
-                                detalle.ObraId = string.IsNullOrEmpty(row["ObraId"].ToString()) ? Convert.ToInt32((int?)null) : Convert.ToInt32(row["ObraId"]);
-                                detalle.Monto = string.IsNullOrEmpty(row["Monto"].ToString()) ? Convert.ToDouble((double?)null) : Convert.ToDouble(row["Monto"]);
-                                detalle.Observaciones = string.IsNullOrEmpty(row["Observaciones"].ToString()) ? string.Empty : row["Observaciones"].ToString();
-                                detalle.CargoDeduccion = string.IsNullOrEmpty(row["CargoDeduccion"].ToString()) ? (int?)null : Convert.ToInt32(row["CargoDeduccion"].ToString());
-                                detalle.NumeroDiasHoras = string.IsNullOrEmpty(row["NumeroDiasHoras"].ToString()) ? (int?)null : Convert.ToInt32(row["NumeroDiasHoras"].ToString());
-                                if (!detalle.NoEsNuevo) controler.Model.AddToNominasDetalle(detalle);
-
                             }
+                            else
+                            {
+                                id = Convert.ToInt32(row["Id"].ToString());
+                                detalle = !isNew ? controler.Model.NominasDetalle.FirstOrDefault(D => D.Id == id) : null;
+                            }
+                            detalle.Nominas = this.nominas;
+                            detalle.TipoCargoId = string.IsNullOrEmpty(row["TipoCargoId"].ToString()) ? Convert.ToInt32((int?)null) : Convert.ToInt32(row["TipoCargoId"]);
+                            detalle.FechaDetalle = string.IsNullOrEmpty(row["FechaDetalle"].ToString()) ? (DateTime?)null : Convert.ToDateTime(row["FechaDetalle"]);
+                            detalle.ObraId = string.IsNullOrEmpty(row["ObraId"].ToString()) ? Convert.ToInt32((int?)null) : Convert.ToInt32(row["ObraId"]);
+                            detalle.Monto = string.IsNullOrEmpty(row["Monto"].ToString()) ? Convert.ToDouble((double?)null) : Convert.ToDouble(row["Monto"]);
+                            detalle.Observaciones = string.IsNullOrEmpty(row["Observaciones"].ToString()) ? string.Empty : row["Observaciones"].ToString();
+                            detalle.CargoDeduccion = string.IsNullOrEmpty(row["CargoDeduccion"].ToString()) ? (int?)null : Convert.ToInt32(row["CargoDeduccion"].ToString());
+                            detalle.NumeroDiasHoras = string.IsNullOrEmpty(row["NumeroDiasHoras"].ToString()) ? (int?)null : Convert.ToInt32(row["NumeroDiasHoras"].ToString());
+                            if (!detalle.NoEsNuevo) controler.Model.AddToNominasDetalle(detalle);
+
                         }
-                    
+                    }
+
 
                     controler.Model.SaveChanges();
                     transaccion.Commit();
@@ -399,10 +436,10 @@ namespace SistemaGEISA
                 if (boton == "Extras")
                 {
                     formExtras.opcion = tipoCargoId = (int)tipoCargo.Extras;
-                    formExtras.empleado = luEmpleado.GetSelectedDataRow() !=null ? luEmpleado.GetSelectedDataRow() as Empleado : null;
+                    formExtras.empleado = luEmpleado.GetSelectedDataRow() != null ? luEmpleado.GetSelectedDataRow() as Empleado : null;
                     formExtras.Text = "Captura de Extras - " + (isNew ? "Nuevo" : "Editar");
                     formExtras.obra = luObra.EditValue != null ? (luObra.GetSelectedDataRow() as Obra) : null;
-                    
+
                 }
                 else if (boton == "Pagos/Adeudos")
                 {
@@ -479,18 +516,18 @@ namespace SistemaGEISA
                 form.nominasDetalle = formExtras.nominasDetalle = this.nominasDetalle;
             }
 
-            if (boton == "Extras" || (nominasDetalle!=null ? (Convert.ToInt32(nominasDetalle.TipoCargoId) == 1 ? true : false) : false))
+            if (boton == "Extras" || (nominasDetalle != null ? (Convert.ToInt32(nominasDetalle.TipoCargoId) == 1 ? true : false) : false))
                 formExtras.ShowDialog();
             else
                 form.ShowDialog();
 
-            if ((form.detalleNominas.Count > 0 || formExtras.detalleNominas.Count>0) && (boton.Equals("Editar") || boton.Equals("DevExpress.XtraGrid.Views.Grid.GridView")))
+            if ((form.detalleNominas.Count > 0 || formExtras.detalleNominas.Count > 0) && (boton.Equals("Editar") || boton.Equals("DevExpress.XtraGrid.Views.Grid.GridView")))
                 gv.DeleteRow(gv.FocusedRowHandle);
 
-            foreach (NominaItem detalle in (tipoCargoId == 1  ? formExtras.detalleNominas.ToList() : form.detalleNominas.ToList()))
+            foreach (NominaItem detalle in (tipoCargoId == 1 ? formExtras.detalleNominas.ToList() : form.detalleNominas.ToList()))
             {
                 gv.AddNewRow();
-                int rowHandle = gv.GetRowHandle(gv.DataRowCount);                
+                int rowHandle = gv.GetRowHandle(gv.DataRowCount);
                 gv.SetRowCellValue(rowHandle, gv.Columns["Id"], detalle.Id);
                 gv.SetRowCellValue(rowHandle, gv.Columns["TipoCargoId"], detalle.TipoCargoId);
                 gv.SetRowCellValue(rowHandle, gv.Columns["FechaDetalle"], detalle.FechaDetalle);
@@ -506,10 +543,10 @@ namespace SistemaGEISA
             }
 
             //if (boton == "Extras")
-                formExtras.Dispose();
+            formExtras.Dispose();
             //else
-                form.Dispose();                       
-            
+            form.Dispose();
+
             grid.RefreshDataSource();
             gv_FocusedRowChanged(null, null);
 
@@ -517,24 +554,24 @@ namespace SistemaGEISA
 
         private void gv_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            if (gv.DataRowCount > 0 && gv.SelectedRowsCount==1 && gv.IsLoading==false)
+            if (gv.DataRowCount > 0 && gv.SelectedRowsCount == 1 && gv.IsLoading == false)
             {
                 DataRow row = gv.GetFocusedDataRow() as DataRow;
                 if (row != null)
                 {
                     //if (string.IsNullOrEmpty(row["Id"].ToString()) || Convert.ToInt32(row["Id"]) == 0)
                     //{                        
-                        nominasDetalle = new NominaItem();
-                        if(!string.IsNullOrEmpty(row["Id"].ToString()))
-                            nominasDetalle.Id = Convert.ToInt32(row["Id"]);
-                        nominasDetalle.NominasId = this.nominas!=null ? this.nominas.Id : Convert.ToInt32((int?)null);
-                        nominasDetalle.TipoCargoId = string.IsNullOrEmpty(row["TipoCargoId"].ToString()) ? (int?)null : Convert.ToInt32(row["TipoCargoId"]);
-                        nominasDetalle.FechaDetalle = string.IsNullOrEmpty(row["FechaDetalle"].ToString()) ? (DateTime?)null : Convert.ToDateTime(row["FechaDetalle"]);
-                        nominasDetalle.ObraId = string.IsNullOrEmpty(row["ObraId"].ToString()) ? (int?)null : Convert.ToInt32(row["ObraId"]);
-                        nominasDetalle.Monto = string.IsNullOrEmpty(row["Monto"].ToString()) ? (double?)null : Convert.ToDouble(row["Monto"]);
-                        nominasDetalle.Observaciones = string.IsNullOrEmpty(row["Observaciones"].ToString()) ? string.Empty : Convert.ToString(row["Observaciones"]);
-                        nominasDetalle.CargoDeduccion = string.IsNullOrEmpty(row["CargoDeduccion"].ToString()) ? (int?)null : Convert.ToInt32(row["CargoDeduccion"]);
-                        nominasDetalle.NumeroDiasHoras = string.IsNullOrEmpty(row["NumeroDiasHoras"].ToString()) ? (int?)null : Convert.ToInt32(row["NumeroDiasHoras"]);
+                    nominasDetalle = new NominaItem();
+                    if (!string.IsNullOrEmpty(row["Id"].ToString()))
+                        nominasDetalle.Id = Convert.ToInt32(row["Id"]);
+                    nominasDetalle.NominasId = this.nominas != null ? this.nominas.Id : Convert.ToInt32((int?)null);
+                    nominasDetalle.TipoCargoId = string.IsNullOrEmpty(row["TipoCargoId"].ToString()) ? (int?)null : Convert.ToInt32(row["TipoCargoId"]);
+                    nominasDetalle.FechaDetalle = string.IsNullOrEmpty(row["FechaDetalle"].ToString()) ? (DateTime?)null : Convert.ToDateTime(row["FechaDetalle"]);
+                    nominasDetalle.ObraId = string.IsNullOrEmpty(row["ObraId"].ToString()) ? (int?)null : Convert.ToInt32(row["ObraId"]);
+                    nominasDetalle.Monto = string.IsNullOrEmpty(row["Monto"].ToString()) ? (double?)null : Convert.ToDouble(row["Monto"]);
+                    nominasDetalle.Observaciones = string.IsNullOrEmpty(row["Observaciones"].ToString()) ? string.Empty : Convert.ToString(row["Observaciones"]);
+                    nominasDetalle.CargoDeduccion = string.IsNullOrEmpty(row["CargoDeduccion"].ToString()) ? (int?)null : Convert.ToInt32(row["CargoDeduccion"]);
+                    nominasDetalle.NumeroDiasHoras = string.IsNullOrEmpty(row["NumeroDiasHoras"].ToString()) ? (int?)null : Convert.ToInt32(row["NumeroDiasHoras"]);
                     //}
                     //else
                     //{
@@ -542,10 +579,10 @@ namespace SistemaGEISA
                     //    var item = controler.Model.NominasDetalle.FirstOrDefault(N => N.Id == id);
                     //}
                 }
-                else                
-                    nominasDetalle = null;                
+                else
+                    nominasDetalle = null;
             }
-            
+
         }
 
         private void gv_KeyDown(object sender, KeyEventArgs e)
@@ -564,7 +601,7 @@ namespace SistemaGEISA
                 DataRow row = gv.GetDataRow(gv.FocusedRowHandle);
                 if (row != null)
                 {
-                    if (string.IsNullOrEmpty(row["Id"].ToString()) || Convert.ToInt32(row["Id"])==0)
+                    if (string.IsNullOrEmpty(row["Id"].ToString()) || Convert.ToInt32(row["Id"]) == 0)
                     {
                         //eliminar el row del detalleArticulo
                         view.DeleteRow(view.FocusedRowHandle);
@@ -613,14 +650,14 @@ namespace SistemaGEISA
                 new frmMessageBox(true) { Message = "No es posible eliminar este Registro.", Title = "Error" }.ShowDialog();
             }
 
-            
+
         }
 
         private void txtSueldoFiscal_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtSueldoFiscal.Text) && Funciones.validaNumeroDecimal(txtSueldoFiscal.Text))
             {
-                txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text)).ToString("N2");
+                txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
                 llenaTotal();
             }
         }
@@ -631,9 +668,10 @@ namespace SistemaGEISA
             //Refresco Informacion del Empleado
             controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, controler.Model.Empleado.Where(E => E.Id == empleado.Id).ToList());
             int? idNomina = controler.Model.EmpleadoNomina.Where(X => X.EmpleadoId == empleado.Id).DefaultIfEmpty(null).SingleOrDefault().Id;
-            if(idNomina.HasValue)
+            if (idNomina.HasValue)
                 controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, controler.Model.EmpleadoNomina.Where(EN => EN.Id == idNomina.Value).ToList());
             //******************************
+
             if (empleado != null)
             {
                 try
@@ -648,9 +686,10 @@ namespace SistemaGEISA
                 if (empleadoNomina != null)
                 {
                     txtSueldoFiscal.Text = "0.00";
+                    txtSueldoFiscal2.Text = "0.00";
                     txtInfonavit.Text = empleadoNomina.MontoRetener.HasValue ? empleadoNomina.MontoRetener.Value.ToString("N2") : "0.00";
                     txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
-                    txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text)).ToString("N2");
+                    txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
                     if (empleadoNomina.TipoNomina.HasValue)
                     {
                         if (empleadoNomina.TipoNomina == Convert.ToInt32(tipoNominas.Mensual))
@@ -664,7 +703,19 @@ namespace SistemaGEISA
                     {
                         lblPeriodoPago.Text = "PERIODO PENDIENTE";
                     }
-                    lblSueldoCompartido.Text = empleadoNomina.SueldoCompartido.HasValue ? (empleadoNomina.SueldoCompartido.Value ? "SUELDO COMPARTIDO": "SUELDO COMPLETO") : "SUELDO COMPLETO";
+
+                    //Solo se muestra el suedo fical 2, si el empleado es de sueldo compartido
+                    lblSueldoCompartido.Text = empleadoNomina.SueldoCompartido.HasValue ? (empleadoNomina.SueldoCompartido.Value ? "SUELDO COMPARTIDO" : "SUELDO COMPLETO") : "SUELDO COMPLETO";
+                    if ((empleadoNomina.SueldoCompartido.HasValue ? empleadoNomina.SueldoCompartido.Value : false) == true)
+                        lblSueldo2.Visible = txtSueldoFiscal2.Visible = sueldoCompartido = true;
+                    else
+                        lblSueldo2.Visible = txtSueldoFiscal2.Visible = sueldoCompartido = false;
+
+                    //Si es Contratista Principal puede modificar el complemento
+                    if ((nominas.Empleado.EsContratistaPrincipal.HasValue ? nominas.Empleado.EsContratistaPrincipal.Value : false) == true)
+                        txtComplemento.ReadOnly = false;
+                    else
+                        txtComplemento.ReadOnly = true;
                 }
                 else
                 {
@@ -674,13 +725,14 @@ namespace SistemaGEISA
                     txtSueldoReal.Text = "0.00";
                     lblPeriodoPago.Text = "PERIODO PENDIENTE";
                     lblSueldoCompartido.Text = "SUELDO COMPLETO";
+                    sueldoCompartido = false;
                 }
             }
         }
 
         private void gv_DoubleClick(object sender, EventArgs e)
         {
-            if (nominasDetalle!=null)
+            if (nominasDetalle != null)
             {
                 var view = (DevExpress.XtraGrid.Views.Grid.GridView)sender;
                 var pt = view.GridControl.PointToClient(Control.MousePosition);
@@ -697,7 +749,7 @@ namespace SistemaGEISA
         {
             if (gv.SelectedRowsCount == 1)
             {
-                pagosAdeudosToolStripMenuItem_Click(sender,e);
+                pagosAdeudosToolStripMenuItem_Click(sender, e);
             }
             else
             {
@@ -718,6 +770,60 @@ namespace SistemaGEISA
         private void gv_RowLoaded(object sender, DevExpress.XtraGrid.Views.Base.RowEventArgs e)
         {
             llenaTotal();
+        }
+
+        private void txtSueldoFiscal2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Funciones.validaNumeroDecimal(txtSueldoFiscal2.Text))
+                Funciones.soloNumerosDec(sender, e);
+        }
+
+        private void txtSueldoFiscal2_Leave(object sender, EventArgs e)
+        {
+            double amount = 0;
+            if (!string.IsNullOrEmpty(txtSueldoFiscal2.Text) && double.TryParse(txtSueldoFiscal2.Text, out amount))
+                txtSueldoFiscal2.Text = Convert.ToDouble(txtSueldoFiscal2.Text).ToString("N2");
+            else
+                txtSueldoFiscal2.Text = Convert.ToDouble("0").ToString("N2");
+        }
+
+        private void txtSueldoFiscal2_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSueldoFiscal2.Text) && Funciones.validaNumeroDecimal(txtSueldoFiscal2.Text))
+            {
+                txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
+                llenaTotal();
+            }
+        }
+
+        private void txtComplemento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtComplemento.ReadOnly == false)
+            {
+                if (Funciones.validaNumeroDecimal(txtComplemento.Text))
+                    Funciones.soloNumerosDec(sender, e);
+            }
+        }
+
+        private void txtComplemento_Leave(object sender, EventArgs e)
+        {
+            double amount = 0;
+            if (txtComplemento.ReadOnly == false)
+            {
+                if (!string.IsNullOrEmpty(txtComplemento.Text) && double.TryParse(txtComplemento.Text, out amount))
+                    txtComplemento.Text = Convert.ToDouble(txtComplemento.Text).ToString("N2");
+                else
+                    txtComplemento.Text = Convert.ToDouble("0").ToString("N2");
+            }
+        }
+
+        private void txtComplemento_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtComplemento.Text) && Funciones.validaNumeroDecimal(txtComplemento.Text))
+            {
+                //txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
+                llenaTotal();
+            }
         }
 
     }

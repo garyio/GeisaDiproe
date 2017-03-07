@@ -111,7 +111,7 @@ namespace SistemaGEISA
                     facturas = controler.Model.Factura.Where(D => D.ClienteId == cliente.Id && D.Saldo > 0 && D.FechaCancelacion == null && (D.Contrarecibo != null || D.Proveedor !=null || D.ProveedorOtro != null || D.ReposicionGastos != null || D.CajaComprobanteId != null || D.ConceptosId != null)).ToList();
             }
             else
-            {
+            {// Reposicion de Gastos
                 facturas = controler.Model.Factura.Where(D => D.Saldo > 0 && D.CajaComprobanteId != null && D.FechaCancelacion==null).ToList();
             }
 
