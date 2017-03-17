@@ -34,8 +34,15 @@ namespace SistemaGEISA
                 chkResidente.Checked = empleado.EsResidente;
                 chkObra.Checked = empleado.EsObra.HasValue ? empleado.EsObra.Value : false;
                 chkOficina.Checked = empleado.EsOficina.HasValue ? empleado.EsOficina.Value : false;
-                chkContratista.Checked = empleado.EsContratista.HasValue ? empleado.EsContratista.Value : false;
-                chkContratistaPrincipal.Checked = empleado.EsContratistaPrincipal.HasValue ? empleado.EsContratistaPrincipal.Value : false;
+                int contratistaPrincipal = empleado.EsContratistaPrincipal.HasValue ? (empleado.EsContratistaPrincipal.Value ? 1 : -1) : -1;
+                int contratista = empleado.EsContratista.HasValue ? (empleado.EsContratista.Value ? 2 : -1) : -1;
+                if(contratistaPrincipal == 1)
+                    rgContratista.EditValue =1;
+                else if(contratista == 2)
+                    rgContratista.EditValue = 2;
+                else
+                    rgContratista.EditValue = 3;
+      
                 txtRFC.Text = empleado.RFC;
 
                 usuario = controler.Model.Usuario.Where(f => f.EmpleadoId == empleado.Id).FirstOrDefault();
@@ -139,10 +146,23 @@ namespace SistemaGEISA
                 empleado.EsResidente = chkResidente.Checked;
                 empleado.EsObra = chkObra.Checked;
                 empleado.EsOficina = chkOficina.Checked;
-                empleado.EsContratistaPrincipal = chkContratistaPrincipal.Checked;
-                empleado.EsContratista = chkContratista.Checked;
+                int tipoContratista = rgContratista.EditValue != null ? (Convert.ToInt32(rgContratista.EditValue)) : 3;
+                if(tipoContratista == 1) // contratista principal
+                {
+                    empleado.EsContratistaPrincipal = true;
+                    empleado.EsContratista = false;
+                }
+                else if (tipoContratista == 2)
+                {
+                    empleado.EsContratistaPrincipal = false;
+                    empleado.EsContratista = true;
+                }
+                else
+                {
+                    empleado.EsContratistaPrincipal = false;
+                    empleado.EsContratista = false;
+                }              
                 empleado.RFC = txtRFC.Text.Trim();
-
                 if (!empleado.NoEsNuevo) controler.Model.AddToEmpleado(empleado);
 
                 if (chkUsuario.Checked)

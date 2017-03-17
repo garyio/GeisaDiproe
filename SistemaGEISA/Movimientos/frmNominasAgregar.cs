@@ -17,7 +17,7 @@ namespace SistemaGEISA
 {
     public partial class frmNominasAgregar : DevExpress.XtraEditors.XtraForm
     {
-
+        bool esContratistaNormal = false;
         enum tipoNominas
         {
             Semanal = 1,
@@ -63,7 +63,10 @@ namespace SistemaGEISA
                 if ((nominas.Empleado.EsContratistaPrincipal.HasValue ? nominas.Empleado.EsContratistaPrincipal.Value : false) == true)
                     txtComplemento.ReadOnly = false;
                 else
+                {
+                    esContratistaNormal = nominas.Empleado.EsContratista.HasValue ? (nominas.Empleado.EsContratista.Value ? true : false) : false;// Si es contratista normal solo se le paga sueldo fiscal
                     txtComplemento.ReadOnly = true;
+                }
 
                 //if ((nominas.Empleado.EsContratista.HasValue ? nominas.Empleado.EsContratista.Value : false) == true || (nominas.Empleado.EsContratista.HasValue ? nominas.Empleado.EsContratista.Value : false) == true)
 
@@ -80,21 +83,30 @@ namespace SistemaGEISA
                 txtCompensacion.Text = nominas.Compensacion.HasValue ? nominas.Compensacion.Value.ToString("N2") : "0.00";
                 txtViaticos.Text = nominas.Viaticos.HasValue ? nominas.Viaticos.Value.ToString("N2") : "0.00";
                 txtSueldoFiscal.Text = nominas.SueldoFiscal.HasValue ? nominas.SueldoFiscal.Value.ToString("N2") : "0.00";
-                if (sueldoCompartido) // si no es sueldo compartido seteamos el sueldo Fiscal 2                     
-                    txtSueldoFiscal2.Text = nominas.SueldoFiscal2.HasValue ? nominas.SueldoFiscal2.Value.ToString("N2") : "0.00";
-                //txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
-                txtSueldoReal.Text = nominas.SueldoReal.HasValue ? nominas.SueldoReal.Value.ToString("N2") : "0.00";
-                //txtComplemento.Text = (Convert.ToDouble(txtSueldoReal.Text) - Convert.ToDouble(txtSueldoFiscal.Text)).ToString("N2");
-                txtComplemento.Text = nominas.Complemento.HasValue ? nominas.Complemento.Value.ToString("N2") : "0.00";
-                //txtInfonavit.Text = empleadoNomina.MontoRetener.Value.ToString("N2");
-                txtInfonavit.Text = nominas.Infonavit.HasValue ? nominas.Infonavit.Value.ToString("N2") : "0.00";
+                if (sueldoCompartido) // si no es sueldo compartido seteamos el sueldo Fiscal 2  
+                {
+                    if (esContratistaNormal)
+                        txtSueldoFiscal2.ReadOnly = true;
+                    else
+                        txtSueldoFiscal2.Text = nominas.SueldoFiscal2.HasValue ? nominas.SueldoFiscal2.Value.ToString("N2") : "0.00";
+                }
+               
+                if (esContratistaNormal)
+                {
+                    txtSueldoReal.Text = "0.00";
+                    txtComplemento.Text = "0.00";
+                    txtInfonavit.Text = "0.00";
+                }else
+                {
+                    txtSueldoReal.Text = nominas.SueldoReal.HasValue ? nominas.SueldoReal.Value.ToString("N2") : "0.00";
+                    txtComplemento.Text = nominas.Complemento.HasValue ? nominas.Complemento.Value.ToString("N2") : "0.00";
+                    txtInfonavit.Text = nominas.Infonavit.HasValue ? nominas.Infonavit.Value.ToString("N2") : "0.00";
+                }
+              
                 txtObservaciones.Text = nominas.Observaciones;
                 chkViaticos.Checked = nominas.ViaticosActivo.HasValue ? nominas.ViaticosActivo.Value : false;
                 chkCompensacion.Checked = nominas.CompensacionActivo.HasValue ? nominas.CompensacionActivo.Value : false;
                 chkPagoEfectivo.Checked = nominas.esPagoEfectivo.HasValue ? nominas.esPagoEfectivo.Value : false;
-                //grid.DataSource = nominas.NominasDetalle.ToList();
-                //gv.UpdateCurrentRow();
-                //gv.RefreshData();
                 foreach (NominasDetalle serv in nominas.NominasDetalle.ToList())
                 {
                     gv.AddNewRow();
@@ -329,7 +341,7 @@ namespace SistemaGEISA
                     nominas.ViaticosActivo = chkViaticos.Checked;
                     nominas.Viaticos = chkViaticos.Checked ? Convert.ToDouble(txtViaticos.Text) : (double?)null;
                     nominas.SueldoFiscal = Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text);
-                    if (sueldoCompartido)
+                    if (sueldoCompartido && !esContratistaNormal)
                         nominas.SueldoFiscal2 = Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text);
                     else
                         nominas.SueldoFiscal2 = (double)0;
@@ -362,7 +374,7 @@ namespace SistemaGEISA
                                 {
                                     if (tipoCargoId.Value == Convert.ToInt32(tipoCargo.Vacaciones))
                                     {
-                                        empleadoNomina.DiasVacaciones += -1;
+                                        empleadoNomina.DiasVacaciones -= 1;
                                     }
                                 }
                             }
@@ -655,11 +667,11 @@ namespace SistemaGEISA
 
         private void txtSueldoFiscal_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtSueldoFiscal.Text) && Funciones.validaNumeroDecimal(txtSueldoFiscal.Text))
+            if (!string.IsNullOrEmpty(txtSueldoFiscal.Text) && Funciones.validaNumeroDecimal(txtSueldoFiscal.Text) && !esContratistaNormal && !chkPagoEfectivo.Checked)
             {
-                txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
-                llenaTotal();
+                txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");                
             }
+            llenaTotal();
         }
 
         private void luEmpleado_EditValueChanged(object sender, EventArgs e)
@@ -667,13 +679,16 @@ namespace SistemaGEISA
             Empleado empleado = luEmpleado.GetSelectedDataRow() as Empleado;
             //Refresco Informacion del Empleado
             controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, controler.Model.Empleado.Where(E => E.Id == empleado.Id).ToList());
-            int? idNomina = controler.Model.EmpleadoNomina.Where(X => X.EmpleadoId == empleado.Id).DefaultIfEmpty(null).SingleOrDefault().Id;
+            EmpleadoNomina _empleadoNomina = controler.Model.EmpleadoNomina.Where(X => X.EmpleadoId == empleado.Id).DefaultIfEmpty(null).SingleOrDefault();
+            int? idNomina = _empleadoNomina!= null ? _empleadoNomina.Id: (int?)null;
+                
             if (idNomina.HasValue)
                 controler.Model.Refresh(System.Data.Entity.Core.Objects.RefreshMode.StoreWins, controler.Model.EmpleadoNomina.Where(EN => EN.Id == idNomina.Value).ToList());
             //******************************
-
+            
             if (empleado != null)
             {
+                esContratistaNormal = empleado.EsContratista.HasValue ? (empleado.EsContratista.Value ? true : false) : false;
                 try
                 {
                     this.empleadoNomina = controler.Model.EmpleadoNomina.Where(X => X.EmpleadoId == empleado.Id).DefaultIfEmpty(null).SingleOrDefault();
@@ -686,10 +701,21 @@ namespace SistemaGEISA
                 if (empleadoNomina != null)
                 {
                     txtSueldoFiscal.Text = "0.00";
-                    txtSueldoFiscal2.Text = "0.00";
-                    txtInfonavit.Text = empleadoNomina.MontoRetener.HasValue ? empleadoNomina.MontoRetener.Value.ToString("N2") : "0.00";
-                    txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
-                    txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
+                    if (esContratistaNormal)
+                    {
+                        txtSueldoFiscal2.Text = "0.00";
+                        txtInfonavit.Text = "0.00";
+                        txtSueldoReal.Text = "0.00";
+                        txtComplemento.Text = "0.00";
+                    }
+                    else
+                    {
+                        txtSueldoFiscal2.Text = "0.00";
+                        txtInfonavit.Text = empleadoNomina.MontoRetener.HasValue ? empleadoNomina.MontoRetener.Value.ToString("N2") : "0.00";
+                        txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
+                        txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
+                    }
+                    
                     if (empleadoNomina.TipoNomina.HasValue)
                     {
                         if (empleadoNomina.TipoNomina == Convert.ToInt32(tipoNominas.Mensual))
@@ -706,13 +732,13 @@ namespace SistemaGEISA
 
                     //Solo se muestra el suedo fical 2, si el empleado es de sueldo compartido
                     lblSueldoCompartido.Text = empleadoNomina.SueldoCompartido.HasValue ? (empleadoNomina.SueldoCompartido.Value ? "SUELDO COMPARTIDO" : "SUELDO COMPLETO") : "SUELDO COMPLETO";
-                    if ((empleadoNomina.SueldoCompartido.HasValue ? empleadoNomina.SueldoCompartido.Value : false) == true)
+                    if ((empleadoNomina.SueldoCompartido.HasValue ? empleadoNomina.SueldoCompartido.Value : false) == true && !esContratistaNormal)
                         lblSueldo2.Visible = txtSueldoFiscal2.Visible = sueldoCompartido = true;
                     else
                         lblSueldo2.Visible = txtSueldoFiscal2.Visible = sueldoCompartido = false;
 
                     //Si es Contratista Principal puede modificar el complemento
-                    if ((nominas.Empleado.EsContratistaPrincipal.HasValue ? nominas.Empleado.EsContratistaPrincipal.Value : false) == true)
+                    if ((empleado.EsContratistaPrincipal.HasValue ? (empleado.EsContratistaPrincipal.Value ? true:false) : false) == true)
                         txtComplemento.ReadOnly = false;
                     else
                         txtComplemento.ReadOnly = true;
@@ -824,6 +850,44 @@ namespace SistemaGEISA
                 //txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
                 llenaTotal();
             }
+        }
+
+        private void chkPagoEfectivo_CheckedChanged(object sender, EventArgs e)
+        {
+            Empleado _empleado = luEmpleado.GetSelectedDataRow() as Empleado;
+            if (chkPagoEfectivo.Checked && _empleado!=null)
+            {
+                chkViaticos.Checked = false;
+                chkCompensacion.Checked = false;
+                txtCompensacion.Text = "0.00";
+                txtViaticos.Text = "0.00";
+                txtSueldoReal.Text = "0.00";
+                txtComplemento.Text = "0.00";
+                txtInfonavit.Text = "0.00";                
+                txtSueldoFiscal2.Text = "0.00";
+                txtCompensacion.ReadOnly = true;
+                txtViaticos.ReadOnly = true;
+                txtComplemento.ReadOnly = true;
+                txtSueldoFiscal2.ReadOnly = true;
+            }
+            else
+            {
+                txtCompensacion.ReadOnly = false;
+                txtViaticos.ReadOnly = false;
+
+                if ((_empleado.EsContratistaPrincipal.HasValue ? (_empleado.EsContratistaPrincipal.Value ? true : false) : false) == true)
+                    txtComplemento.ReadOnly = false;
+                else
+                    txtComplemento.ReadOnly = true;
+
+                txtSueldoFiscal2.ReadOnly = false;
+
+                if (empleadoNomina != null)
+                    txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
+                else
+                    txtSueldoReal.Text = "0.00";
+            }
+            llenaTotal();
         }
 
     }

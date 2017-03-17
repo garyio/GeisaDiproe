@@ -86,6 +86,9 @@
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnInfo = new System.Windows.Forms.ToolStripButton();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblVacaciones = new System.Windows.Forms.Label();
+            this.lblVacacionesTomadas = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgTipoNomina.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -110,6 +113,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkGeisaDiproe.Properties)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.menu.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -146,13 +150,13 @@
             this.tableLayoutPanel1.Controls.Add(this.txtCreditoInfonavit, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label12, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtMontoInfonavit, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.spinVacaciones, 4, 7);
             this.tableLayoutPanel1.Controls.Add(this.label13, 3, 7);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.luBancos, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.txtHorasExtras, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.chkGeisaDiproe, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 4, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -684,7 +688,7 @@
             0,
             0,
             0});
-            this.spinVacaciones.Location = new System.Drawing.Point(403, 196);
+            this.spinVacaciones.Location = new System.Drawing.Point(3, 3);
             this.spinVacaciones.Name = "spinVacaciones";
             this.spinVacaciones.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -693,7 +697,7 @@
             0,
             0,
             0});
-            this.spinVacaciones.Size = new System.Drawing.Size(100, 20);
+            this.spinVacaciones.Size = new System.Drawing.Size(66, 20);
             this.spinVacaciones.TabIndex = 14;
             // 
             // label13
@@ -821,6 +825,43 @@
             this.btnAgregar.Text = "Agregar Dpto/Puesto";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.05571F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.23956F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel3.Controls.Add(this.spinVacaciones, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lblVacaciones, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lblVacacionesTomadas, 2, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(403, 196);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(359, 21);
+            this.tableLayoutPanel3.TabIndex = 79;
+            // 
+            // lblVacaciones
+            // 
+            this.lblVacaciones.AutoSize = true;
+            this.lblVacaciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblVacaciones.Location = new System.Drawing.Point(75, 0);
+            this.lblVacaciones.Name = "lblVacaciones";
+            this.lblVacaciones.Size = new System.Drawing.Size(160, 26);
+            this.lblVacaciones.TabIndex = 15;
+            this.lblVacaciones.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVacacionesTomadas
+            // 
+            this.lblVacacionesTomadas.AutoSize = true;
+            this.lblVacacionesTomadas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblVacacionesTomadas.Location = new System.Drawing.Point(241, 0);
+            this.lblVacacionesTomadas.Name = "lblVacacionesTomadas";
+            this.lblVacacionesTomadas.Size = new System.Drawing.Size(115, 26);
+            this.lblVacacionesTomadas.TabIndex = 16;
+            this.lblVacacionesTomadas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmEmpleadoNewNomina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -860,6 +901,8 @@
             this.tableLayoutPanel2.PerformLayout();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -923,5 +966,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colFechaFin2;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit dtFechaFin2;
         private DevExpress.XtraGrid.Columns.GridColumn colSueldo2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label lblVacaciones;
+        private System.Windows.Forms.Label lblVacacionesTomadas;
     }
 }

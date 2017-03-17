@@ -18,9 +18,18 @@ namespace SistemaGEISA
 {
     public partial class frmEmpleadoNewNomina : DevExpress.XtraEditors.XtraForm
     {
+        enum tipoCargo
+        {
+            Extras = 1,
+            Pagos = 2,
+            Viaticos = 3,
+            Faltas = 4,
+            Vacaciones = 5
+        };
+
         enum tipoNominas
         {
-            Semanal=1,
+            Semanal = 1,
             Quincenal = 2,
             Mensual = 3
         };
@@ -103,10 +112,13 @@ namespace SistemaGEISA
                     gv.UpdateCurrentRow();
                     gv.RefreshData();
                 }
+                lblVacaciones.Text = calculaDiasVacaciones().ToString() + "Dia/s";
+                lblVacacionesTomadas.Text = diasVacacionesTomadas().ToString() + "Dia/s Tomados.";
             }
             else
             {
                 rgTipoNomina.EditValue = tipoNominas.Semanal;
+                lblVacaciones.Text = calculaDiasVacaciones().ToString() + "Dia/s";
             }
 
             //Oculto columnas y dependiendo si es sueldo compartido las muestro de nuevo
@@ -121,9 +133,64 @@ namespace SistemaGEISA
             
         }
 
+        private int calculaDiasVacaciones()
+        {
+            EmpleadoHistorial _empleadoHistorial;
+            double añosTrabajados = 0;
+            if (empleadoNominda != null)
+            {
+                _empleadoHistorial = empleadoNominda.EmpleadoHistorial.Where(E => E.FechaFin == null || E.FechaFin2 == null).DefaultIfEmpty(null).FirstOrDefault();
+                //double diasFechaActual = DateTime.Today.Subtract(DateTime.Today).TotalDays;
+                añosTrabajados = (DateTime.Today - (_empleadoHistorial.FechaInicio.HasValue ? _empleadoHistorial.FechaInicio.Value : DateTime.Today)).TotalDays / 365;
+                if (añosTrabajados <= 1)
+                    return 6;
+                else if (añosTrabajados > 1 && añosTrabajados <= 2)
+                    return 8;
+                else if (añosTrabajados > 2 && añosTrabajados <= 3)
+                    return 10;
+                else if (añosTrabajados > 3 && añosTrabajados <= 4)
+                    return 12;
+                else if (añosTrabajados > 4 && añosTrabajados <= 9)
+                    return 14;
+                else if (añosTrabajados > 9 && añosTrabajados <= 14)
+                    return 16;
+                else if (añosTrabajados > 14 && añosTrabajados <= 19)
+                    return 18;
+                else
+                    return 20;
+            }
+            else
+            {
+                return 6;
+            }
+        }
+
+        private int diasVacacionesTomadas()
+        {
+            int diasVacaciones = 0;
+            List<Nominas> _nominas = controler.Model.Nominas.Where(N => N.EmpleadoId == empleado.Id).ToList();
+            foreach (Nominas _nomina in _nominas)
+            {
+                foreach (NominasDetalle _detalle in _nomina.NominasDetalle.ToList())
+                {
+                    int? tipoCargoId = _detalle.TipoCargoId;
+                    if (tipoCargoId.HasValue)
+                    {
+                        if (tipoCargoId.Value == Convert.ToInt32(tipoCargo.Vacaciones))
+                        {
+                            diasVacaciones++;
+                        }
+                    }
+                }
+            }
+            return diasVacaciones;
+        }
+
+
+
         private void llenaCombos()
         {
-            luEmpresa.Properties.DataSource = controler.Model.Empresa.Where(E => E.Activo==true).ToList();
+            luEmpresa.Properties.DataSource = controler.Model.Empresa.Where(E => E.Activo == true).ToList();
             luEmpresa.Properties.DisplayMember = "NombreFiscal";
             luEmpresa.Properties.ValueMember = "Id";
 
@@ -131,7 +198,7 @@ namespace SistemaGEISA
             luBancos.Properties.DisplayMember = "Nombre";
             luBancos.Properties.ValueMember = "Id";
 
-            luDepartamento.DataSource = controler.Model.Dpto_Puesto.Where(D => D.Tipo== 1).ToList();
+            luDepartamento.DataSource = controler.Model.Dpto_Puesto.Where(D => D.Tipo == 1).ToList();
             luDepartamento.DisplayMember = "Nombre";
             luDepartamento.ValueMember = "Id";
 
@@ -144,7 +211,7 @@ namespace SistemaGEISA
         }
 
         private void IniGrid()
-        {            
+        {
             dt = new DataTable();
             dt.Columns.Add("Id", typeof(int));
             dt.Columns.Add("FechaInicio", typeof(DateTime));
@@ -224,7 +291,7 @@ namespace SistemaGEISA
                 new frmMessageBox(true) { Message = "No es posible eliminar este Registro.", Title = "Error" }.ShowDialog();
             }
 
-            
+
         }
 
         private void gv_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -238,7 +305,7 @@ namespace SistemaGEISA
             string t_FechaInicio = view.GetRowCellValue(e.RowHandle, colFechaInicio).ToString();
             if (string.IsNullOrEmpty(t_FechaInicio))
             { e.Valid = false; view.SetColumnError(colFechaInicio, "Ingresar un Valor Valido."); return; }
-            else { e.Valid = true;  }
+            else { e.Valid = true; }
 
             string estatus = view.GetRowCellValue(e.RowHandle, colPuesto).ToString();
             if (string.IsNullOrEmpty(estatus))
@@ -248,7 +315,7 @@ namespace SistemaGEISA
             string estatus_Dpto = view.GetRowCellValue(e.RowHandle, colDepartamento).ToString();
             if (string.IsNullOrEmpty(estatus_Dpto))
             { e.Valid = false; view.SetColumnError(colDepartamento, "Ingresar un Valor Valido."); return; }
-            else { e.Valid = true; }       
+            else { e.Valid = true; }
         }
 
         private void gv_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
@@ -282,7 +349,7 @@ namespace SistemaGEISA
                     transaccion = controler.Model.BeginTransaction();
                     if (empleadoNominda == null)
                     {
-                        empleadoNominda = new EmpleadoNomina();                        
+                        empleadoNominda = new EmpleadoNomina();
                         isNew = true;
                         empleadoNominda.Fecha = DateTime.Today;
                     }
@@ -314,7 +381,7 @@ namespace SistemaGEISA
                     empleadoNominda.MontoRetener = string.IsNullOrEmpty(txtMontoInfonavit.Text) ? (double?)null : Convert.ToDouble(txtMontoInfonavit.Text);
                     empleadoNominda.DiasVacaciones = Convert.ToInt32(spinVacaciones.Value);
                     empleadoNominda.MontoHoraExtra = string.IsNullOrEmpty(txtHorasExtras.Text) ? (double?)null : Convert.ToDouble(txtHorasExtras.Text);
-                    empleadoNominda.TipoNomina = rgTipoNomina.EditValue!=null ? Convert.ToInt32(rgTipoNomina.EditValue): Convert.ToInt32(tipoNominas.Semanal);
+                    empleadoNominda.TipoNomina = rgTipoNomina.EditValue != null ? Convert.ToInt32(rgTipoNomina.EditValue) : Convert.ToInt32(tipoNominas.Semanal);
 
                     if (!empleadoNominda.NoEsNuevo) controler.Model.AddToEmpleadoNomina(empleadoNominda);
 
@@ -347,9 +414,9 @@ namespace SistemaGEISA
                             detalle.EmpleadoNomina = this.empleadoNominda;
                             detalle.Departamento = Convert.ToInt32(row["Departamento"]);
                             detalle.Puesto = Convert.ToInt32(row["Puesto"]);
-                            detalle.FechaInicio = row["FechaInicio"].ToString()!=""? Convert.ToDateTime(row["FechaInicio"]):(DateTime?)null;
-                            detalle.FechaFin = row["FechaFin"].ToString()!=""?Convert.ToDateTime(row["FechaFin"]):(DateTime?)null;
-                            detalle.Sueldo = Convert.ToDouble(row["Sueldo"] != null || row["Sueldo"].ToString()!="" ? row["Sueldo"] : (double?)null);
+                            detalle.FechaInicio = row["FechaInicio"].ToString() != "" ? Convert.ToDateTime(row["FechaInicio"]) : (DateTime?)null;
+                            detalle.FechaFin = row["FechaFin"].ToString() != "" ? Convert.ToDateTime(row["FechaFin"]) : (DateTime?)null;
+                            detalle.Sueldo = Convert.ToDouble(row["Sueldo"] != null || row["Sueldo"].ToString() != "" ? row["Sueldo"] : (double?)null);
                             detalle.Observaciones = row["Observaciones"].ToString();
                             // cuando es sueldo compartido 
                             if (empleadoNominda.SueldoCompartido.Value)
@@ -406,7 +473,7 @@ namespace SistemaGEISA
 
             }
 
-            
+
         }//btnGuardar
 
         private bool isValid()
@@ -500,7 +567,7 @@ namespace SistemaGEISA
                 colFechaInicio2.Visible = colFechaFin2.Visible = colSueldo2.Visible = false;
 
                 colFechaInicio.Caption = colFechaInicio2.Caption = "Fecha Inicio";
-                colFechaFin.Caption = colFechaFin2.Caption= "Fecha Fin";
+                colFechaFin.Caption = colFechaFin2.Caption = "Fecha Fin";
                 colSueldo.Caption = colSueldo2.Caption = " Sueldo";
             }
         }

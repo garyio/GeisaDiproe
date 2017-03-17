@@ -856,6 +856,7 @@
             this.chkPagoEfectivo.Properties.Caption = "Pago Efectivo";
             this.chkPagoEfectivo.Size = new System.Drawing.Size(89, 19);
             this.chkPagoEfectivo.TabIndex = 83;
+            this.chkPagoEfectivo.CheckedChanged += new System.EventHandler(this.chkPagoEfectivo_CheckedChanged);
             // 
             // lblSueldo2
             // 

@@ -40,6 +40,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colPagoEfectivo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.chkEsEfectivo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.luObra = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -83,6 +85,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEsEfectivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luObra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luEmpleado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo)).BeginInit();
@@ -231,7 +234,8 @@
             this.luArticulos,
             this.luEstatus,
             this.luEmpleado,
-            this.luObra});
+            this.luObra,
+            this.chkEsEfectivo});
             this.grid.Size = new System.Drawing.Size(1059, 251);
             this.grid.TabIndex = 17;
             this.grid.UseEmbeddedNavigator = true;
@@ -241,6 +245,7 @@
             // gv
             // 
             this.gv.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colPagoEfectivo,
             this.colId,
             this.colObra,
             this.colEmpleado,
@@ -278,6 +283,25 @@
             this.gv.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gv_RowCellStyle);
             this.gv.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gv_FocusedRowChanged);
             this.gv.DoubleClick += new System.EventHandler(this.gv_DoubleClick);
+            // 
+            // colPagoEfectivo
+            // 
+            this.colPagoEfectivo.Caption = "En Efectivo";
+            this.colPagoEfectivo.ColumnEdit = this.chkEsEfectivo;
+            this.colPagoEfectivo.FieldName = "esPagoEfectivo";
+            this.colPagoEfectivo.Name = "colPagoEfectivo";
+            this.colPagoEfectivo.OptionsColumn.AllowEdit = false;
+            this.colPagoEfectivo.OptionsColumn.FixedWidth = true;
+            this.colPagoEfectivo.OptionsColumn.ReadOnly = true;
+            this.colPagoEfectivo.Visible = true;
+            this.colPagoEfectivo.VisibleIndex = 1;
+            // 
+            // chkEsEfectivo
+            // 
+            this.chkEsEfectivo.AutoHeight = false;
+            this.chkEsEfectivo.Caption = "Check";
+            this.chkEsEfectivo.Name = "chkEsEfectivo";
+            this.chkEsEfectivo.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // colId
             // 
@@ -347,7 +371,7 @@
             this.colSueldoFiscal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SueldoFiscal", "{0:C2}")});
             this.colSueldoFiscal.Visible = true;
-            this.colSueldoFiscal.VisibleIndex = 1;
+            this.colSueldoFiscal.VisibleIndex = 2;
             this.colSueldoFiscal.Width = 80;
             // 
             // colComplemento
@@ -363,7 +387,7 @@
             this.colComplemento.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Complemento", "{0:C2}")});
             this.colComplemento.Visible = true;
-            this.colComplemento.VisibleIndex = 2;
+            this.colComplemento.VisibleIndex = 3;
             // 
             // colSueldoReal
             // 
@@ -378,7 +402,7 @@
             this.colSueldoReal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SueldoReal", "{0:C2}")});
             this.colSueldoReal.Visible = true;
-            this.colSueldoReal.VisibleIndex = 3;
+            this.colSueldoReal.VisibleIndex = 4;
             this.colSueldoReal.Width = 77;
             // 
             // colExtras
@@ -394,7 +418,7 @@
             this.colExtras.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ExtrasCalc", "{0:C2}")});
             this.colExtras.Visible = true;
-            this.colExtras.VisibleIndex = 4;
+            this.colExtras.VisibleIndex = 5;
             this.colExtras.Width = 78;
             // 
             // colCompensacion
@@ -410,7 +434,7 @@
             this.colCompensacion.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CompensacionCalc", "{0:C2}")});
             this.colCompensacion.Visible = true;
-            this.colCompensacion.VisibleIndex = 5;
+            this.colCompensacion.VisibleIndex = 6;
             this.colCompensacion.Width = 76;
             // 
             // colAdeudosPagos
@@ -426,7 +450,7 @@
             this.colAdeudosPagos.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AdeudosPagosCalc", "{0:C2}")});
             this.colAdeudosPagos.Visible = true;
-            this.colAdeudosPagos.VisibleIndex = 6;
+            this.colAdeudosPagos.VisibleIndex = 7;
             this.colAdeudosPagos.Width = 85;
             // 
             // colFaltas
@@ -442,7 +466,7 @@
             this.colFaltas.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "FaltasCalc", "{0:C2}")});
             this.colFaltas.Visible = true;
-            this.colFaltas.VisibleIndex = 7;
+            this.colFaltas.VisibleIndex = 8;
             this.colFaltas.Width = 69;
             // 
             // colInfonavit
@@ -458,7 +482,7 @@
             this.colInfonavit.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Infonavit", "{0:C2}")});
             this.colInfonavit.Visible = true;
-            this.colInfonavit.VisibleIndex = 8;
+            this.colInfonavit.VisibleIndex = 9;
             this.colInfonavit.Width = 70;
             // 
             // colViaticos
@@ -474,7 +498,7 @@
             this.colViaticos.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ViaticosCalc", "{0:C2}")});
             this.colViaticos.Visible = true;
-            this.colViaticos.VisibleIndex = 9;
+            this.colViaticos.VisibleIndex = 10;
             this.colViaticos.Width = 60;
             // 
             // colTotal
@@ -490,7 +514,7 @@
             this.colTotal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:C2}")});
             this.colTotal.Visible = true;
-            this.colTotal.VisibleIndex = 10;
+            this.colTotal.VisibleIndex = 11;
             this.colTotal.Width = 84;
             // 
             // colObservaciones
@@ -502,7 +526,7 @@
             this.colObservaciones.OptionsColumn.FixedWidth = true;
             this.colObservaciones.OptionsColumn.ReadOnly = true;
             this.colObservaciones.Visible = true;
-            this.colObservaciones.VisibleIndex = 11;
+            this.colObservaciones.VisibleIndex = 12;
             this.colObservaciones.Width = 82;
             // 
             // colAsimilados
@@ -518,7 +542,7 @@
             this.colAsimilados.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "calcAsimilados", "{0:C2}")});
             this.colAsimilados.Visible = true;
-            this.colAsimilados.VisibleIndex = 12;
+            this.colAsimilados.VisibleIndex = 13;
             // 
             // colBanco
             // 
@@ -529,7 +553,7 @@
             this.colBanco.OptionsColumn.FixedWidth = true;
             this.colBanco.OptionsColumn.ReadOnly = true;
             this.colBanco.Visible = true;
-            this.colBanco.VisibleIndex = 13;
+            this.colBanco.VisibleIndex = 14;
             // 
             // colClabe
             // 
@@ -540,7 +564,7 @@
             this.colClabe.OptionsColumn.FixedWidth = true;
             this.colClabe.OptionsColumn.ReadOnly = true;
             this.colClabe.Visible = true;
-            this.colClabe.VisibleIndex = 14;
+            this.colClabe.VisibleIndex = 15;
             // 
             // colCuenta
             // 
@@ -551,7 +575,7 @@
             this.colCuenta.OptionsColumn.FixedWidth = true;
             this.colCuenta.OptionsColumn.ReadOnly = true;
             this.colCuenta.Visible = true;
-            this.colCuenta.VisibleIndex = 15;
+            this.colCuenta.VisibleIndex = 16;
             // 
             // colCurp
             // 
@@ -562,7 +586,7 @@
             this.colCurp.OptionsColumn.FixedWidth = true;
             this.colCurp.OptionsColumn.ReadOnly = true;
             this.colCurp.Visible = true;
-            this.colCurp.VisibleIndex = 16;
+            this.colCurp.VisibleIndex = 17;
             // 
             // colRfc
             // 
@@ -573,7 +597,7 @@
             this.colRfc.OptionsColumn.FixedWidth = true;
             this.colRfc.OptionsColumn.ReadOnly = true;
             this.colRfc.Visible = true;
-            this.colRfc.VisibleIndex = 17;
+            this.colRfc.VisibleIndex = 18;
             // 
             // colPuesto
             // 
@@ -584,7 +608,7 @@
             this.colPuesto.OptionsColumn.FixedWidth = true;
             this.colPuesto.OptionsColumn.ReadOnly = true;
             this.colPuesto.Visible = true;
-            this.colPuesto.VisibleIndex = 18;
+            this.colPuesto.VisibleIndex = 19;
             // 
             // chkActivo
             // 
@@ -799,6 +823,7 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEsEfectivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luObra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luEmpleado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkActivo)).EndInit();
@@ -871,5 +896,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPuesto;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton btnImprimir;
+        private DevExpress.XtraGrid.Columns.GridColumn colPagoEfectivo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkEsEfectivo;
     }
 }
