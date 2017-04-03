@@ -370,13 +370,13 @@ namespace SistemaGEISA
                                 id = (int?)null;
 
                                 int? tipoCargoId = string.IsNullOrEmpty(row["TipoCargoId"].ToString()) ? (int?)null : Convert.ToInt32(row["TipoCargoId"]);
-                                if (tipoCargoId.HasValue)
-                                {
-                                    if (tipoCargoId.Value == Convert.ToInt32(tipoCargo.Vacaciones))
-                                    {
-                                        empleadoNomina.DiasVacaciones -= 1;
-                                    }
-                                }
+                                //if (tipoCargoId.HasValue)
+                                //{
+                                //    if (tipoCargoId.Value == Convert.ToInt32(tipoCargo.Vacaciones))
+                                //    {
+                                //        empleadoNomina.DiasVacaciones -= 1;
+                                //    }
+                                //}
                             }
                             else
                             {

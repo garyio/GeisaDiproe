@@ -74,21 +74,21 @@
             this.txtCreditoInfonavit = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtMontoInfonavit = new System.Windows.Forms.TextBox();
-            this.spinVacaciones = new DevExpress.XtraEditors.SpinEdit();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.luBancos = new DevExpress.XtraEditors.LookUpEdit();
             this.label15 = new System.Windows.Forms.Label();
             this.txtHorasExtras = new System.Windows.Forms.TextBox();
             this.chkGeisaDiproe = new DevExpress.XtraEditors.CheckEdit();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.spinVacaciones = new DevExpress.XtraEditors.SpinEdit();
+            this.lblVacacionesTomadas = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.menu = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnInfo = new System.Windows.Forms.ToolStripButton();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblVacaciones = new System.Windows.Forms.Label();
-            this.lblVacacionesTomadas = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgTipoNomina.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -108,12 +108,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaNacimiento.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaNacimiento.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinVacaciones.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luBancos.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkGeisaDiproe.Properties)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinVacaciones.Properties)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.menu.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -681,25 +681,6 @@
             this.txtMontoInfonavit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoInfonavit_KeyPress);
             this.txtMontoInfonavit.Leave += new System.EventHandler(this.txtMontoInfonavit_Leave);
             // 
-            // spinVacaciones
-            // 
-            this.spinVacaciones.EditValue = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.spinVacaciones.Location = new System.Drawing.Point(3, 3);
-            this.spinVacaciones.Name = "spinVacaciones";
-            this.spinVacaciones.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinVacaciones.Properties.MaxValue = new decimal(new int[] {
-            365,
-            0,
-            0,
-            0});
-            this.spinVacaciones.Size = new System.Drawing.Size(66, 20);
-            this.spinVacaciones.TabIndex = 14;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -767,6 +748,53 @@
             this.chkGeisaDiproe.TabIndex = 78;
             this.chkGeisaDiproe.CheckedChanged += new System.EventHandler(this.chkGeisaDiproe_CheckedChanged);
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.spinVacaciones, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lblVacacionesTomadas, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(403, 196);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(359, 21);
+            this.tableLayoutPanel3.TabIndex = 79;
+            // 
+            // spinVacaciones
+            // 
+            this.spinVacaciones.EditValue = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.spinVacaciones.Location = new System.Drawing.Point(3, 3);
+            this.spinVacaciones.Name = "spinVacaciones";
+            this.spinVacaciones.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinVacaciones.Properties.MaxValue = new decimal(new int[] {
+            365,
+            0,
+            0,
+            0});
+            this.spinVacaciones.Properties.ReadOnly = true;
+            this.spinVacaciones.Size = new System.Drawing.Size(66, 20);
+            this.spinVacaciones.TabIndex = 14;
+            // 
+            // lblVacacionesTomadas
+            // 
+            this.lblVacacionesTomadas.AutoSize = true;
+            this.lblVacacionesTomadas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblVacacionesTomadas.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVacacionesTomadas.Location = new System.Drawing.Point(75, 0);
+            this.lblVacacionesTomadas.Name = "lblVacacionesTomadas";
+            this.lblVacacionesTomadas.Size = new System.Drawing.Size(281, 26);
+            this.lblVacacionesTomadas.TabIndex = 16;
+            this.lblVacacionesTomadas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -790,7 +818,8 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnGuardar,
             this.btnInfo,
-            this.btnAgregar});
+            this.btnAgregar,
+            this.btnEliminar});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
@@ -825,42 +854,14 @@
             this.btnAgregar.Text = "Agregar Dpto/Puesto";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // tableLayoutPanel3
+            // btnEliminar
             // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.05571F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.23956F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel3.Controls.Add(this.spinVacaciones, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lblVacaciones, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lblVacacionesTomadas, 2, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(403, 196);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(359, 21);
-            this.tableLayoutPanel3.TabIndex = 79;
-            // 
-            // lblVacaciones
-            // 
-            this.lblVacaciones.AutoSize = true;
-            this.lblVacaciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblVacaciones.Location = new System.Drawing.Point(75, 0);
-            this.lblVacaciones.Name = "lblVacaciones";
-            this.lblVacaciones.Size = new System.Drawing.Size(160, 26);
-            this.lblVacaciones.TabIndex = 15;
-            this.lblVacaciones.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblVacacionesTomadas
-            // 
-            this.lblVacacionesTomadas.AutoSize = true;
-            this.lblVacacionesTomadas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblVacacionesTomadas.Location = new System.Drawing.Point(241, 0);
-            this.lblVacacionesTomadas.Name = "lblVacacionesTomadas";
-            this.lblVacacionesTomadas.Size = new System.Drawing.Size(115, 26);
-            this.lblVacacionesTomadas.TabIndex = 16;
-            this.lblVacacionesTomadas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnEliminar.Image = global::SistemaGEISA.Properties.Resources.Eliminar;
+            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(196, 26);
+            this.btnEliminar.Text = "Eliminar Historial Seleccionado";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // frmEmpleadoNewNomina
             // 
@@ -894,15 +895,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaNacimiento.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaNacimiento.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinVacaciones.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luBancos.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkGeisaDiproe.Properties)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinVacaciones.Properties)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -967,7 +968,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit dtFechaFin2;
         private DevExpress.XtraGrid.Columns.GridColumn colSueldo2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label lblVacaciones;
         private System.Windows.Forms.Label lblVacacionesTomadas;
+        private System.Windows.Forms.ToolStripButton btnEliminar;
     }
 }

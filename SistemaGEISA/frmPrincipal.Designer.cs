@@ -76,6 +76,7 @@
             this.itNominaSemanal = new DevExpress.XtraNavBar.NavBarItem();
             this.TabControl = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.itPrimaVacacional = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -167,7 +168,7 @@
             // 
             // BarMenu
             // 
-            this.BarMenu.ActiveGroup = this.navOperaciones;
+            this.BarMenu.ActiveGroup = this.navReportes;
             this.BarMenu.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.BarMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.BarMenu.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -208,7 +209,8 @@
             this.itOrdenes,
             this.itVehiculosGasolina,
             this.itNominas,
-            this.itNominaSemanal});
+            this.itNominaSemanal,
+            this.itPrimaVacacional});
             this.BarMenu.Location = new System.Drawing.Point(0, 0);
             this.BarMenu.LookAndFeel.SkinName = "Sharp";
             this.BarMenu.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -221,7 +223,6 @@
             // navOperaciones
             // 
             this.navOperaciones.Caption = "Operaciones";
-            this.navOperaciones.Expanded = true;
             this.navOperaciones.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.itObra),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itContrarecibo),
@@ -240,6 +241,7 @@
             this.navOperaciones.LargeImage = global::SistemaGEISA.Properties.Resources.Movimientos;
             this.navOperaciones.Name = "navOperaciones";
             this.navOperaciones.Tag = "Operaciones";
+            this.navOperaciones.TopVisibleLinkIndex = 6;
             // 
             // itObra
             // 
@@ -463,17 +465,19 @@
             // navReportes
             // 
             this.navReportes.Caption = "Reportes";
+            this.navReportes.Expanded = true;
             this.navReportes.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.itCuentaProveedores),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itGastosGenerados),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itCuentasPorPagar),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itIngresosMensuales),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itVehiculosGasolina),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itNominaSemanal)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itNominaSemanal),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itPrimaVacacional)});
             this.navReportes.LargeImage = global::SistemaGEISA.Properties.Resources.Reportes;
             this.navReportes.Name = "navReportes";
             this.navReportes.Tag = "Reportes";
-            this.navReportes.TopVisibleLinkIndex = 1;
+            this.navReportes.TopVisibleLinkIndex = 2;
             // 
             // itCuentaProveedores
             // 
@@ -532,6 +536,12 @@
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // itPrimaVacacional
+            // 
+            this.itPrimaVacacional.Caption = "Prima Vacacional";
+            this.itPrimaVacacional.Name = "itPrimaVacacional";
+            this.itPrimaVacacional.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
             // 
             // frmPrincipal
             // 
@@ -609,5 +619,6 @@
         private DevExpress.XtraNavBar.NavBarItem itVehiculosGasolina;
         private DevExpress.XtraNavBar.NavBarItem itNominas;
         private DevExpress.XtraNavBar.NavBarItem itNominaSemanal;
+        private DevExpress.XtraNavBar.NavBarItem itPrimaVacacional;
     }
 }

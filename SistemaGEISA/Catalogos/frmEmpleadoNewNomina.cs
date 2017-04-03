@@ -87,7 +87,8 @@ namespace SistemaGEISA
                 txtCtaBancaria.Text = empleadoNominda.CuentaBanco;
                 txtClabe.Text = empleadoNominda.Cable;
                 luBancos.EditValue = empleadoNominda.BancosId;
-                spinVacaciones.EditValue = empleadoNominda.DiasVacaciones;
+                //spinVacaciones.EditValue = empleadoNominda.DiasVacaciones;
+                spinVacaciones.EditValue = calculaDiasVacaciones(this.empleadoNominda) - diasVacacionesTomadas(this.controler,this.empleado);
                 txtHorasExtras.Text = empleadoNominda.MontoHoraExtra.HasValue ? empleadoNominda.MontoHoraExtra.Value.ToString("N2") : string.Empty;                                
 
                 if (dt.Rows.Count > 0)
@@ -112,13 +113,11 @@ namespace SistemaGEISA
                     gv.UpdateCurrentRow();
                     gv.RefreshData();
                 }
-                lblVacaciones.Text = calculaDiasVacaciones().ToString() + "Dia/s";
-                lblVacacionesTomadas.Text = diasVacacionesTomadas().ToString() + "Dia/s Tomados.";
+                lblVacacionesTomadas.Text = diasVacacionesTomadas(this.controler,this.empleado).ToString() + " Dia/s Tomados.";
             }
             else
             {
                 rgTipoNomina.EditValue = tipoNominas.Semanal;
-                lblVacaciones.Text = calculaDiasVacaciones().ToString() + "Dia/s";
             }
 
             //Oculto columnas y dependiendo si es sueldo compartido las muestro de nuevo
@@ -133,13 +132,18 @@ namespace SistemaGEISA
             
         }
 
-        private int calculaDiasVacaciones()
+        private static int calculaDiasVacaciones(EmpleadoNomina nominaEmpleado)
         {
             EmpleadoHistorial _empleadoHistorial;
             double añosTrabajados = 0;
-            if (empleadoNominda != null)
+            if (nominaEmpleado != null)
             {
-                _empleadoHistorial = empleadoNominda.EmpleadoHistorial.Where(E => E.FechaFin == null || E.FechaFin2 == null).DefaultIfEmpty(null).FirstOrDefault();
+                bool sueldoCompartido = nominaEmpleado.SueldoCompartido.HasValue ? nominaEmpleado.SueldoCompartido.Value : false;
+
+                if(sueldoCompartido)
+                    _empleadoHistorial = nominaEmpleado.EmpleadoHistorial.Where(E => E.FechaFin == null && E.FechaFin2 == null).DefaultIfEmpty(null).FirstOrDefault();
+                else
+                    _empleadoHistorial = nominaEmpleado.EmpleadoHistorial.Where(E => E.FechaFin == null).DefaultIfEmpty(null).FirstOrDefault();
                 //double diasFechaActual = DateTime.Today.Subtract(DateTime.Today).TotalDays;
                 añosTrabajados = (DateTime.Today - (_empleadoHistorial.FechaInicio.HasValue ? _empleadoHistorial.FechaInicio.Value : DateTime.Today)).TotalDays / 365;
                 if (añosTrabajados <= 1)
@@ -165,10 +169,10 @@ namespace SistemaGEISA
             }
         }
 
-        private int diasVacacionesTomadas()
+        private static int diasVacacionesTomadas(Controler _controler,Empleado _empleado)
         {
             int diasVacaciones = 0;
-            List<Nominas> _nominas = controler.Model.Nominas.Where(N => N.EmpleadoId == empleado.Id).ToList();
+            List<Nominas> _nominas = _controler.Model.Nominas.Where(N => N.EmpleadoId == _empleado.Id).ToList();
             foreach (Nominas _nomina in _nominas)
             {
                 foreach (NominasDetalle _detalle in _nomina.NominasDetalle.ToList())
@@ -299,13 +303,21 @@ namespace SistemaGEISA
             GridView view = sender as GridView;
             GridColumn colFechaInicio = view.Columns["FechaInicio"];
             GridColumn colPuesto = view.Columns["Puesto"];
-            GridColumn colDepartamento = view.Columns["Departamento"];
+            GridColumn colDepartamento = view.Columns["Departamento"];            
             view.ClearColumnErrors();
 
             string t_FechaInicio = view.GetRowCellValue(e.RowHandle, colFechaInicio).ToString();
             if (string.IsNullOrEmpty(t_FechaInicio))
             { e.Valid = false; view.SetColumnError(colFechaInicio, "Ingresar un Valor Valido."); return; }
             else { e.Valid = true; }
+
+            if (chkGeisaDiproe.Checked)
+            {
+                string t_FechaInicio2 = view.GetRowCellValue(e.RowHandle, colFechaInicio2).ToString();
+                if (string.IsNullOrEmpty(t_FechaInicio2))
+                { e.Valid = false; view.SetColumnError(colFechaInicio2, "Ingresar un Valor Valido."); return; }
+                else { e.Valid = true; }
+            }
 
             string estatus = view.GetRowCellValue(e.RowHandle, colPuesto).ToString();
             if (string.IsNullOrEmpty(estatus))
@@ -570,6 +582,11 @@ namespace SistemaGEISA
                 colFechaFin.Caption = colFechaFin2.Caption = "Fecha Fin";
                 colSueldo.Caption = colSueldo2.Caption = " Sueldo";
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

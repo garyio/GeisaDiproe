@@ -103,6 +103,12 @@
     <Compile Include="Formas\frmGastosGeneradosViaticos.Designer.cs">
       <DependentUpon>frmGastosGeneradosViaticos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formas\frmReportePrimaVacacional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\frmReportePrimaVacacional.Designer.cs">
+      <DependentUpon>frmReportePrimaVacacional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formas\frmIngresosMensualesPorEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\frmGastosGeneradosViaticos.resx">
       <DependentUpon>frmGastosGeneradosViaticos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\frmReportePrimaVacacional.resx">
+      <DependentUpon>frmReportePrimaVacacional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\frmIngresosMensualesPorEmpresa.resx">
       <DependentUpon>frmIngresosMensualesPorEmpresa.cs</DependentUpon>
