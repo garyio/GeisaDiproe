@@ -15,11 +15,18 @@ using System.Drawing.Printing;
 using DevExpress.XtraEditors.Popup;
 using DevExpress.Utils.Win;
 
-
 namespace Reportes
 {
     public partial class frmReportePrimaVacacional : DevExpress.XtraEditors.XtraForm
     {
+        GEISAEntities controler = new GEISAEntities(GEISAEntities.DefaultConnectionString);
+        private string puesto { get; set; }
+        private double sueldoReal=0;
+        private Empleado empleado { get; set; }
+        private EmpleadoNomina empleadoNomina { get; set; }
+        private EmpleadoHistorial historial { get; set; }
+        private double total;
+
         public frmReportePrimaVacacional()
         {
             InitializeComponent();
@@ -27,13 +34,12 @@ namespace Reportes
 
         private void llenaCombos()
         {
-            //using (GEISAEntities obra = new GEISAEntities(GEISAEntities.DefaultConnectionString))
-            //{
-            //    luObra.Properties.DataSource = obra.Obra.ToList();
-            //    luObra.Properties.DisplayMember = "Nombre";
-            //    luObra.Properties.ValueMember = "Id";
-            //    luObra.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            //}
+            using (GEISAEntities empleado = new GEISAEntities(GEISAEntities.DefaultConnectionString))
+            {
+                luEmpleado.Properties.DataSource = empleado.Empleado.Where(E => E.Activo == true).ToList().OrderBy(o => o.NombreCompleto);
+                luEmpleado.Properties.DisplayMember = "NombreCompleto";
+                luEmpleado.Properties.ValueMember = "Id";
+            }
 
             using (GEISAEntities empresa = new GEISAEntities(GEISAEntities.DefaultConnectionString))
             {
@@ -42,97 +48,33 @@ namespace Reportes
                 chkEmpresa.ValueMember = "Id";
             }
 
-            using (GEISAEntities obra = new GEISAEntities(GEISAEntities.DefaultConnectionString))
-            {
-                ckListObra.DataSource = obra.Obra.OrderBy(o => o.Nombre).ToList();
-                ckListObra.DisplayMember = "Nombre";
-                ckListObra.ValueMember = "Id";
-                ckListObra.IncrementalSearch = true;
-                //ckListClientes.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            }
-
-            using (GEISAEntities cliente = new GEISAEntities(GEISAEntities.DefaultConnectionString))
-            {
-                ckListClientes.DataSource = cliente.Cliente.ToList().OrderBy(o => o.NombreFiscal);
-                ckListClientes.DisplayMember = "NombreFiscal";
-                ckListClientes.ValueMember = "Id";
-                ckListClientes.SortOrder = System.Windows.Forms.SortOrder.Ascending;
-                ckListClientes.IncrementalSearch = true;
-                //ckListClientes.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            }
+            
         }
 
-        private void frmIngresosMensualesPorEmpresa_Load(object sender, EventArgs e)
+        private void frmReportePrimaVacacional_Load(object sender, EventArgs e)
         {
-            dateIni.EditValue = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            dateFin.EditValue = ((DateTime)dateIni.EditValue).AddMonths(1).AddSeconds(-1);
             llenaCombos();
+            btnLimpiar_Click(null, null);
+            editAño.Value = DateTime.Today.Year;
+            chkEmpresa.Enabled = false;
+            txtSueldoFiscal.ReadOnly = true;
+            editAño.ReadOnly = true;
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox2.Checked == true)
-                ckListObra.CheckAll();
-            else
-                ckListObra.UnCheckAll();
-        }
-
-        private void ckGeisa_CheckedChanged(object sender, EventArgs e)
-        {
-            ckListObra.UnCheckAll();
-            ckListObra.ForceInitialize();
-            for (int i = 0; i < (ckListObra.DataSource as IList).Count; i++)
-            {
-                Obra obra = ckListObra.GetItem(i) as Obra;
-                //Obra CurrentObra= obra.SelectedValue as Obra;
-                if (obra.EmpresaId == TipoEmpresa.GEISA.Id)
-                    if (ckGeisa.Checked == false)
-                        ckListObra.SetItemCheckState(i, CheckState.Unchecked);
-                    else
-                        ckListObra.SetItemCheckState(i, CheckState.Checked);
-                else
-                    ckListObra.SetItemCheckState(i, CheckState.Unchecked);
-            }
-        }
-
-        private void ckDiproe_CheckedChanged(object sender, EventArgs e)
-        {
-            ckListObra.UnCheckAll();
-            ckListObra.ForceInitialize();
-            for (int i = 0; i < (ckListObra.DataSource as IList).Count; i++)
-            {
-                Obra obra = ckListObra.GetItem(i) as Obra;
-                //Obra CurrentObra= obra.SelectedValue as Obra;
-                if (obra.EmpresaId == TipoEmpresa.DIPROE.Id)
-                    if (ckDiproe.Checked == false)
-                        ckListObra.SetItemCheckState(i, CheckState.Unchecked);
-                    else
-                        ckListObra.SetItemCheckState(i, CheckState.Checked);
-                else
-                    ckListObra.SetItemCheckState(i, CheckState.Unchecked);
-
-            }
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked == true)
-                ckListClientes.CheckAll();
-            else
-                ckListClientes.UnCheckAll();
-        }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            //luObra.EditValue = null;
-            dateIni.EditValue = DateTime.Today;
-            dateFin.EditValue = DateTime.Today;
+            luEmpleado.EditValue = null;
+            chkEmpresa.UnCheckAll();
+            txtSueldoFiscal.Text = "0.00";
+            txtDiasPagar.Text = "0.00";
+            txtDiasPagar.Text = "0";
+            editAño.Value = DateTime.Now.Year;
+            lblTotal.Text = "Total: 0.00";
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            string Clientees = string.Empty;
-            string obras = string.Empty;
             string Empresas = string.Empty;
 
             if (chkEmpresa.CheckedItems.Count > 0)
@@ -154,79 +96,59 @@ namespace Reportes
             }
 
 
-            if (ckListClientes.CheckedItems.Count > 0)
-            {
-                foreach (Cliente item in ckListClientes.CheckedItems)
-                {
-                    Clientees = Clientees + string.Concat(item.Id, ",");
-                }
-                Clientees = Clientees.TrimEnd(',');
-            }
-            else
-            {
-                GEISAEntities Cliente = new GEISAEntities(GEISAEntities.DefaultConnectionString);
-                foreach (Cliente item in Cliente.Cliente.ToList())
-                {
-                    Clientees = Clientees + string.Concat(item.Id, ",");
-                }
-                Clientees = Clientees.TrimEnd(',');
-            }
-
-            if (ckListObra.CheckedItems.Count > 0)
-            {
-                foreach (Obra item in ckListObra.CheckedItems)
-                {
-                    obras = obras + string.Concat(item.Id, ",");
-                }
-                obras = obras.TrimEnd(',');
-            }
-            else
-            {
-                GEISAEntities obra = new GEISAEntities(GEISAEntities.DefaultConnectionString);
-                foreach (Obra item in obra.Obra.ToList())
-                {
-                    obras = obras + string.Concat(item.Id, ",");
-                }
-                obras = obras.TrimEnd(',');
-            }
-
-            if (ckListClientes.ItemCount > 0 && chkEmpresa.ItemCount > 0 && ckListObra.ItemCount > 0)
+            if (chkEmpresa.ItemCount > 0 && this.empleado != null && this.empleadoNomina != null)
             {
                 List<ReportParameter> paramReport = new List<ReportParameter>();
+                Empresa empresa;
 
-                ////Valido empresa seleccionada para resumen de facturas rpeorte.
-                //bool geisa=false,diproe=false;
-                //foreach (Empresa item in chkEmpresa.CheckedItems)
-                //{
-                //    if(item == TipoEmpresa.GEISA || item==TipoEmpresa.GEISA_PERIFERICA)
-                //        geisa=true;
-                //    if(item == TipoEmpresa.DIPROE)
-                //        diproe = true;                                            
-                //}
+                //Valido empresa seleccionada para resumen de facturas rpeorte.
+                bool geisa = false, diproe = false;
+                foreach (Empresa item in chkEmpresa.CheckedItems)
+                {
+                    if (item == TipoEmpresa.GEISA || item == TipoEmpresa.GEISA_PERIFERICA)
+                        geisa = true;
+                    if (item == TipoEmpresa.DIPROE)
+                        diproe = true;
+                }
 
-                //if(geisa && diproe)
-
-                //this.viewer.LocalReport.Refresh();
+                if (geisa && diproe)
+                    this.viewer.LocalReport.Refresh();
 
                 this.viewer.LocalReport.EnableExternalImages = true;
-                //if (empresa.Imagen != null)
-                //{
-                //    Image Logo = Funciones.ArrayAImage(empresa.Imagen);
-                //    string strPathAppUser = string.Concat(Application.UserAppDataPath + "\\Logo.jpg");
-                //    Logo.Save(strPathAppUser, System.Drawing.Imaging.ImageFormat.Jpeg);
-                //    paramReport.Add(new ReportParameter("PathLogo", strPathAppUser));
 
+                GEISAEntities _empresa = new GEISAEntities(GEISAEntities.DefaultConnectionString);
+                empresa = geisa ? TipoEmpresa.GEISA : TipoEmpresa.DIPROE;
+                if (empresa.Imagen != null)
+                {
+                    Image Logo = Funciones.ArrayAImage(empresa.Imagen);
+                    string strPathAppUser = string.Concat(Application.UserAppDataPath + "\\Logo.jpg");
+                    Logo.Save(strPathAppUser, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    paramReport.Add(new ReportParameter("PathLogo", strPathAppUser));                        
+                }
+                else
+                {
+                    paramReport.Add(new ReportParameter("PathLogo", string.Empty));
+                    this.viewer.LocalReport.SetParameters(paramReport);
+                }
+                paramReport.Add(new ReportParameter("Empresa", empresa.NombreFiscal));
+                paramReport.Add(new ReportParameter("EmpresaDireccion", "DOM: " + empresa.Direccion.ToUpper() + "\n" + "CP: " + empresa.Domicilio.CodigoPostal + "  " + empresa.Ciudad + "\n" + "TEL: " + empresa.Telefono + "\n" + "RFC: " + empresa.RFC ));
+                paramReport.Add(new ReportParameter("Fiscal",String.Format("{0:c2}", txtSueldoFiscal.Text)));
+                paramReport.Add(new ReportParameter("Complemento", String.Format("{0:c2}", txtComplemento.Text)));
+                paramReport.Add(new ReportParameter("NombreCompleto", this.empleado.NombreCompleto));
+                paramReport.Add(new ReportParameter("Puesto", this.puesto));
+                paramReport.Add(new ReportParameter("RFC", this.empleado.RFC));
+                paramReport.Add(new ReportParameter("CURP", this.empleadoNomina.Curp));
+                paramReport.Add(new ReportParameter("IMSS", this.empleadoNomina.Nss));
+                paramReport.Add(new ReportParameter("Concepto", "PRIMA VACACIONAL " + editAño.Value));
+                paramReport.Add(new ReportParameter("DiasVacaciones", diasVacaciones().ToString()));
+                paramReport.Add(new ReportParameter("Mensaje", "Recibí de" + empresa.NombreFiscal + " la cantidad de: "+ total.ToString("c2")));
+                paramReport.Add(new ReportParameter("CantidadNumeros",Funciones.Num2Text(total.ToString()) ));
+                paramReport.Add(new ReportParameter("Total", this.total.ToString("c2")));
 
-                //    if (paramReport != null)
-                //        this.viewer.LocalReport.SetParameters(paramReport);
-                //}
-                //else
-                //{
-                //    paramReport.Add(new ReportParameter("PathLogo", string.Empty));
-                //    this.viewer.LocalReport.SetParameters(paramReport);
-                //}
+                if(paramReport != null)
+                    this.viewer.LocalReport.SetParameters(paramReport);
 
-                source.DataSource = new IngresosMensualesPorEmpresa(obras, (DateTime)dateIni.EditValue, (DateTime)dateFin.EditValue, Empresas, Clientees).Items;
+                //source.DataSource = new IngresosMensualesPorEmpresa(obras, (DateTime)dateIni.EditValue, (DateTime)dateFin.EditValue, Empresas, Clientees).Items;
                 System.Drawing.Printing.PageSettings pg = new System.Drawing.Printing.PageSettings();
                 pg.Margins.Top = 1;
                 pg.Margins.Bottom = 1;
@@ -235,19 +157,102 @@ namespace Reportes
                 //System.Drawing.Printing.PaperSize size = new PaperSize();
                 //size.RawKind = (int)PaperKind.Letter;
                 //pg.PaperSize = size;
-                pg.Landscape = true;
-                this.viewer.SetPageSettings(pg);
                 this.viewer.ZoomPercent = 100;
                 this.viewer.LocalReport.DisplayName = this.Text;
                 this.viewer.RefreshReport();
             }
         }
 
-        private void dateEdit1_Properties_CalendarTimeProperties_Popup(object sender, EventArgs e)
+        private int diasVacaciones()
         {
-            DateEdit edit = sender as DateEdit;
-            PopupDateEditForm form = (edit as IPopupControl).PopupWindow as PopupDateEditForm;
-            form.Calendar.View = DevExpress.XtraEditors.Controls.DateEditCalendarViewType.YearInfo;
+            EmpleadoHistorial _empleadoHistorial;
+            double añosTrabajados = 0;
+            if (empleadoNomina != null)
+            {
+                bool sueldoCompartido = empleadoNomina.SueldoCompartido.HasValue ? empleadoNomina.SueldoCompartido.Value : false;
+
+                if(sueldoCompartido)
+                    _empleadoHistorial = empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null && E.FechaFin2 == null).DefaultIfEmpty(null).FirstOrDefault();
+                else
+                    _empleadoHistorial = empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null).DefaultIfEmpty(null).FirstOrDefault();
+                //double diasFechaActual = DateTime.Today.Subtract(DateTime.Today).TotalDays;
+                //double diasFechaActual = DateTime.Today.Subtract(DateTime.Today).TotalDays;
+                if (_empleadoHistorial == null)
+                    _empleadoHistorial = empleadoNomina.EmpleadoHistorial.FirstOrDefault();
+                if (_empleadoHistorial == null)
+                    return 0;
+
+                añosTrabajados = (DateTime.Today - (_empleadoHistorial.FechaInicio.HasValue ? _empleadoHistorial.FechaInicio.Value : DateTime.Today)).TotalDays / 365;
+                if (añosTrabajados <= 1)
+                    return 6;
+                else if (añosTrabajados > 1 && añosTrabajados <= 2)
+                    return 8;
+                else if (añosTrabajados > 2 && añosTrabajados <= 3)
+                    return 10;
+                else if (añosTrabajados > 3 && añosTrabajados <= 4)
+                    return 12;
+                else if (añosTrabajados > 4 && añosTrabajados <= 9)
+                    return 14;
+                else if (añosTrabajados > 9 && añosTrabajados <= 14)
+                    return 16;
+                else if (añosTrabajados > 14 && añosTrabajados <= 19)
+                    return 18;
+                else
+                    return 20;
+            }
+            else
+            {
+                return 6;
+            }        
+        }
+
+        private void luEmpleado_EditValueChanged(object sender, EventArgs e)
+        {
+            empleado = luEmpleado.GetSelectedDataRow() as Empleado;
+            empleadoNomina = controler.EmpleadoNomina.Where(X => X.EmpleadoId == empleado.Id).DefaultIfEmpty(null).SingleOrDefault();
+            historial = empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null).FirstOrDefault() : null;
+            if (historial != null)
+                puesto = controler.Dpto_Puesto.Where(D => D.Id == historial.Puesto).FirstOrDefault().Nombre;
+            else
+                puesto = "N/a";
+            sueldoReal = historial != null ? historial.Sueldo.Value : 0;
+            txtDiasPagar.Text = diasVacaciones().ToString();
+            if (empleado != null)
+            {
+                chkEmpresa.Enabled = true;
+                txtSueldoFiscal.ReadOnly = false;
+                editAño.ReadOnly = false;
+            }
+            else
+            {
+                chkEmpresa.Enabled = false;
+                txtSueldoFiscal.ReadOnly = true;
+                editAño.ReadOnly = true;
+            }
+        }
+
+        private void txtSueldoFiscal_TextChanged(object sender, EventArgs e)
+        {
+            double sueldoFiscal = string.IsNullOrEmpty(txtSueldoFiscal.Text) ? 0 : Convert.ToDouble(txtSueldoFiscal.Text);
+            txtComplemento.Text  = (this.sueldoReal / 7 * diasVacaciones() * 0.25 - sueldoFiscal).ToString("N2");
+            Console.WriteLine((7 * diasVacaciones() * 0.25 - sueldoFiscal));
+            this.total = sueldoFiscal + Convert.ToDouble(txtComplemento.Text);
+            lblTotal.Text = "Total:" + this.total.ToString("c2");            
+        }
+
+        private void txtSueldoFiscal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Funciones.validaNumeroDecimal(txtSueldoFiscal.Text))
+                Funciones.soloNumerosDec(sender, e);
+        }
+
+        private void txtSueldoFiscal_Leave(object sender, EventArgs e)
+        {
+            double amount = 0;
+            if (!string.IsNullOrEmpty(txtSueldoFiscal.Text) && double.TryParse(txtSueldoFiscal.Text, out amount))
+                txtSueldoFiscal.Text = Convert.ToDouble(txtSueldoFiscal.Text).ToString("N2");
+            else
+                txtSueldoFiscal.Text = Convert.ToDouble("0").ToString("N2");
         }
     }
 

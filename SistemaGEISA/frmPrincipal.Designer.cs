@@ -37,21 +37,14 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.BarMenu = new DevExpress.XtraNavBar.NavBarControl();
-            this.navOperaciones = new DevExpress.XtraNavBar.NavBarGroup();
-            this.itObra = new DevExpress.XtraNavBar.NavBarItem();
-            this.itContrarecibo = new DevExpress.XtraNavBar.NavBarItem();
-            this.itPagos = new DevExpress.XtraNavBar.NavBarItem();
-            this.itCajaChica = new DevExpress.XtraNavBar.NavBarItem();
-            this.itGastosAdmin = new DevExpress.XtraNavBar.NavBarItem();
-            this.itCajaChicaVehiculo = new DevExpress.XtraNavBar.NavBarItem();
-            this.itReposicionGastos = new DevExpress.XtraNavBar.NavBarItem();
-            this.itTarjetaCredito = new DevExpress.XtraNavBar.NavBarItem();
-            this.itBuscarFactura = new DevExpress.XtraNavBar.NavBarItem();
-            this.itPrestamoEmpresas = new DevExpress.XtraNavBar.NavBarItem();
-            this.itIngresos = new DevExpress.XtraNavBar.NavBarItem();
-            this.itBanco = new DevExpress.XtraNavBar.NavBarItem();
-            this.itOrdenes = new DevExpress.XtraNavBar.NavBarItem();
-            this.itNominas = new DevExpress.XtraNavBar.NavBarItem();
+            this.navReportes = new DevExpress.XtraNavBar.NavBarGroup();
+            this.itCuentaProveedores = new DevExpress.XtraNavBar.NavBarItem();
+            this.itGastosGenerados = new DevExpress.XtraNavBar.NavBarItem();
+            this.itCuentasPorPagar = new DevExpress.XtraNavBar.NavBarItem();
+            this.itIngresosMensuales = new DevExpress.XtraNavBar.NavBarItem();
+            this.itVehiculosGasolina = new DevExpress.XtraNavBar.NavBarItem();
+            this.itNominaSemanal = new DevExpress.XtraNavBar.NavBarItem();
+            this.itPrimaVacacional = new DevExpress.XtraNavBar.NavBarItem();
             this.navAdministracion = new DevExpress.XtraNavBar.NavBarGroup();
             this.itPerfiles = new DevExpress.XtraNavBar.NavBarItem();
             this.itUsuarios = new DevExpress.XtraNavBar.NavBarItem();
@@ -67,16 +60,23 @@
             this.itConceptos = new DevExpress.XtraNavBar.NavBarItem();
             this.itTarjetasCredito = new DevExpress.XtraNavBar.NavBarItem();
             this.itArticulos = new DevExpress.XtraNavBar.NavBarItem();
-            this.navReportes = new DevExpress.XtraNavBar.NavBarGroup();
-            this.itCuentaProveedores = new DevExpress.XtraNavBar.NavBarItem();
-            this.itGastosGenerados = new DevExpress.XtraNavBar.NavBarItem();
-            this.itCuentasPorPagar = new DevExpress.XtraNavBar.NavBarItem();
-            this.itIngresosMensuales = new DevExpress.XtraNavBar.NavBarItem();
-            this.itVehiculosGasolina = new DevExpress.XtraNavBar.NavBarItem();
-            this.itNominaSemanal = new DevExpress.XtraNavBar.NavBarItem();
+            this.navOperaciones = new DevExpress.XtraNavBar.NavBarGroup();
+            this.itObra = new DevExpress.XtraNavBar.NavBarItem();
+            this.itContrarecibo = new DevExpress.XtraNavBar.NavBarItem();
+            this.itPagos = new DevExpress.XtraNavBar.NavBarItem();
+            this.itCajaChica = new DevExpress.XtraNavBar.NavBarItem();
+            this.itGastosAdmin = new DevExpress.XtraNavBar.NavBarItem();
+            this.itCajaChicaVehiculo = new DevExpress.XtraNavBar.NavBarItem();
+            this.itReposicionGastos = new DevExpress.XtraNavBar.NavBarItem();
+            this.itTarjetaCredito = new DevExpress.XtraNavBar.NavBarItem();
+            this.itBuscarFactura = new DevExpress.XtraNavBar.NavBarItem();
+            this.itPrestamoEmpresas = new DevExpress.XtraNavBar.NavBarItem();
+            this.itIngresos = new DevExpress.XtraNavBar.NavBarItem();
+            this.itBanco = new DevExpress.XtraNavBar.NavBarItem();
+            this.itOrdenes = new DevExpress.XtraNavBar.NavBarItem();
+            this.itNominas = new DevExpress.XtraNavBar.NavBarItem();
             this.TabControl = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.itPrimaVacacional = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -220,126 +220,76 @@
             this.BarMenu.Size = new System.Drawing.Size(220, 333);
             this.BarMenu.TabIndex = 1;
             // 
-            // navOperaciones
+            // navReportes
             // 
-            this.navOperaciones.Caption = "Operaciones";
-            this.navOperaciones.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itObra),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itContrarecibo),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itPagos),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itCajaChica),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itGastosAdmin),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itCajaChicaVehiculo),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itReposicionGastos),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itTarjetaCredito),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itBuscarFactura),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itPrestamoEmpresas),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itIngresos),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itBanco),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itOrdenes),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itNominas)});
-            this.navOperaciones.LargeImage = global::SistemaGEISA.Properties.Resources.Movimientos;
-            this.navOperaciones.Name = "navOperaciones";
-            this.navOperaciones.Tag = "Operaciones";
-            this.navOperaciones.TopVisibleLinkIndex = 6;
+            this.navReportes.Caption = "Reportes";
+            this.navReportes.Expanded = true;
+            this.navReportes.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itCuentaProveedores),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itGastosGenerados),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itCuentasPorPagar),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itIngresosMensuales),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itVehiculosGasolina),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itNominaSemanal),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itPrimaVacacional)});
+            this.navReportes.LargeImage = global::SistemaGEISA.Properties.Resources.Reportes;
+            this.navReportes.Name = "navReportes";
+            this.navReportes.Tag = "Reportes";
+            this.navReportes.TopVisibleLinkIndex = 2;
             // 
-            // itObra
+            // itCuentaProveedores
             // 
-            this.itObra.Caption = "Obras";
-            this.itObra.Name = "itObra";
-            this.itObra.SmallImage = global::SistemaGEISA.Properties.Resources.obra;
-            this.itObra.Tag = "frmObras";
+            this.itCuentaProveedores.Caption = "Estado de Cuenta Proveedores";
+            this.itCuentaProveedores.Name = "itCuentaProveedores";
+            this.itCuentaProveedores.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
+            this.itCuentaProveedores.Tag = "frmEstadoCuentaProveedores";
+            this.itCuentaProveedores.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itCuentaProveedores_LinkClicked);
             // 
-            // itContrarecibo
+            // itGastosGenerados
             // 
-            this.itContrarecibo.Caption = "Contra-recibos";
-            this.itContrarecibo.Name = "itContrarecibo";
-            this.itContrarecibo.SmallImage = global::SistemaGEISA.Properties.Resources.archives;
-            this.itContrarecibo.Tag = "frmContrarecibo";
+            this.itGastosGenerados.Caption = "Gastos Generados Obra";
+            this.itGastosGenerados.Name = "itGastosGenerados";
+            this.itGastosGenerados.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
+            this.itGastosGenerados.Tag = "frmGastosGeneradosViaticos";
+            this.itGastosGenerados.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itGastosGenerados_LinkClicked);
             // 
-            // itPagos
+            // itCuentasPorPagar
             // 
-            this.itPagos.Caption = "Pagos";
-            this.itPagos.Name = "itPagos";
-            this.itPagos.SmallImage = global::SistemaGEISA.Properties.Resources.money2;
-            this.itPagos.Tag = "frmPagos";
+            this.itCuentasPorPagar.Caption = "Cuentas por Pagar";
+            this.itCuentasPorPagar.Name = "itCuentasPorPagar";
+            this.itCuentasPorPagar.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
+            this.itCuentasPorPagar.Tag = "frmCuentasPorPagar";
+            this.itCuentasPorPagar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itCuentasPorPagar_LinkClicked);
             // 
-            // itCajaChica
+            // itIngresosMensuales
             // 
-            this.itCajaChica.Caption = "Caja Chica";
-            this.itCajaChica.Name = "itCajaChica";
-            this.itCajaChica.SmallImage = global::SistemaGEISA.Properties.Resources.caja;
-            this.itCajaChica.Tag = "frmCajaChica";
+            this.itIngresosMensuales.Caption = "Resumen Facturas Mensual";
+            this.itIngresosMensuales.Name = "itIngresosMensuales";
+            this.itIngresosMensuales.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
+            this.itIngresosMensuales.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itIngresosMensuales_LinkClicked);
             // 
-            // itGastosAdmin
+            // itVehiculosGasolina
             // 
-            this.itGastosAdmin.Caption = "Gastos Administrativos";
-            this.itGastosAdmin.Name = "itGastosAdmin";
-            this.itGastosAdmin.SmallImage = global::SistemaGEISA.Properties.Resources.Gastos_Adm1;
-            this.itGastosAdmin.Tag = "frmGastosAdministrativos";
+            this.itVehiculosGasolina.Caption = "Vehiculos Gasolina";
+            this.itVehiculosGasolina.Name = "itVehiculosGasolina";
+            this.itVehiculosGasolina.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
+            this.itVehiculosGasolina.Tag = "frmVehiculosGasolina";
+            this.itVehiculosGasolina.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itVehiculosGasolina_LinkClicked);
             // 
-            // itCajaChicaVehiculo
+            // itNominaSemanal
             // 
-            this.itCajaChicaVehiculo.Caption = "Vehículo Caja Chica";
-            this.itCajaChicaVehiculo.Name = "itCajaChicaVehiculo";
-            this.itCajaChicaVehiculo.SmallImage = global::SistemaGEISA.Properties.Resources.Caja_Chica;
-            this.itCajaChicaVehiculo.Tag = "frmCajaChicaVehiculo";
+            this.itNominaSemanal.Caption = "Nomina Semanal";
+            this.itNominaSemanal.Name = "itNominaSemanal";
+            this.itNominaSemanal.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
+            this.itNominaSemanal.Tag = "frmNominaSemanal";
+            this.itNominaSemanal.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itNominaSemanal_LinkClicked);
             // 
-            // itReposicionGastos
+            // itPrimaVacacional
             // 
-            this.itReposicionGastos.Caption = "Reposicion de Gastos";
-            this.itReposicionGastos.Name = "itReposicionGastos";
-            this.itReposicionGastos.SmallImage = global::SistemaGEISA.Properties.Resources.ReposicionGastos;
-            this.itReposicionGastos.Tag = "frmReposicionGastos";
-            // 
-            // itTarjetaCredito
-            // 
-            this.itTarjetaCredito.Caption = "Pagos Tarjetas de Credito";
-            this.itTarjetaCredito.Name = "itTarjetaCredito";
-            this.itTarjetaCredito.SmallImage = global::SistemaGEISA.Properties.Resources.TarjetaDeCredito1;
-            this.itTarjetaCredito.Tag = "frmTarjetasPagos";
-            // 
-            // itBuscarFactura
-            // 
-            this.itBuscarFactura.Caption = "Buscador de Facturas";
-            this.itBuscarFactura.Name = "itBuscarFactura";
-            this.itBuscarFactura.SmallImage = ((System.Drawing.Image)(resources.GetObject("itBuscarFactura.SmallImage")));
-            this.itBuscarFactura.Tag = "frmBuscadorFacturas";
-            // 
-            // itPrestamoEmpresas
-            // 
-            this.itPrestamoEmpresas.Caption = "Prestamos Empresas";
-            this.itPrestamoEmpresas.Name = "itPrestamoEmpresas";
-            this.itPrestamoEmpresas.SmallImage = global::SistemaGEISA.Properties.Resources.Prestamos__2_;
-            this.itPrestamoEmpresas.Tag = "frmPrestamosEmpresas";
-            // 
-            // itIngresos
-            // 
-            this.itIngresos.Caption = "Ingresos";
-            this.itIngresos.Name = "itIngresos";
-            this.itIngresos.SmallImage = ((System.Drawing.Image)(resources.GetObject("itIngresos.SmallImage")));
-            this.itIngresos.Tag = "frmIngresos";
-            // 
-            // itBanco
-            // 
-            this.itBanco.Caption = "Banco";
-            this.itBanco.Name = "itBanco";
-            this.itBanco.SmallImage = ((System.Drawing.Image)(resources.GetObject("itBanco.SmallImage")));
-            this.itBanco.Tag = "frmBancos";
-            // 
-            // itOrdenes
-            // 
-            this.itOrdenes.Caption = "Compras / Salidas Almacen";
-            this.itOrdenes.Name = "itOrdenes";
-            this.itOrdenes.SmallImage = global::SistemaGEISA.Properties.Resources.OrdenesCompra;
-            this.itOrdenes.Tag = "frmOrdenes";
-            // 
-            // itNominas
-            // 
-            this.itNominas.Caption = "Nominas";
-            this.itNominas.Name = "itNominas";
-            this.itNominas.SmallImage = ((System.Drawing.Image)(resources.GetObject("itNominas.SmallImage")));
-            this.itNominas.Tag = "frmNominas";
+            this.itPrimaVacacional.Caption = "Prima Vacacional";
+            this.itPrimaVacacional.Name = "itPrimaVacacional";
+            this.itPrimaVacacional.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
+            this.itPrimaVacacional.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itPrimaVacacional_LinkClicked);
             // 
             // navAdministracion
             // 
@@ -462,69 +412,126 @@
             this.itArticulos.SmallImage = global::SistemaGEISA.Properties.Resources.articulos;
             this.itArticulos.Tag = "frmArticulos";
             // 
-            // navReportes
+            // navOperaciones
             // 
-            this.navReportes.Caption = "Reportes";
-            this.navReportes.Expanded = true;
-            this.navReportes.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itCuentaProveedores),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itGastosGenerados),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itCuentasPorPagar),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itIngresosMensuales),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itVehiculosGasolina),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itNominaSemanal),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.itPrimaVacacional)});
-            this.navReportes.LargeImage = global::SistemaGEISA.Properties.Resources.Reportes;
-            this.navReportes.Name = "navReportes";
-            this.navReportes.Tag = "Reportes";
-            this.navReportes.TopVisibleLinkIndex = 2;
+            this.navOperaciones.Caption = "Operaciones";
+            this.navOperaciones.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itObra),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itContrarecibo),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itPagos),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itCajaChica),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itGastosAdmin),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itCajaChicaVehiculo),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itReposicionGastos),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itTarjetaCredito),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itBuscarFactura),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itPrestamoEmpresas),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itIngresos),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itBanco),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itOrdenes),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itNominas)});
+            this.navOperaciones.LargeImage = global::SistemaGEISA.Properties.Resources.Movimientos;
+            this.navOperaciones.Name = "navOperaciones";
+            this.navOperaciones.Tag = "Operaciones";
+            this.navOperaciones.TopVisibleLinkIndex = 6;
             // 
-            // itCuentaProveedores
+            // itObra
             // 
-            this.itCuentaProveedores.Caption = "Estado de Cuenta Proveedores";
-            this.itCuentaProveedores.Name = "itCuentaProveedores";
-            this.itCuentaProveedores.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
-            this.itCuentaProveedores.Tag = "frmEstadoCuentaProveedores";
-            this.itCuentaProveedores.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itCuentaProveedores_LinkClicked);
+            this.itObra.Caption = "Obras";
+            this.itObra.Name = "itObra";
+            this.itObra.SmallImage = global::SistemaGEISA.Properties.Resources.obra;
+            this.itObra.Tag = "frmObras";
             // 
-            // itGastosGenerados
+            // itContrarecibo
             // 
-            this.itGastosGenerados.Caption = "Gastos Generados Obra";
-            this.itGastosGenerados.Name = "itGastosGenerados";
-            this.itGastosGenerados.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
-            this.itGastosGenerados.Tag = "frmGastosGeneradosViaticos";
-            this.itGastosGenerados.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itGastosGenerados_LinkClicked);
+            this.itContrarecibo.Caption = "Contra-recibos";
+            this.itContrarecibo.Name = "itContrarecibo";
+            this.itContrarecibo.SmallImage = global::SistemaGEISA.Properties.Resources.archives;
+            this.itContrarecibo.Tag = "frmContrarecibo";
             // 
-            // itCuentasPorPagar
+            // itPagos
             // 
-            this.itCuentasPorPagar.Caption = "Cuentas por Pagar";
-            this.itCuentasPorPagar.Name = "itCuentasPorPagar";
-            this.itCuentasPorPagar.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
-            this.itCuentasPorPagar.Tag = "frmCuentasPorPagar";
-            this.itCuentasPorPagar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itCuentasPorPagar_LinkClicked);
+            this.itPagos.Caption = "Pagos";
+            this.itPagos.Name = "itPagos";
+            this.itPagos.SmallImage = global::SistemaGEISA.Properties.Resources.money2;
+            this.itPagos.Tag = "frmPagos";
             // 
-            // itIngresosMensuales
+            // itCajaChica
             // 
-            this.itIngresosMensuales.Caption = "Resumen Facturas Mensual";
-            this.itIngresosMensuales.Name = "itIngresosMensuales";
-            this.itIngresosMensuales.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
-            this.itIngresosMensuales.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itIngresosMensuales_LinkClicked);
+            this.itCajaChica.Caption = "Caja Chica";
+            this.itCajaChica.Name = "itCajaChica";
+            this.itCajaChica.SmallImage = global::SistemaGEISA.Properties.Resources.caja;
+            this.itCajaChica.Tag = "frmCajaChica";
             // 
-            // itVehiculosGasolina
+            // itGastosAdmin
             // 
-            this.itVehiculosGasolina.Caption = "Vehiculos Gasolina";
-            this.itVehiculosGasolina.Name = "itVehiculosGasolina";
-            this.itVehiculosGasolina.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
-            this.itVehiculosGasolina.Tag = "frmVehiculosGasolina";
-            this.itVehiculosGasolina.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itVehiculosGasolina_LinkClicked);
+            this.itGastosAdmin.Caption = "Gastos Administrativos";
+            this.itGastosAdmin.Name = "itGastosAdmin";
+            this.itGastosAdmin.SmallImage = global::SistemaGEISA.Properties.Resources.Gastos_Adm1;
+            this.itGastosAdmin.Tag = "frmGastosAdministrativos";
             // 
-            // itNominaSemanal
+            // itCajaChicaVehiculo
             // 
-            this.itNominaSemanal.Caption = "Nomina Semanal";
-            this.itNominaSemanal.Name = "itNominaSemanal";
-            this.itNominaSemanal.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
-            this.itNominaSemanal.Tag = "frmNominaSemanal";
-            this.itNominaSemanal.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itNominaSemanal_LinkClicked);
+            this.itCajaChicaVehiculo.Caption = "Vehículo Caja Chica";
+            this.itCajaChicaVehiculo.Name = "itCajaChicaVehiculo";
+            this.itCajaChicaVehiculo.SmallImage = global::SistemaGEISA.Properties.Resources.Caja_Chica;
+            this.itCajaChicaVehiculo.Tag = "frmCajaChicaVehiculo";
+            // 
+            // itReposicionGastos
+            // 
+            this.itReposicionGastos.Caption = "Reposicion de Gastos";
+            this.itReposicionGastos.Name = "itReposicionGastos";
+            this.itReposicionGastos.SmallImage = global::SistemaGEISA.Properties.Resources.ReposicionGastos;
+            this.itReposicionGastos.Tag = "frmReposicionGastos";
+            // 
+            // itTarjetaCredito
+            // 
+            this.itTarjetaCredito.Caption = "Pagos Tarjetas de Credito";
+            this.itTarjetaCredito.Name = "itTarjetaCredito";
+            this.itTarjetaCredito.SmallImage = global::SistemaGEISA.Properties.Resources.TarjetaDeCredito1;
+            this.itTarjetaCredito.Tag = "frmTarjetasPagos";
+            // 
+            // itBuscarFactura
+            // 
+            this.itBuscarFactura.Caption = "Buscador de Facturas";
+            this.itBuscarFactura.Name = "itBuscarFactura";
+            this.itBuscarFactura.SmallImage = ((System.Drawing.Image)(resources.GetObject("itBuscarFactura.SmallImage")));
+            this.itBuscarFactura.Tag = "frmBuscadorFacturas";
+            // 
+            // itPrestamoEmpresas
+            // 
+            this.itPrestamoEmpresas.Caption = "Prestamos Empresas";
+            this.itPrestamoEmpresas.Name = "itPrestamoEmpresas";
+            this.itPrestamoEmpresas.SmallImage = global::SistemaGEISA.Properties.Resources.Prestamos__2_;
+            this.itPrestamoEmpresas.Tag = "frmPrestamosEmpresas";
+            // 
+            // itIngresos
+            // 
+            this.itIngresos.Caption = "Ingresos";
+            this.itIngresos.Name = "itIngresos";
+            this.itIngresos.SmallImage = ((System.Drawing.Image)(resources.GetObject("itIngresos.SmallImage")));
+            this.itIngresos.Tag = "frmIngresos";
+            // 
+            // itBanco
+            // 
+            this.itBanco.Caption = "Banco";
+            this.itBanco.Name = "itBanco";
+            this.itBanco.SmallImage = ((System.Drawing.Image)(resources.GetObject("itBanco.SmallImage")));
+            this.itBanco.Tag = "frmBancos";
+            // 
+            // itOrdenes
+            // 
+            this.itOrdenes.Caption = "Compras / Salidas Almacen";
+            this.itOrdenes.Name = "itOrdenes";
+            this.itOrdenes.SmallImage = global::SistemaGEISA.Properties.Resources.OrdenesCompra;
+            this.itOrdenes.Tag = "frmOrdenes";
+            // 
+            // itNominas
+            // 
+            this.itNominas.Caption = "Nominas";
+            this.itNominas.Name = "itNominas";
+            this.itNominas.SmallImage = ((System.Drawing.Image)(resources.GetObject("itNominas.SmallImage")));
+            this.itNominas.Tag = "frmNominas";
             // 
             // TabControl
             // 
@@ -536,12 +543,6 @@
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // itPrimaVacacional
-            // 
-            this.itPrimaVacacional.Caption = "Prima Vacacional";
-            this.itPrimaVacacional.Name = "itPrimaVacacional";
-            this.itPrimaVacacional.SmallImage = global::SistemaGEISA.Properties.Resources.Reporte;
             // 
             // frmPrincipal
             // 

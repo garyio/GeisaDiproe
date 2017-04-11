@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Reportes
 {
@@ -31,6 +33,19 @@ namespace Reportes
 
             res = toText(Convert.ToDouble(entero)) + " PESOS " + dec;
             return res;
+        }
+
+        public static void soloNumerosDec(object sender, KeyPressEventArgs e)
+        {
+            CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
+
+            if (char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator || e.KeyChar.ToString() == cc.NumberFormat.CurrencyGroupSeparator)
+                e.Handled = false;
+            else if (Char.IsControl(e.KeyChar))
+                e.Handled = false;
+            else
+                e.Handled = true;
+
         }
 
         private static string toText(double value)
@@ -96,6 +111,17 @@ namespace Reportes
                 if ((value - Math.Truncate(value / 1000000000000) * 1000000000000) > 0) Num2Text = Num2Text + " " + toText(value - Math.Truncate(value / 1000000000000) * 1000000000000);
             }
             return Num2Text;
+        }
+
+        public static bool validaNumeroDecimal(string numero)
+        {
+            double amount = 0;
+
+            if (double.TryParse(numero, out amount))
+                return true;
+            else
+                return false;
+
         }
 
         ///De image a byte []:

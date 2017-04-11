@@ -389,5 +389,20 @@ namespace SistemaGEISA
                 form.Show();
             }
         }
+
+        private void itPrimaVacacional_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            frmReportePrimaVacacional form = instancias["SistemaGEISA.frmReportePrimaVacacional"] as frmReportePrimaVacacional;
+            if (form == null || form.IsDisposed)
+            {
+                form = new frmReportePrimaVacacional();
+
+                instancias["SistemaGEISA.frmReportePrimaVacacional"] = form;
+
+                form.MdiParent = this;
+
+                form.Show();
+            }
+        }
     }
 }

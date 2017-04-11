@@ -214,8 +214,6 @@ namespace SistemaGEISA
         {
             if (Funciones.validaNumeroDecimal(txtSueldoFiscal.Text))
                 Funciones.soloNumerosDec(sender, e);
-            //else
-            //    txtSueldoFiscal.Text.Remove(txtSueldoFiscal.Text.Length - 1); 
         }
 
         private void txtSueldoFiscal_Leave(object sender, EventArgs e)

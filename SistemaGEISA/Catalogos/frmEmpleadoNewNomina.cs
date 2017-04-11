@@ -145,6 +145,10 @@ namespace SistemaGEISA
                 else
                     _empleadoHistorial = nominaEmpleado.EmpleadoHistorial.Where(E => E.FechaFin == null).DefaultIfEmpty(null).FirstOrDefault();
                 //double diasFechaActual = DateTime.Today.Subtract(DateTime.Today).TotalDays;
+                if(_empleadoHistorial == null)
+                    _empleadoHistorial = nominaEmpleado.EmpleadoHistorial.FirstOrDefault();
+                if (_empleadoHistorial == null)
+                    return 0;
                 añosTrabajados = (DateTime.Today - (_empleadoHistorial.FechaInicio.HasValue ? _empleadoHistorial.FechaInicio.Value : DateTime.Today)).TotalDays / 365;
                 if (añosTrabajados <= 1)
                     return 6;

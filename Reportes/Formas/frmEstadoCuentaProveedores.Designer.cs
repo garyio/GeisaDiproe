@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEstadoCuentaProveedores));
-            this.source = new System.Windows.Forms.BindingSource(this.components);
+            this.source = new System.Windows.Forms.BindingSource();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ckListObra = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.chkListProveedor = new DevExpress.XtraEditors.CheckedListBoxControl();
