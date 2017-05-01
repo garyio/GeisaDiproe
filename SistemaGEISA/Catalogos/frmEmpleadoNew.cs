@@ -9,6 +9,7 @@ namespace SistemaGEISA
     {
         private Controler controler { get; set; }
         public Empleado empleado { get; set; }
+        public EmpleadoNomina empleadoNominda { get; set; }
         Usuario usuario { get; set; }
 
         public bool tienePermisoAgregar, tienePermisoModificar,tienePermisoNominas;
@@ -28,6 +29,7 @@ namespace SistemaGEISA
 
             if (empleado != null)
             {
+                this.empleadoNominda = controler.Model.EmpleadoNomina.FirstOrDefault(X => X.EmpleadoId == this.empleado.Id);
                 txtNombre.Text = empleado.Nombre;
                 txtApPaterno.Text = empleado.ApPaterno;
                 txtApMaterno.Text = empleado.ApMaterno;
@@ -43,7 +45,7 @@ namespace SistemaGEISA
                 else
                     rgContratista.EditValue = 3;
       
-                txtRFC.Text = empleado.RFC;
+                txtRFC.Text = empleadoNominda != null ? empleadoNominda.Rfc : string.Empty;
 
                 usuario = controler.Model.Usuario.Where(f => f.EmpleadoId == empleado.Id).FirstOrDefault();
 
@@ -77,31 +79,31 @@ namespace SistemaGEISA
             }
 
             //Validando RFC
-            areValid &= isValid = ValidaRFC();
-            controler.SetError(txtRFC, isValid ? string.Empty : "El RFC ya existe, Favor de Verificar");
+            //areValid &= isValid = ValidaRFC();
+            //controler.SetError(txtRFC, isValid ? string.Empty : "El RFC ya existe, Favor de Verificar");
 
             return areValid;
         }
 
-        private bool ValidaRFC()
-        {
-            if (this.empleado != null)
-            {
-                int rfcs = controler.Model.Empleado.Where(p => p.RFC == txtRFC.Text.Trim() && p.Id != empleado.Id).Count();
-                if (rfcs == 0)
-                    return true;
-                else
-                    return false;
-            }
-            else
-            {
-                int rfcs = controler.Model.Empleado.Where(p => p.RFC == txtRFC.Text.Trim()).Count();
-                if (rfcs == 0)
-                    return true;
-                else
-                    return false;
-            }
-        }
+        //private bool ValidaRFC()
+        //{
+        //    if (this.empleado != null)
+        //    {
+        //        int rfcs = controler.Model.Empleado.Where(p => p.RFC == txtRFC.Text.Trim() && p.Id != empleado.Id).Count();
+        //        if (rfcs == 0)
+        //            return true;
+        //        else
+        //            return false;
+        //    }
+        //    else
+        //    {
+        //        int rfcs = controler.Model.Empleado.Where(p => p.RFC == txtRFC.Text.Trim()).Count();
+        //        if (rfcs == 0)
+        //            return true;
+        //        else
+        //            return false;
+        //    }
+        //}
         #endregion
 
         #region Controles
@@ -162,7 +164,7 @@ namespace SistemaGEISA
                     empleado.EsContratistaPrincipal = false;
                     empleado.EsContratista = false;
                 }              
-                empleado.RFC = txtRFC.Text.Trim();
+                //empleado.RFC = txtRFC.Text.Trim();
                 if (!empleado.NoEsNuevo) controler.Model.AddToEmpleado(empleado);
 
                 if (chkUsuario.Checked)
@@ -230,7 +232,7 @@ namespace SistemaGEISA
             if (this.empleado != null)
                 abrirForm(true);
             else
-                new frmMessageBox(true) { Message = "Favor de Guardar los Cmabios del Empleado, antes de Capturar la Nomina.", Title = "Aviso" }.ShowDialog();
+                new frmMessageBox(true) { Message = "Favor de Guardar los Cambios del Empleado, antes de Capturar la Nomina.", Title = "Aviso" }.ShowDialog();
         }
 
         private void abrirForm(bool nuevo)
@@ -240,14 +242,7 @@ namespace SistemaGEISA
             form.Text = "Nomina " + this.empleado.NombreCompleto + " - " + (nuevo ? "Nuevo" : "Editar");
 
             form.ShowDialog();
-        }
-
-        private void txtRFC_Leave(object sender, EventArgs e)
-        {
-            if (ValidaRFC() == false)
-            {
-                new frmMessageBox(true) { Message = "RFC En uso, Favor de Verificar.", Title = "Aviso" }.ShowDialog();
-            }
+            frmEmpleadoNew_Load(null, null);
         }
     }
 }

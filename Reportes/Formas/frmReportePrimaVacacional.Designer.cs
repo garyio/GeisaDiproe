@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportePrimaVacacional));
             this.label1 = new System.Windows.Forms.Label();
             this.chkEmpresa = new DevExpress.XtraEditors.CheckedListBoxControl();
@@ -47,9 +48,11 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtTipoPago = new System.Windows.Forms.TextBox();
             this.editAño = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.source = new System.Windows.Forms.BindingSource();
+            this.label7 = new System.Windows.Forms.Label();
+            this.source = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chkEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luEmpleado.Properties)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -97,6 +100,7 @@
             this.label3.Size = new System.Drawing.Size(76, 27);
             this.label3.TabIndex = 23;
             this.label3.Text = "Monto Fiscal:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtSueldoFiscal
             // 
@@ -127,6 +131,7 @@
             this.label4.Size = new System.Drawing.Size(76, 27);
             this.label4.TabIndex = 23;
             this.label4.Text = "Complemento:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTotal
             // 
@@ -166,6 +171,7 @@
             this.label6.Size = new System.Drawing.Size(87, 27);
             this.label6.TabIndex = 62;
             this.label6.Text = "Periodo a Pagar:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtDiasPagar
             // 
@@ -284,10 +290,12 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.Controls.Add(this.txtTipoPago, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.editAño, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtDiasPagar, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(448, 140);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -297,6 +305,15 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(240, 102);
             this.tableLayoutPanel3.TabIndex = 62;
+            // 
+            // txtTipoPago
+            // 
+            this.txtTipoPago.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTipoPago.Location = new System.Drawing.Point(96, 57);
+            this.txtTipoPago.Name = "txtTipoPago";
+            this.txtTipoPago.ReadOnly = true;
+            this.txtTipoPago.Size = new System.Drawing.Size(141, 21);
+            this.txtTipoPago.TabIndex = 68;
             // 
             // editAño
             // 
@@ -321,6 +338,18 @@
             this.label5.TabIndex = 66;
             this.label5.Text = "Dias a Pagar:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(3, 54);
+            this.label7.Name = "label7";
+            this.label7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.label7.Size = new System.Drawing.Size(87, 48);
+            this.label7.TabIndex = 67;
+            this.label7.Text = "Tipo de Pago:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // source
             // 
@@ -374,5 +403,7 @@
         private System.Windows.Forms.Button btnLimpiar;
         private Microsoft.Reporting.WinForms.ReportViewer viewer;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTipoPago;
+        private System.Windows.Forms.Label label7;
     }
 }

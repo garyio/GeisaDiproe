@@ -129,6 +129,12 @@
     <Compile Include="Formas\frmVehiculosGasolina.Designer.cs">
       <DependentUpon>frmVehiculosGasolina.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageBox.Designer.cs">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formas\frmVehiculosGasolina.resx">
       <DependentUpon>frmVehiculosGasolina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessageBox.resx">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrint.resx">
       <DependentUpon>frmPrint.cs</DependentUpon>
@@ -277,6 +286,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\No.png" />
     <None Include="Resources\Si.png" />
     <None Include="Resources\Imprimir.png" />
     <Content Include="Resources\Limpiar.png" />

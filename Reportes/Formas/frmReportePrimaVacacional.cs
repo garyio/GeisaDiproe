@@ -19,6 +19,15 @@ namespace Reportes
 {
     public partial class frmReportePrimaVacacional : DevExpress.XtraEditors.XtraForm
     {
+        enum tipoNominas
+        {
+            Semanal = 1,
+            Quincenal = 2,
+            Mensual = 3
+        };
+
+        int diasLaborables = 0;
+
         GEISAEntities controler = new GEISAEntities(GEISAEntities.DefaultConnectionString);
         private string puesto { get; set; }
         private double sueldoReal=0;
@@ -64,13 +73,19 @@ namespace Reportes
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            luEmpleado.EditValue = null;
             chkEmpresa.UnCheckAll();
             txtSueldoFiscal.Text = "0.00";
+            txtComplemento.Text = "0.00";
             txtDiasPagar.Text = "0.00";
             txtDiasPagar.Text = "0";
             editAño.Value = DateTime.Now.Year;
             lblTotal.Text = "Total: 0.00";
+            total = 0;
+            empleado = null;
+            empleadoNomina = null;
+            historial = null;
+            puesto = string.Empty;
+            sueldoReal = 0;
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
@@ -128,12 +143,12 @@ namespace Reportes
                 else
                 {
                     paramReport.Add(new ReportParameter("PathLogo", string.Empty));
-                    this.viewer.LocalReport.SetParameters(paramReport);
+                    
                 }
                 paramReport.Add(new ReportParameter("Empresa", empresa.NombreFiscal));
                 paramReport.Add(new ReportParameter("EmpresaDireccion", "DOM: " + empresa.Direccion.ToUpper() + "\n" + "CP: " + empresa.Domicilio.CodigoPostal + "  " + empresa.Ciudad + "\n" + "TEL: " + empresa.Telefono + "\n" + "RFC: " + empresa.RFC ));
-                paramReport.Add(new ReportParameter("Fiscal",String.Format("{0:c2}", txtSueldoFiscal.Text)));
-                paramReport.Add(new ReportParameter("Complemento", String.Format("{0:c2}", txtComplemento.Text)));
+                paramReport.Add(new ReportParameter("Fiscal", txtSueldoFiscal.Text));
+                paramReport.Add(new ReportParameter("Complemento",txtComplemento.Text));
                 paramReport.Add(new ReportParameter("NombreCompleto", this.empleado.NombreCompleto));
                 paramReport.Add(new ReportParameter("Puesto", this.puesto));
                 paramReport.Add(new ReportParameter("RFC", this.empleado.RFC));
@@ -141,9 +156,9 @@ namespace Reportes
                 paramReport.Add(new ReportParameter("IMSS", this.empleadoNomina.Nss));
                 paramReport.Add(new ReportParameter("Concepto", "PRIMA VACACIONAL " + editAño.Value));
                 paramReport.Add(new ReportParameter("DiasVacaciones", diasVacaciones().ToString()));
-                paramReport.Add(new ReportParameter("Mensaje", "Recibí de" + empresa.NombreFiscal + " la cantidad de: "+ total.ToString("c2")));
+                paramReport.Add(new ReportParameter("Mensaje", "Recibí de " + empresa.NombreFiscal + " la cantidad de: "+ total.ToString("c2")));
                 paramReport.Add(new ReportParameter("CantidadNumeros",Funciones.Num2Text(total.ToString()) ));
-                paramReport.Add(new ReportParameter("Total", this.total.ToString("c2")));
+                paramReport.Add(new ReportParameter("Total", this.total.ToString()));
 
                 if(paramReport != null)
                     this.viewer.LocalReport.SetParameters(paramReport);
@@ -180,7 +195,7 @@ namespace Reportes
                 if (_empleadoHistorial == null)
                     _empleadoHistorial = empleadoNomina.EmpleadoHistorial.FirstOrDefault();
                 if (_empleadoHistorial == null)
-                    return 0;
+                    return 6;
 
                 añosTrabajados = (DateTime.Today - (_empleadoHistorial.FechaInicio.HasValue ? _empleadoHistorial.FechaInicio.Value : DateTime.Today)).TotalDays / 365;
                 if (añosTrabajados <= 1)
@@ -208,8 +223,9 @@ namespace Reportes
 
         private void luEmpleado_EditValueChanged(object sender, EventArgs e)
         {
+            btnLimpiar_Click(null, null);
             empleado = luEmpleado.GetSelectedDataRow() as Empleado;
-            empleadoNomina = controler.EmpleadoNomina.Where(X => X.EmpleadoId == empleado.Id).DefaultIfEmpty(null).SingleOrDefault();
+            empleadoNomina = controler.EmpleadoNomina.Where(X => X.EmpleadoId == empleado.Id).DefaultIfEmpty(null).FirstOrDefault();
             historial = empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null).FirstOrDefault() : null;
             if (historial != null)
                 puesto = controler.Dpto_Puesto.Where(D => D.Id == historial.Puesto).FirstOrDefault().Nombre;
@@ -229,13 +245,39 @@ namespace Reportes
                 txtSueldoFiscal.ReadOnly = true;
                 editAño.ReadOnly = true;
             }
+
+            //obtengo los dias laborables
+            if (empleadoNomina.TipoNomina.HasValue)
+            {
+                if (empleadoNomina.TipoNomina == Convert.ToInt32(tipoNominas.Mensual))
+                {
+                    txtTipoPago.Text = "MENSUAL";
+                    diasLaborables = 30;
+                }
+                else if (empleadoNomina.TipoNomina == Convert.ToInt32(tipoNominas.Quincenal))
+                {
+                    txtTipoPago.Text = "QUINCENAL";
+                    diasLaborables = 15;
+                }
+                else
+                {
+                    txtTipoPago.Text = "SEMANAL";
+                    diasLaborables = 7;
+                }
+            }
+            else
+            {
+                txtTipoPago.Text = "PERIODO PENDIENTE";
+                diasLaborables = 7;
+                new frmMessageBox(true) { Message = "No se capturo el Tipo de Nomina para este Empleado por Default se usara 7 dias laborables", Title = "Aviso" }.ShowDialog();
+
+            }
         }
 
         private void txtSueldoFiscal_TextChanged(object sender, EventArgs e)
         {
             double sueldoFiscal = string.IsNullOrEmpty(txtSueldoFiscal.Text) ? 0 : Convert.ToDouble(txtSueldoFiscal.Text);
-            txtComplemento.Text  = (this.sueldoReal / 7 * diasVacaciones() * 0.25 - sueldoFiscal).ToString("N2");
-            Console.WriteLine((7 * diasVacaciones() * 0.25 - sueldoFiscal));
+            txtComplemento.Text  = (this.sueldoReal / diasLaborables * diasVacaciones() * 0.25 - sueldoFiscal).ToString("N2");
             this.total = sueldoFiscal + Convert.ToDouble(txtComplemento.Text);
             lblTotal.Text = "Total:" + this.total.ToString("c2");            
         }

@@ -80,7 +80,7 @@ namespace SistemaGEISA
                 dtFechaNacimiento.EditValue = empleadoNominda.FechaNacimiento;
                 txtNss.Text = empleadoNominda.Nss;
                 txtDomicilio.Text = empleadoNominda.Domicilio;
-                //txtRfc.Text = empleadoNominda.Rfc;
+                txtRFC.Text = empleadoNominda.Rfc;
                 txtCurp.Text = empleadoNominda.Curp;
                 txtCreditoInfonavit.Text = empleadoNominda.CreditoInfonavit;
                 txtMontoInfonavit.Text = empleadoNominda.MontoRetener.HasValue ? empleadoNominda.MontoRetener.Value.ToString("N2") : string.Empty;
@@ -389,7 +389,7 @@ namespace SistemaGEISA
                     empleadoNominda.FechaNacimiento = (DateTime)dtFechaNacimiento.EditValue;
                     empleadoNominda.Nss = txtNss.Text.ToUpper();
                     empleadoNominda.Domicilio = txtDomicilio.Text.ToUpper();
-                    //empleadoNominda.Rfc = txtRfc.Text.ToUpper();
+                    empleadoNominda.Rfc = txtRFC.Text.ToUpper();
                     empleadoNominda.Curp = txtCurp.Text.ToUpper();
                     empleadoNominda.CuentaBanco = txtCtaBancaria.Text.ToUpper();
                     empleadoNominda.Cable = txtClabe.Text.ToUpper();
@@ -507,6 +507,10 @@ namespace SistemaGEISA
                 controler.SetError(luEmpresa, isValid ? string.Empty : "Seleccione una Empresa");
             }
 
+            //Validando RFC
+            areValid &= isValid = ValidaRFC();
+            controler.SetError(txtRFC, isValid ? string.Empty : "El RFC ya existe, Favor de Verificar");
+
             return areValid;
         }
 
@@ -591,6 +595,34 @@ namespace SistemaGEISA
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtRFC_Leave(object sender, EventArgs e)
+        {
+            if (ValidaRFC() == false)
+            {
+                new frmMessageBox(true) { Message = "RFC En uso, Favor de Verificar.", Title = "Aviso" }.ShowDialog();
+            }
+        }
+
+        private bool ValidaRFC()
+        {
+            if (this.empleado != null)
+            {
+                int rfcs = controler.Model.Empleado.Where(p => p.RFC == txtRFC.Text.Trim() && p.Id != empleado.Id).Count();
+                if (rfcs == 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                int rfcs = controler.Model.Empleado.Where(p => p.RFC == txtRFC.Text.Trim()).Count();
+                if (rfcs == 0)
+                    return true;
+                else
+                    return false;
+            }
         }
     }
 }

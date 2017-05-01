@@ -506,9 +506,9 @@ namespace SistemaGEISA
             controler.SetError(txtImporte, isValid ? string.Empty : "Valor Obligatorio, Favor de Seleccionar");            
 
             int folio = Convert.ToInt32(txtFolio.Text);
-            if ( Convert.ToInt32(luEmpresa.EditValue) == 1)
+            if ( Convert.ToInt32(luEmpresa.EditValue) == TipoEmpresa.DIPROE.Id)
             {
-                if (controler.Model.Factura.Where(f => f.FolioNum == folio && f.EmpresaId == 1).Count() > 0 && this.Text != "Facturas : Editar")
+                if (controler.Model.Factura.Where(f => f.FolioNum == folio && f.EmpresaId == TipoEmpresa.DIPROE.Id).Count() > 0 && this.Text != "Facturas : Editar")
                 {
                     areValid &= isValid = false;
                     controler.SetError(txtFolio, isValid ? string.Empty : "Folio Actualmente en Uso, No es posible Guardar.");
@@ -517,7 +517,7 @@ namespace SistemaGEISA
             }
             else
             {
-                if (controler.Model.Factura.Where(f => f.FolioNum == folio && f.EmpresaId == 2).Count() > 0 && this.Text != "Facturas : Editar")
+                if (controler.Model.Factura.Where(f => f.FolioNum == folio && f.EmpresaId == TipoEmpresa.GEISA.Id).Count() > 0 && this.Text != "Facturas : Editar")
                 {
                     areValid &= isValid = false;
                     controler.SetError(txtFolio, isValid ? string.Empty : "Folio Actualmente en Uso, No es posible Guardar.");
@@ -532,7 +532,6 @@ namespace SistemaGEISA
                 controler.SetError(txtImporte, isValid ? string.Empty : "Importe, solo cantidades Numericas.");
                 //new frmMessageBox(true) { Message = "Importe, solo cantidades Numericas.", Title = "Aviso" }.ShowDialog();
             }
-
 
             return areValid;            
         }

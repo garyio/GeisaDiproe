@@ -35,6 +35,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabEmpleado = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.rgContratista = new DevExpress.XtraEditors.RadioGroup();
             this.txtRFC = new System.Windows.Forms.TextBox();
             this.chkObra = new DevExpress.XtraEditors.CheckEdit();
             this.txtApMaterno = new System.Windows.Forms.TextBox();
@@ -61,12 +62,12 @@
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.rgContratista = new DevExpress.XtraEditors.RadioGroup();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.tabEmpleado.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgContratista.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkObra.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkResidente.Properties)).BeginInit();
@@ -74,7 +75,6 @@
             this.tabUsuario.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookupPerfil.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rgContratista.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // menu
@@ -172,6 +172,21 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(483, 200);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
+            // rgContratista
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.rgContratista, 3);
+            this.rgContratista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rgContratista.EditValue = 3;
+            this.rgContratista.Location = new System.Drawing.Point(101, 166);
+            this.rgContratista.Name = "rgContratista";
+            this.rgContratista.Properties.Columns = 3;
+            this.rgContratista.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Contratista Principal"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Contratista"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(3, "N/A")});
+            this.rgContratista.Size = new System.Drawing.Size(369, 21);
+            this.rgContratista.TabIndex = 78;
+            // 
             // txtRFC
             // 
             this.txtRFC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -180,9 +195,9 @@
             this.txtRFC.Location = new System.Drawing.Point(101, 8);
             this.txtRFC.MaxLength = 13;
             this.txtRFC.Name = "txtRFC";
+            this.txtRFC.ReadOnly = true;
             this.txtRFC.Size = new System.Drawing.Size(369, 21);
             this.txtRFC.TabIndex = 25;
-            this.txtRFC.Leave += new System.EventHandler(this.txtRFC_Leave);
             // 
             // chkObra
             // 
@@ -354,7 +369,7 @@
             this.tabUsuario.Controls.Add(this.tableLayoutPanel2);
             this.tabUsuario.Name = "tabUsuario";
             this.tabUsuario.PageVisible = false;
-            this.tabUsuario.Size = new System.Drawing.Size(374, 200);
+            this.tabUsuario.Size = new System.Drawing.Size(483, 200);
             this.tabUsuario.Text = "Usuario";
             // 
             // tableLayoutPanel2
@@ -380,7 +395,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(374, 200);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(483, 200);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
             // lookupPerfil
@@ -396,7 +411,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
             this.lookupPerfil.Properties.NullText = "";
             this.lookupPerfil.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookupPerfil.Size = new System.Drawing.Size(289, 20);
+            this.lookupPerfil.Size = new System.Drawing.Size(398, 20);
             this.lookupPerfil.TabIndex = 8;
             // 
             // txtEmail
@@ -406,7 +421,7 @@
             this.txtEmail.Location = new System.Drawing.Point(77, 88);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(289, 21);
+            this.txtEmail.Size = new System.Drawing.Size(398, 21);
             this.txtEmail.TabIndex = 10;
             // 
             // txtPassw
@@ -416,7 +431,7 @@
             this.txtPassw.Location = new System.Drawing.Point(77, 35);
             this.txtPassw.MaxLength = 50;
             this.txtPassw.Name = "txtPassw";
-            this.txtPassw.Size = new System.Drawing.Size(289, 21);
+            this.txtPassw.Size = new System.Drawing.Size(398, 21);
             this.txtPassw.TabIndex = 7;
             this.txtPassw.UseSystemPasswordChar = true;
             // 
@@ -452,7 +467,7 @@
             this.txtLogin.Location = new System.Drawing.Point(77, 8);
             this.txtLogin.MaxLength = 50;
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(289, 21);
+            this.txtLogin.Size = new System.Drawing.Size(398, 21);
             this.txtLogin.TabIndex = 4;
             // 
             // label8
@@ -479,21 +494,6 @@
             this.label9.Text = "E-Mail";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // rgContratista
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.rgContratista, 3);
-            this.rgContratista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rgContratista.EditValue = 3;
-            this.rgContratista.Location = new System.Drawing.Point(101, 166);
-            this.rgContratista.Name = "rgContratista";
-            this.rgContratista.Properties.Columns = 3;
-            this.rgContratista.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Contratista Principal"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Contratista"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(3, "N/A")});
-            this.rgContratista.Size = new System.Drawing.Size(369, 21);
-            this.rgContratista.TabIndex = 78;
-            // 
             // frmEmpleadoNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -515,6 +515,7 @@
             this.tabEmpleado.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgContratista.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkObra.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkResidente.Properties)).EndInit();
@@ -523,7 +524,6 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookupPerfil.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rgContratista.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

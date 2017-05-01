@@ -20,9 +20,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.15835cm</Top>
-        <Left>0.42016cm</Left>
-        <Height>0.6cm</Height>
+        <Top>0.47585cm</Top>
+        <Left>1.63868cm</Left>
+        <Height>0.5cm</Height>
         <Width>1.60042cm</Width>
         <Style>
           <Border>
@@ -52,8 +52,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.57002cm</Top>
-        <Left>2.90396cm</Left>
+        <Top>1.66393cm</Top>
+        <Left>4.17396cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>1</ZIndex>
@@ -85,8 +85,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.89946cm</Top>
-        <Left>2.90396cm</Left>
+        <Top>1.08168cm</Top>
+        <Left>4.17396cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>2</ZIndex>
@@ -98,74 +98,6 @@
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox8">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Parameters!Fiscal.Value</Value>
-                <Style>
-                  <FontFamily>Cambria</FontFamily>
-                  <Format>'$'#,0.00;('$'#,0.00)</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.89946cm</Top>
-        <Left>0.40396cm</Left>
-        <Height>0.5cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-          <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox9">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Parameters!Complemento.Value</Value>
-                <Style>
-                  <FontFamily>Cambria</FontFamily>
-                  <Format>'$'#,0.00;('$'#,0.00)</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.57002cm</Top>
-        <Left>0.40396cm</Left>
-        <Height>0.5cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-          <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
         </Style>
       </Textbox>
       <Textbox Name="Textbox17">
@@ -186,11 +118,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>0.15835cm</Top>
+        <Top>0.47585cm</Top>
         <Left>8.81754cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -218,11 +150,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>0.15835cm</Top>
+        <Top>0.47585cm</Top>
         <Left>11.49393cm</Left>
         <Height>0.5cm</Height>
         <Width>6.78625cm</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -251,11 +183,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>0.77587cm</Top>
+        <Top>1.08168cm</Top>
         <Left>8.81754cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -283,11 +215,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>0.77587cm</Top>
+        <Top>1.08168cm</Top>
         <Left>11.49393cm</Left>
         <Height>0.5cm</Height>
         <Width>6.78625cm</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -316,11 +248,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>1.45226cm</Top>
+        <Top>1.66393cm</Top>
         <Left>8.81754cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -348,11 +280,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>1.45226cm</Top>
+        <Top>1.66393cm</Top>
         <Left>11.49393cm</Left>
         <Height>0.5cm</Height>
         <Width>6.78625cm</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -381,11 +313,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>2.12865cm</Top>
+        <Top>2.23448cm</Top>
         <Left>8.81754cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -413,11 +345,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>2.12865cm</Top>
+        <Top>2.23448cm</Top>
         <Left>11.49393cm</Left>
         <Height>0.5cm</Height>
         <Width>6.78625cm</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -450,7 +382,7 @@
         <Left>8.81754cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -482,7 +414,7 @@
         <Left>11.49393cm</Left>
         <Height>0.5cm</Height>
         <Width>6.78625cm</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -511,11 +443,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>3.48143cm</Top>
+        <Top>3.37559cm</Top>
         <Left>8.81754cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>13</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -543,11 +475,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>3.48143cm</Top>
+        <Top>3.37559cm</Top>
         <Left>11.49393cm</Left>
         <Height>0.5cm</Height>
         <Width>6.78625cm</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>14</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -577,11 +509,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox31</rd:DefaultName>
-        <Top>4.05199cm</Top>
+        <Top>4.36949cm</Top>
         <Left>1.69016cm</Left>
-        <Height>1.12917cm</Height>
+        <Height>0.7323cm</Height>
         <Width>15.63752cm</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -616,7 +548,7 @@
         <Left>1.69016cm</Left>
         <Height>0.60583cm</Height>
         <Width>15.65372cm</Width>
-        <ZIndex>18</ZIndex>
+        <ZIndex>16</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -629,11 +561,11 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>8.12231cm</Top>
-        <Left>4.49474cm</Left>
+        <Top>7.80481cm</Top>
+        <Left>10.87185cm</Left>
         <Height>0cm</Height>
         <Width>7.40833cm</Width>
-        <ZIndex>19</ZIndex>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -659,11 +591,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>8.26342cm</Top>
-        <Left>4.49474cm</Left>
+        <Top>7.94592cm</Top>
+        <Left>10.87185cm</Left>
         <Height>0.6cm</Height>
         <Width>7.40833cm</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -684,22 +616,26 @@
                 <Value>="Dias de Vacaciones: " + Parameters!DiasVacaciones.Value + " Dia/Dias."</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>3.48143cm</Top>
-        <Left>4.49474cm</Left>
-        <Height>0.5cm</Height>
-        <Width>4.14641cm</Width>
-        <ZIndex>21</ZIndex>
+        <Top>3.79893cm</Top>
+        <Left>8.81754cm</Left>
+        <Height>0.53528cm</Height>
+        <Width>9.46264cm</Width>
+        <ZIndex>19</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
+          <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -724,11 +660,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>2.17585cm</Top>
-        <Left>2.90396cm</Left>
+        <Top>2.23448cm</Top>
+        <Left>4.1475cm</Left>
         <Height>0.5cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>22</ZIndex>
+        <ZIndex>20</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -763,19 +699,17 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>2.17585cm</Top>
-        <Left>0.42016cm</Left>
+        <Top>2.23448cm</Top>
+        <Left>1.63868cm</Left>
         <Height>0.5cm</Height>
         <Width>2.4838cm</Width>
-        <ZIndex>23</ZIndex>
+        <ZIndex>21</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
           <TopBorder>
-            <Color>Black</Color>
             <Style>Solid</Style>
-            <Width>1pt</Width>
           </TopBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -784,14 +718,95 @@
           <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!Fiscal.Value</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <Format>'$'#,0.00;('$'#,0.00)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>1.08168cm</Top>
+        <Left>1.63868cm</Left>
+        <Height>0.5cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!Complemento.Value</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <Format>'$'#,0.00;('$'#,0.00)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>1.66393cm</Top>
+        <Left>1.63868cm</Left>
+        <Height>0.5cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Rectangle Name="Rectangle1">
+        <KeepTogether>true</KeepTogether>
+        <Top>0.14111cm</Top>
+        <Left>0.3175cm</Left>
+        <Height>8.72231cm</Height>
+        <Width>18.94164cm</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
     </ReportItems>
-    <Height>3.48954in</Height>
+    <Height>3.61454in</Height>
     <Style />
   </Body>
-  <Width>7.30109in</Width>
+  <Width>7.68651in</Width>
   <Page>
     <PageHeader>
-      <Height>2.37847cm</Height>
+      <Height>2.9869cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -799,7 +814,9 @@
           <Source>External</Source>
           <Value>="file:" &amp; Parameters!PathLogo.Value</Value>
           <Sizing>FitProportional</Sizing>
-          <Height>2.27264cm</Height>
+          <Top>0.07044cm</Top>
+          <Left>0.3175cm</Left>
+          <Height>2.83709cm</Height>
           <Width>3.14cm</Width>
           <Style>
             <Border>
@@ -827,10 +844,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox21</rd:DefaultName>
-          <Top>0.09854cm</Top>
-          <Left>3.1411cm</Left>
+          <Top>0.67056cm</Top>
+          <Left>4.44528cm</Left>
           <Height>0.85847cm</Height>
-          <Width>11.4978cm</Width>
+          <Width>10.79926cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -860,10 +877,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox26</rd:DefaultName>
-          <Top>0.99997cm</Top>
-          <Left>3.20808cm</Left>
-          <Height>1.27267cm</Height>
-          <Width>11.43081cm</Width>
+          <Top>1.52903cm</Top>
+          <Left>4.44528cm</Left>
+          <Height>1.3785cm</Height>
+          <Width>10.79926cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -882,7 +899,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Fecha:</Value>
+                  <Value EvaluationMode="Constant">Guadalajara, Jal. a</Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>8pt</FontSize>
@@ -895,10 +912,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0.30424cm</Top>
-          <Left>14.71302cm</Left>
+          <Top>0.05718cm</Top>
+          <Left>13.02018cm</Left>
           <Height>0.5cm</Height>
-          <Width>1.25646cm</Width>
+          <Width>3.16146cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -921,7 +938,7 @@
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>8pt</FontSize>
-                    <Format>d</Format>
+                    <Format>d' de 'MMMM' de 'yyyy</Format>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -931,10 +948,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
-          <Top>0.30424cm</Top>
-          <Left>16.01407cm</Left>
+          <Top>0.05718cm</Top>
+          <Left>16.21692cm</Left>
           <Height>0.5cm</Height>
-          <Width>1.94861cm</Width>
+          <Width>3.04222cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -980,13 +997,11 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="Fiscal">
-      <DataType>String</DataType>
-      <AllowBlank>true</AllowBlank>
+      <DataType>Float</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="Complemento">
-      <DataType>String</DataType>
-      <AllowBlank>true</AllowBlank>
+      <DataType>Float</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="NombreCompleto">
@@ -1035,11 +1050,11 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="Total">
-      <DataType>String</DataType>
-      <AllowBlank>true</AllowBlank>
+      <DataType>Float</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
+  <Language>es-MX</Language>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>83aa18dd-f6ad-4136-877e-57a3f10670d5</rd:ReportID>
 </Report>
