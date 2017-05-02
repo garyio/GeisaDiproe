@@ -501,20 +501,7 @@ namespace SistemaGEISA
 
         private void grid_Click(object sender, EventArgs e)
         {
-            if (gv.FocusedColumn.FieldName == "Detalle")
-            {
-                if (item != null)
-                {
-                    var form = new frmIngresosDetalle(Controler);
-                    form.Text = "Detalle Transacciones";
-                    form.obra = this.obra;
-                    form.factura = Controler.Model.Factura.FirstOrDefault(f => f.Id == item.Id);
-                    form.ShowDialog();
-                    frmIngresos_Load(null, null);
-                    luObra_EditValueChanged(sender, null);
-                    gv_FocusedRowChanged(null, null);
-                }
-            }
+
         }
 
         private void btnAgregarAbono_Click(object sender, EventArgs e)
@@ -973,6 +960,24 @@ namespace SistemaGEISA
             }
 
 
+        }
+
+        private void gv_Click(object sender, EventArgs e)
+        {
+            if (gv.FocusedColumn.Name == "colDetalle" && !gv.IsSizingState)
+            {
+                if (item != null)
+                {
+                    var form = new frmIngresosDetalle(Controler);
+                    form.Text = "Detalle Transacciones";
+                    form.obra = this.obra;
+                    form.factura = Controler.Model.Factura.FirstOrDefault(f => f.Id == item.Id);
+                    form.ShowDialog();
+                    frmIngresos_Load(null, null);
+                    luObra_EditValueChanged(sender, null);
+                    gv_FocusedRowChanged(null, null);
+                }
+            }
         }
     }
 }

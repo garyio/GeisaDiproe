@@ -457,7 +457,6 @@
             this.grid.UseEmbeddedNavigator = true;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv});
-            this.grid.Click += new System.EventHandler(this.grid_Click);
             // 
             // gv
             // 
@@ -493,8 +492,11 @@
             this.gv.OptionsView.ShowFooter = true;
             this.gv.OptionsView.ShowGroupPanel = false;
             this.gv.PaintStyleName = "Skin";
+            this.gv.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colFecha, DevExpress.Data.ColumnSortOrder.Descending)});
             this.gv.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_RowStyle);
             this.gv.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gv_FocusedRowChanged);
+            this.gv.Click += new System.EventHandler(this.gv_Click);
             this.gv.DoubleClick += new System.EventHandler(this.gv_DoubleClick);
             // 
             // colId
@@ -514,7 +516,7 @@
             this.colFolio.OptionsColumn.ReadOnly = true;
             this.colFolio.Visible = true;
             this.colFolio.VisibleIndex = 3;
-            this.colFolio.Width = 53;
+            this.colFolio.Width = 47;
             // 
             // colFecha
             // 
@@ -527,7 +529,7 @@
             this.colFecha.OptionsColumn.ReadOnly = true;
             this.colFecha.Visible = true;
             this.colFecha.VisibleIndex = 2;
-            this.colFecha.Width = 53;
+            this.colFecha.Width = 78;
             // 
             // colSubtotal
             // 
@@ -542,7 +544,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Subtotal", "{0:c2}")});
             this.colSubtotal.Visible = true;
             this.colSubtotal.VisibleIndex = 4;
-            this.colSubtotal.Width = 61;
+            this.colSubtotal.Width = 54;
             // 
             // colIva
             // 
@@ -558,7 +560,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Iva", "{0:c2}")});
             this.colIva.Visible = true;
             this.colIva.VisibleIndex = 5;
-            this.colIva.Width = 61;
+            this.colIva.Width = 54;
             // 
             // colTotal
             // 
@@ -573,7 +575,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:c2}")});
             this.colTotal.Visible = true;
             this.colTotal.VisibleIndex = 6;
-            this.colTotal.Width = 87;
+            this.colTotal.Width = 79;
             // 
             // colNc
             // 
@@ -603,7 +605,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ObraCivil", "{0:c2}")});
             this.colObraCivil.Visible = true;
             this.colObraCivil.VisibleIndex = 7;
-            this.colObraCivil.Width = 65;
+            this.colObraCivil.Width = 58;
             // 
             // colSubcontratistas
             // 
@@ -618,7 +620,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Subcontratistas", "{0:c2}")});
             this.colSubcontratistas.Visible = true;
             this.colSubcontratistas.VisibleIndex = 8;
-            this.colSubcontratistas.Width = 65;
+            this.colSubcontratistas.Width = 58;
             // 
             // colSuministros
             // 
@@ -633,7 +635,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Suministros", "{0:c2}")});
             this.colSuministros.Visible = true;
             this.colSuministros.VisibleIndex = 9;
-            this.colSuministros.Width = 65;
+            this.colSuministros.Width = 58;
             // 
             // colExtras
             // 
@@ -648,7 +650,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Extras", "{0:c2}")});
             this.colExtras.Visible = true;
             this.colExtras.VisibleIndex = 10;
-            this.colExtras.Width = 65;
+            this.colExtras.Width = 58;
             // 
             // colMantenimiento
             // 
@@ -663,7 +665,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Mantenimiento", "{0:c2}")});
             this.colMantenimiento.Visible = true;
             this.colMantenimiento.VisibleIndex = 11;
-            this.colMantenimiento.Width = 65;
+            this.colMantenimiento.Width = 58;
             // 
             // colNA
             // 
@@ -678,7 +680,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "No_Aplica", "{0:c2}")});
             this.colNA.Visible = true;
             this.colNA.VisibleIndex = 12;
-            this.colNA.Width = 65;
+            this.colNA.Width = 58;
             // 
             // colPagos
             // 
@@ -693,7 +695,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Pagos", "{0:c2}")});
             this.colPagos.Visible = true;
             this.colPagos.VisibleIndex = 14;
-            this.colPagos.Width = 65;
+            this.colPagos.Width = 58;
             // 
             // colObservaciones
             // 
@@ -704,7 +706,7 @@
             this.colObservaciones.OptionsColumn.ReadOnly = true;
             this.colObservaciones.Visible = true;
             this.colObservaciones.VisibleIndex = 16;
-            this.colObservaciones.Width = 185;
+            this.colObservaciones.Width = 275;
             // 
             // colDetalle
             // 
@@ -742,7 +744,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Saldo", "{0:C2}")});
             this.colSaldo.Visible = true;
             this.colSaldo.VisibleIndex = 15;
-            this.colSaldo.Width = 79;
+            this.colSaldo.Width = 53;
             // 
             // colFechaCancelacion
             // 
@@ -755,7 +757,7 @@
             this.colFechaCancelacion.OptionsColumn.ReadOnly = true;
             this.colFechaCancelacion.Visible = true;
             this.colFechaCancelacion.VisibleIndex = 1;
-            this.colFechaCancelacion.Width = 53;
+            this.colFechaCancelacion.Width = 52;
             // 
             // toolStrip1
             // 

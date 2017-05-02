@@ -223,8 +223,11 @@ namespace Reportes
                 //    paramReport.Add(new ReportParameter("PathLogo", string.Empty));
                 //    this.viewer.LocalReport.SetParameters(paramReport);
                 //}
+                this.viewer.LocalReport.DataSources.Clear();
+                this.viewer.LocalReport.DataSources.Add(new ReportDataSource { Name = "dsIngresosMensuales", Value = new BindingSource { DataSource = new IngresosMensualesPorEmpresa(obras, (DateTime)dateIni.EditValue, (DateTime)dateFin.EditValue, Empresas, Clientees).Items } });
+                this.viewer.LocalReport.ReportEmbeddedResource = "Reportes.Diseño." + rgReporte.EditValue.ToString() + ".rdlc";
 
-                source.DataSource = new IngresosMensualesPorEmpresa(obras, (DateTime)dateIni.EditValue, (DateTime)dateFin.EditValue, Empresas, Clientees).Items;
+                //source.DataSource = new IngresosMensualesPorEmpresa(obras, (DateTime)dateIni.EditValue, (DateTime)dateFin.EditValue, Empresas, Clientees).Items;
                 System.Drawing.Printing.PageSettings pg = new System.Drawing.Printing.PageSettings();
                 pg.Margins.Top = 1;
                 pg.Margins.Bottom = 1;

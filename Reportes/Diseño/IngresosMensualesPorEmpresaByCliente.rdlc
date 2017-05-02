@@ -97,7 +97,7 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Tablix Name="Tablix1">
+          <Tablix Name="Tablix2">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
@@ -107,7 +107,7 @@
                   <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.02375cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.79646cm</Width>
@@ -115,11 +115,11 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>1.56cm</Height>
+                  <Height>1.51cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox352">
+                        <Textbox Name="Textbox256">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -139,7 +139,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox352</rd:DefaultName>
+                          <rd:DefaultName>Textbox256</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>White</Color>
@@ -156,7 +156,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox58">
+                        <Textbox Name="Textbox257">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -176,7 +176,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox58</rd:DefaultName>
+                          <rd:DefaultName>Textbox257</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>White</Color>
@@ -193,7 +193,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox353">
+                        <Textbox Name="Textbox260">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -213,7 +213,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox353</rd:DefaultName>
+                          <rd:DefaultName>Textbox260</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>White</Color>
@@ -230,7 +230,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox357">
+                        <Textbox Name="Textbox261">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -250,7 +250,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox357</rd:DefaultName>
+                          <rd:DefaultName>Textbox261</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>White</Color>
@@ -272,7 +272,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox3">
+                        <Textbox Name="Textbox22">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -309,45 +309,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox68">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Fecha Pago</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontWeight>SemiBold</FontWeight>
-                                    <Color>White</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox68</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>SteelBlue</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox15">
+                        <Textbox Name="Textbox23">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -384,13 +346,50 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox1">
+                        <Textbox Name="Textbox25">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Obra</Value>
+                                  <Value>Fecha Pago</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>SemiBold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox24</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox26">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Obra </Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>SemiBold</FontWeight>
@@ -426,7 +425,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Monto_Pago">
+                        <Textbox Name="Monto_Pago2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -470,50 +469,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="FechaPago">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!FechaPago.Value</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7.5pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Format>d</Format>
-                                    <Color>=Switch(
-Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
-,Fields!Facutura.Value like "*NC*", "Red"
-)</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>FechaPago</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>= Switch(
-Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaCancelacion.Value&lt;&gt;nothing,"Transparent","Gold")
-)</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Diferencia">
+                        <Textbox Name="Diferencia2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -557,7 +513,49 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ObraNombre">
+                        <Textbox Name="FechaPago2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!FechaPago.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>7.5pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Format>d</Format>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>FechaPago</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>= Switch(
+Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaCancelacion.Value&lt;&gt;nothing,"Transparent","Gold")
+)</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ObraNombre2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -603,7 +601,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Monto_Pago1">
+                        <Textbox Name="Monto_Pago3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -614,21 +612,25 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Monto_Pago1</rd:DefaultName>
+                          <rd:DefaultName>Monto_Pago3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -640,7 +642,48 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox82">
+                        <Textbox Name="Diferencia3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=sum(Fields!Diferencia.Value)</Value>
+                                  <Style>
+                                    <FontFamily>calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Diferencia3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox191">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -650,21 +693,25 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                   <Value />
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox82</rd:DefaultName>
+                          <rd:DefaultName>Textbox191</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -675,18 +722,62 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Diferencia1">
+                        <Textbox Name="Textbox192">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!Diferencia.Value)</Value>
+                                  <Value />
                                   <Style>
-                                    <FontFamily>Calibri</FontFamily>
+                                    <FontFamily>calibri</FontFamily>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox192</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Monto_Pago12">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!Monto_Pago.Value)</Value>
+                                  <Style>
+                                    <FontFamily>calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -694,13 +785,14 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Diferencia1</rd:DefaultName>
+                          <rd:DefaultName>Monto_Pago3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Tan</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -712,7 +804,45 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox35">
+                        <Textbox Name="Diferencia12">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!Diferencia.Value)</Value>
+                                  <Style>
+                                    <FontFamily>calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Diferencia3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Tan</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox86">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -721,6 +851,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                 <TextRun>
                                   <Value />
                                   <Style>
+                                    <FontFamily>Calibri</FontFamily>
                                     <FontSize>7.5pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
                                   </Style>
@@ -729,13 +860,50 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox35</rd:DefaultName>
+                          <rd:DefaultName>Textbox86</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Tan</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox87">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>7.5pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox87</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Tan</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -760,12 +928,13 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.65031cm</Size>
+                    <Size>5.65413cm</Size>
                     <CellContents>
-                      <Image Name="Image9">
+                      <Image Name="Logo2">
                         <Source>Embedded</Source>
-                        <Value>Geisa</Value>
+                        <Value>Geisa1</Value>
                         <Sizing>FitProportional</Sizing>
+                        <ZIndex>7</ZIndex>
                         <Style>
                           <Border>
                             <Style>None</Style>
@@ -777,9 +946,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.13269cm</Size>
+                        <Size>1.65031cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox39">
+                          <Textbox Name="Textbox254">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -787,17 +956,25 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                 <TextRuns>
                                   <TextRun>
                                     <Value />
-                                    <Style />
+                                    <Style>
+                                      <FontFamily>Calibri</FontFamily>
+                                      <FontWeight>SemiBold</FontWeight>
+                                      <Color>White</Color>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox39</rd:DefaultName>
+                            <rd:DefaultName>Textbox254</rd:DefaultName>
                             <Style>
                               <Border>
+                                <Color>White</Color>
                                 <Style>None</Style>
                               </Border>
+                              <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -809,9 +986,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>5.65413cm</Size>
+                            <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox85">
+                              <Textbox Name="Textbox14">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
@@ -819,17 +996,25 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     <TextRuns>
                                       <TextRun>
                                         <Value />
-                                        <Style />
+                                        <Style>
+                                          <FontFamily>Calibri</FontFamily>
+                                          <FontWeight>SemiBold</FontWeight>
+                                          <Color>White</Color>
+                                        </Style>
                                       </TextRun>
                                     </TextRuns>
-                                    <Style />
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox85</rd:DefaultName>
+                                <rd:DefaultName>Textbox14</rd:DefaultName>
                                 <Style>
                                   <Border>
+                                    <Color>White</Color>
                                     <Style>None</Style>
                                   </Border>
+                                  <VerticalAlign>Middle</VerticalAlign>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -843,7 +1028,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="Textbox80">
+                                  <Textbox Name="Textbox102">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -863,7 +1048,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                         </Style>
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>Textbox80</rd:DefaultName>
+                                    <rd:DefaultName>Textbox102</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>White</Color>
@@ -891,15 +1076,15 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.65031cm</Size>
+                    <Size>5.65413cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox7">
+                      <Textbox Name="Textbox119">
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Fact.</Value>
+                                <Value>Cliente</Value>
                                 <Style>
                                   <FontFamily>Calibri</FontFamily>
                                   <FontWeight>SemiBold</FontWeight>
@@ -912,7 +1097,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox7</rd:DefaultName>
+                        <rd:DefaultName>Textbox119</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -931,16 +1116,15 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.13269cm</Size>
+                        <Size>1.65031cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox40">
-                            <CanGrow>true</CanGrow>
+                          <Textbox Name="Textbox11">
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Fecha</Value>
+                                    <Value>Fact.</Value>
                                     <Style>
                                       <FontFamily>Calibri</FontFamily>
                                       <FontWeight>SemiBold</FontWeight>
@@ -953,7 +1137,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox40</rd:DefaultName>
+                            <rd:DefaultName>Textbox7</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -972,15 +1156,16 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>5.65413cm</Size>
+                            <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox10">
+                              <Textbox Name="Textbox15">
+                                <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>Cliente</Value>
+                                        <Value>Fecha</Value>
                                         <Style>
                                           <FontFamily>Calibri</FontFamily>
                                           <FontWeight>SemiBold</FontWeight>
@@ -993,7 +1178,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox10</rd:DefaultName>
+                                <rd:DefaultName>Textbox15</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
@@ -1014,7 +1199,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="Textbox81">
+                                  <Textbox Name="Textbox103">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -1034,7 +1219,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                         </Style>
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>Textbox81</rd:DefaultName>
+                                    <rd:DefaultName>Textbox103</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>LightGrey</Color>
@@ -1062,29 +1247,28 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Facutura">
+                  <Group Name="Cliente1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Facutura.Value</GroupExpression>
+                      <GroupExpression>=Fields!Cliente.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Facutura.Value</Value>
+                      <Value>=Fields!Cliente.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.65031cm</Size>
+                    <Size>5.65413cm</Size>
                     <CellContents>
-                      <Textbox Name="Facutura1">
+                      <Textbox Name="Cliente11">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=Fields!Facutura.Value</Value>
+                                <Value>=Fields!Cliente.Value</Value>
                                 <Style>
-                                  <FontFamily>Calibri</FontFamily>
                                   <FontSize>7.5pt</FontSize>
                                   <FontWeight>Normal</FontWeight>
                                   <Color>=Switch(
@@ -1098,7 +1282,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Facutura1</rd:DefaultName>
+                        <rd:DefaultName>Cliente11</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -1118,32 +1302,43 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
+                      <Group Name="Facutura2">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!Facutura.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!Facutura.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
                       <TablixHeader>
-                        <Size>2.13269cm</Size>
+                        <Size>1.65031cm</Size>
                         <CellContents>
-                          <Textbox Name="Fecha1">
+                          <Textbox Name="Facutura2">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>=Fields!Fecha.Value</Value>
+                                    <Value>=Fields!Facutura.Value</Value>
                                     <Style>
                                       <FontFamily>Calibri</FontFamily>
                                       <FontSize>7.5pt</FontSize>
                                       <FontWeight>Normal</FontWeight>
-                                      <Format>d</Format>
                                       <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
 )</Color>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Fecha1</rd:DefaultName>
+                            <rd:DefaultName>Facutura1</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -1163,41 +1358,34 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                       </TablixHeader>
                       <TablixMembers>
                         <TablixMember>
-                          <Group Name="Cliente">
-                            <GroupExpressions>
-                              <GroupExpression>=Fields!Cliente.Value</GroupExpression>
-                            </GroupExpressions>
-                          </Group>
-                          <SortExpressions>
-                            <SortExpression>
-                              <Value>=Fields!Cliente.Value</Value>
-                            </SortExpression>
-                          </SortExpressions>
                           <TablixHeader>
-                            <Size>5.65413cm</Size>
+                            <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Cliente1">
+                              <Textbox Name="Fecha1">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Cliente.Value</Value>
+                                        <Value>=Fields!Fecha.Value</Value>
                                         <Style>
                                           <FontFamily>Calibri</FontFamily>
                                           <FontSize>7.5pt</FontSize>
                                           <FontWeight>Normal</FontWeight>
+                                          <Format>d</Format>
                                           <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
 )</Color>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
-                                    <Style />
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Cliente1</rd:DefaultName>
+                                <rd:DefaultName>Fecha1</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
@@ -1217,7 +1405,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                           </TablixHeader>
                           <TablixMembers>
                             <TablixMember>
-                              <Group Name="TotalFactura">
+                              <Group Name="TotalFactura2">
                                 <GroupExpressions>
                                   <GroupExpression>=Fields!TotalFactura.Value</GroupExpression>
                                 </GroupExpressions>
@@ -1230,7 +1418,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="TotalFactura">
+                                  <Textbox Name="TotalFactura21">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -1253,7 +1441,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                         <Style />
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>TotalFactura</rd:DefaultName>
+                                    <rd:DefaultName>TotalFactura21</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>LightGrey</Color>
@@ -1274,7 +1462,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               </TablixHeader>
                               <TablixMembers>
                                 <TablixMember>
-                                  <Group Name="Detalles" />
+                                  <Group Name="Detalles2" />
                                   <SortExpressions>
                                     <SortExpression>
                                       <Value>=Fields!Fecha.Value</Value>
@@ -1287,73 +1475,41 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                         </TablixMember>
                       </TablixMembers>
                     </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.65031cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox9">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Total</Value>
-                                <Style>
-                                  <FontSize>7.5pt</FontSize>
-                                  <FontWeight>Bold</FontWeight>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox9</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>LightGrey</BackgroundColor>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.13269cm</Size>
+                        <Size>1.65031cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox43">
+                          <Textbox Name="Textbox185">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value />
+                                    <Value>Total</Value>
                                     <Style>
-                                      <FontSize>7.5pt</FontSize>
+                                      <FontFamily>calibri</FontFamily>
+                                      <FontSize>8.5pt</FontSize>
                                       <FontWeight>Bold</FontWeight>
+                                      <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox43</rd:DefaultName>
+                            <rd:DefaultName>Textbox185</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
                               <BackgroundColor>LightGrey</BackgroundColor>
+                              <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -1365,9 +1521,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>5.65413cm</Size>
+                            <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox13">
+                              <Textbox Name="Textbox18">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
@@ -1376,21 +1532,28 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                       <TextRun>
                                         <Value />
                                         <Style>
-                                          <FontSize>7.5pt</FontSize>
+                                          <FontFamily>calibri</FontFamily>
+                                          <FontSize>8.5pt</FontSize>
                                           <FontWeight>Bold</FontWeight>
+                                          <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
-                                    <Style />
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox13</rd:DefaultName>
+                                <rd:DefaultName>Textbox18</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
                                     <Style>Solid</Style>
                                   </Border>
                                   <BackgroundColor>LightGrey</BackgroundColor>
+                                  <VerticalAlign>Middle</VerticalAlign>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -1404,7 +1567,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="TotalFactura1">
+                                  <Textbox Name="TotalFactura3">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -1417,24 +1580,200 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                               <FontSize>8pt</FontSize>
                                               <FontWeight>Bold</FontWeight>
                                               <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                              <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
                                         <Style />
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>TotalFactura1</rd:DefaultName>
+                                    <rd:DefaultName>TotalFactura3</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>LightGrey</Color>
                                         <Style>Solid</Style>
                                       </Border>
                                       <BackgroundColor>LightGrey</BackgroundColor>
+                                      <VerticalAlign>Middle</VerticalAlign>
                                       <PaddingLeft>2pt</PaddingLeft>
                                       <PaddingRight>2pt</PaddingRight>
                                       <PaddingTop>2pt</PaddingTop>
                                       <PaddingBottom>2pt</PaddingBottom>
                                       <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember />
+                              </TablixMembers>
+                            </TablixMember>
+                          </TablixMembers>
+                        </TablixMember>
+                      </TablixMembers>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>5.65413cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox78">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Gran Total</Value>
+                                <Style>
+                                  <FontFamily>Calibri</FontFamily>
+                                  <FontSize>7.5pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox78</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <BackgroundColor>Tan</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1.65031cm</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox79">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value />
+                                    <Style>
+                                      <FontFamily>Calibri</FontFamily>
+                                      <FontSize>7.5pt</FontSize>
+                                      <FontWeight>Normal</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox79</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BackgroundColor>Tan</BackgroundColor>
+                              <VerticalAlign>Middle</VerticalAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>2.5cm</Size>
+                            <CellContents>
+                              <Textbox Name="Textbox19">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value />
+                                        <Style>
+                                          <FontFamily>Calibri</FontFamily>
+                                          <FontSize>7.5pt</FontSize>
+                                          <FontWeight>Normal</FontWeight>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>Textbox19</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Color>LightGrey</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>Tan</BackgroundColor>
+                                  <VerticalAlign>Middle</VerticalAlign>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember>
+                              <TablixHeader>
+                                <Size>2.5cm</Size>
+                                <CellContents>
+                                  <Textbox Name="Textbox106">
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value />
+                                            <Style>
+                                              <FontFamily>calibri</FontFamily>
+                                              <FontSize>8pt</FontSize>
+                                              <FontWeight>Bold</FontWeight>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>Textbox106</rd:DefaultName>
+                                    <Style>
+                                      <Border>
+                                        <Color>LightGrey</Color>
+                                        <Style>Solid</Style>
+                                      </Border>
+                                      <BackgroundColor>Tan</BackgroundColor>
+                                      <VerticalAlign>Middle</VerticalAlign>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                      <PaddingTop>2pt</PaddingTop>
+                                      <PaddingBottom>2pt</PaddingBottom>
                                     </Style>
                                   </Textbox>
                                 </CellContents>
@@ -1469,8 +1808,8 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                 <Value>=Fields!Fecha.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Height>3.66cm</Height>
-            <Width>23.23359cm</Width>
+            <Height>4.21cm</Height>
+            <Width>23.12465cm</Width>
             <Visibility>
               <Hidden>=Iif(CountRows()&gt;0,False,True)</Hidden>
             </Visibility>
@@ -1480,7 +1819,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
               </Border>
             </Style>
           </Tablix>
-          <Tablix Name="Tablix6">
+          <Tablix Name="Tablix4">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
@@ -1490,7 +1829,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.02375cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.79646cm</Width>
@@ -1498,11 +1837,11 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>1.56cm</Height>
+                  <Height>1.51cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox361">
+                        <Textbox Name="Textbox265">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1522,7 +1861,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox352</rd:DefaultName>
+                          <rd:DefaultName>Textbox256</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>White</Color>
@@ -1539,7 +1878,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox12">
+                        <Textbox Name="Textbox266">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1559,7 +1898,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <rd:DefaultName>Textbox257</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>White</Color>
@@ -1576,7 +1915,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox362">
+                        <Textbox Name="Textbox269">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1596,7 +1935,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox353</rd:DefaultName>
+                          <rd:DefaultName>Textbox260</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>White</Color>
@@ -1613,7 +1952,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox366">
+                        <Textbox Name="Textbox270">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1633,7 +1972,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox357</rd:DefaultName>
+                          <rd:DefaultName>Textbox261</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>White</Color>
@@ -1655,7 +1994,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox65">
+                        <Textbox Name="Textbox45">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1692,45 +2031,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox14">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Fecha Pago</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontWeight>SemiBold</FontWeight>
-                                    <Color>White</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox14</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>SteelBlue</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox66">
+                        <Textbox Name="Textbox46">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1767,7 +2068,44 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox70">
+                        <Textbox Name="Textbox49">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Fecha Pago</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>SemiBold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox24</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox50">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1809,7 +2147,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Monto_Pago10">
+                        <Textbox Name="Monto_Pago6">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1853,51 +2191,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="FechaPago1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!FechaPago.Value</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>7.5pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Format>d</Format>
-                                    <Color>=Switch(
-Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
-,Fields!Facutura.Value like "*NC*", "Red"
-)</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>FechaPago1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>= Switch(
-Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaCancelacion.Value&lt;&gt;nothing,"Transparent","Gold")
-)</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <rd:Selected>true</rd:Selected>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Diferencia10">
+                        <Textbox Name="Diferencia6">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1941,7 +2235,50 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ObraNombre5">
+                        <Textbox Name="FechaPago4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!FechaPago.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>7.5pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Format>d</Format>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>FechaPago</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>= Switch(
+Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaCancelacion.Value&lt;&gt;nothing,"Transparent","Gold")
+)</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <rd:Selected>true</rd:Selected>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ObraNombre3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1987,7 +2324,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Monto_Pago11">
+                        <Textbox Name="Monto_Pago7">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1998,21 +2335,25 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Monto_Pago1</rd:DefaultName>
+                          <rd:DefaultName>Monto_Pago3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2024,7 +2365,48 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox18">
+                        <Textbox Name="Diferencia7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!Diferencia.Value)</Value>
+                                  <Style>
+                                    <FontFamily>calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Diferencia3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox196">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -2034,21 +2416,25 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                   <Value />
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox18</rd:DefaultName>
+                          <rd:DefaultName>Textbox191</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2059,18 +2445,62 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Diferencia11">
+                        <Textbox Name="Textbox197">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Diferencia.Value)</Value>
+                                  <Value />
                                   <Style>
-                                    <FontFamily>Calibri</FontFamily>
+                                    <FontFamily>calibri</FontFamily>
+                                    <FontSize>8.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox192</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Monto_Pago14">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!Monto_Pago.Value)</Value>
+                                  <Style>
+                                    <FontFamily>calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -2078,13 +2508,14 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Diferencia1</rd:DefaultName>
+                          <rd:DefaultName>Monto_Pago3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Tan</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2096,7 +2527,45 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox76">
+                        <Textbox Name="Diferencia14">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!Diferencia.Value)</Value>
+                                  <Style>
+                                    <FontFamily>calibri</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Diferencia3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Tan</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox99">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -2105,6 +2574,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                 <TextRun>
                                   <Value />
                                   <Style>
+                                    <FontFamily>Calibri</FontFamily>
                                     <FontSize>7.5pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
                                   </Style>
@@ -2113,13 +2583,50 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox35</rd:DefaultName>
+                          <rd:DefaultName>Textbox99</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Tan</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox100">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>7.5pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox100</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Tan</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2144,12 +2651,13 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.65031cm</Size>
+                    <Size>5.65413cm</Size>
                     <CellContents>
-                      <Image Name="Image10">
+                      <Image Name="Logo3">
                         <Source>Embedded</Source>
                         <Value>Diproe</Value>
                         <Sizing>FitProportional</Sizing>
+                        <ZIndex>7</ZIndex>
                         <Style>
                           <Border>
                             <Style>None</Style>
@@ -2161,9 +2669,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.13269cm</Size>
+                        <Size>1.65031cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox2">
+                          <Textbox Name="Textbox263">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -2183,7 +2691,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox2</rd:DefaultName>
+                            <rd:DefaultName>Textbox254</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>White</Color>
@@ -2201,9 +2709,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>5.65413cm</Size>
+                            <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox359">
+                              <Textbox Name="Textbox1">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
@@ -2223,7 +2731,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox350</rd:DefaultName>
+                                <rd:DefaultName>Textbox1</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>White</Color>
@@ -2243,7 +2751,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="Textbox94">
+                                  <Textbox Name="Textbox107">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -2263,7 +2771,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                         </Style>
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>Textbox94</rd:DefaultName>
+                                    <rd:DefaultName>Textbox107</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>White</Color>
@@ -2291,15 +2799,15 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.65031cm</Size>
+                    <Size>5.65413cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox20">
+                      <Textbox Name="Textbox120">
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Fact.</Value>
+                                <Value>Cliente</Value>
                                 <Style>
                                   <FontFamily>Calibri</FontFamily>
                                   <FontWeight>SemiBold</FontWeight>
@@ -2312,7 +2820,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox7</rd:DefaultName>
+                        <rd:DefaultName>Textbox119</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -2331,16 +2839,15 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.13269cm</Size>
+                        <Size>1.65031cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox5">
-                            <CanGrow>true</CanGrow>
+                          <Textbox Name="Textbox29">
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Fecha</Value>
+                                    <Value>Fact.</Value>
                                     <Style>
                                       <FontFamily>Calibri</FontFamily>
                                       <FontWeight>SemiBold</FontWeight>
@@ -2353,7 +2860,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox5</rd:DefaultName>
+                            <rd:DefaultName>Textbox7</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -2372,15 +2879,16 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>5.65413cm</Size>
+                            <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox28">
+                              <Textbox Name="Textbox2">
+                                <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>Cliente</Value>
+                                        <Value>Fecha</Value>
                                         <Style>
                                           <FontFamily>Calibri</FontFamily>
                                           <FontWeight>SemiBold</FontWeight>
@@ -2393,7 +2901,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                     </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox10</rd:DefaultName>
+                                <rd:DefaultName>Textbox2</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
@@ -2414,7 +2922,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="Textbox95">
+                                  <Textbox Name="Textbox108">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -2434,7 +2942,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                         </Style>
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>Textbox95</rd:DefaultName>
+                                    <rd:DefaultName>Textbox108</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>LightGrey</Color>
@@ -2462,27 +2970,27 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Facutura6">
+                  <Group Name="Cliente3">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Facutura.Value</GroupExpression>
+                      <GroupExpression>=Fields!Cliente.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Facutura.Value</Value>
+                      <Value>=Fields!Cliente.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.65031cm</Size>
+                    <Size>5.65413cm</Size>
                     <CellContents>
-                      <Textbox Name="Facutura6">
+                      <Textbox Name="Cliente12">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=Fields!Facutura.Value</Value>
+                                <Value>=Fields!Cliente.Value</Value>
                                 <Style>
                                   <FontFamily>Calibri</FontFamily>
                                   <FontSize>7.5pt</FontSize>
@@ -2498,7 +3006,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             </Style>
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Facutura1</rd:DefaultName>
+                        <rd:DefaultName>Cliente11</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -2518,32 +3026,43 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                   </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
+                      <Group Name="Facutura4">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!Facutura.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!Facutura.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
                       <TablixHeader>
-                        <Size>2.13269cm</Size>
+                        <Size>1.65031cm</Size>
                         <CellContents>
-                          <Textbox Name="Fecha">
+                          <Textbox Name="Facutura4">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>=Fields!Fecha.Value</Value>
+                                    <Value>=Fields!Facutura.Value</Value>
                                     <Style>
                                       <FontFamily>Calibri</FontFamily>
                                       <FontSize>7.5pt</FontSize>
                                       <FontWeight>Normal</FontWeight>
-                                      <Format>d</Format>
                                       <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
 )</Color>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Fecha</rd:DefaultName>
+                            <rd:DefaultName>Facutura1</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -2563,41 +3082,34 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                       </TablixHeader>
                       <TablixMembers>
                         <TablixMember>
-                          <Group Name="Cliente5">
-                            <GroupExpressions>
-                              <GroupExpression>=Fields!Cliente.Value</GroupExpression>
-                            </GroupExpressions>
-                          </Group>
-                          <SortExpressions>
-                            <SortExpression>
-                              <Value>=Fields!Cliente.Value</Value>
-                            </SortExpression>
-                          </SortExpressions>
                           <TablixHeader>
-                            <Size>5.65413cm</Size>
+                            <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Cliente4">
+                              <Textbox Name="Fecha">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!Cliente.Value</Value>
+                                        <Value>=Fields!Fecha.Value</Value>
                                         <Style>
                                           <FontFamily>Calibri</FontFamily>
                                           <FontSize>7.5pt</FontSize>
                                           <FontWeight>Normal</FontWeight>
+                                          <Format>d</Format>
                                           <Color>=Switch(
 Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
 )</Color>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
-                                    <Style />
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Cliente1</rd:DefaultName>
+                                <rd:DefaultName>Fecha</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
@@ -2617,7 +3129,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                           </TablixHeader>
                           <TablixMembers>
                             <TablixMember>
-                              <Group Name="TotalFactura1">
+                              <Group Name="TotalFactura3">
                                 <GroupExpressions>
                                   <GroupExpression>=Fields!TotalFactura.Value</GroupExpression>
                                 </GroupExpressions>
@@ -2630,7 +3142,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="TotalFactura11">
+                                  <Textbox Name="TotalFactura31">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -2653,7 +3165,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                         <Style />
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>TotalFactura11</rd:DefaultName>
+                                    <rd:DefaultName>TotalFactura31</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>LightGrey</Color>
@@ -2674,7 +3186,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               </TablixHeader>
                               <TablixMembers>
                                 <TablixMember>
-                                  <Group Name="Detalles6" />
+                                  <Group Name="Detalles4" />
                                   <SortExpressions>
                                     <SortExpression>
                                       <Value>=Fields!Fecha.Value</Value>
@@ -2687,73 +3199,41 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                         </TablixMember>
                       </TablixMembers>
                     </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.65031cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox62">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>Total</Value>
-                                <Style>
-                                  <FontSize>7.5pt</FontSize>
-                                  <FontWeight>Bold</FontWeight>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox9</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                          <BackgroundColor>LightGrey</BackgroundColor>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.13269cm</Size>
+                        <Size>1.65031cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox11">
+                          <Textbox Name="Textbox186">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value />
+                                    <Value>Total</Value>
                                     <Style>
-                                      <FontSize>7.5pt</FontSize>
+                                      <FontFamily>calibri</FontFamily>
+                                      <FontSize>8.5pt</FontSize>
                                       <FontWeight>Bold</FontWeight>
+                                      <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
-                                <Style />
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox11</rd:DefaultName>
+                            <rd:DefaultName>Textbox185</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
                                 <Style>Solid</Style>
                               </Border>
                               <BackgroundColor>LightGrey</BackgroundColor>
+                              <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -2765,9 +3245,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>5.65413cm</Size>
+                            <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox63">
+                              <Textbox Name="Textbox5">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
@@ -2776,21 +3256,28 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                       <TextRun>
                                         <Value />
                                         <Style>
-                                          <FontSize>7.5pt</FontSize>
+                                          <FontFamily>calibri</FontFamily>
+                                          <FontSize>8.5pt</FontSize>
                                           <FontWeight>Bold</FontWeight>
+                                          <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
-                                    <Style />
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox13</rd:DefaultName>
+                                <rd:DefaultName>Textbox5</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
                                     <Style>Solid</Style>
                                   </Border>
                                   <BackgroundColor>LightGrey</BackgroundColor>
+                                  <VerticalAlign>Middle</VerticalAlign>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -2804,7 +3291,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="TotalFactura2">
+                                  <Textbox Name="TotalFactura4">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -2813,27 +3300,204 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                           <TextRun>
                                             <Value>=sum(Fields!TotalFactura.Value)</Value>
                                             <Style>
-                                              <FontSize>7.5pt</FontSize>
+                                              <FontFamily>calibri</FontFamily>
+                                              <FontSize>8pt</FontSize>
                                               <FontWeight>Bold</FontWeight>
                                               <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                              <Color>=Switch(
+Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Value&lt;&gt;nothing,"Red"
+)</Color>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
                                         <Style />
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>TotalFactura2</rd:DefaultName>
+                                    <rd:DefaultName>TotalFactura4</rd:DefaultName>
                                     <Style>
                                       <Border>
                                         <Color>LightGrey</Color>
                                         <Style>Solid</Style>
                                       </Border>
                                       <BackgroundColor>LightGrey</BackgroundColor>
+                                      <VerticalAlign>Middle</VerticalAlign>
                                       <PaddingLeft>2pt</PaddingLeft>
                                       <PaddingRight>2pt</PaddingRight>
                                       <PaddingTop>2pt</PaddingTop>
                                       <PaddingBottom>2pt</PaddingBottom>
                                       <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember />
+                              </TablixMembers>
+                            </TablixMember>
+                          </TablixMembers>
+                        </TablixMember>
+                      </TablixMembers>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>5.65413cm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox92">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Gran Total</Value>
+                                <Style>
+                                  <FontFamily>Calibri</FontFamily>
+                                  <FontSize>7.5pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox92</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <BackgroundColor>Tan</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1.65031cm</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox93">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value />
+                                    <Style>
+                                      <FontFamily>Calibri</FontFamily>
+                                      <FontSize>7.5pt</FontSize>
+                                      <FontWeight>Normal</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Center</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox93</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BackgroundColor>Tan</BackgroundColor>
+                              <VerticalAlign>Middle</VerticalAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>2.5cm</Size>
+                            <CellContents>
+                              <Textbox Name="Textbox7">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value />
+                                        <Style>
+                                          <FontFamily>Calibri</FontFamily>
+                                          <FontSize>7.5pt</FontSize>
+                                          <FontWeight>Normal</FontWeight>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>Textbox7</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Color>LightGrey</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>Tan</BackgroundColor>
+                                  <VerticalAlign>Middle</VerticalAlign>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember>
+                              <TablixHeader>
+                                <Size>2.5cm</Size>
+                                <CellContents>
+                                  <Textbox Name="Textbox111">
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value />
+                                            <Style>
+                                              <FontFamily>calibri</FontFamily>
+                                              <FontSize>8pt</FontSize>
+                                              <FontWeight>Bold</FontWeight>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>Textbox111</rd:DefaultName>
+                                    <Style>
+                                      <Border>
+                                        <Color>LightGrey</Color>
+                                        <Style>Solid</Style>
+                                      </Border>
+                                      <BackgroundColor>Tan</BackgroundColor>
+                                      <VerticalAlign>Middle</VerticalAlign>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                      <PaddingTop>2pt</PaddingTop>
+                                      <PaddingBottom>2pt</PaddingBottom>
                                     </Style>
                                   </Textbox>
                                 </CellContents>
@@ -2867,9 +3531,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                 <Value>=Fields!Fecha.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>3.45281cm</Top>
-            <Height>3.66cm</Height>
-            <Width>23.23359cm</Width>
+            <Top>4.41441cm</Top>
+            <Height>4.21cm</Height>
+            <Width>23.12465cm</Width>
             <ZIndex>1</ZIndex>
             <Visibility>
               <Hidden>=Iif(CountRows()&gt;0,False,True)</Hidden>
@@ -2881,10 +3545,10 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.80032in</Height>
+        <Height>3.39544in</Height>
         <Style />
       </Body>
-      <Width>9.14708in</Width>
+      <Width>9.10419in</Width>
       <Page>
         <PageHeader>
           <Height>2.08013cm</Height>
@@ -2898,7 +3562,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>RESUMEN FACTURAS POR MES</Value>
+                      <Value>RESUMEN FACTURAS POR MENSUAL (POR CLIENTE)</Value>
                       <Style>
                         <FontFamily>Calibri</FontFamily>
                         <FontSize>14pt</FontSize>
@@ -2915,7 +3579,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
               <rd:DefaultName>Textbox42</rd:DefaultName>
               <Top>0.023cm</Top>
               <Height>0.82338cm</Height>
-              <Width>22.91609cm</Width>
+              <Width>22.59859cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2948,8 +3612,8 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.88166cm</Top>
-              <Left>18.48588cm</Left>
+              <Top>0.84638cm</Top>
+              <Left>18.16838cm</Left>
               <Height>0.6cm</Height>
               <Width>1.25646cm</Width>
               <ZIndex>1</ZIndex>
@@ -2984,8 +3648,8 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.88166cm</Top>
-              <Left>19.91873cm</Left>
+              <Top>0.84638cm</Top>
+              <Left>19.60123cm</Left>
               <Height>0.6cm</Height>
               <Width>2.99736cm</Width>
               <ZIndex>2</ZIndex>
@@ -3020,7 +3684,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>1.58013cm</Top>
-              <Left>18.4506cm</Left>
+              <Left>18.1331cm</Left>
               <Height>0.5cm</Height>
               <Width>1.29174cm</Width>
               <ZIndex>3</ZIndex>
@@ -3055,7 +3719,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
               <Top>1.58013cm</Top>
-              <Left>19.91873cm</Left>
+              <Left>19.60123cm</Left>
               <Height>0.5cm</Height>
               <Width>2.99736cm</Width>
               <ZIndex>4</ZIndex>
@@ -3120,7 +3784,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>0.88166cm</Top>
+              <Top>0.84638cm</Top>
               <Left>1.76993cm</Left>
               <Height>0.6cm</Height>
               <Width>7.45964cm</Width>

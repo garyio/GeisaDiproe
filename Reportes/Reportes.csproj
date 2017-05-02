@@ -173,6 +173,12 @@
     <EmbeddedResource Include="Diseño\GastosGeneradosViaticos.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Diseño\IngresosMensualesPorEmpresaByObra.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diseño\IngresosMensualesPorEmpresaByCliente.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Diseño\IngresosMensualesPorEmpresa.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -104,7 +104,7 @@
                   <Width>2.73365cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.93249cm</Width>
+                  <Width>2.45082cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.95721cm</Width>
@@ -1098,16 +1098,29 @@
                                     </CellContents>
                                   </TablixHeader>
                                   <TablixMembers>
-                                    <TablixMember />
+                                    <TablixMember>
+                                      <KeepWithGroup>After</KeepWithGroup>
+                                      <RepeatOnNewPage>true</RepeatOnNewPage>
+                                    </TablixMember>
                                   </TablixMembers>
+                                  <KeepWithGroup>After</KeepWithGroup>
+                                  <RepeatOnNewPage>true</RepeatOnNewPage>
                                 </TablixMember>
                               </TablixMembers>
+                              <KeepWithGroup>After</KeepWithGroup>
+                              <RepeatOnNewPage>true</RepeatOnNewPage>
                             </TablixMember>
                           </TablixMembers>
+                          <KeepWithGroup>After</KeepWithGroup>
+                          <RepeatOnNewPage>true</RepeatOnNewPage>
                         </TablixMember>
                       </TablixMembers>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
                     </TablixMember>
                   </TablixMembers>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
                 </TablixMember>
                 <TablixMember>
                   <Group Name="ObraNombre1">
@@ -2080,14 +2093,12 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <RepeatColumnHeaders>true</RepeatColumnHeaders>
-            <RepeatRowHeaders>true</RepeatRowHeaders>
             <FixedColumnHeaders>true</FixedColumnHeaders>
             <FixedRowHeaders>true</FixedRowHeaders>
             <DataSetName>EstadoCuentaProveedores</DataSetName>
             <PageName>Estado Cuenta</PageName>
             <Height>4cm</Height>
-            <Width>19.95765cm</Width>
+            <Width>18.47598cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2098,10 +2109,10 @@
         <Height>1.5748in</Height>
         <Style />
       </Body>
-      <Width>7.85734in</Width>
+      <Width>7.27401in</Width>
       <Page>
         <PageHeader>
-          <Height>1.66097cm</Height>
+          <Height>1.29055cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2126,8 +2137,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox42</rd:DefaultName>
-              <Top>0.01416cm</Top>
-              <Left>2.30486cm</Left>
+              <Left>1.03486cm</Left>
               <Height>0.70271cm</Height>
               <Width>11.76309cm</Width>
               <Style>
@@ -2161,10 +2171,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.21687cm</Top>
-              <Left>14.55108cm</Left>
-              <Height>0.5cm</Height>
-              <Width>0.88604cm</Width>
+              <Left>13.28108cm</Left>
+              <Height>0.70271cm</Height>
+              <Width>1.02715cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -2196,10 +2205,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.89326cm</Top>
-              <Left>14.55108cm</Left>
-              <Height>0.5cm</Height>
-              <Width>1.25646cm</Width>
+              <Top>0.69055cm</Top>
+              <Left>13.28108cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.02715cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -2232,7 +2241,7 @@
               </Paragraphs>
               <rd:DefaultName>ItemPeriodo</rd:DefaultName>
               <Top>0.69055cm</Top>
-              <Left>2.30486cm</Left>
+              <Left>1.03486cm</Left>
               <Height>0.6cm</Height>
               <Width>11.76309cm</Width>
               <ZIndex>3</ZIndex>
@@ -2268,10 +2277,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.89326cm</Top>
-              <Left>15.98393cm</Left>
-              <Height>0.5cm</Height>
-              <Width>3.39958cm</Width>
+              <Top>0.69055cm</Top>
+              <Left>14.34351cm</Left>
+              <Height>0.6cm</Height>
+              <Width>3.77cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -2304,9 +2313,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.21687cm</Top>
-              <Left>15.61351cm</Left>
-              <Height>0.5cm</Height>
+              <Left>14.34351cm</Left>
+              <Height>0.70271cm</Height>
               <Width>3.77cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
@@ -2326,7 +2334,7 @@
             </Border>
           </Style>
         </PageHeader>
-        <PageHeight>27.9cm</PageHeight>
+        <PageHeight>27.94cm</PageHeight>
         <PageWidth>21.59cm</PageWidth>
         <InteractiveHeight>0cm</InteractiveHeight>
         <InteractiveWidth>21.59cm</InteractiveWidth>

@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngresosMensualesPorEmpresa));
-            this.source = new System.Windows.Forms.BindingSource();
+            this.source = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.viewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,6 +52,8 @@
             this.btnLimpiar = new System.Windows.Forms.ToolStripButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chkEmpresa = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.label6 = new System.Windows.Forms.Label();
+            this.rgReporte = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.source)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateIni.Properties.CalendarTimeProperties)).BeginInit();
@@ -62,6 +65,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmpresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgReporte.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // source
@@ -78,6 +82,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.rgReporte, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.viewer, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 3, 0);
@@ -92,6 +97,7 @@
             this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.checkBox1, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.chkEmpresa, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -114,7 +120,7 @@
             reportDataSource1.Value = this.source;
             this.viewer.LocalReport.DataSources.Add(reportDataSource1);
             this.viewer.LocalReport.ReportEmbeddedResource = "Reportes.Diseño.IngresosMensualesPorEmpresa.rdlc";
-            this.viewer.Location = new System.Drawing.Point(8, 292);
+            this.viewer.Location = new System.Drawing.Point(8, 293);
             this.viewer.Name = "viewer";
             this.viewer.ShowBackButton = false;
             this.viewer.ShowContextMenu = false;
@@ -156,7 +162,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(8, 31);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 101);
+            this.label4.Size = new System.Drawing.Size(68, 102);
             this.label4.TabIndex = 7;
             this.label4.Text = "Empresa";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -190,7 +196,7 @@
             // ckListClientes
             // 
             this.ckListClientes.CheckOnClick = true;
-            this.ckListClientes.Location = new System.Drawing.Point(530, 135);
+            this.ckListClientes.Location = new System.Drawing.Point(530, 136);
             this.ckListClientes.Name = "ckListClientes";
             this.ckListClientes.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ckListClientes.Size = new System.Drawing.Size(278, 102);
@@ -201,7 +207,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(467, 132);
+            this.label5.Location = new System.Drawing.Point(467, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 108);
             this.label5.TabIndex = 12;
@@ -212,7 +218,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(8, 132);
+            this.label3.Location = new System.Drawing.Point(8, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 108);
             this.label3.TabIndex = 4;
@@ -222,7 +228,7 @@
             // ckListObra
             // 
             this.ckListObra.CheckOnClick = true;
-            this.ckListObra.Location = new System.Drawing.Point(82, 135);
+            this.ckListObra.Location = new System.Drawing.Point(82, 136);
             this.ckListObra.Name = "ckListObra";
             this.ckListObra.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ckListObra.Size = new System.Drawing.Size(278, 102);
@@ -236,7 +242,7 @@
             this.tableLayoutPanel2.Controls.Add(this.checkBox2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.ckGeisa, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.ckDiproe, 0, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(366, 135);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(366, 136);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -290,7 +296,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnReporte,
             this.btnLimpiar});
-            this.toolStrip1.Location = new System.Drawing.Point(527, 240);
+            this.toolStrip1.Location = new System.Drawing.Point(527, 241);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(5);
             this.toolStrip1.Size = new System.Drawing.Size(284, 49);
@@ -319,7 +325,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(814, 135);
+            this.checkBox1.Location = new System.Drawing.Point(814, 136);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(55, 17);
             this.checkBox1.TabIndex = 15;
@@ -334,9 +340,33 @@
             this.chkEmpresa.Location = new System.Drawing.Point(82, 34);
             this.chkEmpresa.Name = "chkEmpresa";
             this.chkEmpresa.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.chkEmpresa.Size = new System.Drawing.Size(278, 95);
+            this.chkEmpresa.Size = new System.Drawing.Size(278, 96);
             this.chkEmpresa.SortOrder = System.Windows.Forms.SortOrder.Ascending;
             this.chkEmpresa.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(467, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 102);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Reporte";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // rgReporte
+            // 
+            this.rgReporte.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rgReporte.EditValue = "IngresosMensualesPorEmpresa";
+            this.rgReporte.Location = new System.Drawing.Point(530, 34);
+            this.rgReporte.Name = "rgReporte";
+            this.rgReporte.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("IngresosMensualesPorEmpresa", "Ingresos Mensual Detalle"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("IngresosMensualesPorEmpresaByCliente", "Ingresos Mensual por Cliente"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("IngresosMensualesPorEmpresaByObra", "Ingresos Mensual por Obra")});
+            this.rgReporte.Size = new System.Drawing.Size(278, 96);
+            this.rgReporte.TabIndex = 29;
             // 
             // frmIngresosMensualesPorEmpresa
             // 
@@ -362,6 +392,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmpresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rgReporte.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -389,5 +420,7 @@
         private System.Windows.Forms.ToolStripButton btnLimpiar;
         private System.Windows.Forms.BindingSource source;
         private DevExpress.XtraEditors.CheckedListBoxControl chkEmpresa;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraEditors.RadioGroup rgReporte;
     }
 }
