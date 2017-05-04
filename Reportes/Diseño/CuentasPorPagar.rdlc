@@ -1341,8 +1341,12 @@
                       <TablixMembers>
                         <TablixMember>
                           <FixedData>true</FixedData>
+                          <KeepWithGroup>After</KeepWithGroup>
+                          <RepeatOnNewPage>true</RepeatOnNewPage>
                         </TablixMember>
                       </TablixMembers>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
                     </TablixMember>
                   </TablixMembers>
                   <FixedData>true</FixedData>
@@ -1609,9 +1613,6 @@
             <RepeatColumnHeaders>true</RepeatColumnHeaders>
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>DataSet1</DataSetName>
-            <PageBreak>
-              <BreakLocation>End</BreakLocation>
-            </PageBreak>
             <PageName>Cuentas por Pagar</PageName>
             <SortExpressions>
               <SortExpression>
@@ -1625,7 +1626,7 @@
               </SortExpression>
             </SortExpressions>
             <Height>3.34979cm</Height>
-            <Width>21.86791cm</Width>
+            <Width>21.8679cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1640,7 +1641,7 @@
       <Width>8.60941in</Width>
       <Page>
         <PageHeader>
-          <Height>2.06385cm</Height>
+          <Height>1.83528cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1666,7 +1667,6 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox42</rd:DefaultName>
-              <Top>0.2175cm</Top>
               <Left>3.17021cm</Left>
               <Height>0.6cm</Height>
               <Width>13.44945cm</Width>
@@ -1702,9 +1702,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.15847cm</Top>
               <Left>16.79605cm</Left>
-              <Height>0.5cm</Height>
+              <Height>0.6cm</Height>
               <Width>1.16868cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -1738,10 +1737,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.15847cm</Top>
               <Left>18.00932cm</Left>
-              <Height>0.5cm</Height>
-              <Width>1.87421cm</Width>
+              <Height>0.6cm</Height>
+              <Width>2.69442cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1773,9 +1771,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.72902cm</Top>
+              <Top>0.57365cm</Top>
               <Left>16.79605cm</Left>
-              <Height>0.5cm</Height>
+              <Height>0.6cm</Height>
               <Width>1.16868cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
@@ -1808,10 +1806,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.72903cm</Top>
+              <Top>0.57365cm</Top>
               <Left>18.03529cm</Left>
-              <Height>0.5cm</Height>
-              <Width>1.46863cm</Width>
+              <Height>0.6cm</Height>
+              <Width>2.66845cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -1842,7 +1840,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox17</rd:DefaultName>
-              <Top>0.80222cm</Top>
+              <Top>0.57365cm</Top>
               <Left>3.17021cm</Left>
               <Height>0.6cm</Height>
               <Width>1.75803cm</Width>
@@ -1874,7 +1872,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>0.80222cm</Top>
+              <Top>0.57365cm</Top>
               <Left>4.9988cm</Left>
               <Height>0.6cm</Height>
               <Width>11.62086cm</Width>
@@ -1906,7 +1904,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>1.4375cm</Top>
+              <Top>1.20893cm</Top>
               <Left>4.98557cm</Left>
               <Height>0.6cm</Height>
               <Width>11.62086cm</Width>
@@ -1940,7 +1938,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox17</rd:DefaultName>
-              <Top>1.46385cm</Top>
+              <Top>1.23528cm</Top>
               <Left>3.15698cm</Left>
               <Height>0.6cm</Height>
               <Width>1.75803cm</Width>
@@ -1966,10 +1964,10 @@
         <PageWidth>27.94cm</PageWidth>
         <InteractiveHeight>0cm</InteractiveHeight>
         <InteractiveWidth>21.59cm</InteractiveWidth>
-        <LeftMargin>0.25cm</LeftMargin>
-        <RightMargin>0.25cm</RightMargin>
-        <TopMargin>0.25cm</TopMargin>
-        <BottomMargin>0.25cm</BottomMargin>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>

@@ -1558,47 +1558,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        /// <param name="startDate">No hay documentación de metadatos disponible.</param>
-        /// <param name="endDate">No hay documentación de metadatos disponible.</param>
-        /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
-        public ObjectResult<getReporteGastosViaticos_Result> getReporteGastosViaticos(Nullable<global::System.DateTime> startDate, Nullable<global::System.DateTime> endDate, Nullable<global::System.Int32> empresaId)
-        {
-            ObjectParameter startDateParameter;
-            if (startDate.HasValue)
-            {
-                startDateParameter = new ObjectParameter("StartDate", startDate);
-            }
-            else
-            {
-                startDateParameter = new ObjectParameter("StartDate", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter endDateParameter;
-            if (endDate.HasValue)
-            {
-                endDateParameter = new ObjectParameter("EndDate", endDate);
-            }
-            else
-            {
-                endDateParameter = new ObjectParameter("EndDate", typeof(global::System.DateTime));
-            }
-    
-            ObjectParameter empresaIdParameter;
-            if (empresaId.HasValue)
-            {
-                empresaIdParameter = new ObjectParameter("EmpresaId", empresaId);
-            }
-            else
-            {
-                empresaIdParameter = new ObjectParameter("EmpresaId", typeof(global::System.Int32));
-            }
-    
-            return base.ExecuteFunction<getReporteGastosViaticos_Result>("getReporteGastosViaticos", startDateParameter, endDateParameter, empresaIdParameter);
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         /// <param name="month">No hay documentación de metadatos disponible.</param>
         /// <param name="year">No hay documentación de metadatos disponible.</param>
         /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
@@ -2059,6 +2018,47 @@ namespace GeisaBD
             }
     
             return base.ExecuteFunction<getTraspasos_Result>("getTraspasos", obraIdParameter, clienteIdParameter, empresaIdParameter);
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="startDate">No hay documentación de metadatos disponible.</param>
+        /// <param name="endDate">No hay documentación de metadatos disponible.</param>
+        /// <param name="empresaId">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<getReporteGastosViaticos_Result> getReporteGastosViaticos(Nullable<global::System.DateTime> startDate, Nullable<global::System.DateTime> endDate, Nullable<global::System.Int32> empresaId)
+        {
+            ObjectParameter startDateParameter;
+            if (startDate.HasValue)
+            {
+                startDateParameter = new ObjectParameter("StartDate", startDate);
+            }
+            else
+            {
+                startDateParameter = new ObjectParameter("StartDate", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter endDateParameter;
+            if (endDate.HasValue)
+            {
+                endDateParameter = new ObjectParameter("EndDate", endDate);
+            }
+            else
+            {
+                endDateParameter = new ObjectParameter("EndDate", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter empresaIdParameter;
+            if (empresaId.HasValue)
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", empresaId);
+            }
+            else
+            {
+                empresaIdParameter = new ObjectParameter("EmpresaId", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<getReporteGastosViaticos_Result>("getReporteGastosViaticos", startDateParameter, endDateParameter, empresaIdParameter);
         }
     
         /// <summary>
@@ -22501,6 +22501,30 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tipoComprobante
+        {
+            get
+            {
+                return _tipoComprobante;
+            }
+            set
+            {
+                OntipoComprobanteChanging(value);
+                ReportPropertyChanging("tipoComprobante");
+                _tipoComprobante = StructuralObject.SetValidValue(value, "tipoComprobante");
+                ReportPropertyChanged("tipoComprobante");
+                OntipoComprobanteChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tipoComprobante;
+        partial void OntipoComprobanteChanging(Nullable<global::System.Int32> value);
+        partial void OntipoComprobanteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.DateTime Fecha
@@ -24847,21 +24871,6 @@ namespace GeisaBD
     [Serializable()]
     public partial class getReporteGastosViaticos_Result : ComplexObject
     {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto getReporteGastosViaticos_Result.
-        /// </summary>
-        /// <param name="importe">Valor inicial de la propiedad Importe.</param>
-        public static getReporteGastosViaticos_Result CreategetReporteGastosViaticos_Result(global::System.Double importe)
-        {
-            getReporteGastosViaticos_Result getReporteGastosViaticos_Result = new getReporteGastosViaticos_Result();
-            getReporteGastosViaticos_Result.Importe = importe;
-            return getReporteGastosViaticos_Result;
-        }
-
-        #endregion
-
         #region Propiedades simples
     
         /// <summary>
@@ -24987,9 +24996,9 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Double Importe
+        public Nullable<global::System.Double> Importe
         {
             get
             {
@@ -25004,8 +25013,8 @@ namespace GeisaBD
                 OnImporteChanged();
             }
         }
-        private global::System.Double _Importe;
-        partial void OnImporteChanging(global::System.Double value);
+        private Nullable<global::System.Double> _Importe;
+        partial void OnImporteChanging(Nullable<global::System.Double> value);
         partial void OnImporteChanged();
     
         /// <summary>
@@ -25127,6 +25136,30 @@ namespace GeisaBD
         private Nullable<global::System.Int64> _TarjetaCredito;
         partial void OnTarjetaCreditoChanging(Nullable<global::System.Int64> value);
         partial void OnTarjetaCreditoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> tipoComprobante
+        {
+            get
+            {
+                return _tipoComprobante;
+            }
+            set
+            {
+                OntipoComprobanteChanging(value);
+                ReportPropertyChanging("tipoComprobante");
+                _tipoComprobante = StructuralObject.SetValidValue(value, "tipoComprobante");
+                ReportPropertyChanged("tipoComprobante");
+                OntipoComprobanteChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _tipoComprobante;
+        partial void OntipoComprobanteChanging(Nullable<global::System.Int32> value);
+        partial void OntipoComprobanteChanged();
 
         #endregion
 

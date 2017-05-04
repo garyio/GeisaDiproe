@@ -102,7 +102,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.86458cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -150,7 +150,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Factura</Value>
+                                  <Value>Factura/NC</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -599,6 +599,7 @@
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>7.5pt</FontSize>
                                     <Format>'$'#,0.00;('$'#,0.00)</Format>
+                                    <Color>=IIf(InStr(Fields!Factura.Value,"NC ") &gt; 0 OR InStr(Fields!TipoPago.Value,"NOTA CREDITO") &gt; 0,"Red","Black")</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -620,6 +621,7 @@
                             <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1322,12 +1324,17 @@
                       <TablixMembers>
                         <TablixMember>
                           <FixedData>true</FixedData>
+                          <KeepWithGroup>After</KeepWithGroup>
+                          <RepeatOnNewPage>true</RepeatOnNewPage>
                         </TablixMember>
                       </TablixMembers>
                       <FixedData>true</FixedData>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
                     </TablixMember>
                   </TablixMembers>
-                  <FixedData>true</FixedData>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
                 </TablixMember>
                 <TablixMember>
                   <Group Name="ObraNombre">
@@ -1685,8 +1692,8 @@
               </SortExpression>
             </SortExpressions>
             <Top>0.0762cm</Top>
-            <Height>3.6cm</Height>
-            <Width>21cm</Width>
+            <Height>3.86458cm</Height>
+            <Width>21.00002cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1694,13 +1701,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.44732in</Height>
+        <Height>1.55149in</Height>
         <Style />
       </Body>
       <Width>8.26772in</Width>
       <Page>
         <PageHeader>
-          <Height>1.57578cm</Height>
+          <Height>1.49139cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1762,8 +1769,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.25847cm</Top>
-              <Left>16.56764cm</Left>
+              <Top>0.16176cm</Top>
+              <Left>16.5064cm</Left>
               <Height>0.5cm</Height>
               <Width>1.25646cm</Width>
               <ZIndex>1</ZIndex>
@@ -1798,10 +1805,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.25847cm</Top>
+              <Top>0.16176cm</Top>
               <Left>17.86869cm</Left>
               <Height>0.5cm</Height>
-              <Width>1.78563cm</Width>
+              <Width>2.57938cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1833,8 +1840,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.82903cm</Top>
-              <Left>16.53236cm</Left>
+              <Top>0.93231cm</Top>
+              <Left>16.5064cm</Left>
               <Height>0.5cm</Height>
               <Width>1.29174cm</Width>
               <ZIndex>3</ZIndex>
@@ -1868,8 +1875,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.82903cm</Top>
-              <Left>17.89465cm</Left>
+              <Top>0.93231cm</Top>
+              <Left>17.86869cm</Left>
               <Height>0.5cm</Height>
               <Width>1.75967cm</Width>
               <ZIndex>4</ZIndex>
@@ -2008,10 +2015,10 @@
         <PageWidth>21.59cm</PageWidth>
         <InteractiveHeight>0cm</InteractiveHeight>
         <InteractiveWidth>27.9cm</InteractiveWidth>
-        <LeftMargin>0.25cm</LeftMargin>
-        <RightMargin>0.25cm</RightMargin>
-        <TopMargin>0.25cm</TopMargin>
-        <BottomMargin>0.25cm</BottomMargin>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>

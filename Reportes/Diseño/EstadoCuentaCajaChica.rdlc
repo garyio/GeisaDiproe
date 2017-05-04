@@ -1238,9 +1238,11 @@
           <TablixMembers>
             <TablixMember>
               <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember>
               <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember>
               <Group Name="Detalles" />
@@ -1250,6 +1252,8 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
         <DataSetName>EstadoCuentaCajaChica</DataSetName>
         <Height>2.2cm</Height>
         <Width>26.16958cm</Width>
@@ -1298,7 +1302,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox42</rd:DefaultName>
           <Left>3.57188cm</Left>
-          <Height>0.86958cm</Height>
+          <Height>1.06445cm</Height>
           <Width>13.62584cm</Width>
           <Style>
             <Border>
@@ -1459,10 +1463,10 @@
     </PageHeader>
     <PageHeight>21.59cm</PageHeight>
     <PageWidth>27.94cm</PageWidth>
-    <LeftMargin>0.5cm</LeftMargin>
-    <RightMargin>0.5cm</RightMargin>
-    <TopMargin>0.5cm</TopMargin>
-    <BottomMargin>0.5cm</BottomMargin>
+    <LeftMargin>1cm</LeftMargin>
+    <RightMargin>1cm</RightMargin>
+    <TopMargin>1cm</TopMargin>
+    <BottomMargin>1cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>

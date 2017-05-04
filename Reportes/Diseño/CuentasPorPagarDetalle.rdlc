@@ -1179,6 +1179,8 @@
                   <TablixMembers>
                     <TablixMember>
                       <FixedData>true</FixedData>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
                     </TablixMember>
                   </TablixMembers>
                   <FixedData>true</FixedData>
@@ -1324,7 +1326,7 @@
       <Width>9.14125in</Width>
       <Page>
         <PageHeader>
-          <Height>2.09913cm</Height>
+          <Height>1.83528cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1350,8 +1352,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox42</rd:DefaultName>
-              <Top>0.2175cm</Top>
-              <Left>5.07521cm</Left>
+              <Left>2.84924cm</Left>
               <Height>0.6cm</Height>
               <Width>13.44945cm</Width>
               <Style>
@@ -1386,9 +1387,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.15847cm</Top>
-              <Left>18.70105cm</Left>
-              <Height>0.5cm</Height>
+              <Left>16.47508cm</Left>
+              <Height>0.6cm</Height>
               <Width>1.16868cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -1422,10 +1422,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.15847cm</Top>
-              <Left>19.91432cm</Left>
-              <Height>0.5cm</Height>
-              <Width>2.26188cm</Width>
+              <Left>17.68835cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.69442cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1457,9 +1456,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.72902cm</Top>
-              <Left>18.70105cm</Left>
-              <Height>0.5cm</Height>
+              <Top>0.57365cm</Top>
+              <Left>16.47508cm</Left>
+              <Height>0.6cm</Height>
               <Width>1.16868cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
@@ -1492,10 +1491,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.72903cm</Top>
-              <Left>19.94029cm</Left>
-              <Height>0.5cm</Height>
-              <Width>1.46863cm</Width>
+              <Top>0.57365cm</Top>
+              <Left>17.71432cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.66845cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -1526,8 +1525,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox17</rd:DefaultName>
-              <Top>0.80222cm</Top>
-              <Left>5.07521cm</Left>
+              <Top>0.57365cm</Top>
+              <Left>2.84924cm</Left>
               <Height>0.6cm</Height>
               <Width>1.75803cm</Width>
               <ZIndex>5</ZIndex>
@@ -1558,11 +1557,43 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>0.80222cm</Top>
-              <Left>6.9038cm</Left>
+              <Top>0.57365cm</Top>
+              <Left>4.67783cm</Left>
               <Height>0.6cm</Height>
               <Width>11.62086cm</Width>
               <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox23">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!empresa.Value</Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox21</rd:DefaultName>
+              <Top>1.20893cm</Top>
+              <Left>4.6646cm</Left>
+              <Height>0.6cm</Height>
+              <Width>11.62086cm</Width>
+              <ZIndex>7</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1592,42 +1623,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox17</rd:DefaultName>
-              <Top>1.49913cm</Top>
-              <Left>5.07521cm</Left>
+              <Top>1.23528cm</Top>
+              <Left>2.83601cm</Left>
               <Height>0.6cm</Height>
               <Width>1.75803cm</Width>
-              <ZIndex>7</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox23">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!empresa.Value</Value>
-                      <Style>
-                        <FontFamily>Calibri</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>1.47278cm</Top>
-              <Left>6.9038cm</Left>
-              <Height>0.6cm</Height>
-              <Width>11.62086cm</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <Border>
@@ -1650,10 +1649,10 @@
         <PageWidth>27.94cm</PageWidth>
         <InteractiveHeight>0cm</InteractiveHeight>
         <InteractiveWidth>21.59cm</InteractiveWidth>
-        <LeftMargin>0.25cm</LeftMargin>
-        <RightMargin>0.25cm</RightMargin>
-        <TopMargin>0.25cm</TopMargin>
-        <BottomMargin>0.25cm</BottomMargin>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
