@@ -157,7 +157,7 @@ namespace Reportes
                 paramReport.Add(new ReportParameter("Concepto", "PRIMA VACACIONAL " + editAño.Value));
                 paramReport.Add(new ReportParameter("DiasVacaciones", diasVacaciones().ToString()));
                 paramReport.Add(new ReportParameter("Mensaje", "Recibí de " + empresa.NombreFiscal + " la cantidad de: "+ total.ToString("c2")));
-                paramReport.Add(new ReportParameter("CantidadNumeros",Funciones.Num2Text(total.ToString()) ));
+                paramReport.Add(new ReportParameter("CantidadNumeros","\"" + Funciones.Num2Text(total.ToString()) + "\"" ));
                 paramReport.Add(new ReportParameter("Total", this.total.ToString()));
 
                 if(paramReport != null)
@@ -165,18 +165,22 @@ namespace Reportes
 
                 //source.DataSource = new IngresosMensualesPorEmpresa(obras, (DateTime)dateIni.EditValue, (DateTime)dateFin.EditValue, Empresas, Clientees).Items;
                 System.Drawing.Printing.PageSettings pg = new System.Drawing.Printing.PageSettings();
-                pg.Margins.Top = 1;
-                pg.Margins.Bottom = 1;
-                pg.Margins.Left = 1;
-                pg.Margins.Right = 1;
+                
+                pg.Margins.Top = 19;
+                pg.Margins.Bottom = 4;
+                pg.Margins.Left = 19;
+                pg.Margins.Right = 4;
                 //System.Drawing.Printing.PaperSize size = new PaperSize();
                 //size.RawKind = (int)PaperKind.Letter;
                 //pg.PaperSize = size;
+
+                this.viewer.SetPageSettings(pg);                
                 this.viewer.ZoomPercent = 100;
                 this.viewer.LocalReport.DisplayName = this.Text;
                 this.viewer.RefreshReport();
             }
         }
+
 
         private int diasVacaciones()
         {
@@ -226,7 +230,8 @@ namespace Reportes
             btnLimpiar_Click(null, null);
             empleado = luEmpleado.GetSelectedDataRow() as Empleado;
             empleadoNomina = controler.EmpleadoNomina.Where(X => X.EmpleadoId == empleado.Id).DefaultIfEmpty(null).FirstOrDefault();
-            historial = empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null).FirstOrDefault() : null;
+            if(empleadoNomina != null)
+                historial = empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null).FirstOrDefault() : null;
             if (historial != null)
                 puesto = controler.Dpto_Puesto.Where(D => D.Id == historial.Puesto).FirstOrDefault().Nombre;
             else
@@ -247,22 +252,32 @@ namespace Reportes
             }
 
             //obtengo los dias laborables
-            if (empleadoNomina.TipoNomina.HasValue)
+            if (empleadoNomina != null)
             {
-                if (empleadoNomina.TipoNomina == Convert.ToInt32(tipoNominas.Mensual))
+                if (empleadoNomina.TipoNomina.HasValue)
                 {
-                    txtTipoPago.Text = "MENSUAL";
-                    diasLaborables = 30;
-                }
-                else if (empleadoNomina.TipoNomina == Convert.ToInt32(tipoNominas.Quincenal))
-                {
-                    txtTipoPago.Text = "QUINCENAL";
-                    diasLaborables = 15;
+                    if (empleadoNomina.TipoNomina == Convert.ToInt32(tipoNominas.Mensual))
+                    {
+                        txtTipoPago.Text = "MENSUAL";
+                        diasLaborables = 30;
+                    }
+                    else if (empleadoNomina.TipoNomina == Convert.ToInt32(tipoNominas.Quincenal))
+                    {
+                        txtTipoPago.Text = "QUINCENAL";
+                        diasLaborables = 15;
+                    }
+                    else
+                    {
+                        txtTipoPago.Text = "SEMANAL";
+                        diasLaborables = 7;
+                    }
                 }
                 else
                 {
-                    txtTipoPago.Text = "SEMANAL";
+                    txtTipoPago.Text = "PERIODO PENDIENTE";
                     diasLaborables = 7;
+                    new frmMessageBox(true) { Message = "No se capturo el Tipo de Nomina para este Empleado por Default se usara 7 dias laborables", Title = "Aviso" }.ShowDialog();
+
                 }
             }
             else
@@ -270,14 +285,13 @@ namespace Reportes
                 txtTipoPago.Text = "PERIODO PENDIENTE";
                 diasLaborables = 7;
                 new frmMessageBox(true) { Message = "No se capturo el Tipo de Nomina para este Empleado por Default se usara 7 dias laborables", Title = "Aviso" }.ShowDialog();
-
             }
         }
 
         private void txtSueldoFiscal_TextChanged(object sender, EventArgs e)
         {
             double sueldoFiscal = string.IsNullOrEmpty(txtSueldoFiscal.Text) ? 0 : Convert.ToDouble(txtSueldoFiscal.Text);
-            txtComplemento.Text  = (this.sueldoReal / diasLaborables * diasVacaciones() * 0.25 - sueldoFiscal).ToString("N2");
+            txtComplemento.Text  = ((this.sueldoReal / diasLaborables * diasVacaciones() * 0.25) - sueldoFiscal).ToString("N2");
             this.total = sueldoFiscal + Convert.ToDouble(txtComplemento.Text);
             lblTotal.Text = "Total:" + this.total.ToString("c2");            
         }

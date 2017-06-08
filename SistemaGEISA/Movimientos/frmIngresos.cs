@@ -86,52 +86,52 @@ namespace SistemaGEISA
 
         private void getTotalesPorCobrar(List<getDetalleIngresos_Result> ingresosPorCObrar)
         {
-            double Obracivil=0, subcontratistas=0, suministros=0, Extras=0, Mantenimiento=0, NoAplica=0;
-            Obracivil = ingresosPorCObrar.Where(I => I.ObraCivil.Value> 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
-            subcontratistas = ingresosPorCObrar.Where(I => I.Subcontratistas.Value> 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
+            double Obracivil = 0, subcontratistas = 0, suministros = 0, Extras = 0, Mantenimiento = 0, NoAplica = 0;
+            Obracivil = ingresosPorCObrar.Where(I => I.ObraCivil.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
+            subcontratistas = ingresosPorCObrar.Where(I => I.Subcontratistas.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
             suministros = ingresosPorCObrar.Where(I => I.Suministros.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
             Extras = ingresosPorCObrar.Where(I => I.Extras.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
             Mantenimiento = ingresosPorCObrar.Where(I => I.Mantenimiento.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
             NoAplica = ingresosPorCObrar.Where(I => I.No_Aplica.Value > 0).Select(F => F.Pagos.Value).DefaultIfEmpty(0).Sum();
 
-            txtObraCivil4.Text = (obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue ? (obra.PresupuestoDetalle.PPFin_ObraCivil > 0 ? true : false) : false) 
+            txtObraCivil4.Text = (obra.PresupuestoDetalle.PPFin_ObraCivil.HasValue ? (obra.PresupuestoDetalle.PPFin_ObraCivil > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_ObraCivil.Value - (Obracivil)).ToString("c2") :
                         ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
                             (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Obracivil)).ToString("c2") : String.Format("{0:c2}", Obracivil));
             // Subcontratistas
-            txtSubcontratistas4.Text = (obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue ? (obra.PresupuestoDetalle.PPFin_Subcontratistas > 0 ? true : false) : false) 
+            txtSubcontratistas4.Text = (obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue ? (obra.PresupuestoDetalle.PPFin_Subcontratistas > 0 ? true : false) : false)
                 ? (obra.PresupuestoDetalle.PPFin_Subcontratistas.Value - (Convert.ToDouble(subcontratistas))).ToString("c2")
                 : (obra.PresupuestoDetalle.PPIni_Subcontratistas.HasValue ? obra.PresupuestoDetalle.PPIni_Subcontratistas.Value : 0) > 0 ?
                    (obra.PresupuestoDetalle.PPIni_Subcontratistas.Value - (Convert.ToDouble(subcontratistas))).ToString("c2") : String.Format("{0:c2}", subcontratistas);
             // suministros
-            txtSuministros4.Text = (obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros > 0 ? true : false) : false)  
+            txtSuministros4.Text = (obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros > 0 ? true : false) : false)
                 ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(suministros))).ToString("c2")
                 : ((obra.PresupuestoDetalle.PPIni_Suministros.HasValue ? obra.PresupuestoDetalle.PPIni_Suministros.Value : 0) > 0 ?
                    (obra.PresupuestoDetalle.PPIni_Suministros.Value - (Convert.ToDouble(suministros))).ToString("c2") : String.Format("{0:c2}", suministros));
             // Extras
-            txtExtras4.Text = (obra.PresupuestoDetalle.PPFin_Extras.HasValue ? (obra.PresupuestoDetalle.PPFin_Extras > 0 ? true : false) : false)  
+            txtExtras4.Text = (obra.PresupuestoDetalle.PPFin_Extras.HasValue ? (obra.PresupuestoDetalle.PPFin_Extras > 0 ? true : false) : false)
                 ? (obra.PresupuestoDetalle.PPFin_Extras.Value - (Convert.ToDouble(Extras))).ToString("c2")
                 : ((obra.PresupuestoDetalle.PPIni_Extras.HasValue ? obra.PresupuestoDetalle.PPIni_Extras.Value : 0) > 0
                     ? (obra.PresupuestoDetalle.PPIni_Extras.Value - (Convert.ToDouble(Extras))).ToString("c2")
                     : String.Format("{0:c2}", Extras));
             //Mantenimiento
-            txtMantenimiento4.Text = (obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue ? (obra.PresupuestoDetalle.PPFin_Mantenimiento > 0 ? true : false) : false)  
+            txtMantenimiento4.Text = (obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue ? (obra.PresupuestoDetalle.PPFin_Mantenimiento > 0 ? true : false) : false)
                 ? (obra.PresupuestoDetalle.PPFin_Mantenimiento.Value - (Convert.ToDouble(Mantenimiento))).ToString("c2")
                 : (obra.PresupuestoDetalle.PPIni_Mantenimiento.HasValue ? obra.PresupuestoDetalle.PPIni_Mantenimiento.Value : 0) > 0
                     ? (obra.PresupuestoDetalle.PPIni_Mantenimiento.Value - (Convert.ToDouble(Mantenimiento))).ToString("c2")
                     : String.Format("{0:c2}", Mantenimiento);
             //No Aplica
-            txtNA4.Text = (obra.PresupuestoDetalle.PPFin_NA.HasValue ? (obra.PresupuestoDetalle.PPFin_NA > 0 ? true : false) : false)  
+            txtNA4.Text = (obra.PresupuestoDetalle.PPFin_NA.HasValue ? (obra.PresupuestoDetalle.PPFin_NA > 0 ? true : false) : false)
                 ? (obra.PresupuestoDetalle.PPFin_NA.Value - (Convert.ToDouble(NoAplica))).ToString("c2")
                 : ((obra.PresupuestoDetalle.PPIni_NA.HasValue ? obra.PresupuestoDetalle.PPIni_NA.Value : 0) > 0
                     ? (obra.PresupuestoDetalle.PPIni_NA.Value - (Convert.ToDouble(NoAplica))).ToString("c2")
                     : String.Format("{0:c2}", NoAplica));
             //Descuento
-            txtDescuentos4.Text = (obra.PresupuestoDetalle.PPFin_Descuento.HasValue ? (obra.PresupuestoDetalle.PPFin_Descuento > 0 ? true : false) : false)  
+            txtDescuentos4.Text = (obra.PresupuestoDetalle.PPFin_Descuento.HasValue ? (obra.PresupuestoDetalle.PPFin_Descuento > 0 ? true : false) : false)
                 ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
                 : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
 
-                            // SI son Negativos, la seccion por Cobrar debe de salir cero.
+            // SI son Negativos, la seccion por Cobrar debe de salir cero.
             txtObraCivil4.Text = convertirDouble(txtObraCivil4.Text).ToString("c2");
             txtSubcontratistas4.Text = convertirDouble(txtSubcontratistas4.Text).ToString("c2");
             txtSuministros4.Text = convertirDouble(txtSuministros4.Text).ToString("c2");
@@ -139,7 +139,7 @@ namespace SistemaGEISA
             txtMantenimiento4.Text = convertirDouble(txtMantenimiento4.Text).ToString("c2");
             txtNA4.Text = convertirDouble(txtNA4.Text).ToString("c2");
             txtDescuentos4.Text = convertirDouble(txtDescuentos4.Text).ToString("c2");
-            txtTotal4.Text = ((string.IsNullOrEmpty(txtObraCivil4.Text) ? 0 : getValue(txtObraCivil4.Text)) + (string.IsNullOrEmpty(txtSubcontratistas4.Text) ? 0 : getValue(txtSubcontratistas4.Text)) + (string.IsNullOrEmpty(txtSuministros4.Text) ? 0 : getValue(txtSuministros4.Text)) + (string.IsNullOrEmpty(txtExtras4.Text) ? 0 : getValue(txtExtras4.Text)) + (string.IsNullOrEmpty(txtMantenimiento4.Text) ? 0 : getValue(txtMantenimiento4.Text)) + (string.IsNullOrEmpty(txtNA4.Text) ? 0 : getValue(txtNA4.Text)) - (string.IsNullOrEmpty(txtDescuentos4.Text) ? 0 : getValue(txtDescuentos4.Text))).ToString("c2");              
+            txtTotal4.Text = ((string.IsNullOrEmpty(txtObraCivil4.Text) ? 0 : getValue(txtObraCivil4.Text)) + (string.IsNullOrEmpty(txtSubcontratistas4.Text) ? 0 : getValue(txtSubcontratistas4.Text)) + (string.IsNullOrEmpty(txtSuministros4.Text) ? 0 : getValue(txtSuministros4.Text)) + (string.IsNullOrEmpty(txtExtras4.Text) ? 0 : getValue(txtExtras4.Text)) + (string.IsNullOrEmpty(txtMantenimiento4.Text) ? 0 : getValue(txtMantenimiento4.Text)) + (string.IsNullOrEmpty(txtNA4.Text) ? 0 : getValue(txtNA4.Text)) - (string.IsNullOrEmpty(txtDescuentos4.Text) ? 0 : getValue(txtDescuentos4.Text))).ToString("c2");
 
         }
 
@@ -157,7 +157,7 @@ namespace SistemaGEISA
                 txtCobrar.Text = txtFacturar.Text = txtTotal1.Text = txtTotal2.Text = "";
                 //obra = luObra.GetSelectedDataRow() as Obra;
                 cliente = luClientes.GetSelectedDataRow() as Cliente;
-                grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();                
+                grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();
                 txtEmpresa.Text = obra.Empresa.NombreFiscal;
                 if (obra.PresupuestoDetalle != null)
                 {
@@ -190,35 +190,35 @@ namespace SistemaGEISA
                         ((obra.PresupuestoDetalle.PPIni_Obra_Civil.HasValue ? obra.PresupuestoDetalle.PPIni_Obra_Civil.Value : 0) > 0 ?
                             (obra.PresupuestoDetalle.PPIni_Obra_Civil.Value - (Convert.ToDouble(colObraCivil.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colObraCivil.SummaryItem.SummaryValue));
                     // Subcontratistas
-                    txtSubcontratistas3.Text = (obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue ? (obra.PresupuestoDetalle.PPFin_Subcontratistas > 0 ? true : false) : false) 
+                    txtSubcontratistas3.Text = (obra.PresupuestoDetalle.PPFin_Subcontratistas.HasValue ? (obra.PresupuestoDetalle.PPFin_Subcontratistas > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Subcontratistas.Value - (Convert.ToDouble(colSubcontratistas.SummaryItem.SummaryValue))).ToString("c2")
                         : (obra.PresupuestoDetalle.PPIni_Subcontratistas.HasValue ? obra.PresupuestoDetalle.PPIni_Subcontratistas.Value : 0) > 0 ?
                            (obra.PresupuestoDetalle.PPIni_Subcontratistas.Value - (Convert.ToDouble(colSubcontratistas.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colSubcontratistas.SummaryItem.SummaryValue);
                     // suministros
-                    txtSuministros3.Text = (obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros > 0 ? true : false) : false) 
+                    txtSuministros3.Text = (obra.PresupuestoDetalle.PPFin_Suministros.HasValue ? (obra.PresupuestoDetalle.PPFin_Suministros > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Suministros.HasValue ? obra.PresupuestoDetalle.PPIni_Suministros.Value : 0) > 0 ?
                            (obra.PresupuestoDetalle.PPIni_Suministros.Value - (Convert.ToDouble(colSuministros.SummaryItem.SummaryValue))).ToString("c2") : String.Format("{0:c2}", colSuministros.SummaryItem.SummaryValue));
                     // Extras
-                    txtExtras3.Text = (obra.PresupuestoDetalle.PPFin_Extras.HasValue ? (obra.PresupuestoDetalle.PPFin_Extras > 0 ? true : false) : false) 
+                    txtExtras3.Text = (obra.PresupuestoDetalle.PPFin_Extras.HasValue ? (obra.PresupuestoDetalle.PPFin_Extras > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Extras.Value - (Convert.ToDouble(colExtras.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Extras.HasValue ? obra.PresupuestoDetalle.PPIni_Extras.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_Extras.Value - (Convert.ToDouble(colExtras.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colExtras.SummaryItem.SummaryValue));
                     //Mantenimiento
-                    txtMantenimiento3.Text = (obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue ? (obra.PresupuestoDetalle.PPFin_Mantenimiento > 0 ? true : false) : false) 
+                    txtMantenimiento3.Text = (obra.PresupuestoDetalle.PPFin_Mantenimiento.HasValue ? (obra.PresupuestoDetalle.PPFin_Mantenimiento > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Mantenimiento.Value - (Convert.ToDouble(colMantenimiento.SummaryItem.SummaryValue))).ToString("c2")
                         : (obra.PresupuestoDetalle.PPIni_Mantenimiento.HasValue ? obra.PresupuestoDetalle.PPIni_Mantenimiento.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_Mantenimiento.Value - (Convert.ToDouble(colMantenimiento.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colMantenimiento.SummaryItem.SummaryValue);
                     //No Aplica
-                    txtNA3.Text = (obra.PresupuestoDetalle.PPFin_NA.HasValue ? (obra.PresupuestoDetalle.PPFin_NA > 0 ? true : false) : false) 
+                    txtNA3.Text = (obra.PresupuestoDetalle.PPFin_NA.HasValue ? (obra.PresupuestoDetalle.PPFin_NA > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_NA.Value - (Convert.ToDouble(colNA.SummaryItem.SummaryValue))).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_NA.HasValue ? obra.PresupuestoDetalle.PPIni_NA.Value : 0) > 0
                             ? (obra.PresupuestoDetalle.PPIni_NA.Value - (Convert.ToDouble(colNA.SummaryItem.SummaryValue))).ToString("c2")
                             : String.Format("{0:c2}", colNA.SummaryItem.SummaryValue));
                     //Descuento
-                    txtDescuentos3.Text = (obra.PresupuestoDetalle.PPFin_Descuento.HasValue ? (obra.PresupuestoDetalle.PPFin_Descuento > 0 ? true : false) : false) 
+                    txtDescuentos3.Text = (obra.PresupuestoDetalle.PPFin_Descuento.HasValue ? (obra.PresupuestoDetalle.PPFin_Descuento > 0 ? true : false) : false)
                         ? (obra.PresupuestoDetalle.PPFin_Descuento.Value - (obra.PresupuestoDetalle.PPIni_Descuento.Value > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0)).ToString("c2")
                         : ((obra.PresupuestoDetalle.PPIni_Descuento.HasValue ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0) > 0 ? obra.PresupuestoDetalle.PPIni_Descuento.Value : 0).ToString("c2");
 
@@ -259,7 +259,7 @@ namespace SistemaGEISA
                 else
                     txtSaldoFavor.Text = "0.00";
                 //txtSaldoFavor.Text = "TOTAL PAGOS - PREPUPUESTO FINAL"
-                
+
             }
         }
 
@@ -296,19 +296,19 @@ namespace SistemaGEISA
 
         private void ckSaldo_CheckedChanged(object sender, EventArgs e)
         {
-            List<getDetalleIngresos_Result> ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false,true).ToList();
+            List<getDetalleIngresos_Result> ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();
             grid.DataSource = ingresos;
             if (ckSaldo.Checked)
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).Where(d => d.Saldo > 0).ToList();  
-                    //grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList().Where(d => d.Saldo > 0);
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).Where(d => d.Saldo > 0).ToList();
+                //grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList().Where(d => d.Saldo > 0);
             }
             else
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();  
-                    //grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();
+                //grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false).ToList();
             }
 
             if (obra != null && cliente != null)
@@ -414,12 +414,12 @@ namespace SistemaGEISA
                 //txtSaldoFavor.Text = Convert.ToDouble(colSaldo.SummaryItem.SummaryValue) < 0 ? Math.Abs(Convert.ToDouble(colSaldo.SummaryItem.SummaryValue)).ToString("c2") : "$0.00";
                 if (obra.PresupuestoDetalle != null)
                 {
-                    double saldoFavor = ( (totPagos+totNC) - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
+                    double saldoFavor = ((totPagos + totNC) - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
                     txtSaldoFavor.Text = saldoFavor >= 0 ? saldoFavor.ToString("c2") : "0.00";
                 }
                 else
                     txtSaldoFavor.Text = "0.00";
-                
+
             }
         }
 
@@ -472,29 +472,45 @@ namespace SistemaGEISA
                 {
                     if (item.Id != 0)
                     {
-                        if (Controler.Model.PagosFactura.Where(P => P.FacturaId == item.Id).Count() > 0)
+
+                        Factura factura = Controler.Model.Factura.First(f => f.Id == item.Id);
+                        bool detalleCount = Controler.Model.PagosFactura.Where(P => P.FacturaId == item.Id).Count() > 0;
+                        if (detalleCount)
                         {
-                            new frmMessageBox(true) { Message = "La Factura tiene Pagos Asociados, No es posible eliminar. ", Title = "Error" }.ShowDialog();
-                            return;
+                            foreach (PagosFactura detalle in Controler.Model.PagosFactura.Where(P => P.FacturaId == item.Id).ToList())
+                            {
+                                if (!detalle.Pagos.FechaCancelacion.HasValue)
+                                {
+                                    Factura fac = detalle.Factura;
+                                    fac.Saldo = fac.Saldo + detalle.MontoPagar;
+
+                                    if (detalle.TraspasoSaldos != null)
+                                        detalle.TraspasoSaldos.FechaCancelacion = DateTime.Now;
+
+                                    Pagos _pago = detalle.Pagos;
+                                    if (!_pago.FechaCancelacion.HasValue) _pago.FechaCancelacion = DateTime.Today;
+                                    if (!_pago.UsuarioId.HasValue) _pago.UsuarioId = frmPrincipal.UsuarioDelSistema.Id;  
+                                }
+                                                                                              
+                            }
+
                         }
-                        else
+                        if (!factura.FechaCancelacion.HasValue) factura.FechaCancelacion = DateTime.Today;                        
+
+
+                        try
                         {
-                            Factura factura = Controler.Model.Factura.First(f => f.Id == item.Id);
-                            if (factura.FechaCancelacion.HasValue) return;
-                                factura.FechaCancelacion = DateTime.Today;
-                            try
-                            {
-                                Controler.Model.SaveChanges();
-                                new frmMessageBox(true) { Message = "Factura Cancelada Exitosamente. ", Title = "Aviso" }.ShowDialog();
-                            }
-                            catch (Exception ex)
-                            {
-                                new frmMessageBox(true) { Message = "Error al Cancelar la factura: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
-                            }
+                            Controler.Model.SaveChanges();
+                            new frmMessageBox(true) { Message = "Factura Cancelada Exitosamente. ", Title = "Aviso" }.ShowDialog();
                         }
+                        catch (Exception ex)
+                        {
+                            new frmMessageBox(true) { Message = "Error al Cancelar la factura: " + ex.GetBaseException().Message, Title = "Error" }.ShowDialog();
+                        }
+                        //}
                     }
                     if (obra != null && cliente != null)
-                        grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false, true).ToList();
+                        grid.DataSource = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();
                 }
             }
         }
@@ -621,12 +637,12 @@ namespace SistemaGEISA
             if (ckCnceladas.Checked)
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false,true).ToList();
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();
             }
             else
             {
                 if (obra != null && cliente != null)
-                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id,false, true).Where(c => c.FechaCancelacion == null).ToList();
+                    grid.DataSource = ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).Where(c => c.FechaCancelacion == null).ToList();
             }
 
             if (obra != null)
@@ -730,12 +746,12 @@ namespace SistemaGEISA
                 //txtSaldoFavor.Text = Convert.ToDouble(colSaldo.SummaryItem.SummaryValue) < 0 ? Math.Abs(Convert.ToDouble(colSaldo.SummaryItem.SummaryValue)).ToString("c2") : "$0.00";
                 if (obra.PresupuestoDetalle != null)
                 {
-                    double saldoFavor = ( (totPagos + totNC) - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
+                    double saldoFavor = ((totPagos + totNC) - (totPPfinal > 0 ? totPPfinal : obra.PPInicial) - getTraspasos(obra.Id, cliente.Id, obra.Empresa.Id));
                     txtSaldoFavor.Text = saldoFavor >= 0 ? saldoFavor.ToString("c2") : "0.00";
                 }
                 else
                     txtSaldoFavor.Text = "0.00";
-                
+
             }
 
         }
@@ -828,7 +844,7 @@ namespace SistemaGEISA
             {
                 new frmMessageBox(true) { Message = "Seleccione una Factura a Eliminar.", Title = "Aviso" }.ShowDialog();
             }
-            
+
         }
 
         private void btnGuardarPresupuestos_Click(object sender, EventArgs e)
@@ -890,7 +906,7 @@ namespace SistemaGEISA
             {
                 new frmMessageBox(true) { Message = "Seleccione una Obra para Asignar Presupuesto.", Title = "Aviso" }.ShowDialog();
             }
-            
+
         }
 
         private void txtObraCivil1_KeyPress(object sender, KeyPressEventArgs e)
@@ -922,7 +938,7 @@ namespace SistemaGEISA
         }
 
         private void btnSaldoFavor_Click(object sender, EventArgs e)
-        {            
+        {
             //frmIngresosTraspaso form = new frmIngresosTraspaso(this.Controler,this.obra,this.cliente,this.obra.Empresa);            
 
             //saldoFavor = convertirDouble(txtSaldoFavor.Text);
@@ -978,6 +994,47 @@ namespace SistemaGEISA
                     gv_FocusedRowChanged(null, null);
                 }
             }
+        }
+
+        private void btnActualizarClientes_Click(object sender, EventArgs e)
+        {
+            var error = string.Empty;
+            DbTransaction transaccion = null;
+
+            try
+            {
+                transaccion = Controler.Model.BeginTransaction();
+
+                List<getDetalleIngresos_Result> ingresos = Controler.Model.getDetalleIngresos(this.obra.Id, this.cliente.Id, false, true).ToList();
+                foreach (getDetalleIngresos_Result item in ingresos)
+                {
+                    Factura _factura = Controler.Model.Factura.FirstOrDefault(f => f.Id == item.Id);
+                    foreach (getTransaccionesIngresos_Result _detalle in Controler.Model.getTransaccionesIngresos(this.obra.Id, _factura.Id).ToList())
+                    {
+                        Pagos _pago = Controler.Model.Pagos.FirstOrDefault(p => p.Id == _detalle.IdPago);
+                        _pago.ClienteId = this.cliente.Id;
+                    }
+                }
+
+                Controler.Model.SaveChanges();
+                transaccion.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (transaccion != null) transaccion.Rollback();
+                error = ex.GetBaseException().Message;
+            }
+            finally
+            {
+                Controler.Model.CloseConnection();
+
+                var title = string.IsNullOrEmpty(error) ? "Confirmación" : "Error";
+                var message = string.Empty;
+                message = string.IsNullOrEmpty(error) ? string.Concat("El cliente se ha Actualizado en los abonos Exitosamente.") : string.Concat("Error al actualizar los Saldos:\n", error);
+                new frmMessageBox(true) { Message = message, Title = title }.ShowDialog();
+            }
+
+            
         }
     }
 }

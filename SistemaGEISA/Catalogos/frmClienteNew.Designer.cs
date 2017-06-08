@@ -697,6 +697,7 @@
             // rgRazonSocial
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.rgRazonSocial, 3);
+            this.rgRazonSocial.EditValue = 2;
             this.rgRazonSocial.Location = new System.Drawing.Point(102, 306);
             this.rgRazonSocial.Name = "rgRazonSocial";
             this.rgRazonSocial.Properties.Columns = 2;

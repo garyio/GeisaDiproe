@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportePrimaVacacional));
             this.label1 = new System.Windows.Forms.Label();
             this.chkEmpresa = new DevExpress.XtraEditors.CheckedListBoxControl();
@@ -52,7 +51,7 @@
             this.editAño = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.source = new System.Windows.Forms.BindingSource(this.components);
+            this.source = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luEmpleado.Properties)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();

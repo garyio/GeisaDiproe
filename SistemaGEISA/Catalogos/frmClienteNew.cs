@@ -75,6 +75,10 @@ namespace SistemaGEISA
 
         private bool ValidaRFC()
         {
+            txtRFC.Text = txtRFC.Text.ToUpper();
+            if (txtRFC.Text.Equals("XAXX010101000"))
+                return true;
+
             if (this.cliente!=null)
             {
                 int rfcs = controler.Model.Cliente.Where(p => p.RFC == txtRFC.Text.Trim() && p.Id != cliente.Id).Count();

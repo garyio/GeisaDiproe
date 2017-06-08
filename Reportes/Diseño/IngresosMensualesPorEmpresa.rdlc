@@ -553,7 +553,6 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -683,7 +682,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!Diferencia.Value)</Value>
+                                  <Value>=IIF(sum(Fields!TotalFactura.Value) &gt;= abs(sum(Fields!Monto_Pago.Value))
+,sum(Fields!TotalFactura.Value) - sum(Fields!Monto_Pago.Value)
+,0)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2088,7 +2089,9 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Diferencia.Value)</Value>
+                                  <Value>=IIF(sum(Fields!TotalFactura.Value) &gt;= abs(sum(Fields!Monto_Pago.Value))
+,sum(Fields!TotalFactura.Value) - sum(Fields!Monto_Pago.Value)
+,0)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2114,6 +2117,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>

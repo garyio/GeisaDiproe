@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using GeisaBD;
 using DevExpress.XtraEditors.Controls;
 using System.Collections;
+using System.Drawing.Printing;
 
 namespace Reportes
 {
@@ -222,6 +223,16 @@ namespace Reportes
             {
                 this.viewer.LocalReport.EnableExternalImages = true;
                 source.DataSource = new VehiculoDetalleGasolina((DateTime)dateIni.EditValue, (DateTime)dateFin.EditValue, empresas, vehiculos, tipoDepositos, obras).Items;
+                System.Drawing.Printing.PageSettings pg = new System.Drawing.Printing.PageSettings();
+                pg.Margins.Top = 1;
+                pg.Margins.Bottom = 1;
+                pg.Margins.Left = 1;
+                pg.Margins.Right = 1;
+                System.Drawing.Printing.PaperSize size = new PaperSize();
+                size.RawKind = (int)PaperKind.Letter;
+                pg.PaperSize = size;
+                pg.Landscape = false;
+                this.viewer.SetPageSettings(pg); 
                 this.viewer.ZoomPercent = 100;
                 this.viewer.LocalReport.DisplayName = this.Text;
                 this.viewer.RefreshReport();

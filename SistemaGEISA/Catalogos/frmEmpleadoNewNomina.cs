@@ -607,6 +607,10 @@ namespace SistemaGEISA
 
         private bool ValidaRFC()
         {
+            txtRFC.Text = txtRFC.Text.ToUpper();
+            if (txtRFC.Text.Equals("XAXX010101000"))
+                return true;
+
             if (this.empleado != null)
             {
                 int rfcs = controler.Model.Empleado.Where(p => p.RFC == txtRFC.Text.Trim() && p.Id != empleado.Id).Count();

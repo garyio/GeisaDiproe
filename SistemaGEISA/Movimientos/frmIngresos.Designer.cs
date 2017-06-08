@@ -156,6 +156,7 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.ckSaldo = new System.Windows.Forms.CheckBox();
             this.ckCnceladas = new System.Windows.Forms.CheckBox();
+            this.btnActualizarClientes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnDetalle)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
@@ -1102,6 +1103,7 @@
             this.tableLayoutPanel4.Controls.Add(this.txtSaldoFavor, 3, 3);
             this.tableLayoutPanel4.Controls.Add(this.btnSaldoFavor, 3, 4);
             this.tableLayoutPanel4.Controls.Add(this.btnHistorial, 2, 4);
+            this.tableLayoutPanel4.Controls.Add(this.btnActualizarClientes, 3, 5);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -1766,6 +1768,19 @@
             this.ckCnceladas.UseVisualStyleBackColor = true;
             this.ckCnceladas.CheckedChanged += new System.EventHandler(this.ckCnceladas_CheckedChanged);
             // 
+            // btnActualizarClientes
+            // 
+            this.btnActualizarClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnActualizarClientes.Image = global::SistemaGEISA.Properties.Resources.user3;
+            this.btnActualizarClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizarClientes.Location = new System.Drawing.Point(278, 141);
+            this.btnActualizarClientes.Name = "btnActualizarClientes";
+            this.btnActualizarClientes.Size = new System.Drawing.Size(99, 25);
+            this.btnActualizarClientes.TabIndex = 63;
+            this.btnActualizarClientes.Text = "Actualizar";
+            this.btnActualizarClientes.UseVisualStyleBackColor = true;
+            this.btnActualizarClientes.Click += new System.EventHandler(this.btnActualizarClientes_Click);
+            // 
             // frmIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1939,5 +1954,6 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Button btnActualizarClientes;
     }
 }

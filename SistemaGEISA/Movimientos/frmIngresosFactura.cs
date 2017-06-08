@@ -114,7 +114,7 @@ namespace SistemaGEISA
                 txtCadex.Text = factura.Cadex;
                 deFechaIngreso.EditValue = factura.FechaIngreso;
                 //cbExtra.Checked = factura.Extra.HasValue ? factura.Extra.Value : false;
-                if (factura.FechaCancelacion != null)
+                if (factura.FechaCancelacion.HasValue)
                 {
                     luEmpresa.Properties.ReadOnly = true;
                     luObra.Properties.ReadOnly = true;
@@ -123,14 +123,14 @@ namespace SistemaGEISA
                     txtImporte.ReadOnly = true;
                     txtObservaciones.ReadOnly = true;
                     radioGroup.Properties.ReadOnly = true;
-                    luCliente.Properties.ReadOnly = true;
+                    //luCliente.Properties.ReadOnly = true;
                     deFechaIngreso.Properties.ReadOnly = true;
                     txtOC.ReadOnly = true;
                     txtCadex.ReadOnly = true;
                     //cbExtra.Enabled = false;
                     lblCancelada.Visible = true;
-                    btnAgregar.Enabled = false;
-                    btnGuardar.Enabled = false;
+                    //btnAgregar.Enabled = false;
+                    //btnGuardar.Enabled = false;
                 }
             }
         }

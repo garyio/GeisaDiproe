@@ -649,7 +649,9 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!Diferencia.Value)</Value>
+                                  <Value>=IIF(Sum(Max(Fields!TotalFactura.Value, "Facutura2")) &gt;= abs(Sum(Fields!Monto_Pago.Value))
+,Sum(Max(Fields!TotalFactura.Value, "Facutura2")) - Sum(Fields!Monto_Pago.Value)
+,0)</Value>
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -811,7 +813,9 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Diferencia.Value)</Value>
+                                  <Value>=IIF(Sum(Max(Fields!TotalFactura.Value, "Facutura2")) &gt;= abs(Sum(Fields!Monto_Pago.Value))
+,Sum(Max(Fields!TotalFactura.Value, "Facutura2")) - Sum(Fields!Monto_Pago.Value)
+,0)</Value>
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -838,6 +842,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -941,7 +946,6 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                           </Border>
                         </Style>
                       </Image>
-                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
@@ -1595,7 +1599,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=sum(Fields!TotalFactura.Value)</Value>
+                                            <Value>=Sum(Max(Fields!TotalFactura.Value, "Facutura2"))</Value>
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -2394,7 +2398,9 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Diferencia.Value)</Value>
+                                  <Value>=IIF(Sum(Max(Fields!TotalFactura.Value, "Facutura4")) &gt;= abs(Sum(Fields!Monto_Pago.Value))
+,Sum(Max(Fields!TotalFactura.Value, "Facutura4")) - Sum(Fields!Monto_Pago.Value)
+,0)</Value>
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2556,7 +2562,9 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Diferencia.Value)</Value>
+                                  <Value>=IIF(Sum(Max(Fields!TotalFactura.Value, "Facutura4")) &gt;= abs(Sum(Fields!Monto_Pago.Value))
+,Sum(Max(Fields!TotalFactura.Value, "Facutura4")) - Sum(Fields!Monto_Pago.Value)
+,0)</Value>
                                   <Style>
                                     <FontFamily>calibri</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3340,7 +3348,7 @@ Fields!FechaCancelacion.Value&lt;&gt;nothing or Fields!FechaCancelacionPago.Valu
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=sum(Fields!TotalFactura.Value)</Value>
+                                            <Value>=Sum(Max(Fields!TotalFactura.Value, "Facutura4"))</Value>
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>

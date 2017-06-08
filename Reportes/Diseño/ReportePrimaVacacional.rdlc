@@ -142,7 +142,7 @@
               <TextRun>
                 <Value>=Parameters!NombreCompleto.Value</Value>
                 <Style>
-                  <FontFamily>Cambria</FontFamily>
+                  <FontFamily>Calibri</FontFamily>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -207,7 +207,7 @@
               <TextRun>
                 <Value>=Parameters!Puesto.Value</Value>
                 <Style>
-                  <FontFamily>Cambria</FontFamily>
+                  <FontFamily>Calibri</FontFamily>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -561,7 +561,7 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>7.80481cm</Top>
+        <Top>7.48731cm</Top>
         <Left>10.87185cm</Left>
         <Height>0cm</Height>
         <Width>7.40833cm</Width>
@@ -591,7 +591,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>7.94592cm</Top>
+        <Top>7.62842cm</Top>
         <Left>10.87185cm</Left>
         <Height>0.6cm</Height>
         <Width>7.40833cm</Width>
@@ -613,7 +613,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Dias de Vacaciones: " + Parameters!DiasVacaciones.Value + " Dia/Dias."</Value>
+                <Value>="Dias de Vacaciones: " + Parameters!DiasVacaciones.Value</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
@@ -786,27 +786,31 @@
           <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
         </Style>
       </Textbox>
-      <Rectangle Name="Rectangle1">
-        <KeepTogether>true</KeepTogether>
-        <Top>0.14111cm</Top>
-        <Left>0.3175cm</Left>
-        <Height>8.72231cm</Height>
-        <Width>18.94164cm</Width>
-        <ZIndex>24</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Rectangle>
     </ReportItems>
-    <Height>3.61454in</Height>
-    <Style />
+    <Height>8.73112cm</Height>
+    <Style>
+      <Border>
+        <Style>Solid</Style>
+        <Width>2pt</Width>
+      </Border>
+      <TopBorder>
+        <Color>Black</Color>
+      </TopBorder>
+      <BottomBorder>
+        <Color>Black</Color>
+      </BottomBorder>
+      <LeftBorder>
+        <Color>Black</Color>
+      </LeftBorder>
+      <RightBorder>
+        <Color>Black</Color>
+      </RightBorder>
+    </Style>
   </Body>
-  <Width>7.68651in</Width>
+  <Width>19.25914cm</Width>
   <Page>
     <PageHeader>
-      <Height>2.9869cm</Height>
+      <Height>3.38378cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -814,10 +818,10 @@
           <Source>External</Source>
           <Value>="file:" &amp; Parameters!PathLogo.Value</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0.07044cm</Top>
-          <Left>0.3175cm</Left>
-          <Height>2.83709cm</Height>
-          <Width>3.14cm</Width>
+          <Top>1.09389cm</Top>
+          <Left>1.37583cm</Left>
+          <Height>1.86655cm</Height>
+          <Width>2.2866cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -868,8 +872,8 @@
                 <TextRun>
                   <Value>=Parameters!EmpresaDireccion.Value</Value>
                   <Style>
-                    <FontFamily>tahoma</FontFamily>
-                    <FontSize>7pt</FontSize>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>8pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -879,13 +883,33 @@
           <rd:DefaultName>Textbox26</rd:DefaultName>
           <Top>1.52903cm</Top>
           <Left>4.44528cm</Left>
-          <Height>1.3785cm</Height>
+          <Height>1.75774cm</Height>
           <Width>10.79926cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>Solid</Style>
             </Border>
+            <TopBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </BottomBorder>
+            <LeftBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </LeftBorder>
+            <RightBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </RightBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -936,7 +960,7 @@
                 <TextRun>
                   <Value>=Globals!ExecutionTime</Value>
                   <Style>
-                    <FontFamily>Tahoma</FontFamily>
+                    <FontFamily>Calibri</FontFamily>
                     <FontSize>8pt</FontSize>
                     <Format>d' de 'MMMM' de 'yyyy</Format>
                   </Style>
@@ -972,10 +996,10 @@
     </PageHeader>
     <PageHeight>27.94cm</PageHeight>
     <PageWidth>21.59cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
+    <LeftMargin>5cm</LeftMargin>
+    <RightMargin>1cm</RightMargin>
+    <TopMargin>5cm</TopMargin>
+    <BottomMargin>1cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>

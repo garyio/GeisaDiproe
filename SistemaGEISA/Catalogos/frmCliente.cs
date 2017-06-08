@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using GeisaBD;
 using System.Data.Common;
 using System.IO;
+using System.Data.Entity;
 
 namespace SistemaGEISA
 {
@@ -156,7 +157,7 @@ namespace SistemaGEISA
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Domicilios domicilio;
+            
             frmMessageBox msg = new frmMessageBox(false) { Message = "¿Estas seguro de eliminar este Cliente?", Title = "Eliminar Registro" };
             msg.ShowDialog();
 
@@ -164,24 +165,30 @@ namespace SistemaGEISA
             {
                 if (cliente != null)
                 {
-                    DbTransaction transaccion = null;
+                    DbTransaction transaccion = null;                                                                               
                     try
                     {
                         transaccion = Controler.Model.BeginTransaction();
+                        
                         int obrasCount = Controler.Model.Obra.Where(b => b.ClienteId == cliente.Id).Count();
+                        int facturasCount = Controler.Model.Factura.Where(b => b.ClienteId == cliente.Id).Count();
                         if (obrasCount > 0)
                         {
                             new frmMessageBox(true) { Message = "El Cliente tiene obras asociadas, No es posible Eliminar.", Title = "Aviso" }.ShowDialog();
                             if (transaccion != null) transaccion.Rollback();
                             return;
                         }
-
-
-                        if (cliente.Domicilio != null){
-                            Controler.Model.DeleteObject(Controler.Model.Domicilios.FirstOrDefault(D => D.Id == cliente.Domicilio.Id));
+                        if (facturasCount > 0)
+                        {
+                            new frmMessageBox(true) { Message = "El Cliente tiene Facturas asociadas, No es posible Eliminar.", Title = "Aviso" }.ShowDialog();
+                            if (transaccion != null) transaccion.Rollback();
+                            return;
                         }
-                        else
-                            domicilio = null;
+                        
+                        if (cliente.Domicilio != null){
+                            Domicilios _adress = Controler.Model.Domicilios.Where(D => D.Id == cliente.Domicilio.Id).FirstOrDefault();
+                            Controler.Model.DeleteObject(_adress);
+                        }
 
                         Controler.Model.DeleteObject(cliente);                        
 
