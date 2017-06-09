@@ -81,7 +81,8 @@
             this.rgOpciones.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.rgOpciones.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Factura"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Nota Credito")});
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "NC"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(3, "TDC")});
             this.rgOpciones.Name = "rgOpciones";
             this.rgOpciones.NullText = "1";
             // 
@@ -247,9 +248,10 @@
             this.colNoFactura.Caption = "Folio";
             this.colNoFactura.FieldName = "NoFactura";
             this.colNoFactura.Name = "colNoFactura";
+            this.colNoFactura.OptionsColumn.FixedWidth = true;
             this.colNoFactura.Visible = true;
             this.colNoFactura.VisibleIndex = 1;
-            this.colNoFactura.Width = 64;
+            this.colNoFactura.Width = 49;
             // 
             // colFecha
             // 
@@ -260,7 +262,7 @@
             this.colFecha.Name = "colFecha";
             this.colFecha.Visible = true;
             this.colFecha.VisibleIndex = 2;
-            this.colFecha.Width = 77;
+            this.colFecha.Width = 67;
             // 
             // colImporte
             // 
@@ -273,7 +275,6 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Importe", "{0:c2}")});
             this.colImporte.Visible = true;
             this.colImporte.VisibleIndex = 3;
-            this.colImporte.Width = 87;
             // 
             // colObra
             // 
@@ -283,7 +284,7 @@
             this.colObra.Name = "colObra";
             this.colObra.Visible = true;
             this.colObra.VisibleIndex = 4;
-            this.colObra.Width = 180;
+            this.colObra.Width = 167;
             // 
             // luObra
             // 
@@ -303,7 +304,7 @@
             this.colObservaciones.Name = "colObservaciones";
             this.colObservaciones.Visible = true;
             this.colObservaciones.VisibleIndex = 5;
-            this.colObservaciones.Width = 173;
+            this.colObservaciones.Width = 204;
             // 
             // colTipoContrarecibo
             // 
@@ -313,7 +314,7 @@
             this.colTipoContrarecibo.Name = "colTipoContrarecibo";
             this.colTipoContrarecibo.Visible = true;
             this.colTipoContrarecibo.VisibleIndex = 0;
-            this.colTipoContrarecibo.Width = 170;
+            this.colTipoContrarecibo.Width = 189;
             // 
             // dtFechaPago
             // 

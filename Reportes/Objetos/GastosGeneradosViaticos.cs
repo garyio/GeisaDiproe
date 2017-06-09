@@ -80,13 +80,13 @@ namespace Reportes
         public string obra { get { return _Obra; } }
         public int? ProveedorId { get { return Item.ProveedorId; } }
         public int? Consecutivo { get { return Item.Consecutivo.HasValue ? Item.Consecutivo : (int?)null; } }
-        public string Factura { get { return (( (Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1)  == 2 ? "NC " : "") + Item.Factura); } }
+        public string Factura { get { return ((Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1) == 2 ? "NC " : ((Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1) == 3) ? "TDC " : "") + Item.Factura.ToString(); } }
         public DateTime? FechaPago { get { return Item.FechaPago; } }
         public double Importe { get { return Item.Importe != null ? Item.Importe.Value :  0.00; } }
         public string Observaciones { get { return Item.Observaciones; } }
         public string Proveedor { get { return Item.Proveedor; } }
         public string ObraNombre { get { return Item.ObraNombre; } }
-        public string TipoPago { get { return ((Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1) == 2 ? "NOTA CREDITO" : Item.TipoPago); } }
+        public string TipoPago { get { return ((Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1) == 2 ? "NOTA CREDITO" : ((Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1) == 3 ?"TDC":Item.TipoPago)); } }
         public string TarjetaCredito { get { return Item.TarjetaCredito.ToString(); } }
 
         #endregion Reporting Properties

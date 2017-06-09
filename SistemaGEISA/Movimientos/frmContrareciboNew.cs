@@ -248,7 +248,7 @@ namespace SistemaGEISA
                 if (CurrentRow.Row[nColumn].ToString() == "" && nColumn != 4 && nColumn != 5)
                 {
                     e.Valid = false;
-                    gv.SetColumnError(gv.Columns[nColumn], "Este Campo no debe ser vacio");
+                    gv.SetColumnError(gv.Columns[nColumn], "Favor de Ingresar un Valor en este campo.");
                 }
             }
         }
