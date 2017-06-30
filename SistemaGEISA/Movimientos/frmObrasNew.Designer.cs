@@ -58,8 +58,8 @@
             this.luProveedor = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.btnDetalle = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.dtFecha = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luEstado.Properties)).BeginInit();
@@ -129,11 +129,11 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.luCiudad, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dtFechaFin, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.dtFechaIni, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.grid, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label8, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dtFechaFin, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.dtFechaIni, 3, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -147,7 +147,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 152);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 154);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // label7
@@ -460,18 +460,6 @@
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.NullDate = "";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 151);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(264, 25);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Estado";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -484,11 +472,23 @@
             this.label8.Text = "<=>";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 151);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(264, 25);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Estado";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // frmObrasNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 187);
+            this.ClientSize = new System.Drawing.Size(720, 189);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

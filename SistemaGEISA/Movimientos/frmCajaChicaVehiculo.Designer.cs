@@ -35,6 +35,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
+            this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.grid = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,8 +47,6 @@
             this.colPlacas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkActivo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.btnImprimir = new System.Windows.Forms.ToolStripButton();
-            this.btnExportar = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -85,7 +85,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(475, 35);
+            this.menu.Size = new System.Drawing.Size(444, 35);
             this.menu.TabIndex = 5;
             // 
             // btnNuevo
@@ -119,6 +119,24 @@
             this.btnEliminar.Size = new System.Drawing.Size(76, 26);
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
+            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Image = global::SistemaGEISA.Properties.Resources.Reportes;
+            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(144, 26);
+            this.btnExportar.Text = "Exportar Informacion";
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // grid
             // 
@@ -236,24 +254,6 @@
             this.chkActivo.Caption = "Check";
             this.chkActivo.Name = "chkActivo";
             // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Image = global::SistemaGEISA.Properties.Resources.Imprimir;
-            this.btnImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(79, 26);
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // btnExportar
-            // 
-            this.btnExportar.Image = global::SistemaGEISA.Properties.Resources.Reportes;
-            this.btnExportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(144, 26);
-            this.btnExportar.Text = "Exportar Informacion";
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
             // frmCajaChicaVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,7 +263,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCajaChicaVehiculo";
-            this.Text = "Caja Chica Vehículo";
+            this.Text = "Gasolina Vehiculos";
             this.Load += new System.EventHandler(this.frmCajaChicaVehiculo_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

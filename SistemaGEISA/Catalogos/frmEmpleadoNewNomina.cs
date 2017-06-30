@@ -53,6 +53,7 @@ namespace SistemaGEISA
 
         private void frmEmpleadoNewNomina_Load(object sender, EventArgs e)
         {
+            this.Text = this.Text + " " + empleado.NombreCompleto;
             this.empleadoNominda = controler.Model.EmpleadoNomina.FirstOrDefault(X => X.EmpleadoId == this.empleado.Id);
             IniGrid();
             llenaCombos();    
@@ -76,6 +77,7 @@ namespace SistemaGEISA
                 rgTipoNomina.EditValue = empleadoNominda.TipoNomina;
                 
                 txtTelefono.Text = empleadoNominda.Telefono;
+                txtTelefono2.Text = empleadoNominda.Telefono2;
                 txtCelular.Text = empleadoNominda.Celular;
                 dtFechaNacimiento.EditValue = empleadoNominda.FechaNacimiento;
                 txtNss.Text = empleadoNominda.Nss;
@@ -385,6 +387,7 @@ namespace SistemaGEISA
                     //empleadoNominda.Empresa = controler.GetObjectFromContext(luEmpresa.GetSelectedDataRow() as Empresa);
                     empleadoNominda.Bancos = controler.GetObjectFromContext(luBancos.GetSelectedDataRow() as Bancos);
                     empleadoNominda.Telefono = txtTelefono.Text;
+                    empleadoNominda.Telefono2 = txtTelefono2.Text;
                     empleadoNominda.Celular = txtCelular.Text;
                     empleadoNominda.FechaNacimiento = (DateTime)dtFechaNacimiento.EditValue;
                     empleadoNominda.Nss = txtNss.Text.ToUpper();
@@ -627,6 +630,11 @@ namespace SistemaGEISA
                 else
                     return false;
             }
+        }
+
+        private void txtTelefono2_TabIndexChanged(object sender, EventArgs e)
+        {
+            txtTelefono2.Select(0, 0);
         }
     }
 }

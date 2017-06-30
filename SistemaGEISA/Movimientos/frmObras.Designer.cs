@@ -197,7 +197,7 @@
             // colFechaIni
             // 
             this.colFechaIni.Caption = "Fecha Inicio";
-            this.colFechaIni.FieldName = "FechaInicio";
+            this.colFechaIni.FieldName = "FechaFin";
             this.colFechaIni.Name = "colFechaIni";
             this.colFechaIni.Visible = true;
             this.colFechaIni.VisibleIndex = 1;
@@ -205,7 +205,7 @@
             // colFechaFin
             // 
             this.colFechaFin.Caption = "Fecha Fin";
-            this.colFechaFin.FieldName = "FechaFin";
+            this.colFechaFin.FieldName = "FechaInicio";
             this.colFechaFin.Name = "colFechaFin";
             this.colFechaFin.Visible = true;
             this.colFechaFin.VisibleIndex = 2;

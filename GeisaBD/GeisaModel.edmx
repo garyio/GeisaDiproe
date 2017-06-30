@@ -257,6 +257,7 @@
           <Property Name="MontoHoraExtra" Type="float" />
           <Property Name="TipoNomina" Type="int" />
           <Property Name="SueldoCompartido" Type="bit" />
+          <Property Name="Telefono2" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -4441,6 +4442,7 @@
           <NavigationProperty Name="Empresa" Relationship="GEISAModel.FK_EmpleadoNomina_Empresa" FromRole="EmpleadoNomina" ToRole="Empresa" />
           <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_EmpleadoNomina_Empleado" FromRole="EmpleadoNomina" ToRole="Empleado" />
           <NavigationProperty Name="EmpleadoHistorial" Relationship="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina" FromRole="EmpleadoNomina" ToRole="EmpleadoHistorial" />
+          <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_EmpleadoNomina_Bancos">
           <End Type="GEISAModel.Bancos" Role="Bancos" Multiplicity="0..1" />
@@ -6099,6 +6101,7 @@
           <EntitySetMapping Name="EmpleadoNomina">
             <EntityTypeMapping TypeName="GEISAModel.EmpleadoNomina">
               <MappingFragment StoreEntitySet="EmpleadoNomina">
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
                 <ScalarProperty Name="SueldoCompartido" ColumnName="SueldoCompartido" />
                 <ScalarProperty Name="TipoNomina" ColumnName="TipoNomina" />
                 <ScalarProperty Name="MontoHoraExtra" ColumnName="MontoHoraExtra" />

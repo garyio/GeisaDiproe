@@ -57,7 +57,7 @@ namespace Reportes
 
         public string Fecha { get { return Item.Fecha.ToShortDateString(); } }
         public string NoFactura { get { return ((Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1) == 2 ? "NC " : ((Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1) == 3) ? "TDC ":"") + Item.NoFactura.ToString(); } }
-        public double Importe { get { return Item.Importe; } }
+        public double Importe { get { return (Item.tipoComprobante.HasValue ? Item.tipoComprobante.Value : -1) == 2 ? Item.Importe * -1 : Item.Importe; } }
         public double MontoPagar { get { return (Item.MontoPagar != null ? Item.MontoPagar.Value : 0  ) ; } }
         public string Referencia { get { return Item.Referencia; } }
         public string FechaPago { get { return Item.FechaPago != null ? Item.FechaPago.Value.ToShortDateString() : string.Empty ; } }

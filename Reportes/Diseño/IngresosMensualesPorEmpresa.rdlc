@@ -683,7 +683,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TextRuns>
                                 <TextRun>
                                   <Value>=IIF(sum(Fields!TotalFactura.Value) &gt;= abs(sum(Fields!Monto_Pago.Value))
-,sum(Fields!TotalFactura.Value) - sum(Fields!Monto_Pago.Value)
+,Sum(Max(Fields!TotalFactura.Value, "Facutura")) - sum(Fields!Monto_Pago.Value)
 ,0)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
@@ -1433,7 +1433,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=sum(Fields!TotalFactura.Value)</Value>
+                                            <Value>=Sum(Max(Fields!TotalFactura.Value, "Facutura"))</Value>
                                             <Style>
                                               <FontFamily>calibri</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -2090,7 +2090,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                               <TextRuns>
                                 <TextRun>
                                   <Value>=IIF(sum(Fields!TotalFactura.Value) &gt;= abs(sum(Fields!Monto_Pago.Value))
-,sum(Fields!TotalFactura.Value) - sum(Fields!Monto_Pago.Value)
+,Sum(Max(Fields!TotalFactura.Value, "Facutura6")) - sum(Fields!Monto_Pago.Value)
 ,0)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
@@ -2117,7 +2117,6 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -2857,7 +2856,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=sum(Fields!TotalFactura.Value)</Value>
+                                            <Value>=Sum(Max(Fields!TotalFactura.Value, "Facutura6"))</Value>
                                             <Style>
                                               <FontSize>7.5pt</FontSize>
                                               <FontWeight>Bold</FontWeight>

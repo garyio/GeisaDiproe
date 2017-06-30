@@ -166,14 +166,15 @@ namespace Reportes
                 //source.DataSource = new IngresosMensualesPorEmpresa(obras, (DateTime)dateIni.EditValue, (DateTime)dateFin.EditValue, Empresas, Clientees).Items;
                 System.Drawing.Printing.PageSettings pg = new System.Drawing.Printing.PageSettings();
                 
-                pg.Margins.Top = 19;
+                pg.Margins.Top = 8;
                 pg.Margins.Bottom = 4;
-                pg.Margins.Left = 19;
+                pg.Margins.Left = 4;
                 pg.Margins.Right = 4;
                 //System.Drawing.Printing.PaperSize size = new PaperSize();
-                //size.RawKind = (int)PaperKind.Letter;
-                //pg.PaperSize = size;
-
+                //size.Width = 8;
+                //size.Height = 6;
+                //size.RawKind = (int)PaperKind.Custom;
+                pg.Landscape = false;
                 this.viewer.SetPageSettings(pg);                
                 this.viewer.ZoomPercent = 100;
                 this.viewer.LocalReport.DisplayName = this.Text;

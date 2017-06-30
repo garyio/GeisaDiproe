@@ -8471,6 +8471,30 @@ namespace GeisaBD
         private Nullable<global::System.Boolean> _SueldoCompartido;
         partial void OnSueldoCompartidoChanging(Nullable<global::System.Boolean> value);
         partial void OnSueldoCompartidoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Telefono2
+        {
+            get
+            {
+                return _Telefono2;
+            }
+            set
+            {
+                OnTelefono2Changing(value);
+                ReportPropertyChanging("Telefono2");
+                _Telefono2 = StructuralObject.SetValidValue(value, true, "Telefono2");
+                ReportPropertyChanged("Telefono2");
+                OnTelefono2Changed();
+            }
+        }
+        private global::System.String _Telefono2;
+        partial void OnTelefono2Changing(global::System.String value);
+        partial void OnTelefono2Changed();
 
         #endregion
 

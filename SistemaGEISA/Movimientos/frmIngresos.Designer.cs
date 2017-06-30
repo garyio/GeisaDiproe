@@ -117,6 +117,7 @@
             this.txtSaldoFavor = new System.Windows.Forms.TextBox();
             this.btnSaldoFavor = new System.Windows.Forms.Button();
             this.btnHistorial = new System.Windows.Forms.Button();
+            this.btnActualizarClientes = new System.Windows.Forms.Button();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
@@ -156,7 +157,6 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.ckSaldo = new System.Windows.Forms.CheckBox();
             this.ckCnceladas = new System.Windows.Forms.CheckBox();
-            this.btnActualizarClientes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnDetalle)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
@@ -1309,6 +1309,19 @@
             this.btnHistorial.UseVisualStyleBackColor = false;
             this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
             // 
+            // btnActualizarClientes
+            // 
+            this.btnActualizarClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnActualizarClientes.Image = global::SistemaGEISA.Properties.Resources.user3;
+            this.btnActualizarClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizarClientes.Location = new System.Drawing.Point(278, 141);
+            this.btnActualizarClientes.Name = "btnActualizarClientes";
+            this.btnActualizarClientes.Size = new System.Drawing.Size(99, 25);
+            this.btnActualizarClientes.TabIndex = 63;
+            this.btnActualizarClientes.Text = "Actualizar";
+            this.btnActualizarClientes.UseVisualStyleBackColor = true;
+            this.btnActualizarClientes.Click += new System.EventHandler(this.btnActualizarClientes_Click);
+            // 
             // groupControl2
             // 
             this.groupControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
@@ -1768,19 +1781,6 @@
             this.ckCnceladas.UseVisualStyleBackColor = true;
             this.ckCnceladas.CheckedChanged += new System.EventHandler(this.ckCnceladas_CheckedChanged);
             // 
-            // btnActualizarClientes
-            // 
-            this.btnActualizarClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnActualizarClientes.Image = global::SistemaGEISA.Properties.Resources.user3;
-            this.btnActualizarClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarClientes.Location = new System.Drawing.Point(278, 141);
-            this.btnActualizarClientes.Name = "btnActualizarClientes";
-            this.btnActualizarClientes.Size = new System.Drawing.Size(99, 25);
-            this.btnActualizarClientes.TabIndex = 63;
-            this.btnActualizarClientes.Text = "Actualizar";
-            this.btnActualizarClientes.UseVisualStyleBackColor = true;
-            this.btnActualizarClientes.Click += new System.EventHandler(this.btnActualizarClientes_Click);
-            // 
             // frmIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1789,7 +1789,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmIngresos";
-            this.Text = " Ingresos";
+            this.Text = "Detalle de Obras";
             this.Load += new System.EventHandler(this.frmIngresos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnDetalle)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

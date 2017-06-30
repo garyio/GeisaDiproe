@@ -168,7 +168,7 @@
             // 
             // BarMenu
             // 
-            this.BarMenu.ActiveGroup = this.navReportes;
+            this.BarMenu.ActiveGroup = this.navOperaciones;
             this.BarMenu.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.BarMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.BarMenu.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -223,7 +223,6 @@
             // navReportes
             // 
             this.navReportes.Caption = "Reportes";
-            this.navReportes.Expanded = true;
             this.navReportes.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.itCuentaProveedores),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itGastosGenerados),
@@ -415,6 +414,7 @@
             // navOperaciones
             // 
             this.navOperaciones.Caption = "Operaciones";
+            this.navOperaciones.Expanded = true;
             this.navOperaciones.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.itObra),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itContrarecibo),
@@ -433,7 +433,7 @@
             this.navOperaciones.LargeImage = global::SistemaGEISA.Properties.Resources.Movimientos;
             this.navOperaciones.Name = "navOperaciones";
             this.navOperaciones.Tag = "Operaciones";
-            this.navOperaciones.TopVisibleLinkIndex = 6;
+            this.navOperaciones.TopVisibleLinkIndex = 9;
             // 
             // itObra
             // 
@@ -451,7 +451,7 @@
             // 
             // itPagos
             // 
-            this.itPagos.Caption = "Pagos";
+            this.itPagos.Caption = "Egresos";
             this.itPagos.Name = "itPagos";
             this.itPagos.SmallImage = global::SistemaGEISA.Properties.Resources.money2;
             this.itPagos.Tag = "frmPagos";
@@ -472,7 +472,7 @@
             // 
             // itCajaChicaVehiculo
             // 
-            this.itCajaChicaVehiculo.Caption = "Vehículo Caja Chica";
+            this.itCajaChicaVehiculo.Caption = "Gasolina Vehiculos";
             this.itCajaChicaVehiculo.Name = "itCajaChicaVehiculo";
             this.itCajaChicaVehiculo.SmallImage = global::SistemaGEISA.Properties.Resources.Caja_Chica;
             this.itCajaChicaVehiculo.Tag = "frmCajaChicaVehiculo";
@@ -507,7 +507,7 @@
             // 
             // itIngresos
             // 
-            this.itIngresos.Caption = "Ingresos";
+            this.itIngresos.Caption = "Detalle de Obras";
             this.itIngresos.Name = "itIngresos";
             this.itIngresos.SmallImage = ((System.Drawing.Image)(resources.GetObject("itIngresos.SmallImage")));
             this.itIngresos.Tag = "frmIngresos";

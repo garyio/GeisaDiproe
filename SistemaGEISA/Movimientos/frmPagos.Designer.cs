@@ -365,7 +365,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPagos";
-            this.Text = "Pagos";
+            this.Text = "Egresos";
             this.Load += new System.EventHandler(this.frmPagos_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
