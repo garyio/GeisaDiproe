@@ -49,10 +49,11 @@
             this.colFechaFin2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dtFechaFin2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colSueldo2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEmpresa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lookupEmpresa = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colObservacion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtObservaciones = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.luPuesto = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.luEmpresa = new DevExpress.XtraEditors.LookUpEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtFechaNacimiento = new DevExpress.XtraEditors.DateEdit();
@@ -93,6 +94,7 @@
             this.btnInfo = new System.Windows.Forms.ToolStripButton();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
+            this.luEmpresa = new DevExpress.XtraEditors.LookUpEdit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgTipoNomina.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -107,9 +109,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio2.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin2.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luPuesto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaNacimiento.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaNacimiento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.luBancos.Properties)).BeginInit();
@@ -118,6 +120,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinVacaciones.Properties)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -132,7 +135,6 @@
             this.tableLayoutPanel1.Controls.Add(this.rgTipoNomina, 4, 9);
             this.tableLayoutPanel1.Controls.Add(this.label16, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.luEmpresa, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.dtFechaNacimiento, 1, 3);
@@ -159,12 +161,13 @@
             this.tableLayoutPanel1.Controls.Add(this.luBancos, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.txtHorasExtras, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.chkGeisaDiproe, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chkGeisaDiproe, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 4, 8);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtRFC, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label17, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtTelefono2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.luEmpresa, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -181,13 +184,13 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(790, 450);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(952, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // rgTipoNomina
             // 
             this.rgTipoNomina.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rgTipoNomina.Location = new System.Drawing.Point(403, 250);
+            this.rgTipoNomina.Location = new System.Drawing.Point(573, 250);
             this.rgTipoNomina.Name = "rgTipoNomina";
             this.rgTipoNomina.Properties.Columns = 3;
             this.rgTipoNomina.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
@@ -201,7 +204,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Location = new System.Drawing.Point(309, 247);
+            this.label16.Location = new System.Drawing.Point(479, 247);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(88, 27);
             this.label16.TabIndex = 76;
@@ -225,8 +228,9 @@
             this.luPuestos,
             this.txtObservaciones,
             this.dtFechaInicio2,
-            this.dtFechaFin2});
-            this.grid.Size = new System.Drawing.Size(775, 165);
+            this.dtFechaFin2,
+            this.lookupEmpresa});
+            this.grid.Size = new System.Drawing.Size(936, 165);
             this.grid.TabIndex = 15;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv});
@@ -252,6 +256,7 @@
             this.colFechaInicio2,
             this.colFechaFin2,
             this.colSueldo2,
+            this.colEmpresa,
             this.colObservacion});
             this.gv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gv.GridControl = this.grid;
@@ -379,7 +384,7 @@
             this.colFechaInicio2.Name = "colFechaInicio2";
             this.colFechaInicio2.OptionsColumn.FixedWidth = true;
             this.colFechaInicio2.Visible = true;
-            this.colFechaInicio2.VisibleIndex = 5;
+            this.colFechaInicio2.VisibleIndex = 6;
             // 
             // dtFechaInicio2
             // 
@@ -398,7 +403,7 @@
             this.colFechaFin2.Name = "colFechaFin2";
             this.colFechaFin2.OptionsColumn.FixedWidth = true;
             this.colFechaFin2.Visible = true;
-            this.colFechaFin2.VisibleIndex = 6;
+            this.colFechaFin2.VisibleIndex = 7;
             // 
             // dtFechaFin2
             // 
@@ -417,8 +422,28 @@
             this.colSueldo2.FieldName = "Sueldo2";
             this.colSueldo2.Name = "colSueldo2";
             this.colSueldo2.Visible = true;
-            this.colSueldo2.VisibleIndex = 7;
+            this.colSueldo2.VisibleIndex = 5;
             this.colSueldo2.Width = 106;
+            // 
+            // colEmpresa
+            // 
+            this.colEmpresa.Caption = "Empresa";
+            this.colEmpresa.ColumnEdit = this.lookupEmpresa;
+            this.colEmpresa.FieldName = "NombreComercial";
+            this.colEmpresa.Name = "colEmpresa";
+            this.colEmpresa.Visible = true;
+            this.colEmpresa.VisibleIndex = 8;
+            // 
+            // lookupEmpresa
+            // 
+            this.lookupEmpresa.AutoHeight = false;
+            this.lookupEmpresa.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookupEmpresa.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreComercial", "Empresa")});
+            this.lookupEmpresa.Name = "lookupEmpresa";
+            this.lookupEmpresa.NullText = "";
             // 
             // colObservacion
             // 
@@ -427,7 +452,7 @@
             this.colObservacion.FieldName = "Observaciones";
             this.colObservacion.Name = "colObservacion";
             this.colObservacion.Visible = true;
-            this.colObservacion.VisibleIndex = 8;
+            this.colObservacion.VisibleIndex = 9;
             this.colObservacion.Width = 247;
             // 
             // txtObservaciones
@@ -448,23 +473,6 @@
             this.luPuesto.Name = "luPuesto";
             this.luPuesto.NullText = "";
             // 
-            // luEmpresa
-            // 
-            this.luEmpresa.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
-            this.tableLayoutPanel1.SetColumnSpan(this.luEmpresa, 3);
-            this.luEmpresa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.luEmpresa.Location = new System.Drawing.Point(114, 8);
-            this.luEmpresa.Name = "luEmpresa";
-            this.luEmpresa.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.luEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.luEmpresa.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreComercial", "Nombre")});
-            this.luEmpresa.Properties.NullText = "";
-            this.luEmpresa.Size = new System.Drawing.Size(283, 20);
-            this.luEmpresa.TabIndex = 1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -475,6 +483,7 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Empresa";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Visible = false;
             // 
             // label2
             // 
@@ -497,7 +506,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtFechaNacimiento.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtFechaNacimiento.Size = new System.Drawing.Size(170, 20);
+            this.dtFechaNacimiento.Size = new System.Drawing.Size(359, 20);
             this.dtFechaNacimiento.TabIndex = 4;
             // 
             // label3
@@ -518,14 +527,14 @@
             this.txtTelefono.Location = new System.Drawing.Point(114, 34);
             this.txtTelefono.Mask = "(999)000-0000";
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(170, 21);
+            this.txtTelefono.Size = new System.Drawing.Size(359, 21);
             this.txtTelefono.TabIndex = 2;
             this.txtTelefono.TabIndexChanged += new System.EventHandler(this.txtTelefono_TabIndexChanged);
             // 
             // txtCelular
             // 
             this.txtCelular.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCelular.Location = new System.Drawing.Point(403, 34);
+            this.txtCelular.Location = new System.Drawing.Point(573, 34);
             this.txtCelular.Mask = "000-000-0000";
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(359, 21);
@@ -536,7 +545,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(309, 31);
+            this.label4.Location = new System.Drawing.Point(479, 31);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 27);
             this.label4.TabIndex = 24;
@@ -547,7 +556,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(309, 85);
+            this.label5.Location = new System.Drawing.Point(479, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 27);
             this.label5.TabIndex = 25;
@@ -557,7 +566,7 @@
             // txtNss
             // 
             this.txtNss.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNss.Location = new System.Drawing.Point(403, 88);
+            this.txtNss.Location = new System.Drawing.Point(573, 88);
             this.txtNss.MaxLength = 20;
             this.txtNss.Name = "txtNss";
             this.txtNss.Size = new System.Drawing.Size(359, 21);
@@ -581,14 +590,14 @@
             this.txtDomicilio.Location = new System.Drawing.Point(114, 115);
             this.txtDomicilio.MaxLength = 200;
             this.txtDomicilio.Name = "txtDomicilio";
-            this.txtDomicilio.Size = new System.Drawing.Size(648, 21);
+            this.txtDomicilio.Size = new System.Drawing.Size(818, 21);
             this.txtDomicilio.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(309, 139);
+            this.label8.Location = new System.Drawing.Point(479, 139);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 27);
             this.label8.TabIndex = 31;
@@ -598,7 +607,7 @@
             // txtCurp
             // 
             this.txtCurp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCurp.Location = new System.Drawing.Point(403, 142);
+            this.txtCurp.Location = new System.Drawing.Point(573, 142);
             this.txtCurp.MaxLength = 20;
             this.txtCurp.Name = "txtCurp";
             this.txtCurp.Size = new System.Drawing.Size(359, 21);
@@ -621,14 +630,14 @@
             this.txtCtaBancaria.Location = new System.Drawing.Point(114, 196);
             this.txtCtaBancaria.MaxLength = 20;
             this.txtCtaBancaria.Name = "txtCtaBancaria";
-            this.txtCtaBancaria.Size = new System.Drawing.Size(170, 21);
+            this.txtCtaBancaria.Size = new System.Drawing.Size(359, 21);
             this.txtCtaBancaria.TabIndex = 11;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(309, 193);
+            this.label10.Location = new System.Drawing.Point(479, 193);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 27);
             this.label10.TabIndex = 36;
@@ -638,7 +647,7 @@
             // txtClabe
             // 
             this.txtClabe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtClabe.Location = new System.Drawing.Point(403, 196);
+            this.txtClabe.Location = new System.Drawing.Point(573, 196);
             this.txtClabe.MaxLength = 20;
             this.txtClabe.Name = "txtClabe";
             this.txtClabe.Size = new System.Drawing.Size(359, 21);
@@ -661,14 +670,14 @@
             this.txtCreditoInfonavit.Location = new System.Drawing.Point(114, 169);
             this.txtCreditoInfonavit.MaxLength = 20;
             this.txtCreditoInfonavit.Name = "txtCreditoInfonavit";
-            this.txtCreditoInfonavit.Size = new System.Drawing.Size(170, 21);
+            this.txtCreditoInfonavit.Size = new System.Drawing.Size(359, 21);
             this.txtCreditoInfonavit.TabIndex = 9;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(309, 166);
+            this.label12.Location = new System.Drawing.Point(479, 166);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(88, 27);
             this.label12.TabIndex = 40;
@@ -678,7 +687,7 @@
             // txtMontoInfonavit
             // 
             this.txtMontoInfonavit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMontoInfonavit.Location = new System.Drawing.Point(403, 169);
+            this.txtMontoInfonavit.Location = new System.Drawing.Point(573, 169);
             this.txtMontoInfonavit.Name = "txtMontoInfonavit";
             this.txtMontoInfonavit.Size = new System.Drawing.Size(359, 21);
             this.txtMontoInfonavit.TabIndex = 10;
@@ -689,7 +698,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(309, 220);
+            this.label13.Location = new System.Drawing.Point(479, 220);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(88, 27);
             this.label13.TabIndex = 42;
@@ -718,7 +727,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Nombre")});
             this.luBancos.Properties.NullText = "";
-            this.luBancos.Size = new System.Drawing.Size(170, 20);
+            this.luBancos.Size = new System.Drawing.Size(359, 20);
             this.luBancos.TabIndex = 13;
             // 
             // label15
@@ -737,18 +746,19 @@
             this.txtHorasExtras.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtHorasExtras.Location = new System.Drawing.Point(114, 250);
             this.txtHorasExtras.Name = "txtHorasExtras";
-            this.txtHorasExtras.Size = new System.Drawing.Size(170, 21);
+            this.txtHorasExtras.Size = new System.Drawing.Size(359, 21);
             this.txtHorasExtras.TabIndex = 45;
             this.txtHorasExtras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHorasExtras_KeyPress);
             // 
             // chkGeisaDiproe
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.chkGeisaDiproe, 3);
             this.chkGeisaDiproe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkGeisaDiproe.Location = new System.Drawing.Point(403, 8);
+            this.chkGeisaDiproe.Location = new System.Drawing.Point(114, 8);
             this.chkGeisaDiproe.Name = "chkGeisaDiproe";
             this.chkGeisaDiproe.Properties.Caption = "Sueldo Compartido (Geisa - Diproe)";
             this.chkGeisaDiproe.Properties.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
-            this.chkGeisaDiproe.Size = new System.Drawing.Size(359, 19);
+            this.chkGeisaDiproe.Size = new System.Drawing.Size(453, 19);
             this.chkGeisaDiproe.TabIndex = 78;
             this.chkGeisaDiproe.CheckedChanged += new System.EventHandler(this.chkGeisaDiproe_CheckedChanged);
             // 
@@ -761,7 +771,7 @@
             this.tableLayoutPanel3.Controls.Add(this.spinVacaciones, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblVacacionesTomadas, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(403, 223);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(573, 223);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -815,7 +825,7 @@
             this.txtRFC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtRFC.Location = new System.Drawing.Point(114, 142);
             this.txtRFC.Name = "txtRFC";
-            this.txtRFC.Size = new System.Drawing.Size(170, 21);
+            this.txtRFC.Size = new System.Drawing.Size(359, 21);
             this.txtRFC.TabIndex = 81;
             this.txtRFC.Leave += new System.EventHandler(this.txtRFC_Leave);
             // 
@@ -837,7 +847,7 @@
             this.txtTelefono2.Location = new System.Drawing.Point(114, 61);
             this.txtTelefono2.Mask = "(999)000-0000";
             this.txtTelefono2.Name = "txtTelefono2";
-            this.txtTelefono2.Size = new System.Drawing.Size(170, 21);
+            this.txtTelefono2.Size = new System.Drawing.Size(359, 21);
             this.txtTelefono2.TabIndex = 83;
             this.txtTelefono2.TabIndexChanged += new System.EventHandler(this.txtTelefono2_TabIndexChanged);
             // 
@@ -853,7 +863,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(796, 491);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(958, 491);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // menu
@@ -870,7 +880,7 @@
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3);
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(796, 35);
+            this.menu.Size = new System.Drawing.Size(958, 35);
             this.menu.TabIndex = 7;
             // 
             // btnGuardar
@@ -909,11 +919,27 @@
             this.btnEliminar.Text = "Eliminar Historial Seleccionado";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
+            // luEmpresa
+            // 
+            this.luEmpresa.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
+            this.luEmpresa.Location = new System.Drawing.Point(573, 8);
+            this.luEmpresa.Name = "luEmpresa";
+            this.luEmpresa.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.luEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luEmpresa.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NombreComercial", "Nombre")});
+            this.luEmpresa.Properties.NullText = "";
+            this.luEmpresa.Size = new System.Drawing.Size(283, 20);
+            this.luEmpresa.TabIndex = 1;
+            this.luEmpresa.Visible = false;
+            // 
             // frmEmpleadoNewNomina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 491);
+            this.ClientSize = new System.Drawing.Size(958, 491);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEmpleadoNewNomina";
@@ -936,9 +962,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaInicio2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaFin2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupEmpresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luPuesto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaNacimiento.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFechaNacimiento.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.luBancos.Properties)).EndInit();
@@ -950,6 +976,7 @@
             this.tableLayoutPanel2.PerformLayout();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.luEmpresa.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -957,7 +984,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraEditors.LookUpEdit luEmpresa;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.DateEdit dtFechaNacimiento;
@@ -1020,5 +1046,8 @@
         private System.Windows.Forms.TextBox txtHorasExtras;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.MaskedTextBox txtTelefono2;
+        private DevExpress.XtraGrid.Columns.GridColumn colEmpresa;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lookupEmpresa;
+        private DevExpress.XtraEditors.LookUpEdit luEmpresa;
     }
 }

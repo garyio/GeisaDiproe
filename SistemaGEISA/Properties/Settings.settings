@@ -6,13 +6,13 @@
       <Value Profile="(Default)">sa</Value>
     </Setting>
     <Setting Name="BaseDatos" Type="System.String" Scope="User">
-      <Value Profile="(Default)">GeisaDB</Value>
+      <Value Profile="(Default)">Geisa_Actual</Value>
     </Setting>
     <Setting Name="Servidor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">BSDEV03\MSSQLSERVER12</Value>
+      <Value Profile="(Default)">GARYDIAZ\GEDP</Value>
     </Setting>
     <Setting Name="Contraseña" Type="System.String" Scope="User">
-      <Value Profile="(Default)">pa$$w0rd</Value>
+      <Value Profile="(Default)">gadipa90</Value>
     </Setting>
   </Settings>
 </SettingsFile>

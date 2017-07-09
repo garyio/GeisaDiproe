@@ -53,7 +53,7 @@ namespace SistemaGEISA
 
         private void frmEmpleadoNewNomina_Load(object sender, EventArgs e)
         {
-            this.Text = this.Text + " " + empleado.NombreCompleto;
+            //this.Text = this.Text + " " + empleado.NombreCompleto;
             this.empleadoNominda = controler.Model.EmpleadoNomina.FirstOrDefault(X => X.EmpleadoId == this.empleado.Id);
             IniGrid();
             llenaCombos();    
@@ -70,7 +70,7 @@ namespace SistemaGEISA
                 }
                 else
                 {
-                    luEmpresa.EditValue = empleadoNominda.EmpresaId.Value;
+                    //luEmpresa.EditValue = empleadoNominda.EmpresaId.Value;
                     chkGeisaDiproe.EditValue = false ;
                 }
 
@@ -112,6 +112,7 @@ namespace SistemaGEISA
                     gv.SetRowCellValue(newRowHandle, "FechaInicio2", serv.FechaInicio2);
                     gv.SetRowCellValue(newRowHandle, "FechaFin2", serv.FechaFin2);
                     gv.SetRowCellValue(newRowHandle, "Sueldo2", serv.Sueldo2);
+                    gv.SetRowCellValue(newRowHandle, "NombreComercial", serv.EmpresaId);
                     gv.UpdateCurrentRow();
                     gv.RefreshData();
                 }
@@ -123,7 +124,9 @@ namespace SistemaGEISA
             }
 
             //Oculto columnas y dependiendo si es sueldo compartido las muestro de nuevo
-            colFechaInicio2.Visible = colFechaFin2.Visible = colSueldo2.Visible = sueldoCompartido.Value;
+            colFechaInicio2.Visible = colFechaFin2.Visible = colSueldo2.Visible  = sueldoCompartido.Value;
+            colEmpresa.Visible = !sueldoCompartido.Value;
+
             if (sueldoCompartido.Value)
             {
                 colFechaInicio2.VisibleIndex = 5;
@@ -197,12 +200,15 @@ namespace SistemaGEISA
         }
 
 
-
         private void llenaCombos()
         {
-            luEmpresa.Properties.DataSource = controler.Model.Empresa.Where(E => E.Activo == true).ToList();
-            luEmpresa.Properties.DisplayMember = "NombreFiscal";
-            luEmpresa.Properties.ValueMember = "Id";
+            //luEmpresa.Properties.DataSource = controler.Model.Empresa.Where(E => E.Activo == true).ToList();
+            //luEmpresa.Properties.DisplayMember = "NombreFiscal";
+            //luEmpresa.Properties.ValueMember = "Id";
+
+            lookupEmpresa.DataSource = controler.Model.Empresa.Where(E => E.Activo == true).ToList();
+            lookupEmpresa.DisplayMember = "NombreComercial";
+            lookupEmpresa.ValueMember = "Id";
 
             luBancos.Properties.DataSource = controler.Model.Bancos.ToList();
             luBancos.Properties.DisplayMember = "Nombre";
@@ -233,6 +239,7 @@ namespace SistemaGEISA
             dt.Columns.Add("FechaInicio2", typeof(DateTime));
             dt.Columns.Add("FechaFin2", typeof(DateTime));
             dt.Columns.Add("Sueldo2", typeof(double));
+            dt.Columns.Add("NombreComercial", typeof(double));
 
             grid.DataSource = dt;
         }
@@ -306,10 +313,11 @@ namespace SistemaGEISA
 
         private void gv_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
-            GridView view = sender as GridView;
-            GridColumn colFechaInicio = view.Columns["FechaInicio"];
-            GridColumn colPuesto = view.Columns["Puesto"];
-            GridColumn colDepartamento = view.Columns["Departamento"];            
+            GridView view = gv;
+            colFechaInicio = view.Columns["FechaInicio"];
+            colPuesto = view.Columns["Puesto"];
+            colDepartamento = view.Columns["Departamento"];
+            colEmpresa = view.Columns["NombreComercial"];  
             view.ClearColumnErrors();
 
             string t_FechaInicio = view.GetRowCellValue(e.RowHandle, colFechaInicio).ToString();
@@ -323,7 +331,17 @@ namespace SistemaGEISA
                 if (string.IsNullOrEmpty(t_FechaInicio2))
                 { e.Valid = false; view.SetColumnError(colFechaInicio2, "Ingresar un Valor Valido."); return; }
                 else { e.Valid = true; }
+
+                string sueldo2 = view.GetRowCellValue(e.RowHandle, colSueldo2).ToString();
+                if (string.IsNullOrEmpty(sueldo2))
+                { e.Valid = false; view.SetColumnError(colSueldo2, "Ingresar un Valor Valido."); return; }
+                else { e.Valid = true; }
             }
+
+            string sueldo = view.GetRowCellValue(e.RowHandle, colSueldo).ToString();
+            if (string.IsNullOrEmpty(sueldo))
+            { e.Valid = false; view.SetColumnError(colSueldo, "Ingresar un Valor Valido."); return; }
+            else { e.Valid = true; }
 
             string estatus = view.GetRowCellValue(e.RowHandle, colPuesto).ToString();
             if (string.IsNullOrEmpty(estatus))
@@ -333,6 +351,11 @@ namespace SistemaGEISA
             string estatus_Dpto = view.GetRowCellValue(e.RowHandle, colDepartamento).ToString();
             if (string.IsNullOrEmpty(estatus_Dpto))
             { e.Valid = false; view.SetColumnError(colDepartamento, "Ingresar un Valor Valido."); return; }
+            else { e.Valid = true; }
+
+            string empresa = view.GetRowCellValue(e.RowHandle, colEmpresa).ToString();
+            if (string.IsNullOrEmpty(empresa))
+            { e.Valid = false; view.SetColumnError(colEmpresa, "Ingresar un Valor Valido."); return; }
             else { e.Valid = true; }
         }
 
@@ -357,7 +380,7 @@ namespace SistemaGEISA
             var isNew = false;
 
             gv.CloseEditor();
-            gv.CloseEditForm();
+            gv.CloseEditForm();            
 
             if (isValid())
             {
@@ -375,12 +398,12 @@ namespace SistemaGEISA
                     empleadoNominda.Empleado = this.empleado;
                     if (chkGeisaDiproe.Checked)
                     {
-                        empleadoNominda.Empresa = null;
+                        //empleadoNominda.Empresa = null;
                         empleadoNominda.SueldoCompartido = true;
                     }
                     else
                     {
-                        empleadoNominda.Empresa = controler.GetObjectFromContext(luEmpresa.GetSelectedDataRow() as Empresa);
+                        //empleadoNominda.Empresa = controler.GetObjectFromContext(luEmpresa.GetSelectedDataRow() as Empresa);
                         empleadoNominda.SueldoCompartido = false;
                     }
 
@@ -411,12 +434,28 @@ namespace SistemaGEISA
                     //else
                     //    historial = new List<EmpleadoHistorial>();
 
+                    gv.RefreshData();
+                    
                     for (int i = 0; i < gv.RowCount; i++)
                     {
+                        //valido cada row si tiene la informacion completa.
                         DataRow row = gv.GetDataRow(i);
-
                         if (row != null)
                         {
+                            DataRowView focusedRow = (DataRowView)gv.GetRow(i);                            
+                            foreach (DataColumn column in focusedRow.DataView.Table.Columns)
+                            {
+                                if ((column.ColumnName.In("Departamento", "Puesto", "FechaInicio", "Sueldo", "NombreComercial") && !chkGeisaDiproe.Checked))
+                                {
+                                    if (focusedRow.Row.IsNull(column)) { error = "Historial del Empleado no Valido,  Validar la Información Ingresada, columna:" + column.Caption; return; };
+                                }else{
+                                    if (this.chkGeisaDiproe.Checked && column.ColumnName.In("FechaInicio2", "Sueldo2"))
+                                    {
+                                        if (focusedRow.Row.IsNull(column)) { error = "Historial del Empleado no Valido,  Validar la Información Ingresada, columna:" + column.Caption; return; };
+                                    }
+                                }
+                            }
+
                             var id = (int?)null;
                             if (string.IsNullOrEmpty(row["Id"].ToString()))
                             {
@@ -443,12 +482,14 @@ namespace SistemaGEISA
                                 detalle.FechaInicio2 = row["FechaInicio2"].ToString() != "" ? Convert.ToDateTime(row["FechaInicio2"]) : (DateTime?)null;
                                 detalle.FechaFin2 = row["FechaFin2"].ToString() != "" ? Convert.ToDateTime(row["FechaFin2"]) : (DateTime?)null;
                                 detalle.Sueldo2 = Convert.ToDouble(row["Sueldo2"] != null || row["Sueldo2"].ToString() != "" ? row["Sueldo2"] : (double?)null);
+                                //error = "Historial del Empleado no Valido,  Validar la Información Ingresada.";
                             }
                             else
                             {
                                 detalle.FechaInicio2 = (DateTime?)null;
                                 detalle.FechaFin2 = (DateTime?)null;
                                 detalle.Sueldo2 = (double?)null;
+                                detalle.EmpresaId = Convert.ToInt32(row["NombreComercial"]);
                             }
                             if (!detalle.NoEsNuevo) controler.Model.AddToEmpleadoHistorial(detalle);
 
@@ -462,7 +503,7 @@ namespace SistemaGEISA
                 {
                     if (isNew) empleadoNominda = null;
                     if (transaccion != null) transaccion.Rollback();
-                    error = ex.GetBaseException().Message;
+                    error = error + "\n" + ex.GetBaseException().Message;
 
                 }
                 finally
@@ -504,11 +545,12 @@ namespace SistemaGEISA
             areValid &= isValid = gv.DataRowCount > 0 ? true : false;
             controler.SetError(grid, isValid ? string.Empty : "Favor de Ingresar al menos 1 Registro en el Historial.");
 
-            if (!chkGeisaDiproe.Checked)
-            {
-                areValid &= isValid = luEmpresa.EditValue != null ? true : false;
-                controler.SetError(luEmpresa, isValid ? string.Empty : "Seleccione una Empresa");
-            }
+            // omiti este codigo porque ya no ocuparemos el campo empresa de la tabla empleadoNomina
+            //if (!chkGeisaDiproe.Checked)
+            //{
+            //    areValid &= isValid = luEmpresa.EditValue != null ? true : false;
+            //    controler.SetError(luEmpresa, isValid ? string.Empty : "Seleccione una Empresa");
+            //}
 
             //Validando RFC
             areValid &= isValid = ValidaRFC();
@@ -569,12 +611,13 @@ namespace SistemaGEISA
         {
             if (Convert.ToBoolean(chkGeisaDiproe.EditValue) == true)
             {
-                luEmpresa.Enabled = false;
+                //luEmpresa.Enabled = colEmpresa.Visible =  false;
                 colFechaInicio2.Visible = colFechaFin2.Visible = colSueldo2.Visible = true;
                 colFechaInicio2.VisibleIndex = 5;
                 colFechaFin2.VisibleIndex = 6;
                 colSueldo2.VisibleIndex = 7;
                 colObservacion.VisibleIndex = 8;
+                
 
                 //colFechaInicio.Caption += " Geisa";
                 //colFechaFin.Caption += " Geisa";
@@ -586,7 +629,7 @@ namespace SistemaGEISA
             }
             else
             {
-                luEmpresa.Enabled = true;
+                //luEmpresa.Enabled = colEmpresa.Visible =  true;
                 colFechaInicio2.Visible = colFechaFin2.Visible = colSueldo2.Visible = false;
 
                 colFechaInicio.Caption = colFechaInicio2.Caption = "Fecha Inicio";

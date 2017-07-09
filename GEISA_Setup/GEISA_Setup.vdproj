@@ -1198,7 +1198,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Reportes, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:Reportes, Version=1.0.0.40628, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_722AF13370B70C3477496A05299B93C2"
@@ -1229,7 +1229,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GeisaBD, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:GeisaBD, Version=1.0.0.40623, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_77700B24E0BAAFD77E4FE05E65A699E2"
@@ -1705,7 +1705,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GEISA"
         "ProductCode" = "8:{ABD7F1E9-F1D5-4F33-B490-209FB941ACF0}"
-        "PackageCode" = "8:{4CE7AA24-588D-42D5-AEFA-EBF64361322F}"
+        "PackageCode" = "8:{CE6F72ED-7FAD-4987-A867-D13F42012B59}"
         "UpgradeCode" = "8:{FBB509F9-2A1A-49B7-89C7-EA7D0357EEDD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

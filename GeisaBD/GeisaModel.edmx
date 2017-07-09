@@ -232,6 +232,7 @@
           <Property Name="FechaInicio2" Type="date" />
           <Property Name="FechaFin2" Type="date" />
           <Property Name="Sueldo2" Type="float" />
+          <Property Name="EmpresaId" Type="int" />
         </EntityType>
         <EntityType Name="EmpleadoNomina">
           <Key>
@@ -239,7 +240,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmpleadoId" Type="int" Nullable="false" />
-          <Property Name="EmpresaId" Type="int" />
           <Property Name="BancosId" Type="int" />
           <Property Name="Telefono" Type="varchar" MaxLength="15" />
           <Property Name="Celular" Type="varchar" MaxLength="15" />
@@ -1020,15 +1020,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EmpleadoNomina_Empresa">
-          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
-          <End Role="EmpleadoNomina" Type="Self.EmpleadoNomina" Multiplicity="*" />
+        <Association Name="FK_EmpleadoNomina_EmpleadoNomina">
+          <End Role="EmpleadoNomina" Type="Self.EmpleadoNomina" Multiplicity="1" />
+          <End Role="EmpleadoNomina1" Type="Self.EmpleadoNomina" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Empresa">
+            <Principal Role="EmpleadoNomina">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="EmpleadoNomina">
-              <PropertyRef Name="EmpresaId" />
+            <Dependent Role="EmpleadoNomina1">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2198,9 +2198,9 @@
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
           </AssociationSet>
-          <AssociationSet Name="FK_EmpleadoNomina_Empresa" Association="Self.FK_EmpleadoNomina_Empresa">
-            <End Role="Empresa" EntitySet="Empresa" />
+          <AssociationSet Name="FK_EmpleadoNomina_EmpleadoNomina" Association="Self.FK_EmpleadoNomina_EmpleadoNomina">
             <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
+            <End Role="EmpleadoNomina1" EntitySet="EmpleadoNomina" />
           </AssociationSet>
           <AssociationSet Name="FK_EmpresaBancos_Bancos" Association="Self.FK_EmpresaBancos_Bancos">
             <End Role="Bancos" EntitySet="Bancos" />
@@ -2900,15 +2900,6 @@
             <End Role="UnidadMedida" EntitySet="UnidadMedida" />
             <End Role="DetalleArticulos" EntitySet="DetalleArticulos" />
           </AssociationSet>
-          <EntitySet Name="EmpleadoNomina" EntityType="GEISAModel.EmpleadoNomina" />
-          <AssociationSet Name="FK_EmpleadoNomina_Bancos" Association="GEISAModel.FK_EmpleadoNomina_Bancos">
-            <End Role="Bancos" EntitySet="Bancos" />
-            <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmpleadoNomina_Empresa" Association="GEISAModel.FK_EmpleadoNomina_Empresa">
-            <End Role="Empresa" EntitySet="Empresa" />
-            <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
-          </AssociationSet>
           <EntitySet Name="Dpto_Puesto" EntityType="GEISAModel.Dpto_Puesto" />
           <EntitySet Name="NominasDetalle" EntityType="GEISAModel.NominasDetalle" />
           <FunctionImport Name="getAbonosTotales" ReturnType="Collection(GEISAModel.getAbonosTotales_Result)">
@@ -2999,53 +2990,12 @@
             <End Role="Pagos" EntitySet="Pagos" />
             <End Role="PrestamosDetalle" EntitySet="PrestamosDetalle" />
           </AssociationSet>
-          <EntitySet Name="Empleado" EntityType="GEISAModel.Empleado" />
-          <AssociationSet Name="FK_CajaChica_Empleado" Association="GEISAModel.FK_CajaChica_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="CajaChica" EntitySet="CajaChica" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmpleadoNomina_Empleado" Association="GEISAModel.FK_EmpleadoNomina_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Nominas_Empleado" Association="GEISAModel.FK_Nominas_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Nominas" EntitySet="Nominas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ordenes_Empleado" Association="GEISAModel.FK_Ordenes_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Ordenes" EntitySet="Ordenes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pagos_Empleado" Association="GEISAModel.FK_Pagos_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Pagos" EntitySet="Pagos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReposicionGastos_Empleado" Association="GEISAModel.FK_ReposicionGastos_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="ReposicionGastos" EntitySet="ReposicionGastos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TarjetasCredito_Empleado" Association="GEISAModel.FK_TarjetasCredito_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="TarjetasCredito" EntitySet="TarjetasCredito" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Empleado" Association="GEISAModel.FK_Usuario_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vehiculo_Empleado" Association="GEISAModel.FK_Vehiculo_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Vehiculo" EntitySet="Vehiculo" />
-          </AssociationSet>
           <EntitySet Name="CajaChicaPrestamo" EntityType="GEISAModel.CajaChicaPrestamo" />
           <AssociationSet Name="FK_Pagos_CajaChicaPrestamo" Association="GEISAModel.FK_Pagos_CajaChicaPrestamo">
             <End Role="CajaChicaPrestamo" EntitySet="CajaChicaPrestamo" />
             <End Role="Pagos" EntitySet="Pagos" />
           </AssociationSet>
           <EntitySet Name="EmpleadoHistorial" EntityType="GEISAModel.EmpleadoHistorial" />
-          <AssociationSet Name="FK_EmpleadoHistorial_EmpleadoNomina" Association="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina">
-            <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
-            <End Role="EmpleadoHistorial" EntitySet="EmpleadoHistorial" />
-          </AssociationSet>
           <EntitySet Name="ClienteBancos" EntityType="GEISAModel.ClienteBancos" />
           <AssociationSet Name="FK_ClienteBancos_Bancos" Association="GEISAModel.FK_ClienteBancos_Bancos">
             <End Role="Bancos" EntitySet="Bancos" />
@@ -3070,10 +3020,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Obra_Cliente" Association="GEISAModel.FK_Obra_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Obra" EntitySet="Obra" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Obra_Empleado" Association="GEISAModel.FK_Obra_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Obra" EntitySet="Obra" />
           </AssociationSet>
           <AssociationSet Name="FK_Obra_Empresa" Association="GEISAModel.FK_Obra_Empresa">
@@ -3176,6 +3122,64 @@
             <Parameter Name="Obra" Mode="In" Type="String" />
             <Parameter Name="ConSaldo" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <AssociationSet Name="FK_EmpleadoHistorial_EmpleadoNomina1" Association="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="EmpleadoHistorial" EntitySet="EmpleadoHistorial" />
+          </AssociationSet>
+          <EntitySet Name="Empleado" EntityType="GEISAModel.Empleado" />
+          <EntitySet Name="EmpleadoNomina" EntityType="GEISAModel.EmpleadoNomina" />
+          <AssociationSet Name="FK_EmpleadoNomina_Bancos" Association="GEISAModel.FK_EmpleadoNomina_Bancos">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CajaChica_Empleado" Association="GEISAModel.FK_CajaChica_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="CajaChica" EntitySet="CajaChica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoNomina_Empleado" Association="GEISAModel.FK_EmpleadoNomina_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nominas_Empleado" Association="GEISAModel.FK_Nominas_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Nominas" EntitySet="Nominas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obra_Empleado" Association="GEISAModel.FK_Obra_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Obra" EntitySet="Obra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ordenes_Empleado" Association="GEISAModel.FK_Ordenes_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Ordenes" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagos_Empleado" Association="GEISAModel.FK_Pagos_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReposicionGastos_Empleado" Association="GEISAModel.FK_ReposicionGastos_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="ReposicionGastos" EntitySet="ReposicionGastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TarjetasCredito_Empleado" Association="GEISAModel.FK_TarjetasCredito_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="TarjetasCredito" EntitySet="TarjetasCredito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Empleado" Association="GEISAModel.FK_Usuario_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Empleado" Association="GEISAModel.FK_Vehiculo_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoHistorial_EmpleadoNomina" Association="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina">
+            <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
+            <End Role="EmpleadoHistorial" EntitySet="EmpleadoHistorial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoNomina_EmpleadoNomina" Association="GEISAModel.FK_EmpleadoNomina_EmpleadoNomina">
+            <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
+            <End Role="EmpleadoNomina1" EntitySet="EmpleadoNomina" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Domicilios">
           <Key>
@@ -3204,8 +3208,8 @@
           <NavigationProperty Name="ProveedorBancos" Relationship="GEISAModel.FK_ProveedorBancos_Bancos" FromRole="Bancos" ToRole="ProveedorBancos" />
           <NavigationProperty Name="EmpresaBancos" Relationship="GEISAModel.FK_EmpresaBancos_Bancos" FromRole="Bancos" ToRole="EmpresaBancos" />
           <NavigationProperty Name="TarjetasCredito" Relationship="GEISAModel.FK_TarjetasCredito_Bancos" FromRole="Bancos" ToRole="TarjetasCredito" />
-          <NavigationProperty Name="EmpleadoNomina" Relationship="GEISAModel.FK_EmpleadoNomina_Bancos" FromRole="Bancos" ToRole="EmpleadoNomina" />
           <NavigationProperty Name="ClienteBancos" Relationship="GEISAModel.FK_ClienteBancos_Bancos" FromRole="Bancos" ToRole="ClienteBancos" />
+          <NavigationProperty Name="EmpleadoNomina" Relationship="GEISAModel.FK_EmpleadoNomina_Bancos" FromRole="Bancos" ToRole="EmpleadoNomina" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -3228,12 +3232,12 @@
           <NavigationProperty Name="Factura" Relationship="GEISAModel.FK_Factura_Empresa" FromRole="Empresa" ToRole="Factura" />
           <NavigationProperty Name="Articulos" Relationship="GEISAModel.FK_Productos_Empresa" FromRole="Empresa" ToRole="Articulos" />
           <NavigationProperty Name="Ordenes" Relationship="GEISAModel.FK_Ordenes_Empresa" FromRole="Empresa" ToRole="Ordenes" />
-          <NavigationProperty Name="EmpleadoNomina" Relationship="GEISAModel.FK_EmpleadoNomina_Empresa" FromRole="Empresa" ToRole="EmpleadoNomina" />
           <NavigationProperty Name="Pagos" Relationship="GEISAModel.FK_Pagos_Empresa" FromRole="Empresa" ToRole="Pagos" />
           <NavigationProperty Name="PrestamosDetalle" Relationship="GEISAModel.FK_PrestamosDetalle_Empresa" FromRole="Empresa" ToRole="PrestamosDetalle" />
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Obra_Empresa" FromRole="Empresa" ToRole="Obra" />
           <NavigationProperty Name="TraspasoSaldos" Relationship="GEISAModel.FK_TraspasoSaldos_Empresa" FromRole="Empresa" ToRole="TraspasoSaldos" />
           <NavigationProperty Name="TraspasoSaldos1" Relationship="GEISAModel.FK_TraspasoSaldos_Empresa1" FromRole="Empresa" ToRole="TraspasoSaldos" />
+          <NavigationProperty Name="EmpleadoHistorial" Relationship="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1" FromRole="Empresa" ToRole="EmpleadoHistorial" />
         </EntityType>
         <EntityType Name="ProveedorBancos">
           <Key>
@@ -4276,8 +4280,8 @@
           <NavigationProperty Name="TipoMovimiento" Relationship="GEISAModel.FK_Ordenes_TipoMovimiento" FromRole="Ordenes" ToRole="TipoMovimiento" />
           <NavigationProperty Name="DetalleArticulos" Relationship="GEISAModel.FK_DetalleArticulos_Ordenes" FromRole="Ordenes" ToRole="DetalleArticulos" />
           <NavigationProperty Name="Iva" Relationship="GEISAModel.FK_Ordenes_Iva" FromRole="Ordenes" ToRole="Iva" />
-          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_Ordenes_Empleado" FromRole="Ordenes" ToRole="Empleado" />
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Ordenes_Obra" FromRole="Ordenes" ToRole="Obra" />
+          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_Ordenes_Empleado" FromRole="Ordenes" ToRole="Empleado" />
         </EntityType>
         <Association Name="FK_Productos_Empresa">
           <End Type="GEISAModel.Empresa" Role="Empresa" Multiplicity="0..1" />
@@ -4414,60 +4418,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="EmpleadoNomina">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
-          <Property Name="EmpresaId" Type="Int32" />
-          <Property Name="BancosId" Type="Int32" />
-          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Celular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
-          <Property Name="Nss" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Domicilio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Rfc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Curp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CuentaBanco" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Cable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CreditoInfonavit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="MontoRetener" Type="Double" />
-          <Property Name="DiasVacaciones" Type="Int32" />
-          <Property Name="Fecha" Type="DateTime" Precision="0" />
-          <Property Name="MontoHoraExtra" Type="Double" />
-          <Property Name="TipoNomina" Type="Int32" />
-          <Property Name="SueldoCompartido" Type="Boolean" />
-          <NavigationProperty Name="Bancos" Relationship="GEISAModel.FK_EmpleadoNomina_Bancos" FromRole="EmpleadoNomina" ToRole="Bancos" />
-          <NavigationProperty Name="Empresa" Relationship="GEISAModel.FK_EmpleadoNomina_Empresa" FromRole="EmpleadoNomina" ToRole="Empresa" />
-          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_EmpleadoNomina_Empleado" FromRole="EmpleadoNomina" ToRole="Empleado" />
-          <NavigationProperty Name="EmpleadoHistorial" Relationship="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina" FromRole="EmpleadoNomina" ToRole="EmpleadoHistorial" />
-          <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="FK_EmpleadoNomina_Bancos">
-          <End Type="GEISAModel.Bancos" Role="Bancos" Multiplicity="0..1" />
-          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bancos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EmpleadoNomina">
-              <PropertyRef Name="BancosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmpleadoNomina_Empresa">
-          <End Type="GEISAModel.Empresa" Role="Empresa" Multiplicity="0..1" />
-          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empresa">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EmpleadoNomina">
-              <PropertyRef Name="EmpresaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Dpto_Puesto">
           <Key>
             <PropertyRef Name="Id" />
@@ -4584,8 +4534,8 @@
           <NavigationProperty Name="Usuario" Relationship="GEISAModel.FK_Pagos_Usuario" FromRole="Pagos" ToRole="Usuario" />
           <NavigationProperty Name="PagosFactura" Relationship="GEISAModel.FK_PagosFactura_Pagos" FromRole="Pagos" ToRole="PagosFactura" />
           <NavigationProperty Name="PrestamosDetalle" Relationship="GEISAModel.FK_PrestamosDetalle_Pagos" FromRole="Pagos" ToRole="PrestamosDetalle" />
-          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_Pagos_Empleado" FromRole="Pagos" ToRole="Empleado" />
           <NavigationProperty Name="CajaChicaPrestamo" Relationship="GEISAModel.FK_Pagos_CajaChicaPrestamo" FromRole="Pagos" ToRole="CajaChicaPrestamo" />
+          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_Pagos_Empleado" FromRole="Pagos" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Permisos">
           <Key>
@@ -4775,10 +4725,10 @@
           <Property Name="Infonavit" Type="Double" />
           <Property Name="esPagoEfectivo" Type="Boolean" />
           <NavigationProperty Name="NominasDetalle" Relationship="GEISAModel.FK_NominasDetalle_Nominas" FromRole="Nominas" ToRole="NominasDetalle" />
-          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_Nominas_Empleado" FromRole="Nominas" ToRole="Empleado" />
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Nominas_Obra" FromRole="Nominas" ToRole="Obra" />
           <Property Name="SueldoFiscal2" Type="Double" />
           <Property Name="Complemento" Type="Double" />
+          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_Nominas_Empleado" FromRole="Nominas" ToRole="Empleado" />
         </EntityType>
         <Association Name="FK_NominasDetalle_Nominas">
           <End Type="GEISAModel.Nominas" Role="Nominas" Multiplicity="1" />
@@ -4842,141 +4792,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Empleado">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ApPaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ApMaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <Property Name="EsResidente" Type="Boolean" Nullable="false" />
-          <Property Name="EsObra" Type="Boolean" />
-          <Property Name="EsOficina" Type="Boolean" />
-          <Property Name="ObraId" Type="Int32" />
-          <NavigationProperty Name="CajaChica" Relationship="GEISAModel.FK_CajaChica_Empleado" FromRole="Empleado" ToRole="CajaChica" />
-          <NavigationProperty Name="EmpleadoNomina" Relationship="GEISAModel.FK_EmpleadoNomina_Empleado" FromRole="Empleado" ToRole="EmpleadoNomina" />
-          <NavigationProperty Name="Nominas" Relationship="GEISAModel.FK_Nominas_Empleado" FromRole="Empleado" ToRole="Nominas" />
-          <NavigationProperty Name="Ordenes" Relationship="GEISAModel.FK_Ordenes_Empleado" FromRole="Empleado" ToRole="Ordenes" />
-          <NavigationProperty Name="Pagos" Relationship="GEISAModel.FK_Pagos_Empleado" FromRole="Empleado" ToRole="Pagos" />
-          <NavigationProperty Name="ReposicionGastos" Relationship="GEISAModel.FK_ReposicionGastos_Empleado" FromRole="Empleado" ToRole="ReposicionGastos" />
-          <NavigationProperty Name="TarjetasCredito" Relationship="GEISAModel.FK_TarjetasCredito_Empleado" FromRole="Empleado" ToRole="TarjetasCredito" />
-          <NavigationProperty Name="Usuario" Relationship="GEISAModel.FK_Usuario_Empleado" FromRole="Empleado" ToRole="Usuario" />
-          <NavigationProperty Name="Vehiculo" Relationship="GEISAModel.FK_Vehiculo_Empleado" FromRole="Empleado" ToRole="Vehiculo" />
-          <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Obra_Empleado" FromRole="Empleado" ToRole="Obra" />
-          <Property Name="EsContratista" Type="Boolean" />
-          <Property Name="EsContratistaPrincipal" Type="Boolean" />
-        </EntityType>
-        <Association Name="FK_CajaChica_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="GEISAModel.CajaChica" Role="CajaChica" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CajaChica">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmpleadoNomina_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EmpleadoNomina">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Nominas_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="GEISAModel.Nominas" Role="Nominas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Nominas">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ordenes_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="GEISAModel.Ordenes" Role="Ordenes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ordenes">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pagos_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
-          <End Type="GEISAModel.Pagos" Role="Pagos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Pagos">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReposicionGastos_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
-          <End Type="GEISAModel.ReposicionGastos" Role="ReposicionGastos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ReposicionGastos">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TarjetasCredito_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="GEISAModel.TarjetasCredito" Role="TarjetasCredito" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TarjetasCredito">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuario_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
-          <End Type="GEISAModel.Usuario" Role="Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vehiculo_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
-          <End Type="GEISAModel.Vehiculo" Role="Vehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Vehiculo">
-              <PropertyRef Name="EmpleadoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CajaChicaPrestamo">
           <Key>
             <PropertyRef Name="Id" />
@@ -5014,20 +4829,10 @@
           <Property Name="FechaInicio2" Type="DateTime" Precision="0" />
           <Property Name="FechaFin2" Type="DateTime" Precision="0" />
           <Property Name="Sueldo2" Type="Double" />
+          <Property Name="EmpresaId" Type="Int32" />
+          <NavigationProperty Name="Empresa" Relationship="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1" FromRole="EmpleadoHistorial" ToRole="Empresa" />
           <NavigationProperty Name="EmpleadoNomina" Relationship="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina" FromRole="EmpleadoHistorial" ToRole="EmpleadoNomina" />
         </EntityType>
-        <Association Name="FK_EmpleadoHistorial_EmpleadoNomina">
-          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina" Multiplicity="0..1" />
-          <End Type="GEISAModel.EmpleadoHistorial" Role="EmpleadoHistorial" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EmpleadoNomina">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EmpleadoHistorial">
-              <PropertyRef Name="EmpleadoNominaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="ClienteBancos">
           <Key>
             <PropertyRef Name="Id" />
@@ -5084,7 +4889,6 @@
           <NavigationProperty Name="CajaChicaDetalle" Relationship="GEISAModel.FK_CajaChicaDetalle_Obra" FromRole="Obra" ToRole="CajaChicaDetalle" />
           <NavigationProperty Name="Ciudad" Relationship="GEISAModel.FK_Obra_Ciudad" FromRole="Obra" ToRole="Ciudad" />
           <NavigationProperty Name="Cliente" Relationship="GEISAModel.FK_Obra_Cliente" FromRole="Obra" ToRole="Cliente" />
-          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_Obra_Empleado" FromRole="Obra" ToRole="Empleado" />
           <NavigationProperty Name="Empresa" Relationship="GEISAModel.FK_Obra_Empresa" FromRole="Obra" ToRole="Empresa" />
           <NavigationProperty Name="Factura" Relationship="GEISAModel.FK_Factura_Obra" FromRole="Obra" ToRole="Factura" />
           <NavigationProperty Name="Nominas" Relationship="GEISAModel.FK_Nominas_Obra" FromRole="Obra" ToRole="Nominas" />
@@ -5093,6 +4897,7 @@
           <NavigationProperty Name="VehiculoCajaChicaDetalle" Relationship="GEISAModel.FK_VehiculoCajaChicaDetalle_Obra" FromRole="Obra" ToRole="VehiculoCajaChicaDetalle" />
           <NavigationProperty Name="TraspasoSaldos" Relationship="GEISAModel.FK_TraspasoSaldos_Obra" FromRole="Obra" ToRole="TraspasoSaldos" />
           <NavigationProperty Name="TraspasoSaldos1" Relationship="GEISAModel.FK_TraspasoSaldos_Obra1" FromRole="Obra" ToRole="TraspasoSaldos" />
+          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_Obra_Empleado" FromRole="Obra" ToRole="Empleado" />
         </EntityType>
         <Association Name="FK_CajaChicaComprobante_Obra">
           <End Type="GEISAModel.Obra" Role="Obra" Multiplicity="0..1" />
@@ -5139,18 +4944,6 @@
             </Principal>
             <Dependent Role="Obra">
               <PropertyRef Name="ClienteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Obra_Empleado">
-          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
-          <End Type="GEISAModel.Obra" Role="Obra" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Obra">
-              <PropertyRef Name="EmpleadoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5480,6 +5273,231 @@
           <Property Type="Int32" Name="FacturaId" Nullable="false" />
           <Property Type="String" Name="EmpresaNombre" Nullable="true" MaxLength="254" />
         </ComplexType>
+        <Association Name="FK_EmpleadoHistorial_EmpleadoNomina1">
+          <End Type="GEISAModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="GEISAModel.EmpleadoHistorial" Role="EmpleadoHistorial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpleadoHistorial">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApPaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApMaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="EsResidente" Type="Boolean" Nullable="false" />
+          <Property Name="EsObra" Type="Boolean" />
+          <Property Name="EsOficina" Type="Boolean" />
+          <Property Name="ObraId" Type="Int32" />
+          <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="EsContratista" Type="Boolean" />
+          <Property Name="EsContratistaPrincipal" Type="Boolean" />
+          <NavigationProperty Name="CajaChica" Relationship="GEISAModel.FK_CajaChica_Empleado" FromRole="Empleado" ToRole="CajaChica" />
+          <NavigationProperty Name="EmpleadoNomina" Relationship="GEISAModel.FK_EmpleadoNomina_Empleado" FromRole="Empleado" ToRole="EmpleadoNomina" />
+          <NavigationProperty Name="Nominas" Relationship="GEISAModel.FK_Nominas_Empleado" FromRole="Empleado" ToRole="Nominas" />
+          <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_Obra_Empleado" FromRole="Empleado" ToRole="Obra" />
+          <NavigationProperty Name="Ordenes" Relationship="GEISAModel.FK_Ordenes_Empleado" FromRole="Empleado" ToRole="Ordenes" />
+          <NavigationProperty Name="Pagos" Relationship="GEISAModel.FK_Pagos_Empleado" FromRole="Empleado" ToRole="Pagos" />
+          <NavigationProperty Name="ReposicionGastos" Relationship="GEISAModel.FK_ReposicionGastos_Empleado" FromRole="Empleado" ToRole="ReposicionGastos" />
+          <NavigationProperty Name="TarjetasCredito" Relationship="GEISAModel.FK_TarjetasCredito_Empleado" FromRole="Empleado" ToRole="TarjetasCredito" />
+          <NavigationProperty Name="Usuario" Relationship="GEISAModel.FK_Usuario_Empleado" FromRole="Empleado" ToRole="Usuario" />
+          <NavigationProperty Name="Vehiculo" Relationship="GEISAModel.FK_Vehiculo_Empleado" FromRole="Empleado" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="EmpleadoNomina">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="BancosId" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Nss" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Domicilio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Rfc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Curp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CuentaBanco" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Cable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreditoInfonavit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MontoRetener" Type="Double" />
+          <Property Name="DiasVacaciones" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="MontoHoraExtra" Type="Double" />
+          <Property Name="TipoNomina" Type="Int32" />
+          <Property Name="SueldoCompartido" Type="Boolean" />
+          <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bancos" Relationship="GEISAModel.FK_EmpleadoNomina_Bancos" FromRole="EmpleadoNomina" ToRole="Bancos" />
+          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_EmpleadoNomina_Empleado" FromRole="EmpleadoNomina" ToRole="Empleado" />
+          <NavigationProperty Name="EmpleadoHistorial" Relationship="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina" FromRole="EmpleadoNomina" ToRole="EmpleadoHistorial" />
+          <NavigationProperty Name="EmpleadoNomina1" Relationship="GEISAModel.FK_EmpleadoNomina_EmpleadoNomina" FromRole="EmpleadoNomina" ToRole="EmpleadoNomina1" />
+          <NavigationProperty Name="EmpleadoNomina2" Relationship="GEISAModel.FK_EmpleadoNomina_EmpleadoNomina" FromRole="EmpleadoNomina1" ToRole="EmpleadoNomina" />
+        </EntityType>
+        <Association Name="FK_EmpleadoNomina_Bancos">
+          <End Type="GEISAModel.Bancos" Role="Bancos" Multiplicity="0..1" />
+          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpleadoNomina">
+              <PropertyRef Name="BancosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CajaChica_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="GEISAModel.CajaChica" Role="CajaChica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CajaChica">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoNomina_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpleadoNomina">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nominas_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="GEISAModel.Nominas" Role="Nominas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Nominas">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obra_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="GEISAModel.Obra" Role="Obra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obra">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ordenes_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="GEISAModel.Ordenes" Role="Ordenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ordenes">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagos_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="GEISAModel.Pagos" Role="Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReposicionGastos_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="GEISAModel.ReposicionGastos" Role="ReposicionGastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReposicionGastos">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TarjetasCredito_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="GEISAModel.TarjetasCredito" Role="TarjetasCredito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TarjetasCredito">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="GEISAModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="GEISAModel.Vehiculo" Role="Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoHistorial_EmpleadoNomina">
+          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina" Multiplicity="0..1" />
+          <End Type="GEISAModel.EmpleadoHistorial" Role="EmpleadoHistorial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmpleadoNomina">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpleadoHistorial">
+              <PropertyRef Name="EmpleadoNominaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoNomina_EmpleadoNomina">
+          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina" Multiplicity="1" />
+          <End Type="GEISAModel.EmpleadoNomina" Role="EmpleadoNomina1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmpleadoNomina">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpleadoNomina1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6098,33 +6116,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EmpleadoNomina">
-            <EntityTypeMapping TypeName="GEISAModel.EmpleadoNomina">
-              <MappingFragment StoreEntitySet="EmpleadoNomina">
-                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
-                <ScalarProperty Name="SueldoCompartido" ColumnName="SueldoCompartido" />
-                <ScalarProperty Name="TipoNomina" ColumnName="TipoNomina" />
-                <ScalarProperty Name="MontoHoraExtra" ColumnName="MontoHoraExtra" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="DiasVacaciones" ColumnName="DiasVacaciones" />
-                <ScalarProperty Name="MontoRetener" ColumnName="MontoRetener" />
-                <ScalarProperty Name="CreditoInfonavit" ColumnName="CreditoInfonavit" />
-                <ScalarProperty Name="Cable" ColumnName="Cable" />
-                <ScalarProperty Name="CuentaBanco" ColumnName="CuentaBanco" />
-                <ScalarProperty Name="Curp" ColumnName="Curp" />
-                <ScalarProperty Name="Rfc" ColumnName="Rfc" />
-                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
-                <ScalarProperty Name="Nss" ColumnName="Nss" />
-                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="BancosId" ColumnName="BancosId" />
-                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
-                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Dpto_Puesto">
             <EntityTypeMapping TypeName="GEISAModel.Dpto_Puesto">
               <MappingFragment StoreEntitySet="Dpto_Puesto">
@@ -6293,24 +6284,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Empleado">
-            <EntityTypeMapping TypeName="GEISAModel.Empleado">
-              <MappingFragment StoreEntitySet="Empleado">
-                <ScalarProperty Name="EsContratistaPrincipal" ColumnName="EsContratistaPrincipal" />
-                <ScalarProperty Name="EsContratista" ColumnName="EsContratista" />
-                <ScalarProperty Name="RFC" ColumnName="RFC" />
-                <ScalarProperty Name="ObraId" ColumnName="ObraId" />
-                <ScalarProperty Name="EsOficina" ColumnName="EsOficina" />
-                <ScalarProperty Name="EsObra" ColumnName="EsObra" />
-                <ScalarProperty Name="EsResidente" ColumnName="EsResidente" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
-                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CajaChicaPrestamo">
             <EntityTypeMapping TypeName="GEISAModel.CajaChicaPrestamo">
               <MappingFragment StoreEntitySet="CajaChicaPrestamo">
@@ -6324,6 +6297,7 @@
           <EntitySetMapping Name="EmpleadoHistorial">
             <EntityTypeMapping TypeName="GEISAModel.EmpleadoHistorial">
               <MappingFragment StoreEntitySet="EmpleadoHistorial">
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
                 <ScalarProperty Name="Sueldo2" ColumnName="Sueldo2" />
                 <ScalarProperty Name="FechaFin2" ColumnName="FechaFin2" />
                 <ScalarProperty Name="FechaInicio2" ColumnName="FechaInicio2" />
@@ -6551,6 +6525,50 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="GEISAModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="EsContratistaPrincipal" ColumnName="EsContratistaPrincipal" />
+                <ScalarProperty Name="EsContratista" ColumnName="EsContratista" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="ObraId" ColumnName="ObraId" />
+                <ScalarProperty Name="EsOficina" ColumnName="EsOficina" />
+                <ScalarProperty Name="EsObra" ColumnName="EsObra" />
+                <ScalarProperty Name="EsResidente" ColumnName="EsResidente" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadoNomina">
+            <EntityTypeMapping TypeName="GEISAModel.EmpleadoNomina">
+              <MappingFragment StoreEntitySet="EmpleadoNomina">
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="SueldoCompartido" ColumnName="SueldoCompartido" />
+                <ScalarProperty Name="TipoNomina" ColumnName="TipoNomina" />
+                <ScalarProperty Name="MontoHoraExtra" ColumnName="MontoHoraExtra" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="DiasVacaciones" ColumnName="DiasVacaciones" />
+                <ScalarProperty Name="MontoRetener" ColumnName="MontoRetener" />
+                <ScalarProperty Name="CreditoInfonavit" ColumnName="CreditoInfonavit" />
+                <ScalarProperty Name="Cable" ColumnName="Cable" />
+                <ScalarProperty Name="CuentaBanco" ColumnName="CuentaBanco" />
+                <ScalarProperty Name="Curp" ColumnName="Curp" />
+                <ScalarProperty Name="Rfc" ColumnName="Rfc" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Nss" ColumnName="Nss" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="BancosId" ColumnName="BancosId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

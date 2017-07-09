@@ -95,9 +95,6 @@
         <AssociationConnector Association="GEISAModel.FK_DetalleArticulos_Articulos" />
         <AssociationConnector Association="GEISAModel.FK_DetalleArticulos_Ordenes" />
         <AssociationConnector Association="GEISAModel.FK_DetalleArticulos_UnidadMedida" />
-        <EntityTypeShape EntityType="GEISAModel.EmpleadoNomina" Width="1.5" PointX="11.625" PointY="0.75" />
-        <AssociationConnector Association="GEISAModel.FK_EmpleadoNomina_Bancos" />
-        <AssociationConnector Association="GEISAModel.FK_EmpleadoNomina_Empresa" />
         <EntityTypeShape EntityType="GEISAModel.Dpto_Puesto" Width="1.5" PointX="14.375" PointY="5.75" />
         <EntityTypeShape EntityType="GEISAModel.NominasDetalle" Width="1.5" PointX="28.125" PointY="2.5" />
         <EntityTypeShape EntityType="GEISAModel.Iva" Width="1.5" PointX="5.375" PointY="16.875" />
@@ -124,20 +121,9 @@
         <AssociationConnector Association="GEISAModel.FK_PrestamosDetalle_Empresa" />
         <AssociationConnector Association="GEISAModel.FK_PrestamosDetalle_EmpresaBancos" />
         <AssociationConnector Association="GEISAModel.FK_PrestamosDetalle_Pagos" />
-        <EntityTypeShape EntityType="GEISAModel.Empleado" Width="1.5" PointX="2.125" PointY="6.25" />
-        <AssociationConnector Association="GEISAModel.FK_CajaChica_Empleado" />
-        <AssociationConnector Association="GEISAModel.FK_EmpleadoNomina_Empleado" />
-        <AssociationConnector Association="GEISAModel.FK_Nominas_Empleado" />
-        <AssociationConnector Association="GEISAModel.FK_Ordenes_Empleado" />
-        <AssociationConnector Association="GEISAModel.FK_Pagos_Empleado" />
-        <AssociationConnector Association="GEISAModel.FK_ReposicionGastos_Empleado" />
-        <AssociationConnector Association="GEISAModel.FK_TarjetasCredito_Empleado" />
-        <AssociationConnector Association="GEISAModel.FK_Usuario_Empleado" />
-        <AssociationConnector Association="GEISAModel.FK_Vehiculo_Empleado" />
         <EntityTypeShape EntityType="GEISAModel.CajaChicaPrestamo" Width="1.5" PointX="3.375" PointY="19.875" />
         <AssociationConnector Association="GEISAModel.FK_Pagos_CajaChicaPrestamo" />
         <EntityTypeShape EntityType="GEISAModel.EmpleadoHistorial" Width="1.5" PointX="13.875" PointY="18.875" />
-        <AssociationConnector Association="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina" />
         <EntityTypeShape EntityType="GEISAModel.ClienteBancos" Width="1.5" PointX="23.625" PointY="5.875" />
         <AssociationConnector Association="GEISAModel.FK_ClienteBancos_Bancos" />
         <AssociationConnector Association="GEISAModel.FK_ClienteBancos_Cliente" />
@@ -146,7 +132,6 @@
         <AssociationConnector Association="GEISAModel.FK_CajaChicaDetalle_Obra" />
         <AssociationConnector Association="GEISAModel.FK_Obra_Ciudad" />
         <AssociationConnector Association="GEISAModel.FK_Obra_Cliente" />
-        <AssociationConnector Association="GEISAModel.FK_Obra_Empleado" />
         <AssociationConnector Association="GEISAModel.FK_Obra_Empresa" />
         <AssociationConnector Association="GEISAModel.FK_Factura_Obra" />
         <AssociationConnector Association="GEISAModel.FK_Nominas_Obra" />
@@ -162,6 +147,22 @@
         <AssociationConnector Association="GEISAModel.FK_TraspasoSaldos_Obra1" />
         <AssociationConnector Association="GEISAModel.FK_PagosFactura_TraspasoSaldos" />
         <AssociationConnector Association="GEISAModel.FK_Contrarecibo_Cliente" />
+        <AssociationConnector Association="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1" />
+        <EntityTypeShape EntityType="GEISAModel.Empleado" Width="1.5" PointX="0.75" PointY="17.125" />
+        <EntityTypeShape EntityType="GEISAModel.EmpleadoNomina" Width="1.5" PointX="14.25" PointY="0.75" />
+        <AssociationConnector Association="GEISAModel.FK_EmpleadoNomina_Bancos" />
+        <AssociationConnector Association="GEISAModel.FK_CajaChica_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_EmpleadoNomina_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_Nominas_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_Obra_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_Ordenes_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_Pagos_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_ReposicionGastos_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_TarjetasCredito_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_Usuario_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_Vehiculo_Empleado" />
+        <AssociationConnector Association="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina" />
+        <AssociationConnector Association="GEISAModel.FK_EmpleadoNomina_EmpleadoNomina" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

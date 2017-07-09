@@ -99,7 +99,11 @@ namespace GeisaBD
                 try
                 {
                     EmpleadoNomina nomina = (this.Empleado.EmpleadoNomina != null ? this.Empleado.EmpleadoNomina.FirstOrDefault() :  null);
-                    EmpleadoHistorial historial = (nomina != null ? nomina.EmpleadoHistorial.Where(H => H.FechaFin == null).FirstOrDefault() : null);
+                    EmpleadoHistorial historial;
+                    if (nomina != null)
+                        historial = nomina.EmpleadoHistorial.Where(E => E.FechaFin == null).FirstOrDefault() == null ? nomina.EmpleadoHistorial.LastOrDefault() : null;
+                    else
+                        historial = null;
                     using (GEISAEntities model = new GEISAEntities(GEISAEntities.DefaultConnectionString))
                     {
                         return (model.Dpto_Puesto.Where(D => D.Id == historial.Puesto.Value).FirstOrDefault().Nombre);

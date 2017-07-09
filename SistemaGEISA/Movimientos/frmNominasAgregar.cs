@@ -46,6 +46,8 @@ namespace SistemaGEISA
 
         private EmpleadoNomina empleadoNomina { get; set; }
 
+        private EmpleadoHistorial historial { get; set; }
+
         public frmNominasAgregar(Controler _controler)
         {
             InitializeComponent();
@@ -710,7 +712,8 @@ namespace SistemaGEISA
                     {
                         txtSueldoFiscal2.Text = "0.00";
                         txtInfonavit.Text = empleadoNomina.MontoRetener.HasValue ? empleadoNomina.MontoRetener.Value.ToString("N2") : "0.00";
-                        txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
+                        historial = empleadoNomina.EmpleadoHistorial.Where(E => E.FechaFin == null).FirstOrDefault() == null ? empleadoNomina.EmpleadoHistorial.LastOrDefault() : null;
+                        txtSueldoReal.Text = historial != null ? historial.Sueldo.Value.ToString("N2") : "0.00";
                         txtComplemento.Text = (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoReal.Text) ? "0" : txtSueldoReal.Text) - (Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal.Text) ? "0" : txtSueldoFiscal.Text) + Convert.ToDouble(string.IsNullOrEmpty(txtSueldoFiscal2.Text) ? "0" : txtSueldoFiscal2.Text))).ToString("N2");
                     }
                     
@@ -881,7 +884,8 @@ namespace SistemaGEISA
                 txtSueldoFiscal2.ReadOnly = false;
 
                 if (empleadoNomina != null)
-                    txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.FirstOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
+                    txtSueldoReal.Text = this.historial != null ? this.historial.Sueldo.Value.ToString("N2") : "0.00";
+                    //txtSueldoReal.Text = empleadoNomina.EmpleadoHistorial.LastOrDefault(E => E.FechaFin == null) != null ? empleadoNomina.EmpleadoHistorial.LastOrDefault(E => E.FechaFin == null).Sueldo.Value.ToString("N2") : "0.00";
                 else
                     txtSueldoReal.Text = "0.00";
             }

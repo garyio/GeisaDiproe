@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Core.Objects.DataClasses;
+
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
@@ -72,8 +73,6 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_DetalleArticulos_Articulos", "Articulos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Articulos), "DetalleArticulos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.DetalleArticulos), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_DetalleArticulos_Ordenes", "Ordenes", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Ordenes), "DetalleArticulos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.DetalleArticulos), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_DetalleArticulos_UnidadMedida", "UnidadMedida", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.UnidadMedida), "DetalleArticulos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.DetalleArticulos), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoNomina_Bancos", "Bancos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Bancos), "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoNomina), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoNomina_Empresa", "Empresa", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empresa), "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoNomina), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Ordenes_Iva", "Iva", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Iva), "Ordenes", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Ordenes), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Pagos_Cliente", "Cliente", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Cliente), "Pagos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Pagos), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Pagos_Empresa", "Empresa", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empresa), "Pagos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Pagos), true)]
@@ -91,24 +90,13 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_PrestamosDetalle_Empresa", "Empresa", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empresa), "PrestamosDetalle", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.PrestamosDetalle), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_PrestamosDetalle_EmpresaBancos", "EmpresaBancos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.EmpresaBancos), "PrestamosDetalle", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.PrestamosDetalle), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_PrestamosDetalle_Pagos", "Pagos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Pagos), "PrestamosDetalle", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.PrestamosDetalle), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_CajaChica_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "CajaChica", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.CajaChica), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoNomina_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoNomina), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Nominas_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "Nominas", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Nominas), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Ordenes_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "Ordenes", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Ordenes), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Pagos_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Pagos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Pagos), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_ReposicionGastos_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "ReposicionGastos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.ReposicionGastos), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_TarjetasCredito_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "TarjetasCredito", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TarjetasCredito), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Usuario_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Usuario", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Usuario), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Vehiculo_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Vehiculo", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Vehiculo), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Pagos_CajaChicaPrestamo", "CajaChicaPrestamo", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.CajaChicaPrestamo), "Pagos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Pagos), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoHistorial_EmpleadoNomina", "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.EmpleadoNomina), "EmpleadoHistorial", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoHistorial), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_ClienteBancos_Bancos", "Bancos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Bancos), "ClienteBancos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.ClienteBancos), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_ClienteBancos_Cliente", "Cliente", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Cliente), "ClienteBancos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.ClienteBancos), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_CajaChicaComprobante_Obra", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Obra), "CajaChicaComprobante", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.CajaChicaComprobante), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_CajaChicaDetalle_Obra", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Obra), "CajaChicaDetalle", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.CajaChicaDetalle), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Obra_Ciudad", "Ciudad", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Ciudad), "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Obra), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Obra_Cliente", "Cliente", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Cliente), "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Obra), true)]
-[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Obra_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Obra), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Obra_Empresa", "Empresa", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empresa), "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Obra), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Factura_Obra", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Obra), "Factura", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Factura), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Nominas_Obra", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Obra), "Nominas", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Nominas), true)]
@@ -123,6 +111,20 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_TraspasoSaldos_Obra1", "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Obra), "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TraspasoSaldos), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_PagosFactura_TraspasoSaldos", "TraspasoSaldos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.TraspasoSaldos), "PagosFactura", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.PagosFactura), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Contrarecibo_Cliente", "Cliente", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Cliente), "Contrarecibo", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Contrarecibo), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoHistorial_EmpleadoNomina1", "Empresa", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empresa), "EmpleadoHistorial", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoHistorial), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoNomina_Bancos", "Bancos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Bancos), "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoNomina), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_CajaChica_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "CajaChica", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.CajaChica), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoNomina_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoNomina), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Nominas_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "Nominas", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Nominas), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Obra_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Obra", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Obra), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Ordenes_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "Ordenes", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Ordenes), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Pagos_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Pagos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Pagos), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_ReposicionGastos_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "ReposicionGastos", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.ReposicionGastos), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_TarjetasCredito_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.Empleado), "TarjetasCredito", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.TarjetasCredito), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Usuario_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Usuario", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Usuario), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_Vehiculo_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Vehiculo", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Vehiculo), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoHistorial_EmpleadoNomina", "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.EmpleadoNomina), "EmpleadoHistorial", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoHistorial), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.EmpleadoNomina), "EmpleadoNomina1", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.EmpleadoNomina), true)]
 
 #endregion
 
@@ -769,22 +771,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<EmpleadoNomina> EmpleadoNomina
-        {
-            get
-            {
-                if ((_EmpleadoNomina == null))
-                {
-                    _EmpleadoNomina = base.CreateObjectSet<EmpleadoNomina>("EmpleadoNomina");
-                }
-                return _EmpleadoNomina;
-            }
-        }
-        private ObjectSet<EmpleadoNomina> _EmpleadoNomina;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<Dpto_Puesto> Dpto_Puesto
         {
             get
@@ -929,22 +915,6 @@ namespace GeisaBD
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<Empleado> Empleado
-        {
-            get
-            {
-                if ((_Empleado == null))
-                {
-                    _Empleado = base.CreateObjectSet<Empleado>("Empleado");
-                }
-                return _Empleado;
-            }
-        }
-        private ObjectSet<Empleado> _Empleado;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<CajaChicaPrestamo> CajaChicaPrestamo
         {
             get
@@ -1021,6 +991,38 @@ namespace GeisaBD
             }
         }
         private ObjectSet<TraspasoSaldos> _TraspasoSaldos;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Empleado> Empleado
+        {
+            get
+            {
+                if ((_Empleado == null))
+                {
+                    _Empleado = base.CreateObjectSet<Empleado>("Empleado");
+                }
+                return _Empleado;
+            }
+        }
+        private ObjectSet<Empleado> _Empleado;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<EmpleadoNomina> EmpleadoNomina
+        {
+            get
+            {
+                if ((_EmpleadoNomina == null))
+                {
+                    _EmpleadoNomina = base.CreateObjectSet<EmpleadoNomina>("EmpleadoNomina");
+                }
+                return _EmpleadoNomina;
+            }
+        }
+        private ObjectSet<EmpleadoNomina> _EmpleadoNomina;
 
         #endregion
 
@@ -1323,14 +1325,6 @@ namespace GeisaBD
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet EmpleadoNomina. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToEmpleadoNomina(EmpleadoNomina empleadoNomina)
-        {
-            base.AddObject("EmpleadoNomina", empleadoNomina);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet Dpto_Puesto. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToDpto_Puesto(Dpto_Puesto dpto_Puesto)
@@ -1403,14 +1397,6 @@ namespace GeisaBD
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet Empleado. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToEmpleado(Empleado empleado)
-        {
-            base.AddObject("Empleado", empleado);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet CajaChicaPrestamo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToCajaChicaPrestamo(CajaChicaPrestamo cajaChicaPrestamo)
@@ -1448,6 +1434,22 @@ namespace GeisaBD
         public void AddToTraspasoSaldos(TraspasoSaldos traspasoSaldos)
         {
             base.AddObject("TraspasoSaldos", traspasoSaldos);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Empleado. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToEmpleado(Empleado empleado)
+        {
+            base.AddObject("Empleado", empleado);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet EmpleadoNomina. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToEmpleadoNomina(EmpleadoNomina empleadoNomina)
+        {
+            base.AddObject("EmpleadoNomina", empleadoNomina);
         }
 
         #endregion
@@ -2792,28 +2794,6 @@ namespace GeisaBD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoNomina_Bancos", "EmpleadoNomina")]
-        public EntityCollection<EmpleadoNomina> EmpleadoNomina
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_Bancos", "EmpleadoNomina");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_Bancos", "EmpleadoNomina", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_ClienteBancos_Bancos", "ClienteBancos")]
         public EntityCollection<ClienteBancos> ClienteBancos
         {
@@ -2826,6 +2806,28 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ClienteBancos>("GEISAModel.FK_ClienteBancos_Bancos", "ClienteBancos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoNomina_Bancos", "EmpleadoNomina")]
+        public EntityCollection<EmpleadoNomina> EmpleadoNomina
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_Bancos", "EmpleadoNomina");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_Bancos", "EmpleadoNomina", value);
                 }
             }
         }
@@ -7472,6 +7474,28 @@ namespace GeisaBD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Obra_Empleado", "Obra")]
+        public EntityCollection<Obra> Obra
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Obra>("GEISAModel.FK_Obra_Empleado", "Obra");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Obra>("GEISAModel.FK_Obra_Empleado", "Obra", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Ordenes_Empleado", "Ordenes")]
         public EntityCollection<Ordenes> Ordenes
         {
@@ -7594,28 +7618,6 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Vehiculo>("GEISAModel.FK_Vehiculo_Empleado", "Vehiculo", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Obra_Empleado", "Obra")]
-        public EntityCollection<Obra> Obra
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Obra>("GEISAModel.FK_Obra_Empleado", "Obra");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Obra>("GEISAModel.FK_Obra_Empleado", "Obra", value);
                 }
             }
         }
@@ -7915,10 +7917,72 @@ namespace GeisaBD
         private Nullable<global::System.Double> _Sueldo2;
         partial void OnSueldo2Changing(Nullable<global::System.Double> value);
         partial void OnSueldo2Changed();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> EmpresaId
+        {
+            get
+            {
+                return _EmpresaId;
+            }
+            set
+            {
+                OnEmpresaIdChanging(value);
+                ReportPropertyChanging("EmpresaId");
+                _EmpresaId = StructuralObject.SetValidValue(value, "EmpresaId");
+                ReportPropertyChanged("EmpresaId");
+                OnEmpresaIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _EmpresaId;
+        partial void OnEmpresaIdChanging(Nullable<global::System.Int32> value);
+        partial void OnEmpresaIdChanged();
 
         #endregion
 
         #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoHistorial_EmpleadoNomina1", "Empresa")]
+        public Empresa Empresa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1", "Empresa").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1", "Empresa").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Empresa> EmpresaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1", "Empresa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empresa>("GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1", "Empresa", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -8039,30 +8103,6 @@ namespace GeisaBD
         private global::System.Int32 _EmpleadoId;
         partial void OnEmpleadoIdChanging(global::System.Int32 value);
         partial void OnEmpleadoIdChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> EmpresaId
-        {
-            get
-            {
-                return _EmpresaId;
-            }
-            set
-            {
-                OnEmpresaIdChanging(value);
-                ReportPropertyChanging("EmpresaId");
-                _EmpresaId = StructuralObject.SetValidValue(value, "EmpresaId");
-                ReportPropertyChanged("EmpresaId");
-                OnEmpresaIdChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _EmpresaId;
-        partial void OnEmpresaIdChanging(Nullable<global::System.Int32> value);
-        partial void OnEmpresaIdChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -8544,44 +8584,6 @@ namespace GeisaBD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoNomina_Empresa", "Empresa")]
-        public Empresa Empresa
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_EmpleadoNomina_Empresa", "Empresa").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_EmpleadoNomina_Empresa", "Empresa").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Empresa> EmpresaReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empresa>("GEISAModel.FK_EmpleadoNomina_Empresa", "Empresa");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empresa>("GEISAModel.FK_EmpleadoNomina_Empresa", "Empresa", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoNomina_Empleado", "Empleado")]
         public Empleado Empleado
         {
@@ -8632,6 +8634,82 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EmpleadoHistorial>("GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina", "EmpleadoHistorial", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina1")]
+        public EmpleadoNomina EmpleadoNomina1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina1").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina1").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<EmpleadoNomina> EmpleadoNomina1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina1");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina1", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina")]
+        public EmpleadoNomina EmpleadoNomina2
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<EmpleadoNomina> EmpleadoNomina2Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina", value);
                 }
             }
         }
@@ -9070,28 +9148,6 @@ namespace GeisaBD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoNomina_Empresa", "EmpleadoNomina")]
-        public EntityCollection<EmpleadoNomina> EmpleadoNomina
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_Empresa", "EmpleadoNomina");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EmpleadoNomina>("GEISAModel.FK_EmpleadoNomina_Empresa", "EmpleadoNomina", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Pagos_Empresa", "Pagos")]
         public EntityCollection<Pagos> Pagos
         {
@@ -9192,6 +9248,28 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Empresa1", "TraspasoSaldos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_EmpleadoHistorial_EmpleadoNomina1", "EmpleadoHistorial")]
+        public EntityCollection<EmpleadoHistorial> EmpleadoHistorial
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EmpleadoHistorial>("GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1", "EmpleadoHistorial");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EmpleadoHistorial>("GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina1", "EmpleadoHistorial", value);
                 }
             }
         }
@@ -12556,44 +12634,6 @@ namespace GeisaBD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Nominas_Empleado", "Empleado")]
-        public Empleado Empleado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Nominas_Empleado", "Empleado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Nominas_Empleado", "Empleado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Empleado> EmpleadoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Nominas_Empleado", "Empleado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_Nominas_Empleado", "Empleado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Nominas_Obra", "Obra")]
         public Obra Obra
         {
@@ -12622,6 +12662,44 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Obra>("GEISAModel.FK_Nominas_Obra", "Obra", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Nominas_Empleado", "Empleado")]
+        public Empleado Empleado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Nominas_Empleado", "Empleado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Nominas_Empleado", "Empleado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Empleado> EmpleadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Nominas_Empleado", "Empleado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_Nominas_Empleado", "Empleado", value);
                 }
             }
         }
@@ -13354,44 +13432,6 @@ namespace GeisaBD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Obra_Empleado", "Empleado")]
-        public Empleado Empleado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Obra_Empleado", "Empleado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Obra_Empleado", "Empleado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Empleado> EmpleadoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Obra_Empleado", "Empleado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_Obra_Empleado", "Empleado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Obra_Empresa", "Empresa")]
         public Empresa Empresa
         {
@@ -13590,6 +13630,44 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TraspasoSaldos>("GEISAModel.FK_TraspasoSaldos_Obra1", "TraspasoSaldos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Obra_Empleado", "Empleado")]
+        public Empleado Empleado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Obra_Empleado", "Empleado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Obra_Empleado", "Empleado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Empleado> EmpleadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Obra_Empleado", "Empleado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_Obra_Empleado", "Empleado", value);
                 }
             }
         }
@@ -14230,44 +14308,6 @@ namespace GeisaBD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Ordenes_Empleado", "Empleado")]
-        public Empleado Empleado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Ordenes_Empleado", "Empleado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Ordenes_Empleado", "Empleado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Empleado> EmpleadoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Ordenes_Empleado", "Empleado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_Ordenes_Empleado", "Empleado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Ordenes_Obra", "Obra")]
         public Obra Obra
         {
@@ -14296,6 +14336,44 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Obra>("GEISAModel.FK_Ordenes_Obra", "Obra", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Ordenes_Empleado", "Empleado")]
+        public Empleado Empleado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Ordenes_Empleado", "Empleado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Ordenes_Empleado", "Empleado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Empleado> EmpleadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Ordenes_Empleado", "Empleado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_Ordenes_Empleado", "Empleado", value);
                 }
             }
         }
@@ -15346,44 +15424,6 @@ namespace GeisaBD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Pagos_Empleado", "Empleado")]
-        public Empleado Empleado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Pagos_Empleado", "Empleado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Pagos_Empleado", "Empleado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Empleado> EmpleadoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Pagos_Empleado", "Empleado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_Pagos_Empleado", "Empleado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Pagos_CajaChicaPrestamo", "CajaChicaPrestamo")]
         public CajaChicaPrestamo CajaChicaPrestamo
         {
@@ -15412,6 +15452,44 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CajaChicaPrestamo>("GEISAModel.FK_Pagos_CajaChicaPrestamo", "CajaChicaPrestamo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_Pagos_Empleado", "Empleado")]
+        public Empleado Empleado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Pagos_Empleado", "Empleado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Pagos_Empleado", "Empleado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Empleado> EmpleadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_Pagos_Empleado", "Empleado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_Pagos_Empleado", "Empleado", value);
                 }
             }
         }
