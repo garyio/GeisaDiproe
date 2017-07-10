@@ -46,6 +46,8 @@
             this.chkActivo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.luVehiculo = new DevExpress.XtraEditors.LookUpEdit();
+            this.colKilometros = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDiferenciaKm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel2.SuspendLayout();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -125,7 +127,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.24008F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.75992F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.luVehiculo, 1, 0);
@@ -169,6 +171,8 @@
             this.colTipoDeposito,
             this.colImporte,
             this.colObra,
+            this.colKilometros,
+            this.colDiferenciaKm,
             this.colObservaciones});
             this.gv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gv.GridControl = this.grid;
@@ -189,18 +193,22 @@
             this.colFecha.Caption = "Fecha";
             this.colFecha.FieldName = "Fecha";
             this.colFecha.Name = "colFecha";
+            this.colFecha.OptionsColumn.AllowEdit = false;
+            this.colFecha.OptionsColumn.ReadOnly = true;
             this.colFecha.Visible = true;
             this.colFecha.VisibleIndex = 0;
-            this.colFecha.Width = 100;
+            this.colFecha.Width = 82;
             // 
             // colTipoDeposito
             // 
             this.colTipoDeposito.Caption = "Tipo Deposito";
             this.colTipoDeposito.FieldName = "TipoDepositoNombre";
             this.colTipoDeposito.Name = "colTipoDeposito";
+            this.colTipoDeposito.OptionsColumn.AllowEdit = false;
+            this.colTipoDeposito.OptionsColumn.ReadOnly = true;
             this.colTipoDeposito.Visible = true;
             this.colTipoDeposito.VisibleIndex = 1;
-            this.colTipoDeposito.Width = 141;
+            this.colTipoDeposito.Width = 116;
             // 
             // colImporte
             // 
@@ -209,29 +217,35 @@
             this.colImporte.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colImporte.FieldName = "Importe";
             this.colImporte.Name = "colImporte";
+            this.colImporte.OptionsColumn.AllowEdit = false;
+            this.colImporte.OptionsColumn.ReadOnly = true;
             this.colImporte.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Importe", "{0:C2}")});
             this.colImporte.Visible = true;
             this.colImporte.VisibleIndex = 2;
-            this.colImporte.Width = 97;
+            this.colImporte.Width = 80;
             // 
             // colObra
             // 
             this.colObra.Caption = "Obra";
             this.colObra.FieldName = "ObraNombre";
             this.colObra.Name = "colObra";
+            this.colObra.OptionsColumn.AllowEdit = false;
+            this.colObra.OptionsColumn.ReadOnly = true;
             this.colObra.Visible = true;
             this.colObra.VisibleIndex = 3;
-            this.colObra.Width = 207;
+            this.colObra.Width = 170;
             // 
             // colObservaciones
             // 
             this.colObservaciones.Caption = "Observaciones";
             this.colObservaciones.FieldName = "Observaciones";
             this.colObservaciones.Name = "colObservaciones";
+            this.colObservaciones.OptionsColumn.AllowEdit = false;
+            this.colObservaciones.OptionsColumn.ReadOnly = true;
             this.colObservaciones.Visible = true;
-            this.colObservaciones.VisibleIndex = 4;
-            this.colObservaciones.Width = 311;
+            this.colObservaciones.VisibleIndex = 6;
+            this.colObservaciones.Width = 249;
             // 
             // chkActivo
             // 
@@ -261,9 +275,38 @@
             this.luVehiculo.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("VehiculoCompleto", "Vehiculo")});
             this.luVehiculo.Properties.NullText = "";
-            this.luVehiculo.Size = new System.Drawing.Size(572, 20);
+            this.luVehiculo.Size = new System.Drawing.Size(571, 20);
             this.luVehiculo.TabIndex = 0;
             this.luVehiculo.EditValueChanged += new System.EventHandler(this.luVehiculo_EditValueChanged);
+            // 
+            // colKilometros
+            // 
+            this.colKilometros.Caption = "Km Recorridos";
+            this.colKilometros.DisplayFormat.FormatString = "N2";
+            this.colKilometros.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colKilometros.FieldName = "KilometrosRecorridos";
+            this.colKilometros.Name = "colKilometros";
+            this.colKilometros.OptionsColumn.AllowEdit = false;
+            this.colKilometros.OptionsColumn.FixedWidth = true;
+            this.colKilometros.OptionsColumn.ReadOnly = true;
+            this.colKilometros.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Max)});
+            this.colKilometros.Visible = true;
+            this.colKilometros.VisibleIndex = 4;
+            // 
+            // colDiferenciaKm
+            // 
+            this.colDiferenciaKm.Caption = "Diferencia Km.";
+            this.colDiferenciaKm.DisplayFormat.FormatString = "N2";
+            this.colDiferenciaKm.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDiferenciaKm.FieldName = "DiferenciaKm";
+            this.colDiferenciaKm.Name = "colDiferenciaKm";
+            this.colDiferenciaKm.OptionsColumn.AllowEdit = false;
+            this.colDiferenciaKm.OptionsColumn.FixedWidth = true;
+            this.colDiferenciaKm.OptionsColumn.ReadOnly = true;
+            this.colDiferenciaKm.Visible = true;
+            this.colDiferenciaKm.VisibleIndex = 5;
+            this.colDiferenciaKm.Width = 84;
             // 
             // frmCajaChicaDetalleVehiculo
             // 
@@ -310,5 +353,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit chkActivo;
         private DevExpress.XtraGrid.Columns.GridColumn colObservaciones;
         private System.Windows.Forms.ToolStripButton btnEliminar;
+        private DevExpress.XtraGrid.Columns.GridColumn colKilometros;
+        private DevExpress.XtraGrid.Columns.GridColumn colDiferenciaKm;
     }
 }

@@ -707,6 +707,7 @@
           <Property Name="Observaciones" Type="varchar(max)" />
           <Property Name="ObraId" Type="int" />
           <Property Name="VehiculoCajaChicaId" Type="int" />
+          <Property Name="KilometrosRecorridos" Type="float" />
         </EntityType>
         <Association Name="FK_CajaChica_Empleado">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
@@ -3984,6 +3985,7 @@
           <Property Name="VehiculoCajaChicaId" Type="Int32" />
           <NavigationProperty Name="VehiculoCajaChica" Relationship="GEISAModel.FK_VehiculoCajaChicaDetalle_VehiculoCajaChica" FromRole="VehiculoCajaChicaDetalle" ToRole="VehiculoCajaChica" />
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_VehiculoCajaChicaDetalle_Obra" FromRole="VehiculoCajaChicaDetalle" ToRole="Obra" />
+          <Property Name="KilometrosRecorridos" Type="Double" />
         </EntityType>
         <Association Name="FK_VehiculoCajaChicaDetalle_VehiculoCajaChica">
           <End Type="GEISAModel.VehiculoCajaChica" Role="VehiculoCajaChica" Multiplicity="0..1" />
@@ -5932,6 +5934,7 @@
           <EntitySetMapping Name="VehiculoCajaChicaDetalle">
             <EntityTypeMapping TypeName="GEISAModel.VehiculoCajaChicaDetalle">
               <MappingFragment StoreEntitySet="VehiculoCajaChicaDetalle">
+                <ScalarProperty Name="KilometrosRecorridos" ColumnName="KilometrosRecorridos" />
                 <ScalarProperty Name="VehiculoCajaChicaId" ColumnName="VehiculoCajaChicaId" />
                 <ScalarProperty Name="ObraId" ColumnName="ObraId" />
                 <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />

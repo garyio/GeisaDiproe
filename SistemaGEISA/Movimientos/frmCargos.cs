@@ -32,6 +32,7 @@ namespace SistemaGEISA
             txtImporte.Text = string.Empty;
             txtObservaciones.Text = string.Empty;
             lookupObra.EditValue = null;
+            txtKmRecorridos.Text = string.Empty;
             listObras.Items.Clear();
             cargo = null;
         }       
@@ -70,6 +71,9 @@ namespace SistemaGEISA
                 controler.SetError(lookupObra, isValid ? string.Empty : "Favor de Seleccionar una Obra");
             }
 
+            //areValid &= isValid = string.IsNullOrEmpty(txtKmRecorridos.Text) ? false : true;
+            //controler.SetError(txtKmRecorridos, isValid ? string.Empty : "Valor Obligatorio.");
+
             return areValid;
     
         }
@@ -85,6 +89,7 @@ namespace SistemaGEISA
                 txtImporte.Text = cargo.Importe.Value.ToString("N2");
                 lookupObra.EditValue = cargo.ObraId;
                 txtObservaciones.Text = cargo.Observaciones;
+                txtKmRecorridos.Text = cargo.KilometrosRecorridos.HasValue ? cargo.KilometrosRecorridos.Value.ToString("N2") : string.Empty;
 
             }
             else
@@ -127,6 +132,7 @@ namespace SistemaGEISA
                     cargo.Importe = Convert.ToDouble(txtImporte.Text);
                     cargo.Observaciones = txtObservaciones.Text;
                     cargo.ObraId = (int)lookupObra.EditValue;
+                    cargo.KilometrosRecorridos = Convert.ToDouble(txtKmRecorridos.Text);
                     if (!cargo.NoEsNuevo) controler.Model.AddToVehiculoCajaChicaDetalle(cargo);           
                 }else{                
                     foreach (Obra obra in listObras.Items)
@@ -202,6 +208,11 @@ namespace SistemaGEISA
         private void btnGuardarNuevo_Click(object sender, EventArgs e)
         {
             btnGuardar_Click(sender, e);
+        }
+
+        private void txtKmRecorridos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Funciones.soloNumerosDec(sender, e);
         }        
     }
 }

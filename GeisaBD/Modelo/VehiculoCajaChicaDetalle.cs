@@ -9,6 +9,7 @@ namespace GeisaBD
 {
     public partial class VehiculoCajaChicaDetalle
     {
+        GEISAEntities model = new GEISAEntities(GEISAEntities.DefaultConnectionString);
         public bool NoEsNuevo
         {
             get
@@ -17,6 +18,20 @@ namespace GeisaBD
             }
         }
 
+        public double DiferenciaKm { 
+            get {
+                double ultimoKilometraje = model.VehiculoCajaChicaDetalle.Where(V => V.KilometrosRecorridos != null && V.KilometrosRecorridos > 0 && V.Fecha < this.Fecha).Select(S => S.KilometrosRecorridos).Max() != null ? model.VehiculoCajaChicaDetalle.Where(V => V.KilometrosRecorridos != null && V.KilometrosRecorridos > 0 && V.Fecha < this.Fecha).Select(S => S.KilometrosRecorridos).Max().Value : 0;
+                //VehiculoCajaChicaDetalle ultimosKm = controler.Model.VehiculoCajaChicaDetalle.Where(D=> D.VehiculoCajaChicaId == VehiculoCajaChica.Id).OrderByDescending(O => O.Fecha).ToList();
+                if (this.KilometrosRecorridos.HasValue)
+                {
+                    if (ultimoKilometraje == 0)
+                        return 0;
+                    return this.KilometrosRecorridos.Value - ultimoKilometraje;
+                }
+                else
+                    return 0;               
+            }
+        }
         public string TipoDepositoNombre
         {
             get

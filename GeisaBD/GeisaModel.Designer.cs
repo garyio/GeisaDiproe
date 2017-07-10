@@ -12,7 +12,6 @@ using System.ComponentModel;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Core.Objects.DataClasses;
-
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
@@ -21021,6 +21020,30 @@ namespace GeisaBD
         private Nullable<global::System.Int32> _VehiculoCajaChicaId;
         partial void OnVehiculoCajaChicaIdChanging(Nullable<global::System.Int32> value);
         partial void OnVehiculoCajaChicaIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> KilometrosRecorridos
+        {
+            get
+            {
+                return _KilometrosRecorridos;
+            }
+            set
+            {
+                OnKilometrosRecorridosChanging(value);
+                ReportPropertyChanging("KilometrosRecorridos");
+                _KilometrosRecorridos = StructuralObject.SetValidValue(value, "KilometrosRecorridos");
+                ReportPropertyChanged("KilometrosRecorridos");
+                OnKilometrosRecorridosChanged();
+            }
+        }
+        private Nullable<global::System.Double> _KilometrosRecorridos;
+        partial void OnKilometrosRecorridosChanging(Nullable<global::System.Double> value);
+        partial void OnKilometrosRecorridosChanged();
 
         #endregion
 
