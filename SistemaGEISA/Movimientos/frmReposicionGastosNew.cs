@@ -321,7 +321,7 @@ namespace SistemaGEISA
 
                 paramReport.Add(new ReportParameter("Empleado", pagos.Empleado.NombreCompleto));
                 paramReport.Add(new ReportParameter("Banco", pagos.BancosNombre));
-                paramReport.Add(new ReportParameter("Fecha", pagos.Fecha.ToShortDateString()));
+                paramReport.Add(new ReportParameter("Fecha", pagos.FechaPago.Value.ToShortDateString()));
                 paramReport.Add(new ReportParameter("Empresa", pagos.EmpresaNombre));
                 paramReport.Add(new ReportParameter("Importe", pagos.MontoPagar.ToString()));
                 paramReport.Add(new ReportParameter("ImporteLetra", Funciones.Num2Text(pagos.MontoPagar.ToString()) + " M.N."));

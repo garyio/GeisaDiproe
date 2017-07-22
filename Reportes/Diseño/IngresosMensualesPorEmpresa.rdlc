@@ -553,6 +553,7 @@ Fields!FechaPago.Value is nothing or Fields!FechaPago.Value="",IIf(Fields!FechaC
                             <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
