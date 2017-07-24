@@ -42,12 +42,13 @@
             this.colTipoDeposito = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colImporte = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObra = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKilometros = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDiferenciaKm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObservaciones = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colConductor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chkActivo = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.luVehiculo = new DevExpress.XtraEditors.LookUpEdit();
-            this.colKilometros = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDiferenciaKm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel2.SuspendLayout();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -127,7 +128,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.24008F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.75992F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel1.Controls.Add(this.grid, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.luVehiculo, 1, 0);
@@ -173,7 +174,8 @@
             this.colObra,
             this.colKilometros,
             this.colDiferenciaKm,
-            this.colObservaciones});
+            this.colObservaciones,
+            this.colConductor});
             this.gv.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gv.GridControl = this.grid;
             this.gv.Name = "gv";
@@ -197,7 +199,7 @@
             this.colFecha.OptionsColumn.ReadOnly = true;
             this.colFecha.Visible = true;
             this.colFecha.VisibleIndex = 0;
-            this.colFecha.Width = 82;
+            this.colFecha.Width = 74;
             // 
             // colTipoDeposito
             // 
@@ -208,7 +210,7 @@
             this.colTipoDeposito.OptionsColumn.ReadOnly = true;
             this.colTipoDeposito.Visible = true;
             this.colTipoDeposito.VisibleIndex = 1;
-            this.colTipoDeposito.Width = 116;
+            this.colTipoDeposito.Width = 85;
             // 
             // colImporte
             // 
@@ -223,7 +225,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Importe", "{0:C2}")});
             this.colImporte.Visible = true;
             this.colImporte.VisibleIndex = 2;
-            this.colImporte.Width = 80;
+            this.colImporte.Width = 74;
             // 
             // colObra
             // 
@@ -234,50 +236,7 @@
             this.colObra.OptionsColumn.ReadOnly = true;
             this.colObra.Visible = true;
             this.colObra.VisibleIndex = 3;
-            this.colObra.Width = 170;
-            // 
-            // colObservaciones
-            // 
-            this.colObservaciones.Caption = "Observaciones";
-            this.colObservaciones.FieldName = "Observaciones";
-            this.colObservaciones.Name = "colObservaciones";
-            this.colObservaciones.OptionsColumn.AllowEdit = false;
-            this.colObservaciones.OptionsColumn.ReadOnly = true;
-            this.colObservaciones.Visible = true;
-            this.colObservaciones.VisibleIndex = 6;
-            this.colObservaciones.Width = 249;
-            // 
-            // chkActivo
-            // 
-            this.chkActivo.AutoHeight = false;
-            this.chkActivo.Caption = "Check";
-            this.chkActivo.Name = "chkActivo";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(8, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Vehíchulo";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // luVehiculo
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.luVehiculo, 2);
-            this.luVehiculo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.luVehiculo.Location = new System.Drawing.Point(75, 8);
-            this.luVehiculo.Name = "luVehiculo";
-            this.luVehiculo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.luVehiculo.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("VehiculoCompleto", "Vehiculo")});
-            this.luVehiculo.Properties.NullText = "";
-            this.luVehiculo.Size = new System.Drawing.Size(571, 20);
-            this.luVehiculo.TabIndex = 0;
-            this.luVehiculo.EditValueChanged += new System.EventHandler(this.luVehiculo_EditValueChanged);
+            this.colObra.Width = 143;
             // 
             // colKilometros
             // 
@@ -307,6 +266,60 @@
             this.colDiferenciaKm.Visible = true;
             this.colDiferenciaKm.VisibleIndex = 5;
             this.colDiferenciaKm.Width = 84;
+            // 
+            // colObservaciones
+            // 
+            this.colObservaciones.Caption = "Observaciones";
+            this.colObservaciones.FieldName = "Observaciones";
+            this.colObservaciones.Name = "colObservaciones";
+            this.colObservaciones.OptionsColumn.AllowEdit = false;
+            this.colObservaciones.OptionsColumn.ReadOnly = true;
+            this.colObservaciones.Visible = true;
+            this.colObservaciones.VisibleIndex = 7;
+            this.colObservaciones.Width = 216;
+            // 
+            // colConductor
+            // 
+            this.colConductor.Caption = "Conductor";
+            this.colConductor.FieldName = "Conductor";
+            this.colConductor.Name = "colConductor";
+            this.colConductor.OptionsColumn.AllowEdit = false;
+            this.colConductor.OptionsColumn.ReadOnly = true;
+            this.colConductor.Visible = true;
+            this.colConductor.VisibleIndex = 6;
+            this.colConductor.Width = 105;
+            // 
+            // chkActivo
+            // 
+            this.chkActivo.AutoHeight = false;
+            this.chkActivo.Caption = "Check";
+            this.chkActivo.Name = "chkActivo";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(8, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Vehíchulo";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // luVehiculo
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.luVehiculo, 2);
+            this.luVehiculo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.luVehiculo.Location = new System.Drawing.Point(74, 8);
+            this.luVehiculo.Name = "luVehiculo";
+            this.luVehiculo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.luVehiculo.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("VehiculoCompleto", "Vehiculo")});
+            this.luVehiculo.Properties.NullText = "";
+            this.luVehiculo.Size = new System.Drawing.Size(570, 20);
+            this.luVehiculo.TabIndex = 0;
+            this.luVehiculo.EditValueChanged += new System.EventHandler(this.luVehiculo_EditValueChanged);
             // 
             // frmCajaChicaDetalleVehiculo
             // 
@@ -355,5 +368,6 @@
         private System.Windows.Forms.ToolStripButton btnEliminar;
         private DevExpress.XtraGrid.Columns.GridColumn colKilometros;
         private DevExpress.XtraGrid.Columns.GridColumn colDiferenciaKm;
+        private DevExpress.XtraGrid.Columns.GridColumn colConductor;
     }
 }

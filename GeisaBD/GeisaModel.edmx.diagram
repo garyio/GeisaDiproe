@@ -163,6 +163,7 @@
         <AssociationConnector Association="GEISAModel.FK_Vehiculo_Empleado" />
         <AssociationConnector Association="GEISAModel.FK_EmpleadoHistorial_EmpleadoNomina" />
         <AssociationConnector Association="GEISAModel.FK_EmpleadoNomina_EmpleadoNomina" />
+        <AssociationConnector Association="GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

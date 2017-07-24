@@ -58,5 +58,17 @@ namespace GeisaBD
                     return string.Empty;
             }
         }
+
+        public string Conductor
+        {
+            get
+            {
+                if (this.Empleado != null)
+                    return this.Empleado.NombreCompleto;
+                else
+                    return this.VehiculoCajaChica.Conductor;
+            }
+
+        }
     }
 }

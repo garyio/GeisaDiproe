@@ -708,6 +708,7 @@
           <Property Name="ObraId" Type="int" />
           <Property Name="VehiculoCajaChicaId" Type="int" />
           <Property Name="KilometrosRecorridos" Type="float" />
+          <Property Name="EmpleadoId" Type="int" />
         </EntityType>
         <Association Name="FK_CajaChica_Empleado">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
@@ -1933,6 +1934,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VehiculoCajaChicaDetalle_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="VehiculoCajaChicaDetalle" Type="Self.VehiculoCajaChicaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VehiculoCajaChicaDetalle">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_VehiculoCajaChicaDetalle_Obra">
           <End Role="Obra" Type="Self.Obra" Multiplicity="0..1" />
           <End Role="VehiculoCajaChicaDetalle" Type="Self.VehiculoCajaChicaDetalle" Multiplicity="*" />
@@ -2502,6 +2515,10 @@
           <AssociationSet Name="FK_VehiculoCajaChica_Vehiculo" Association="Self.FK_VehiculoCajaChica_Vehiculo">
             <End Role="Vehiculo" EntitySet="Vehiculo" />
             <End Role="VehiculoCajaChica" EntitySet="VehiculoCajaChica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehiculoCajaChicaDetalle_Empleado" Association="Self.FK_VehiculoCajaChicaDetalle_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="VehiculoCajaChicaDetalle" EntitySet="VehiculoCajaChicaDetalle" />
           </AssociationSet>
           <AssociationSet Name="FK_VehiculoCajaChicaDetalle_Obra" Association="Self.FK_VehiculoCajaChicaDetalle_Obra">
             <End Role="Obra" EntitySet="Obra" />
@@ -3180,6 +3197,10 @@
           <AssociationSet Name="FK_EmpleadoNomina_EmpleadoNomina" Association="GEISAModel.FK_EmpleadoNomina_EmpleadoNomina">
             <End Role="EmpleadoNomina" EntitySet="EmpleadoNomina" />
             <End Role="EmpleadoNomina1" EntitySet="EmpleadoNomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehiculoCajaChicaDetalle_Empleado" Association="GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="VehiculoCajaChicaDetalle" EntitySet="VehiculoCajaChicaDetalle" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Domicilios">
@@ -3986,6 +4007,8 @@
           <NavigationProperty Name="VehiculoCajaChica" Relationship="GEISAModel.FK_VehiculoCajaChicaDetalle_VehiculoCajaChica" FromRole="VehiculoCajaChicaDetalle" ToRole="VehiculoCajaChica" />
           <NavigationProperty Name="Obra" Relationship="GEISAModel.FK_VehiculoCajaChicaDetalle_Obra" FromRole="VehiculoCajaChicaDetalle" ToRole="Obra" />
           <Property Name="KilometrosRecorridos" Type="Double" />
+          <Property Name="EmpleadoId" Type="Int32" />
+          <NavigationProperty Name="Empleado" Relationship="GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado" FromRole="VehiculoCajaChicaDetalle" ToRole="Empleado" />
         </EntityType>
         <Association Name="FK_VehiculoCajaChicaDetalle_VehiculoCajaChica">
           <End Type="GEISAModel.VehiculoCajaChica" Role="VehiculoCajaChica" Multiplicity="0..1" />
@@ -5313,6 +5336,7 @@
           <NavigationProperty Name="TarjetasCredito" Relationship="GEISAModel.FK_TarjetasCredito_Empleado" FromRole="Empleado" ToRole="TarjetasCredito" />
           <NavigationProperty Name="Usuario" Relationship="GEISAModel.FK_Usuario_Empleado" FromRole="Empleado" ToRole="Usuario" />
           <NavigationProperty Name="Vehiculo" Relationship="GEISAModel.FK_Vehiculo_Empleado" FromRole="Empleado" ToRole="Vehiculo" />
+          <NavigationProperty Name="VehiculoCajaChicaDetalle" Relationship="GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado" FromRole="Empleado" ToRole="VehiculoCajaChicaDetalle" />
         </EntityType>
         <EntityType Name="EmpleadoNomina">
           <Key>
@@ -5497,6 +5521,18 @@
             </Principal>
             <Dependent Role="EmpleadoNomina1">
               <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehiculoCajaChicaDetalle_Empleado">
+          <End Type="GEISAModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="GEISAModel.VehiculoCajaChicaDetalle" Role="VehiculoCajaChicaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VehiculoCajaChicaDetalle">
+              <PropertyRef Name="EmpleadoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5934,6 +5970,7 @@
           <EntitySetMapping Name="VehiculoCajaChicaDetalle">
             <EntityTypeMapping TypeName="GEISAModel.VehiculoCajaChicaDetalle">
               <MappingFragment StoreEntitySet="VehiculoCajaChicaDetalle">
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
                 <ScalarProperty Name="KilometrosRecorridos" ColumnName="KilometrosRecorridos" />
                 <ScalarProperty Name="VehiculoCajaChicaId" ColumnName="VehiculoCajaChicaId" />
                 <ScalarProperty Name="ObraId" ColumnName="ObraId" />

@@ -90,12 +90,13 @@ namespace SistemaGEISA
                 lookupObra.EditValue = cargo.ObraId;
                 txtObservaciones.Text = cargo.Observaciones;
                 txtKmRecorridos.Text = cargo.KilometrosRecorridos.HasValue ? cargo.KilometrosRecorridos.Value.ToString("N2") : string.Empty;
-
+                lookupEmpleado.EditValue = cargo.EmpleadoId;
             }
             else
             {
                 btnAgregarObra.Visible = btnEliminarObra.Visible = listObras.Visible = lblDesglose.Visible = true;
                 deFecha.EditValue = DateTime.Today;
+                lookupEmpleado.EditValue = cajaChica.Vehiculo.EmpleadoId;
             }
         }
 
@@ -114,6 +115,10 @@ namespace SistemaGEISA
             lookupObra.Properties.DataSource = controler.Model.Obra.ToList();
             lookupObra.Properties.DisplayMember = "Nombre";
             lookupObra.Properties.ValueMember = "Id";
+
+            lookupEmpleado.Properties.DataSource = controler.Model.Empleado.Where(D => D.Activo == true).ToList();
+            lookupEmpleado.Properties.DisplayMember = "NombreCompleto";
+            lookupEmpleado.Properties.ValueMember = "Id";
         }
        
 
@@ -133,6 +138,7 @@ namespace SistemaGEISA
                     cargo.Observaciones = txtObservaciones.Text;
                     cargo.ObraId = (int)lookupObra.EditValue;
                     cargo.KilometrosRecorridos = Convert.ToDouble(txtKmRecorridos.Text);
+                    cargo.Empleado = lookupEmpleado.GetSelectedDataRow() as Empleado;
                     if (!cargo.NoEsNuevo) controler.Model.AddToVehiculoCajaChicaDetalle(cargo);           
                 }else{                
                     foreach (Obra obra in listObras.Items)
@@ -144,6 +150,7 @@ namespace SistemaGEISA
                         cargo.Importe = Convert.ToDouble(txtImporte.Text) / listObras.Items.Count;
                         cargo.Observaciones = txtObservaciones.Text;
                         cargo.Obra = obra;
+                        cargo.Empleado = lookupEmpleado.GetSelectedDataRow() as Empleado;
                         if (!cargo.NoEsNuevo) controler.Model.AddToVehiculoCajaChicaDetalle(cargo); 
                     }
                 }

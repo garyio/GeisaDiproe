@@ -429,7 +429,6 @@
             // 
             // lookupEmpleado
             // 
-            this.lookupEmpleado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lookupEmpleado.Location = new System.Drawing.Point(465, 8);
             this.lookupEmpleado.Name = "lookupEmpleado";
             this.lookupEmpleado.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

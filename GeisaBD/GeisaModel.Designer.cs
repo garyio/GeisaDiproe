@@ -124,6 +124,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_Vehiculo_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "Vehiculo", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.Vehiculo), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoHistorial_EmpleadoNomina", "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.EmpleadoNomina), "EmpleadoHistorial", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.EmpleadoHistorial), true)]
 [assembly: EdmRelationshipAttribute("GEISAModel", "FK_EmpleadoNomina_EmpleadoNomina", "EmpleadoNomina", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.One, typeof(GeisaBD.EmpleadoNomina), "EmpleadoNomina1", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.EmpleadoNomina), true)]
+[assembly: EdmRelationshipAttribute("GEISAModel", "FK_VehiculoCajaChicaDetalle_Empleado", "Empleado", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(GeisaBD.Empleado), "VehiculoCajaChicaDetalle", System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity.Many, typeof(GeisaBD.VehiculoCajaChicaDetalle), true)]
 
 #endregion
 
@@ -7617,6 +7618,28 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Vehiculo>("GEISAModel.FK_Vehiculo_Empleado", "Vehiculo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_VehiculoCajaChicaDetalle_Empleado", "VehiculoCajaChicaDetalle")]
+        public EntityCollection<VehiculoCajaChicaDetalle> VehiculoCajaChicaDetalle
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VehiculoCajaChicaDetalle>("GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado", "VehiculoCajaChicaDetalle");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VehiculoCajaChicaDetalle>("GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado", "VehiculoCajaChicaDetalle", value);
                 }
             }
         }
@@ -21044,6 +21067,30 @@ namespace GeisaBD
         private Nullable<global::System.Double> _KilometrosRecorridos;
         partial void OnKilometrosRecorridosChanging(Nullable<global::System.Double> value);
         partial void OnKilometrosRecorridosChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> EmpleadoId
+        {
+            get
+            {
+                return _EmpleadoId;
+            }
+            set
+            {
+                OnEmpleadoIdChanging(value);
+                ReportPropertyChanging("EmpleadoId");
+                _EmpleadoId = StructuralObject.SetValidValue(value, "EmpleadoId");
+                ReportPropertyChanged("EmpleadoId");
+                OnEmpleadoIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _EmpleadoId;
+        partial void OnEmpleadoIdChanging(Nullable<global::System.Int32> value);
+        partial void OnEmpleadoIdChanged();
 
         #endregion
 
@@ -21121,6 +21168,44 @@ namespace GeisaBD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Obra>("GEISAModel.FK_VehiculoCajaChicaDetalle_Obra", "Obra", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GEISAModel", "FK_VehiculoCajaChicaDetalle_Empleado", "Empleado")]
+        public Empleado Empleado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado", "Empleado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado", "Empleado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Empleado> EmpleadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Empleado>("GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado", "Empleado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Empleado>("GEISAModel.FK_VehiculoCajaChicaDetalle_Empleado", "Empleado", value);
                 }
             }
         }
